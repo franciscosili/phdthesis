@@ -1,0 +1,126 @@
+
+
+%===================================================== new commands
+% ANALYSISBASE and packages
+\newcommand{\ABvers}{25.2.6}
+\newcommand{\xml}{\texttt{xmlAnaWSBuilder}}
+\newcommand{\qf}{\texttt{quickFit}}
+\newcommand{\ql}{\texttt{quickLimit}}
+\newcommand{\bumphunter}{{\textsc BumpHunter}\xspace}
+\newcommand{\bh}{{\textsc BumpHunter}\xspace}
+
+% BSM Particles
+\newcommand{\qstar}{\ensuremath{q^{*}}\xspace}
+\newcommand{\bstar}{\ensuremath{b^{*}}\xspace}
+\newcommand{\cstar}{\ensuremath{c^{*}}\xspace}
+\newcommand{\qbh}{\ensuremath{\text{QBH}}\xspace}
+
+% Particles
+\newcommand{\yj}{\gammajet}
+\newcommand*{\phjet}{\ensuremath{\gamma+j}\xspace}
+\newcommand*{\jet}{\xspace\ensuremath{\text{jet}}\xspace}
+\newcommand*{\jets}{\xspace\ensuremath{\text{jets}}\xspace}
+
+
+% Two-body variables
+\newcommand{\deta}[2]{\ensuremath{|\Delta\eta(#1, #2)|}\xspace}
+\newcommand{\dphi}[2]{\ensuremath{|\Delta\phi(#1, #2)|}\xspace}
+\newcommand{\Dphi}{\ensuremath{\Delta\phi}\xspace}
+\newcommand{\dphiyj}{\ensuremath{\Dphi(\gamma,j)}\xspace}
+\newcommand{\detayj}{\ensuremath{\deta{\gamma}{j}}\xspace}
+\newcommand{\dryj}{\ensuremath{\Delta R(\gamma,j)}\xspace}
+
+% Invariant masses
+\newcommand*{\myj}{\ensuremath{m_{\gamma+j}}\xspace}
+\newcommand*{\mth}{\ensuremath{m_{\text{th}}}\xspace}
+\newcommand*{\mq}{\ensuremath{m_{q^*}}\xspace}
+\newcommand*{\mb}{\ensuremath{m_{b^*}}\xspace}
+\newcommand*{\mc}{\ensuremath{m_{c^*}}\xspace}
+
+% b/c-tagging
+\newcommand*{\btagging}{\ensuremath{b\text{-tagging}}\xspace}
+\newcommand*{\ctag}{\ensuremath{c\text{-tagging}}\xspace}
+\newcommand*{\ctagged}{\ensuremath{c\text{-tagged}}\xspace}
+\newcommand*{\ctagging}{\ensuremath{c\text{-tagging}}\xspace}
+\newcommand*{\cquark}{\ensuremath{c\text{-quark}}\xspace}
+\newcommand*{\cquarks}{\ensuremath{c\text{-quarks}}\xspace}
+\newcommand*{\cjet}{\ensuremath{c\text{-jet}}\xspace}
+\newcommand*{\cjets}{\ensuremath{c\text{-jets}}\xspace}
+\newcommand*{\ltag}{\ensuremath{l\text{-tagging}}\xspace}
+\newcommand*{\ltagged}{\ensuremath{l\text{-tagged}}\xspace}
+\newcommand*{\lquark}{\ensuremath{l\text{-quark}}\xspace}
+\newcommand*{\lquarks}{\ensuremath{l\text{-quarks}}\xspace}
+\newcommand*{\ljet}{\ensuremath{l\text{-jet}}\xspace}
+\newcommand*{\ljets}{\ensuremath{l\text{-jets}}\xspace}
+
+\newcommand*{\gnob}{\ensuremath{\text{GN1}_{b}}\xspace}
+\newcommand*{\gntb}{\ensuremath{\text{GN2}_{b}}\xspace}
+\newcommand*{\gnoc}{\ensuremath{\text{GN1}_{c}}\xspace}
+\newcommand*{\gntc}{\ensuremath{\text{GN2}_{c}}\xspace}
+
+% Jet variables
+\newcommand{\njets}{\ensuremath{N_{\text{jets}}}\xspace}
+\renewcommand{\etajet}{\ensuremath{\eta^{\text{j}}}\xspace}
+
+% MC generators
+\newcommand*{\pythia}{\Pythia}
+\newcommand*{\sherpa}{\Sherpa}
+\newcommand*{\EvtGen}{\EVTGEN}
+\newcommand*{\jetphox}{\textsc{JETPHOX}}
+\newcommand*{\Jetphox}{\textsc{JETPHOX}}
+
+% Photon variables
+\newcommand{\ngamma}{\ensuremath{N_{\gamma}}\xspace}
+
+\newcommand*{\ptconetw}{\ensuremath{\pt^{\text{cone20}}}\xspace}
+\newcommand*{\etconetw}{\ensuremath{\et^{\text{cone20}}}\xspace}
+\newcommand*{\etconefo}{\ensuremath{\et^{\text{cone40}}}\xspace}
+\newcommand*{\etiso}{\ensuremath{\et^{\text{iso}}}\xspace}
+\newcommand*{\ptiso}{\ensuremath{\pt^{\text{iso}}}\xspace}
+\newcommand*{\etagam}{\ensuremath{\eta^{\gamma}}\xspace}
+\newcommand*{\etagamacc}{\ensuremath{|\etagam| < 2.37\text{ excluding } 1.37<|\etagam|<1.52}\xspace}
+\newcommand*{\etgam}{\ensuremath{\et^{\gamma}}\xspace}
+\newcommand*{\ptgam}{\ensuremath{\pt^{\gamma}}\xspace}
+
+% Photon shower shapes
+\newcommand*{\eratio}{\ensuremath{E_{\text{ratio}}}\xspace}
+\newcommand*{\fone}{\ensuremath{f_1}\xspace}
+\newcommand*{\deltae}{\ensuremath{\Delta E}\xspace}
+\newcommand*{\fside}{\ensuremath{f_{\text{side}}}\xspace}
+\newcommand*{\rphi}{\ensuremath{R_{\phi}}\xspace}
+\newcommand*{\reta}{\ensuremath{R_{\eta}}\xspace}
+\newcommand*{\rhad}{\ensuremath{R_{\text{had}}}\xspace}
+\newcommand*{\rhado}{\ensuremath{R_{\text{had 1}}}\xspace}
+\newcommand*{\wone}{\ensuremath{w_{1}}\xspace}
+\newcommand*{\weta}{\ensuremath{w_{\eta 2}}\xspace}
+\newcommand*{\wstot}{\ensuremath{w_{\text{s tot}}}\xspace}
+
+
+% Jet fakes
+\newcommand{\ffiso}{\ensuremath{\text{FF}_{\text{ISO}}}\xspace}
+\newcommand{\ffid}{\ensuremath{\text{FF}_{\text{ID}}}\xspace}
+\newcommand{\jfake}{\ensuremath{j\to\gamma}\xspace}
+
+% Others
+\newcommand{\nlep}{\ensuremath{N_{\text{leptons}}}\xspace}
+\newcommand{\sspur}{\ensuremath{S_{\text{spur}}}\xspace}
+
+
+% Statistics
+\newcommand*{\chisq}{\ensuremath{\chi^{2}}\xspace}
+\newcommand*{\pval}{\ensuremath{p}-value\xspace}
+\newcommand*{\LL} {\ensuremath{\mathcal{L}}}
+\newcommand*{\vecth}{\ensuremath{\bm{\theta}}\xspace}
+\newcommand*{\thetaspur}{\ensuremath{\theta_{\mathrm{spur}}}}
+\newcommand*{\sigmaeff}{ \ensuremath{\sigma^{\mathrm{eff}}_{\mathrm{S}}}}
+\newcommand*{\pzero}{\ensuremath{\mathrm{p}_{0}}}
+
+% Shorthand for \phantom to use in tables
+\newcommand{\pho}{\phantom{0}}
+\newcommand{\bslash}{\ensuremath{\backslash}}
+\newcommand{\BibTeX}{{\textsc Bib\TeX}}
+\newcommand{\editing}[1]{\footnote{ {\textit editing: #1 }}}
+
+% abbreviations
+\newcommand{\lumpb}{\ensuremath{\text{pb}^{-1}}\xspace}
+\newcommand{\lumfb}{\ensuremath{\text{fb}^{-1}}\xspace}

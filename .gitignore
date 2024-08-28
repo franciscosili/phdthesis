@@ -1,0 +1,15 @@
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb*
+*.fls
+*.lof
+*.log
+*.out
+*.synctex*
+*.toc
+
+
+*.code-workspace
+

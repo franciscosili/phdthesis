@@ -1,0 +1,176 @@
+%---------------------------------------------------
+% University of Sussex thesis template
+% Last Edit by Fabrizio Miano, Oct 2017
+%---------------------------------------------------
+%!TeX root = ../main.tex
+\documentclass[a4paper,11pt,oneside]{memoir}
+
+
+\input{metadata}
+\RequirePackage{latex/atlaslatexpath}
+\usepackage{latex/packages}
+\usepackage{definitions}
+
+
+\graphicspath{{./figures/}} % directory with all the pictures
+
+
+%---------------------------------------------------
+% BEGIN DOCUMENT
+%---------------------------------------------------
+\begin{document}
+% --- to fix figure numbers
+\makeatletter
+\renewcommand{\counterwithin}{\@ifstar{\@csinstar}{\@csin}}
+\makeatother
+
+
+
+%---------------------------------------------------
+% PREAMBLE: roman page numbering i, ii, iii, ...
+%---------------------------------------------------
+\pagestyle{custom}% Set page style to custom
+\chapterstyle{hansen} % Set chapter style
+
+\begingroup
+    \frontmatter
+    \pagenumbering{roman}
+    \clearpage\input{FrontBackMatter/Titlepage}
+    \clearpage\input{FrontBackMatter/Dedication} % Dedication page
+    \clearpage\input{FrontBackMatter/Acknowledgments} % Acknowledgements page
+    \clearpage\input{FrontBackMatter/Declaration} % Declaration
+    \clearpage\input{FrontBackMatter/Abstract} % Abstract page
+\endgroup
+
+
+
+%---------------------------------------------------
+% TABLE OF CONTENTS, LISTS OF TABLES & FIGURES
+%---------------------------------------------------
+\begingroup
+    \newpage
+    \setlength{\parskip}{0pt} % To restore distance between Chapters, sections and subsections in the table of contents
+    \pdfbookmark[0]{Contents}{contents_bookmark}
+    \pagestyle{custom}% Set page style to custom
+    \chapterstyle{hansen} % Set chapter style
+    { \hypersetup{hidelinks} \tableofcontents* } % as per in memoir class
+    \listoffigures
+\endgroup
+
+
+
+
+%---------------------------------------------------
+% MAIN THESIS TEXT: arabic page numbering 1, 2, 3, ...
+% THESIS CONTENT - CHAPTERS
+%---------------------------------------------------
+\mainmatter
+\pagenumbering{arabic}
+
+
+
+\input{Chapters/ToDoAndNotes}
+
+\input{Chapters/1_introduction}
+
+
+
+\part{Theory Motivation}
+\input{Chapters/2_theory}
+
+
+
+\part{The ATLAS Experiment}
+\input{Chapters/3_experiment}
+\input{Chapters/4_reconstruction}
+
+
+
+\part{Search for resonances}
+% \input{Chapters/5_reconstruction}
+% \input{Chapters/6_reconstruction}
+% \input{Chapters/7_reconstruction}
+% \input{Chapters/8_reconstruction}
+
+
+
+\FloatBarrier
+
+
+%  \input{Chapters/trigger}
+\FloatBarrier
+
+
+%  \input{Chapters/hadhadanalysis}
+
+
+%  \input{Chapters/future}
+
+
+% \input{Chapters/conclusions}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%---------------------------------------------------
+% APPENDICES
+%---------------------------------------------------
+\appendix
+% \input{Chapters/appA.tex}
+% \input{Chapters/appB.tex}
+\backmatter
+\input{FrontBackMatter/Acronyms.tex}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%---------------------------------------------------
+% BIBLIOGRAPHY
+%---------------------------------------------------
+\clearpage
+\phantomsection
+\nocite{*}
+\bibliography{Chapters/bibliography}
+% \bibliography{Chapters/bibliography}
+%using an on-the-go bibliography
+%\bibliographystyle{IEEE}
+%\bibliographystyle{ieeetr}
+% \bibliography{BibliographyLink/IncludedInThesis}
+% \bibliography{BibliographyLink/IncludedInThesis_correctionsPostViva}
+%\printbibliography
+%\bibliography{BibliographyLink/IncludedInThesis_etall}
+% \bibliography{BibliographyLink/ToReadAndFollowUp}
+\clearpage\input{FrontBackMatter/Colophon}
+
+
+
+
+
+
+
+%---------------------------------------------------
+% END DOCUMENT
+%---------------------------------------------------
+\end{document}

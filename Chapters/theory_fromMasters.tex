@@ -1,0 +1,299 @@
+\chapter{Theory}
+\textcolor{red}{need to include a discussion on R-parity conservation in mssm susy, as well as dsiscussion on simplified models vs full susy models}
+\graphicspath{{./figures/theory/}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{chap:theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textcolor{red}{need to explain why staus can be left and right handed with different mass eigenstates! why is that not the case for first and second generation sleptons}
+\section{The Standard Model of Particle Physics}
+The supersymmetric particles searched for within this work are decaying to known particles of the Standard Model of Particle Physics. Therefore this section introduces the concepts of the Standard Model.
+Starting with the observation of electrons by J.J Thomson in 1897, the Standard Model of Particle Physics was developed further to describe all particles and their interaction, e.g.~include the 1964 by Gell-Mann and Zweig proposed constituent of the proton, the quarks \cite{Griffiths}. In its form today, the Standard Model is able to predict particle interactions to high precision, with its most recent large success being the prediction of the Higgs boson \cite{ATLASHiggsDiscovery}, \cite{CMSHiggsDiscovery}.
+\subsection{Quantum field theories}
+Quantum field theory is the generalisation of relativistic quantum mechanics to continuous fields. Similar to classical Lagrangian field theory, a system is completely described by its Lagrangian density. Using the principal of least action, by minimising the action given through the Lagrangian density in equation \ref{eqn:theory:action}, the Euler-Lagrange equation in \ref{eqn:theory:eulerlagrange} determines the equations of motions to a given Lagrangian density, for every field $\phi$ in the Lagrangian \cite{Peskin}. 
+
+\begin{align}
+S = \int \mathcal{L}(\phi, \partial_\mu \phi) d^4x \label{eqn:theory:action}
+\end{align}
+
+\begin{align}
+\partial_\mu \left( \frac{\partial \mathcal{L} }{\partial ( \partial_\mu \phi )} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = 0 \label{eqn:theory:eulerlagrange}
+\end{align}
+
+\subsection{Gauge symmetries}
+Noethers theorem connects symmetries of the Lagrangian with conservation laws. The Standard Model of Particle Physics (SM) is based on the concept of local gauge invariance, this means that the Lagrangian density can be made invariant under transformations like \eqref{eq:theory:gaugeinvariance}, where the wave function $\psi(x)$ (dependent on the four-vector $x$) is multiplied by an additional, space-time-dependent, 'local', phase  $\alpha(x)$ \cite{Peskin}.
+\begin{align}
+\psi(x) \rightarrow e^{i\alpha(x)}\psi(x) \label{eq:theory:gaugeinvariance}
+\end{align}
+
+The symmetries in the Standard Model are based on the symmetry groups $SU(3)_C \times SU(2)_L \times U(1)_Y$, describing the strong and electroweak interactions. A theoretical explanation of the gauge groups and their Lagrangians can be found in \cite{Griffiths}, \cite{AitchisonOne} and \cite{AitchisonTwo}.
+
+
+\subsection{The Higgs mechanism}
+The Higgs mechanism describes the generation of particle masses in the $SU(3)_C \times SU(2)_L \times U(1)_Y$ symmetry, in which ad-hoc particle mass terms in the Lagrangian would break the gauge invariance. The basic principle introduces a complex scalar field $\Phi$ \eqref{eq:theory:phi} with a `mexican hat potential' $V(\Phi)$ shown in equation \ref{eq:theory:mexicanhat} \cite{EM2} and figure \ref{fig:theory:mexicanhat}. By choosing a specific ground state of $\Phi$ the $SU(2)_L \times U(1)_Y$ symmetry of the Lagrangian is spontaneously broken into $U(1)_{em}$\cite{Peskin}. 
+%
+%\begin{align}
+%\Phi(x) &= \frac{1}{\sqrt{2}}\[\Phi_1(x) + i\Phi_2(x)\] \\
+%%V(\Phi) = -\mu^2 |\Phi|^2 + \lambda^2 |\Phi|^4 \\
+%\mathcal{L} &= (\partial_\mu \Phi)(\partial^\mu \Phi) - V(\Phi) 
+%\end{align} \label{eq:theory:mexicanhat}
+
+\begin{align}
+\Phi(x) &= \frac{1}{\sqrt{2}}\left[\Phi_1(x) + i\Phi_2(x)\right] \label{eq:theory:phi}\\ 
+V(\Phi) &= -\mu^2 |\Phi|^2 + \lambda^2 |\Phi|^4 \label{eq:theory:mexicanhat}\\ 
+\mathcal{L} &= (\partial_\mu \Phi)(\partial^\mu \Phi) - V(\Phi) 
+\end{align}
+
+By expanding the scalar field around the ground state in azimuthal and radial direction, mass terms for the two W boson fields, $W^\pm$, and the Z-boson appear, while the photon as gauge boson of $U(1)_{em}$ stays massless. The quark and fermion masses originate through coupling to the scalar Higgs field. On top of the mass generation, an additional massive scalar boson appears, the Higgs boson.
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=0.4\textwidth]{mexican_hat.png}
+%\caption{Mexican hat potential \cite{MexicanHat} \label{fig:theory:mexicanhat}}
+%\end{figure}
+
+\subsection{Particle content of the SM}
+Within the last decades, all SM particles have been precisely studied at particle colliders. An overview of all particles in the SM and their masses and charges is shown in table \ref{tab:theory:particlesSM}. 
+The electric charge together with the spin, colour and weak isospin $I_3$ determines all couplings in the SM.
+The masses are determined through the coupling of the particles to the Higgs boson.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}\hline
+Particle & electric charge & spin & color & weak $I_3$ (L)  & mass \\ \hline \hline
+electron $e$ & -1 & 1/2 & - & +1/2 &  0.511 MeV \\
+electron neutrino $\nu_e$ & 0 & 1/2 & - & -1/2 & $< 2$ eV\\
+muon $\mu$ & -1 & 1/2 & -& +1/2 & 105.7 MeV \\
+muon neutrino $\nu_\mu$ & 0 & 1/2 & - & -1/2 & $< 2$ eV\\
+tau $\tau$ & -1 & 1/2 & - & +1/2 &  1776.86 MeV\\
+tau neutrino $\nu_\tau$ & 0 & 1/2 & - & -1/2 &  $< 2$ eV\\ \hline
+up quark $u$ & + 2/3 & 1/2 & r,g,b & +1/2 &  2.2 MeV\\
+down quark $d$ & -1/3 & 1/2 & r,g,b & -1/2 &  4.7 MeV\\
+charm quark $c$ & +2/3 & 1/2 & r,g,b & +1/2 &  1.28 GeV \\
+strange quark $s$ & -1/3 & 1/2 & r,g,b & -1/2 & 96 MeV\\
+top quark $t$ & +2/3 & 1/2 & r,g,b & +1/2 &  173.1 GeV\\
+bottom quark $b$ & -1/3 & 1/2 &r,g,b & -1/2 & 4.18 GeV\\ \hline
+photon $\gamma$ & 1 & - & 0 & 0  &0 \\
+gluon $g$ & 0 & 1 & 8  & 0 &  0\\
+W boson $W$ & +/- 1 & 1 & - & +/- 1&  80.385 GeV\\
+Z boson $Z$ & 0 & 1 & - & 0 &   91.1876 GeV\\ \hline
+	\end{tabular}
+	\caption{Overview of all SM particles and their properties, here $I_3$ is the third weak isospin component \label{tab:theory:particlesSM}\cite{PDG}}
+\end{table}
+
+\subsection{Limitations of the SM}
+
+\subsubsection{Dark Matter}
+One of the most striking shortcoming of the Standard Model is its failure to provide a candidate for cold Dark Matter.
+Dark Matter presents 26.8\% of the energy density of our universe, while `ordinary', luminous, matter only makes up 4.9\% \cite{Planck}. 
+Hints for the existence of Dark Matter were already provided in the early 1930's, by comparing rotational curves of galaxies with the expected velocity distributions calculated by the consideration of visible stars \cite{Zwicky}. This showed that non-luminous matter is present in galaxies through its gravitational effects. 
+Colliding galaxies like the bullet cluster \cite{BulletCluster} \cite{CollisionGalaxies}, provide compelling limitations to the possible Dark Matter self-interaction, since gravitational lensing showed that the mass centres of both galaxies were moving through each other almost unaffected, compared to the deceleration and shock the gas in the galaxies was going under. 
+
+
+
+\subsubsection{The Hierarchy Problem}
+
+A shortcoming of the Standard Model from the theoretical point of view is the Higgs mass sensitivity to heavy particles.
+Calculating one-loop corrections to the Higgs mass, fermionic \eqref{eq:theory:fermioniccontribution} and scalar \eqref{eq:theory:bosoniccontribution} loop contributions depend on a high-energy cut-off scale, as well as the particle mass in the loop \cite{SUSYPrimer}. 
+
+\begin{align}
+\Delta m_H^2 = -\frac{|\lambda_f|^2}{8\pi^2}\Lambda^2_{UV} + ... (\propto m_f)\label{eq:theory:fermioniccontribution}
+\end{align}
+
+\begin{align}
+\Delta m_H^2 = \frac{\lambda_S}{16 \pi^2} [ \Lambda^2_{UV} -2m_S^2 \ln (\Lambda_{UV}/m_S) + ...] \label{eq:theory:bosoniccontribution}
+\end{align}
+
+In contrast to one-loop corrections to masses of fermions or bosons, this contributions are quadratic, not logarithmic, and therefore divergent.  
+This is worrisome from two points of view.
+First, by choosing a cut-off value of the loop integrals at a ultraviolet cut-off scale, for example the Planck scale, the loop corrections depend on the cut-off scale, which is causing large contributions to the Higgs mass when the cut-off scale is as large as the Planck scale. The Planck scale as upper validity of the SM is a reasonable assumption, since gravitational effects get comparable in size to elementary particle interactions at the Planck scale, and therefore gravity is no longer negligible in particle interactions.
+Secondly, the mass corrections are proportional to the mass of the contributing particles in the loop and thus proportional to potential unknown heavy particles. This is the key of the hierarchy problem: Why is the Higgs mass at its measured mass at the electroweak scale, while its mass corrections are sensitive to the scale of new physics?
+
+
+
+
+\section{Supersymmetry}
+The following section presents an introduction to the basic mathematical description of supersymmetry and its phenomenological consequences. A complete introduction is given in \cite{SUSYPrimer} and \cite{Binetruy2006} as well as in \cite{BSMSkriptCsaki}. 
+
+\subsection{Introduction}
+The Higgs mass hierarchy problem can only be solved through exact cancellation of fermionic and bosonic contributions to the loop corrections to the Higgs mass. Including an additional symmetry between fermions and bosons, known as supersymmetry (SUSY), introduces a transformation of fermions into bosons and vice versa \cite{SUSYPrimer}.
+\begin{align}
+\label{eqn:theory:susydefinition}
+Q\ket{b} = \ket{f} \qquad
+Q\ket{f} = \ket{b}
+\end{align}
+Supersymmetry as an extension to the Standard Model Poincare group presents a unique solution to the hierarchy problem. Unique because it is the only possible connection of space-time and internal symmetries that overcomes the Coleman-Mandula no-go theorem \cite{BSMSkriptCsaki}. This theorem presents strict requirements to the fermionic supersymmetry generator Q and leads to the defining SUSY algebra given in equations ~\eqref{eqn:theory:algebra1}~-~\eqref{eqn:theory:algebra3}, where all spinor indices have been suppressed \cite{SUSYPrimer}.  In principle, more than one set of generators would be possible, but some extended SUSY models would not allow for parity violating interactions as observed in the Standard Model, therefore only the simplest case with one set of generators is considered in the following.
+
+\begin{align}
+\{Q, Q^\dagger\} &= P^\mu \label{eqn:theory:algebra1}\\
+\{Q,Q\} &= \{Q^\dagger, Q^\dagger\} \label{eqn:theory:algebra2} =0\\
+[P^\mu,Q] &= [P^\mu, Q^\dagger] = 0 \label{eqn:theory:algebra3}
+\end{align}
+
+Here $P^\mu$ is the four-momentum generator of spacetime translations. As can be seen in \ref{eqn:theory:algebra3} the SUSY generators commute with spacetime translations. Therefore also the squared mass operator $P^2$ commutes with Q. As can be seen in equation \ref{eqn:theory:showmass}, bosonic and fermionic states connected through a supersymmetric transformation have the same mass eigenvalues in an unbroken symmetry.
+
+\begin{align}
+\begin{split}
+\text{from \eqref{eqn:theory:algebra1}:} \qquad [Q, P^{\mu} P_{  \mu}] &= 0 \\
+\text{using \eqref{eqn:theory:susydefinition}} \qquad  P^{\mu} P_{  \mu} Q  \ket{b} &=  P^{\mu} P_{  \mu} \ket{f}\\
+Q  P^{\mu} P_{  \mu} \ket{b} & = m_f^2 \ket{f}\\
+m_b^2 Q \ket{b} &= m_f^2 \ket{f} \qquad \Rightarrow m_b = m_f
+\end{split} \label{eqn:theory:showmass}
+\end{align}
+
+Since supersymmetric particles would already have been seen at collider experiments if SM and SUSY particles had the same masses, SUSY needs to be a broken symmetry to allow for different masses of SM particles and their SUSY partners. The concept of supersymmetry breaking is sketched in the following section.
+
+
+\subsection{Supersymmetry breaking}
+Since no supersymmetric particles have been observed so far, the symmetry must be broken. Currently, the knowledge about this breaking mechanism is limited. But the mechanism of the breaking has a large impact on the supersymmetric parameters defining coupling strengths and masses of SUSY particles. For the Minimal Supersymmetric Standard Model, the smallest possible extension of the SM to supersymmetric interactions, the breaking needs to be soft, so that SUSY still potentially provides a solution to the hierarchy problem.
+
+ \subsection{Particle spectrum of the MSSM}
+
+The Minimal Supersymmetric Standard Model orders the single particle states into irreducible representations of the SUSY algebra, so called supermultiplets, containing the same amount of fermionic and bosonic degrees of freedom.\\
+ A chiral or matter supermultiplet consists of a single Weyl fermion\footnote{ A Dirac spinor can be decomposed into two two-dimensional representations of the Lorentz group, called Weyl spinors \cite{Peskin}} with two helicity eigenstates and therefore two degrees of freedom. This is completed with two real scalar fields, naturally combined into a complex scalar field, with two degrees of freedom. 
+A gauge supermultiplet consists of a vector boson of spin 1 with two helicity eigenstates and a spin 1/2 Weyl-fermion, also with two degrees of freedom.
+The standard model quarks and leptons are part of a chiral supermultiplet, completed through scalar quarks (squarks, denoted $\tilde{q}$) and scalar leptons (sleptons, denoted $\tilde{\ell}$). Since a SUSY transformation conserves all internal charges, also the electroweak hypercharge, there are separate multiplets for left-handed and right-handed SM particles. The subscript L or R in squarks and sleptons emphasises this separation, where the index has only a helicity reference to the SM partner (since scalar squarks and sleptons do not have helicity eigenstates).
+SM vector bosons ($W^+$, $W^-$, $W_0$ and $B_0$) are part of a gauge multiplet, where their SUSY partners are referred to as gauginos (Wino, Bino).
+The SM higgs boson fits into a chiral multiplet, where two Higgs doublets are needed within supersymmetric models to avoid gauge anomalies. The $H_u$ doublet is giving all up type quarks their mass, whereas the $H_d$ gives all down type quarks and leptons their masses. 
+The complete set of chiral and gauge multiplets is summarised in table \ref{tab:theory:chiralsupermultiplets} and \ref{tab:theory:gaugesupermultiplets}, where the multiplets are ordered according to their $SU(2)_L$ doublets and singlets for the first generation of quarks and leptons exemplarily.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}\hline
+\multicolumn{2}{|c|}{Names} & spin 0 & spin 1/2 & SU(3)$_C$, SU(2)$_L$, U(1)$_Y$\\ \hline \hline
+squarks, quarks & Q & ($\tilde{u}_L$ $\tilde{d}_L$) & ($u_L$ $d_L$) & (\textbf{3}, \textbf{2}, $\frac{1}{6}$)\\
+(x 3 families) & $\bar{u}$ & $\tilde{u}^{*}_R$  & $u_R^\dagger$ &  (\textbf{$\bar{\textbf{3}}$} , \textbf{1} , {$- \frac{2}{3}$})\\
+ & $\bar{u}$ & $\tilde{d}^{*}_R$  & $d_R^\dagger$ &  (\textbf{$\bar{\textbf{3}}$} , \textbf{1} , \small{$ \frac{1}{3}$})\\ \hline
+ sleptons, leptons & L & ($\tilde{\nu}$ $\tilde{e}_L$) & ($\nu$ $e_L$) & (\textbf{1} , \textbf{2} , \small{$- \frac{1}{2}$}) \\
+ (x 3 families) & $\bar{e}$ & $\tilde{e}^{*}_R$ & $e_R^\dagger$  & (\textbf{1} , \textbf{1} , {$ 1$}) \\ \hline
+ Higgs, higgsinos & H$_u$ & (H$_u^+$ H$_u^0$) & ($\tilde{H}_u^+$ $\tilde{H}_u^0$)&  (\textbf{1} , \textbf{2} , {$ +\frac{1}{2}$})\\
+ &  H$_d$& (H$_d^0$  H$_d^-$) & ($\tilde{H}_d^0$  $\tilde{H}_d^-$) & (\textbf{1} , \textbf{2} , $ -\frac{1}{2}$) \\ \hline
+	\end{tabular}
+\caption{Chiral supermultiplets in the MSSM. The spin 1/2 fields are conjugated to present left-handed Weyl fermions (from \cite{SUSYPrimer}) \label{tab:theory:chiralsupermultiplets} }
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}\hline
+	Names & spin 1/2 & spin 1 & SU(3)$_C$, SU(2)$_L$, U(1)$_Y$\\ \hline \hline
+	gluino, gluon & $\tilde{g}$ & $g$ &  (\textbf{8},\textbf{1},0) \\
+	winos, W bosons & $\tilde{W}^\pm$   $\tilde{W}^0$ & $W^\pm$  $W^0$ & (\textbf{1}, \textbf{3}, 0)\\
+	bino, B boson &  $\tilde{B}^0$ & $B^0$ &(\textbf{1}, \textbf{1}, 0) \\ \hline
+	\end{tabular}
+\caption{Gauge supermultiplets in the MSSM  (from \cite{SUSYPrimer}) \label{tab:theory:gaugesupermultiplets} }
+\end{table}	
+
+
+\subsubsection{Higgs bosons in the MSSM}
+With the additional Higgs doublet introduced in the MSSM and the corresponding superpartners, the MSSM Higgs sector has eight degrees of freedom.
+Three of them generate the electroweak gauge boson masses. The five other degrees of freedom manifest themselves in additional particles. Two CP-even, neutral Higgs bosons, $h^0$ and $H^0$ appear, where $h^0$ is considered to be the SM Higgs boson. In addition, a CP-odd transforming neutral Higgs, $A^0$, and two charged Higgs bosons, $H^+$ and $H^-$, emerge.
+
+
+\subsubsection{Charginos and neutralinos in the MSSM}
+The gaugino fields of the MSSM mix with each other since their quantum numbers are identical. This leads to neutral and charged mass eigenstates (called neutralinos and charginos respectively). This mixing is visible in the MSSM Lagrangian mass terms (\eqref{eq:theo:Lneutralino}, \eqref{eq:theo:Lchargino}) in the mixing matrices,  given in \eqref{eq:theo:Mneutralino} and \eqref{eq:theo:Mchargino} \cite{SUSYPrimer}. 
+
+
+\begin{align}
+\begin{split} \mathcal{L}_\text{neutralino mass} &= - \frac{1}{2} (\psi^0)^T \textbf{M}_{\tilde{\chi}_j^0}\psi^0 + c.c , \\ 
+\text{with  } \psi^0 &= \text{(\Bino, \WinoZero, \HiggsinoDownZero,\HiggsinoUpZero )} \end{split} \label{eq:theo:Lneutralino}
+\end{align}
+
+\begin{align}
+\begin{split}
+\mathcal{L}_\text{chargino mass} &= - \frac{1}{2} (\psi^\pm)^T \textbf{M}_{\tilde{\chi}_i^\pm}\psi^\pm + c.c , \\
+\text{with  } \psi^\pm &= \text{(\Winoplus, \HiggsinoUpPlus, \Winominus,\HiggsinoDownMinus )} \end{split} \label{eq:theo:Lchargino}
+\end{align}
+
+The parameters of the mixing matrices originate from the soft supersymmetry breaking Lagrangian, $\mathcal{L}_\text{soft}$. $M_1$ and  $M_2$ are the bino and wino mass parameters respectively, $\mu$ the higgsino mass parameter. The vacuum expectation values $\langle H_{u/d}^0 \rangle$ are noted as $v_{u/d}$, $g$ and $g^\prime$ describe the standard model coupling constants. 
+
+\begin{align}
+\textbf{M}_{\tilde{\chi}_i^0} = \begin{pmatrix}
+M_1 & 0 & -g^\prime v_d / \sqrt{2} & g^\prime v_u/\sqrt{2} \\
+0 & M_2 & g v_d / \sqrt{2} & -g v_u / \sqrt{2}\\
+-g^\prime v_d / \sqrt{2}  & g v_d / \sqrt{2} & 0 & \mu \\
+g^\prime v_u/\sqrt{2} & -g v_u / \sqrt{2} & -\mu & 0 \\
+\end{pmatrix} \label{eq:theo:Mneutralino}
+\end{align}
+
+\begin{align}
+\textbf{M}_{\tilde{\chi}_j^\pm} = \begin{pmatrix}
+\textbf{0} & \textbf{X}^T\\
+\textbf{X} & \textbf{0} \\
+\end{pmatrix}, \text{ with } \textbf{X} = \begin{pmatrix} M_2 & gv_u \\
+gv_d & \mu 
+\end{pmatrix}
+\label{eq:theo:Mchargino}
+\end{align}
+
+Depending on the comparable size of $M_1, M_2$ and $\mu$, neutralinos can be bino-dominated ('bino-like'), wino-dominated ('wino-like'), higgsino-dominated ('higgsino-like') or mixed with no clear dominating component. In table \ref{tab:theory:gaugeeigenstates} the mass and gauge eigenstates of charginos and neutralinos are summarised.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|c|c|}\hline
+		Names & mass eigenstates & gauge eigenstates \\ \hline \hline
+		neutralinos & \None,\Ntwo,\Nthree,\Nfour &  \Bino,\WinoZero,\HiggsinoUpZero,\HiggsinoDownZero\\ \hline
+		charginos & \Cone, \Ctwo & \Winoplusminus, \HiggsinoUpPlus,\HiggsinoDownMinus \\ \hline
+	\end{tabular}
+	\caption{Mass and gauge eigenstates of neutralinos and charginos \label{tab:theory:gaugeeigenstates}}
+\end{table}
+
+\subsubsection{Interactions in the MSSM}
+Interactions in the MSSM follow the same regularities as in the SM. For the specific supersymmetric model considered in this thesis and explained in the next paragraph, the vertices shown in figure \ref{fig:theory:winobinovertices} are the most interesting ones. Possible vertices of neutral binos and winos as well as charged winos are shown \cite{Catena2014}. This elucidates the couplings of the corresponding fields, manifesting in the chargino neutralino mass eigenstates constructed from \eqref{eq:theo:Lneutralino} to \eqref{eq:theo:Mchargino}. The composition of the charginos and neutralinos determines the dominating interactions. In figure \ref{fig:theory:masssplitting:production} the production of charginos and neutralinos at hadron colliders is shown, each of the depicted processes and each vertex can be associated to one of the field interaction vertices in figure \ref{fig:theory:winobinovertices}. Since charginos and neutralinos are not colour-charged, they are produced via electroweak interactions. 
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.25\linewidth]{WinoBinovertices1.png}
+	\includegraphics[width=0.55\linewidth]{WinoBinovertices2.png}
+	\caption{Wino and bino field vertices in the MSSM \cite{Catena2014} \label{fig:theory:winobinovertices}}
+\end{figure}
+
+%\begin{figure}[H]
+%	\includegraphics[width=\linewidth]{EwkProductionFeynmans.pdf}
+%	\caption{Electroweak production of neutralinos and charginos at hadron colliders, here $\tilde{N}_i$ and $\tilde{C}_i^\pm$ present neutralinos and charginos respectively, following the notation in \cite{SUSYPrimer} \label{fig:theory:masssplitting:production}}
+%\end{figure}
+
+%\begin{figure}[h]
+%\centering
+%\begin{subfigure}{0.3\linewidth}
+%\centering
+%\includegraphics[width=\linewidth]{NCprod1.pdf}
+%\includegraphics[width=\linewidth]{NCprod3.pdf}
+%\includegraphics[width=\linewidth]{NCprod2.pdf}
+%\end{subfigure}
+%\begin{subfigure}{0.3\linewidth}
+%\centering
+%\includegraphics[width=\linewidth]{NCprod4.pdf}
+%\includegraphics[width=\linewidth]{NCprod5.pdf}
+%\includegraphics[width=\linewidth]{NCprod6.pdf}
+%\end{subfigure}
+%\begin{subfigure}{0.3\linewidth}
+%\centering
+%\includegraphics[width=\linewidth]{NCprod7.pdf}
+%\includegraphics[width=\linewidth]{NCprod8.pdf}
+%\includegraphics[width=\linewidth]{NCprod9.pdf}
+%\end{subfigure}
+%	\caption{Electroweak production of neutralinos and charginos at hadron colliders, adapted from \cite{SUSYPrimer} \label{fig:theory:masssplitting:production}.}
+%\end{figure}
+
+
+
+\subsubsection{R-parity conservation}
+To guarantee baryon (B) and lepton number (L) conservation and thus proton stability in supersymmetric models, conservation of a new quantum number, called R-parity, is introduced \eqref{eq:theory:rparity} \cite{SUSYPrimer}.
+
+\begin{align}
+P_R = (-1)^{3(B-L)+2s} \label{eq:theory:rparity}
+\end{align} 
+
+Connecting the baryon and lepton number as well as the spin (s) of a particle, the R-parity is equal to +1 for Standard Model particles and -1 for SUSY particles.
+R-parity conservation suppresses possible L and B violating terms in the MSSM Lagrangian and has some remarkable phenomenological consequences:
+\begin{itemize}
+	\item SUSY particles can only be produced in pairs,
+	\item SUSY particles can only decay into an odd number of SUSY particles,
+	\item The lightest supersymmetric particle (LSP) is stable, since it cannot decay further into only SM particles without violating R-parity,
+	\item The LSP is thus stable, weakly interacting and presents a good DM candidate.
+\end{itemize}
+It should nevertheless be clear that R-parity is an additionally introduced, though well-motivated symmetry through an additional quantum number, but not the only way to guarantee proton stability in supersymmetric models. Further perspectives on the possibility of R-parity violating couplings are given in \cite{SUSYPrimer}. Within this thesis, R-parity conservation is considered.
+
+
+
+  
+  

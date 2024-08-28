@@ -1,0 +1,413 @@
+\chapter{The Standard Model and Beyond}
+\label{ch:theory}
+\epigraph{\emph{"Nothing in life is to be feared. It is only to be understood. Now is the time to understand more, so that we may fear less"}}{Marie Curie}
+
+another template text
+
+% This thesis covers a search for new particles predicted by \ac{SUSY}  an extension to the \ac{SM} of particle physics. 
+% In the following chapter, the foundations for this search will be laid.  A summary of the core concepts of the \ac{SM} will be given in section \ref{sec:theory:SM},  discussing how quantum field theory in combination with gauge symmetries can explain and predict a large set of phenomena in our universe.  This is followed by a short discussion on the limitations of this current best theoretical description of fundamental particles and their interactions in section \ref{sec:theory:shortcomings}. 
+% Supersymmetry is an extension to the \ac{SM} that can resolve some of these shortcomings,  motivating an extensive search program within experimental particle physics.  An overview of \ac{SUSY}, focussing on the phenomenological consequences allowing for a search at hadron colliders,  is given in section \ref{sec:theory:susy}. 
+% The search presented in this thesis is brought into context in the broader field in a discussion of the bigger picture in section \ref{sec:theory:biggerPicture}.
+
+% \section{The Standard Model of Particle Physics}
+% \label{sec:theory:SM}
+% The Standard Model of Particle Physics is an extremely successful theory,  able to predict particle interactions to high precision.  This year (2022) marks the 10th anniversary of one of the biggest successes in particle physics to date - the discovery of the Higgs boson \cite{ATLASHiggsDiscovery, CMSHiggsDiscovery}.
+% With the \ac{SM} as it is today,  including the Brout-Englert-Higgs mechanism, we can put its predictions to stringent tests through precision measurements of its couplings, masses and interactions.  Searches for new physics like those described in this thesis are a crucial way to put the \ac{SM} to a test and increasingly go hand-in-hand with precision measurements.
+
+% \subsection{Quantum field theory and Gauge symmetries}
+% The \ac{SM} is a theory of quantum fields.  Similar to classical field theory,  a Lagrangian formalism is used to describe the components of the theory.  The basis of the Lagrangian formalism is presented through its connection with the action $S = \int d^4x \mathcal{L}$,  expressed through a Lagrangian density~$\mathcal{L}$ \cite{PeskinSchroeder}.   Connecting this with the principle of least action ($\delta S = 0 $),  postulating that every physical process is minimising its action,  leads to the Euler-Lagrange equation in \eqref{eq:theory:eulerLagrange}.  This is describing the equation of motion for a field $\psi$ with space-time indices $\mu$:
+
+% \begin{align}
+% \label{eq:theory:eulerLagrange}
+% \partial_\mu \left( \frac{\partial \mathcal{L} }{\partial ( \partial_\mu \psi )} \right) - \frac{\partial \mathcal{L}}{\partial \psi} = 0
+% \end{align}
+
+% Noether theorem \cite{Noether} connects symmetries of a Lagrangian with conserved charges.  In the \ac{SM}, these symmetries are in the form of local phase transformations $\psi(x) \rightarrow e^{i\alpha(x)}\psi(x)$ or \textit{gauge} transformations.  The transformations are connected with rotational symmetries of Lie groups  and can be summarized through the group structure \cite{Thomson}:
+
+% \begin{align}
+% U(1)_Y \otimes SU(2)_L \otimes SU(3)_C
+% \end{align}
+
+% Every local gauge transformation can be absorbed within a gauge field,  with the excitations of the gauge fields called \textit{gauge bosons}.
+% The conserved charges connected with the transformations of each group are indicated through the group subscripts. 
+% The $SU(3)_C$ part of the overall Standard Model symmetry group is the symmetry group of quantum chromo dynamics,  $C$ representing the strong interactions with conserved colour charge.  The gauge symmetry generates eight gauge bosons,  representing the eight possible gluons. 
+% The hypercharge Y presents the conserved charge under $U(1)$ transformations of the Lagrangian and can be expressed through the Gell-Mann-Nishijima formula (here in one of its forms, based on discussions in \cite{GellMann,Nishijima1,Nishijima2}): 
+
+% \begin{align}
+% Y = 2(Q_{em} -I_3)
+% \end{align}
+
+% This connects the electromagnetic and weak interaction,  including the electromagnetic charge $Q$ as well as the third component of the Isospin, $I_3$ and allows for the direct product of the $U(1)_Y\otimes SU(2)_L$ symmetry groups.
+% The gauge boson of the $U(1)_Y$ group is a neutral gauge boson,  $B_\mu$,  whereas the $SU(2)_L$ symmetries are absorbed in a set of three gauge fields,  $W_\mu^{(1)}, W_\mu^{(2)}, W_\mu^{(3)}$. 
+% These four massless gauge fields form eigenstates of the electroweak interaction \cite{Thomson},  connected through the weak mixing angle $\theta_W$: 
+
+% \begin{align}
+% \begin{split}
+% A_\mu &= B_\mu \cos \theta_w + W_\mu^{(3)}\sin\theta_w \\
+% Z_\mu &= -B_\mu \sin\theta_w +W^{(3)}_\mu \cos \theta_w \\
+% W^\pm &= \frac{1}{\sqrt{2}}(W^{(1)}_\mu \mp iW^{(2)}_\mu )
+% \end{split}
+% \end{align}  
+
+% The discovery of the Z-boson and its interactions in comparison with,  and together with,  the photon offer experimental proof of the above-described field configurations. 
+% If the Z boson would be a gauge boson of the weak interaction in itself,  a $W^0$,  it would only couple to left-handed particles.  This would lead to an asymmetry in polarised electron-positron collisions,  the so-called left-right asymmetry.  This has not been observed, confirming the right-handed coupling component in these interactions in measurements performed at the Stanford Linear Accelerator Center \cite{SLACZResonance}.
+
+% %Electroweak unification:  experiment shows that W boson not only couples to left-handed particles/right-handed antiparticles --> connection of electromagnetic and weak couplings
+% %\textcolor{red}{discuss the gauge bosons here before electroweak symmetry breaking -  reminder about the scales and what exactly is happening --> thomson// schailes lecture notes! merging of scales in discussion with supersymmetry - leave the scale discussion to the end,  discuss everything else now}
+% \subsection{The Higgs mechanism}
+% \label{sec:Higgs}
+% The gauge groups discussed above describe particle interactions under electroweak and strong interactions through gauge invariant principles.  Particle mass terms in the Lagrangian,  accounting for heavy bosons and massive particles observed in experiments, would break these gauge invariances.  Therefore an additional mechanism needs to be responsible for the generation of observed particle masses. 
+% Similar to the Mei{\ss}ner-Ochsenfeld effect \cite{MeissnerOchsenfeld,  SuperconductivityHiggsDiscussion} in superconductivity,  where a background field of scalar Cooper pairs \cite{CooperPairs} can lead to a photon appearing massive,  a background field could be the origin of particle masses.
+% Such a background field in combination with spontaneous symmetry breaking,  in which the ground state of a system does not include the symmetry of the system,  is the foundation of the mechanism developed by Brout,  Englert, Kibble and Higgs \cite{BroutEnglert, Kibble, Higgs}.  A short overview of this mechanism is first given in a simplified case,  followed by a short discussion of the mechanism within the \ac{SM}.  The discussion closely follows \cite{Thomson}.
+
+% To introduce a background field into the \ac{SM},  a Lagrangian term describing both its potential as well as a kinematic term has to be introduced.  In the case of a complex scalar field as in equation \eqref{eq:theory:Higgsfield},  its Lagrangian is described by equation \eqref{eq:theory:Higgspotential}.
+
+% \begin{align}
+% \phi &= \frac{1}{\sqrt{2}}(\phi_1 +i\phi_2) \label{eq:theory:Higgsfield}\\
+% \mathcal{L} &= (\partial_\mu \phi)^*(\partial^\mu \phi) - \mu^2(\phi^*\phi) - \lambda(\phi^*\phi)^2 \label{eq:theory:Higgspotential}
+% \end{align}
+
+% The last two terms in the Lagrangian \eqref{eq:theory:Higgspotential} define the potential of the complex scalar field,  which can be illustrated in dependency of its two real components, $\phi_1$ and $\phi_2$,  as shown in Figure \ref{fig:theory:Higgspotential}.
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[width=0.25\linewidth]{figures/UpdatedThesisFigures/HiggsPotential.pdf}
+% \caption{Illustration of the complex scalar potential, adapted from \cite{Thomson} for the case of $\mu^2 < 0$ \label{fig:theory:Higgspotential}}
+% \end{figure}
+
+% This potential is often named as \textit{wine-bottle potential} or \textit{Mexican-hat potential}. The parameter $\lambda$ needs to be positive for this potential to have a minimum.  The Lagrangian described has a global $U(1)$ symmetry and has a multitude of possible minima,  which is defined through its \textit{vacuum expectation value} $v$. This can be visualised through the dashed circle in Figure \ref{fig:theory:Higgspotential}.
+
+% \begin{align}
+% \phi_1^2 + \phi^2_2 = \frac{-\mu^2}{\lambda} = v^2
+% \end{align}
+
+% Through the selection of a specific ground state (e.g.  $(\phi_1,\phi_2) = (v,0)$), the global symmetry is spontaneously broken.  
+% Any field can be expressed as an expansion around its ground state.  When expanding the complex scalar field with respect to two fields $\eta$ and $\xi$,  with $\phi = \frac{1}{\sqrt{2}}(\eta + v + i\xi)$,  the Lagrangian in equation \eqref{eq:theory:Higgspotential} can be expressed like: 
+
+% \begin{align}
+% \mathcal{L} = \frac{1}{2} (\partial_\mu\eta)(\partial^\mu\eta) - \frac{1}{2}\underbrace{(2\lambda v^2)}_{m_\eta^2}  \eta^2 + \frac{1}{2}(\partial_\mu\xi)(\partial^\mu\xi) - \underbrace{(\lambda v \eta^3 + \frac{1}{4}\lambda\eta^4+\frac{1}{4}\lambda\xi^4 + \lambda v \eta \xi^2 + \frac{1}{2} \lambda \eta^2\xi^2)}_{V_{int}(\eta,\xi)}
+% \end{align}
+
+% This presents a Lagrangian density for a massive field $\eta$ as well as a massless field $\xi$,  as well as interaction terms.
+% The massless field $\xi$ is a so-called \textit{Goldstone} boson, originating from the spontaneous symmetry breaking.  
+% %By choosing a unitary gauge of the Goldstone field,  the degrees of freedom associated with it can be absorbed into the massive scalars' longitudinal polarisation.
+
+% In the \ac{SM}, this mechanism of symmetry breaking is embedded within the electroweak symmetry. 
+% This is based on two complex scalar fields in a weak isospin doublet (see equation \eqref{eq:theory:HiggsfieldSM}).  Similar to the simplified case with one complex scalar field,  the spontaneous symmetry breaking of the Higgs field, with its vacuum expectation value $v=-\mu^2/\lambda$ and free parameter 
+% $\mu$ and $\lambda$ of the potential leads to the generation of mass terms.
+
+
+% \begin{align}
+% \phi = \begin{pmatrix}
+% \phi^+\\
+% \phi^0
+% \end{pmatrix}  = \frac{1}{\sqrt{2}} \begin{pmatrix}
+% \phi_1 + i\phi_2\\
+% \phi_3 + i \phi_4
+% \end{pmatrix}
+% \label{eq:theory:HiggsfieldSM}
+% \end{align}
+
+% This spontaneous symmetry breaking of the electroweak symmetry generates mass terms for the two W-bosons, the Z-boson, and a massless boson in agreement with the photon (here denoted as A) with weak mixing angle $\theta_W$ and weak coupling constant $g_W$ (see equation \eqref{eq:theory:masses}). 
+
+% \begin{align}
+% \begin{split}m_W &= \frac{1}{2} g_Wv \\
+% m_Z &= \frac{1}{2} \frac{g_W}{\cos\theta_W}v \\
+% m_A &= 0 \label{eq:theory:masses}\end{split} 
+% \end{align}
+
+% %The relation of the masses of the W and Z boson to the weak mixing angle $\theta_W$ given in equation \eqref{eq:theory:mzmw} offers an important experimental test of the Higgs mechanism. 
+
+% The excitation of the Higgs field, the Higgs boson (with $m_h^2 =2\lambda v^2$),  was discovered by the \acs{ATLAS} and \acs{CMS} collaborations in 2012 \cite{ATLASHiggsDiscovery,CMSHiggsDiscovery}.
+% In the last 10 years,  there have been extensive precision measurements of not only the Higgs mass but a multitude of its production and decay modes.  A most recent discussion on developments and a detailed summary of the latest measurements of the Higgs bosons properties throughout the last ten years since its discovery can be found in \cite{HiggsReviewATLAS10years,CMSHiggs10}.  An overview of the production and decay modes of the Higgs boson can be found in Figure \ref{fig:theory:HiggsReview}.
+
+% \begin{figure}[htpb!]
+% \centering
+% \subfloat[Higgs Production mechanisms and their cross section]{\includegraphics[height=0.45\linewidth]{figures/Theory/HiggsProduction_improved.png}}
+% \subfloat[Higgs decay modes and their branching ratio]{\includegraphics[height=0.45\linewidth]{figures/Theory/HiggsDecay_improved.png}}
+% \caption{Overview of most recent ATLAS Higgs results on the production cross sections (a) as well as decay mode branching fraction (b) \label{fig:theory:HiggsReview} \cite{HiggsReviewATLAS10years}. The dominant production processes include gluon-gluon Fusion (ggF) and Vector Boson Fusion (VBF), with Higgs production associated with other particles at smaller cross section values. }
+% \end{figure}
+
+% \subsection{Particle spectrum and interactions of the Standard Model}
+% With the Higgs boson as the latest part of the \ac{SM},  this sums up its particle content as shown in Table  \ref{fig:theory: SMcontent}.  This includes three generations of neutrinos and leptons,  as well as three generations of quarks.  As can be seen,  for neutrinos, an upper limit on the masses is included.  Massive neutrinos in itself present an extension to the \ac{SM} and are necessary through evidence of neutrino oscillations \cite{NeutrinoMasses}.
+
+% %Evidence of neutrino oscillations [22] implies that neutrinos are massive, which
+% %would require the addition of 3 neutrino masses and 4 mixing parameters to bring
+% %the total to 25.
+% %Below the electroweak scale, O(246) GeV, they
+% %split into the familiar EM and weak interactions through the mechanism of electroweak
+% %symmetry breaking (section 2.1.4).
+% %\textcolor{red}{still need to better describe what exactly the eleectroweak symmetry breaking is - 
+% %The underlying SU(2) symmetry of the Lagrangian is preserved,
+% %but the field picks up a vacuum expectation value (VEV) v, spontaneously breaking
+% %the symmetry --> below energies of v -- electroweak scale - the interactions behave like weak and QED --> since behave like massless?
+% %Below the electroweak scale (O(246) GeV) the EM and weak interactions behave as described
+% %--> below that , the masses of the bosons are important,  over that energy scale, the bosons and interacitons behave like massless boson interactions--> no symm.  breaking through higgs }
+
+% %\begin{figure}
+% %\centering
+% %\includegraphics[width=0.8\linewidth]{figures/Theory/SMcontent.pdf}
+% %\caption{Summary of the particle content of the \ac{SM} \cite{SMcontentPicture}}
+% %\end{figure}
+% %
+% %$W_\mu$
+% %need to have equations for the gauge fields that the susy gauginos are partners of!
+% %mixing into Wplus Wminus Z and photon
+% %--> after Higgs this is also giving mass to the bosons - look at the description beforehand! \\
+% \begin{table}[h]
+% 	\centering
+% 	\begin{tabular}{|c|c|c|c|c|c|}\hline
+% Particle & electric charge & spin & colour & weak $I_3$ (L)  & mass \\ \hline \hline
+% electron $e$ & -1 & 1/2 & - & +1/2 &  0.511 MeV \\
+% electron neutrino $\nu_e$ & 0 & 1/2 & - & -1/2 & $< 1.1$ eV\\
+% muon $\mu$ & -1 & 1/2 & -& +1/2 & 105.66 MeV \\
+% muon neutrino $\nu_\mu$ & 0 & 1/2 & - & -1/2 & $< 0.19$ MeV\\
+% tau $\tau$ & -1 & 1/2 & - & +1/2 &  1776.86 MeV\\
+% tau neutrino $\nu_\tau$ & 0 & 1/2 & - & -1/2 &  $<18.2$ MeV\\ \hline
+% up quark $u$ & + 2/3 & 1/2 & r,g,b & +1/2 &  2.2 MeV\\
+% down quark $d$ & -1/3 & 1/2 & r,g,b & -1/2 &  4.7 MeV\\
+% charm quark $c$ & +2/3 & 1/2 & r,g,b & +1/2 &  1.27 GeV \\
+% strange quark $s$ & -1/3 & 1/2 & r,g,b & -1/2 & 93.4 MeV\\
+% top quark $t$ & +2/3 & 1/2 & r,g,b & +1/2 &  172.69 GeV\\
+% bottom quark $b$ & -1/3 & 1/2 &r,g,b & -1/2 & 4.18 GeV\\ \hline
+% photon $\gamma$ & 1 & - & 0 & 0  &0 \\
+% gluon $g$ & 0 & 1 & 8  & 0 &  0\\
+% W boson $W$ & +/- 1 & 1 & - & +/- 1&  80.377 GeV\\
+% Z boson $Z$ & 0 & 1 & - & 0 &   91.1876 GeV\\ 
+% H boson $h$ & 0 & 0 & - & 0 &125.25 GeV \\ \hline
+% 	\end{tabular}
+% 	\caption{Overview of all SM particles and their properties, with the third weak isospin component $I_3$ \label{fig:theory: SMcontent}\cite{PDG2022}}
+% \end{table}
+
+% Below an energy scale of the order of 246 GeV (the \textit{electroweak} scale),  the interactions of the \ac{SM} can be split into electromagnetic,  weak and strong interactions:
+
+% \paragraph{Electromagnetic interactions} are mediated through massless photons.  The underlying symmetry group is the U(1) symmetry of \ac{QED}.  The conserved charge associated with this gauge symmetry is the electric charge.  The neutral photon does not self-interact.  Photons couple to left- and right-handed particles irrespectively.   
+% \paragraph{Weak interactions} are mediated through W- and Z-bosons.  The $SU(2)_L$ symmetry only applies to left-handed particles and is able to transform isospin states,  therefore creating weak isospin doublets of up type quarks (u,c,t) and down type quarks (d,s,b).  Through its left-handed only coupling,  the weak interaction is parity and charge-parity violating. 
+% \paragraph{Strong interactions} are mediated through massless gluons,  described by \ac{QCD}. They are gauge bosons of the $SU(3)_c$ symmetry group,  with conserved colour charge.  Values of the colour charge can be red (r),  green (g) and blue (b).  Gluons are self-interacting. This has two interesting phenomenological consequences (discussed in detail in \cite{PeskinSchroeder}):
+% the coupling constant increases for low energies and gets close to one,  therefore quarks and gluons are \textit{confined}.  They will form a bound state through strong interactions and have not been observed free.  Moreover, at high energies,  quarks become \textit{asymptotically free},  due to the decrease of the coupling constant with energy.  Consequently,  at high energies perturbation theory can be used to predict QCD interactions. 
+% %
+% %\textcolor{red}{QCD:: aymptottic freedom and confinement as consequenc of running coupling}
+% %\textcolor{red}{electroweak::see decay of tau lepton in detail here too, }
+% %19 parameters that are not predicted by the theory: 9 fermion
+% %masses (assuming massless neutrinos), 3 coupling constants, 1 Higgs VEV, 1 Higgs
+% %mass, 3 angles and 1 phase from CKM mixing and 1 strong CP parameter, which
+% %quantifies the degree to which strong interactions violate CP symmetry.
+% \FloatBarrier
+
+
+% \section{Shortcomings of the Standard Model}
+% \label{sec:theory:shortcomings}
+% The Standard Model as described above can account for a wide spectrum of phenomena and has been put to a stringent test by various experiments.  Nevertheless, there are open questions and unexplained phenomena that cannot be explained by the \ac{SM},  hinting to a need for an extension of our current best model beyond the \ac{SM}.
+
+% \subsection{Dark Matter}
+% A hint towards the incompleteness of the \ac{SM} is the presence of \ac{DM}.  First hints to the presence of non-luminous matter in galaxies has been found by Zwicky in 1933 \cite{Zwicky},  who found that the mass of the galaxies in the Coma cluster based on luminosity calculations was not providing enough gravitational pull to prevent galaxies from escaping the cluster.  Rubin and Kent's observation of rotation curves in galaxies \cite{RubinKent} in dependence to the distance to the galaxy's centre was important in 1970.  The velocity of galaxy components on the outer arms of the galaxy exceeded the expected rotational velocity in their measurements. This can be explained through the presence of non-luminous,  gravitational matter in a halo around the galaxies centre,  as illustrated on an exemplary galaxy,  NGC 3198 in Figure \ref{fig:theory:DMrotationcurve}.
+
+% \begin{SCfigure}
+% \centering
+% \includegraphics[width=0.7\linewidth]{figures/Theory/DarkMatterRotationCurve_adapted.png}
+% \caption{Exemplary analysis of rotation curves,  here showing observations in galaxy NGC 3198.  The dotted curve is the galaxy's gas component,  dashed line is its visible components.  The dotted-dashed line is visualising a contribution of a Dark Matter halo,  with the solid line a fit to the data points including all components. Figure adapted from \cite{RotationCurves} \label{fig:theory:DMrotationcurve}}
+% \end{SCfigure}
+
+% An additional hint for the presence of Dark Matter in our universe is offered through analyses of the \ac{CMB}, as done by the Planck Collaboration \cite{Planck},  showing a ~27\% Dark Matter composition in our universe. 
+% Lessons about the properties of \ac{DM} can be gained by analysing colliding galaxy clusters and specifically their interaction. The bullet cluster is a prominent example of such an analysis, offering limitations on the self-interaction of \ac{DM},  hinting to Dark Matter consisting of weakly interacting, massive particles (\acsp{WIMP})\cite{BulletCluster, OtherMergingClusters}.
+% %The Hubble telescope \cite{Hubble} offers another angle into the open question of Dark Matter.  Gravitational lensing,  the bending of light through masses present in the universe,  allows for the analysis of images with respect to the masses present.  A promising new window into galaxy cluster imaging will be the James Webb telescope,  which has most recently released first images of galaxy clusters with visible gravitational lensing effects \cite{JamesWebbPicture}.  
+% An alternative possible theoretical approach apart from the presence of Dark Matter would be the modification of gravity models,  governed by general relativity.   A discussion of this group of theories in comparison with the Dark Matter approach is outside the scope of this thesis.
+
+% \subsection{Matter-Antimatter asymmetry}
+% Our visible universe is dominantly made up of matter,  which can be measured through observations of the \ac{CMB},  for example through the Wilkinson microwave anisotropy probe,  whose measurements result in a matter-antimatter asymmetry of $n_S =  0.96 $ \cite{WMAP, Thomson}.
+% To achieve such an asymmetry between matter and antimatter in a theory describing our universe,  Sakharov defined a set of conditions necessary \cite{Sakharov}:
+% \begin{enumerate}
+% \item Presence of at least one process violating baryon number conservation
+% \item CP violating aspects in the overall theory
+% \item Interactions outside of equilibrium
+% \end{enumerate}
+
+% These three conditions are all fulfilled within the \ac{SM}:
+% The first condition can be met in \ac{SM} quantum effects associated with weak interactions.  A CP violating phase is present in the CKM (Cabibbo-Kobayashi-Maskawa) matrix,  connecting the quark mass and gauge eigenstates.  An interaction outside the equilibrium is given through electroweak phase transitions.
+% Despite the presence of all three Sakharov conditions,  the matter-antimatter asymmetry resulting from the \ac{SM} processes is not enough to explain the observed matter-antimatter asymmetry.
+% This is a further limitation of the current \ac{SM}, motivating extensions \acs{BSM}.%.beyond the \ac{SM}.
+
+% \subsection{Hierarchy Problem}
+% The matter-antimatter asymmetry as well as Dark Matter present phenomenological motivations of physics beyond the current \ac{SM}.  A theoretical, as well as experimentally motivated question, is the nature of the Higgs mass.  As discussed in section \ref{sec:Higgs},  the Higgs-boson has been observed at 125 GeV \cite{PDG2022}.  The Hierarchy problem connected with the Higgs-bosons mass here describes the following consideration (adapted from \cite{SUSYPrimer}):
+
+% Since the Higgs boson couples to both fermions as well as bosons,  its mass itself,  given through its propagator and all loop corrections to it, is influenced by the fermion and boson masses.  The correction terms of these contributions are given in equation \eqref{eq:theory:masscorrectionFermion} and \eqref{eq:theory:masscorrectionScalar} for fermion and boson (scalar) contributions, respectively. If the \ac{SM} is assumed to only be valid until a certain energy scale $\Lambda_{UV}$,  this cut-off scale is entering the Higgs loop corrections. A well-motivated cut-off scale would be the Planck scale,  at which gravitational effects reach similar orders of magnitude to the interactions governed within the \ac{SM}.
+
+
+% \begin{align}
+% \Delta m_{H, \text{fermion}}^2 &= -\frac{|\lambda_f|^2}{8\pi^2}\Lambda^2_{UV} + ... (\propto m_f)\label{eq:theory:masscorrectionFermion} \\
+% \Delta m_{H,\text{scalar}}^2 &= \frac{\lambda_S}{16 \pi^2} [ \Lambda^2_{UV} -2m_S^2 \ln (\Lambda_{UV}/m_S) + ...] \label{eq:theory:masscorrectionScalar}
+% \end{align}
+
+% With this cut-off at the Planck scale,  corrections to the Higgs mass would include multiple orders of magnitudes.  This would require artificial fine-tuning to generate the Higgs boson observed mass of 125 GeV.
+
+% \section{Supersymmetry}
+% \label{sec:theory:susy}
+% This artificial fine-tuning necessary to resolve the hierarchy problem could be avoided if there would be a symmetry in the \ac{SM},  connecting fermions and bosons.  This symmetry can be provided by an extension of the \ac{SM} called supersymmetry.  A discussion of supersymmetry and its phenomenology relevant to this thesis will be given in the following,  based on discussions in \cite{SUSYPrimer}.
+% Supersymmetry is generated through a fermionic generator $Q$,  transforming a fermion $\ket{f}$ into a boson $\ket{b}$ and vice-versa:
+
+% \begin{align}
+% \label{eqn:theory:susydefinition}
+% \begin{split}
+% Q\ket{b} &= \ket{f}  \\
+% Q\ket{f} &= \ket{b}
+% \end{split}
+% \end{align}
+
+% Following from the properties of the \ac{SUSY} generator,  and namely its commutation with space-time translations, the masses of the connected fermion and boson are equal. 
+% Supersymmetry would connect each mass correction to the Higgs-boson originating from fermionic loop corrections to a bosonic loop correction and vice-versa.  Given the opposite sign in the terms in equation \ref{eq:theory:masscorrectionFermion} and \eqref{eq:theory:masscorrectionScalar},  thus cancelling the quadratic divergences. \\
+
+% \subsection{Soft SUSY breaking}
+% Supersymmetry would be an unbroken symmetry if the supersymmetric partners to the \ac{SM} particles would have the same masses as their counterparts.  Since we have not yet observed any hints for supersymmetric particles at colliders,  \ac{SUSY} particles must be heavier than their \ac{SM} partner.
+% Therefore \ac{SUSY} needs to be a broken symmetry.  An additional SUSY breaking term can be introduced in the Lagrangian \cite{SUSYPrimer}:
+% \begin{align}
+% \mathcal{L} = \mathcal{L}_{SUSY} + \mathcal{L}_{\text{soft}}
+% \end{align}
+% This Lagrangian is only including \textit{soft} terms to avoid quadratic divergences in the Higgs mass loop corrections. The soft breaking is introducing new parameters determining the supersymmetric particles' masses into the \ac{MSSM},  leading to a large number of free parameters.  The spontaneous breaking of supersymmetry is assumed to happen in a hidden sector with different assumptions on the mediators between this breaking in the hidden sector to lower energies. 
+
+% \subsection{Particle spectrum of the MSSM}
+
+% The smallest possible supersymmetric extension of the \ac{SM} is the Minimal Supersymmetric Standard Model (\ac{MSSM}).
+% In this model fermions and bosons are paired into supermultiplets,  each \ac{SM} particle acquiring a supersymmetric partner. 
+%  \textit{Chiral} multiplets pair \ac{SM} spin 1/2 fermions with a supersymmetric complex scalar field.   \ac{SM} bosons with spin 1 are forming a \textit{gauge supermultiplet} with supersymmetric fermions. 
+% The \ac{SM} vector bosons ($W^+$, $W^-$, $W_0$ and $B_0$) \ac{SUSY} partners are referred to as gauginos (Wino, Bino).
+% In table \ref{tab:theory:mssmparticlecontent},  an overview of the supersymmetric particles in the \ac{MSSM} is given.  
+% Here a differentiation between their gauge and mass eigenstates is made,  since the gauge eigenstates are in some cases not equivalent to their mass eigenstates.  Some of these cases are discussed below.
+% %\textcolor{red}{why is the higgs sector extended in SUSY - why need already two higgs doublets before susyíng it?}
+% %\textcolor{red}{improve this discussion and include a differentiation to left and right-handed fermions and their susy partners!}
+
+% \begin{table}[htpb!]
+% \includegraphics[width=\linewidth]{figures/Theory/SUSYPrimerTable.pdf}
+% \caption{Particle content of the \ac{MSSM},  with the sfermion mixing of the first two families assumed to be negligible, from \cite{SUSYPrimer} \label{tab:theory:mssmparticlecontent}. Here $\tilde{N}_{1,2,3,4}$ is equivalent to $\tilde{\chi}^0_{1,2,3,4}$ and $\tilde{C}^\pm_ {1,2}$ to $\tilde{\chi}^\pm_{1,2}$.  The R-Parity $P_R$ as defined in equation \eqref{eq:theory:rparity} is listed highlighting its different values for \ac{SM} particles and \ac{SUSY} particles.}
+% \end{table}
+
+% In table \ref{tab:theory:mssmparticlecontent} $P_R$,  called R-parity is introduced.  This is defined as given in equation \eqref{eq:theory:rparity},  with the baryon number $B$,  lepton number $L$ and spin $s$.
+
+% \begin{align}
+% P_R = (-1)^{3(B-L)+2s} \label{eq:theory:rparity}
+% \end{align}
+
+
+% If R-Parity conservation is assumed within the \ac{MSSM} this has the following phenomenological consequences:
+
+% \begin{itemize}
+% \item Each \ac{SUSY} particle must eventually decay into an odd number of \ac{LSP}s.
+% \item \ac{SUSY} particles are pair produced.
+% \item The \ac{LSP} is stable and cannot further decay into \ac{SM} particles.  If the \ac{LSP} is only interacting weakly with other particles and is electrically neutral,  it can provide the right relic \ac{DM} density and can therefore be a potential \ac{DM} candidate.
+% \end{itemize}
+
+% The decision to conserve R-parity is well motivated phenomenologically since it is preventing proton decay,  which has not been experimentally observed. 
+
+% The gaugino fields of the MSSM mix with each other since their quantum numbers are identical. This leads to neutral and charged mass eigenstates (called neutralinos and charginos). This mixing is visible in the MSSM Lagrangian (\eqref{eq:theo:Lneutralino}, \eqref{eq:theo:Lchargino}) in the mixing matrices,  given in \eqref{eq:theo:Mneutralino} and \eqref{eq:theo:Mchargino} \cite{SUSYPrimer}. 
+
+
+% \begin{align}
+% \begin{split} \mathcal{L}_\text{neutralino mass} &= - \frac{1}{2} (\psi^0)^T \textbf{M}_{\tilde{\chi}_j^0}\psi^0 + c.c , \\ 
+% \text{with  } \psi^0 &= \text{(\Bino, \WinoZero, \HiggsinoDownZero,\HiggsinoUpZero )} \end{split} \label{eq:theo:Lneutralino}
+% \end{align}
+
+% \begin{align}
+% \begin{split}
+% \mathcal{L}_\text{chargino mass} &= - \frac{1}{2} (\psi^\pm)^T \textbf{M}_{\tilde{\chi}_i^\pm}\psi^\pm + c.c , \\
+% \text{with  } \psi^\pm &= \text{(\Winoplus, \HiggsinoUpPlus, \Winominus,\HiggsinoDownMinus )} \end{split} \label{eq:theo:Lchargino}
+% \end{align}
+
+% The parameters of the mixing matrices originate from the soft \ac{SUSY} breaking Lagrangian, $\mathcal{L}_\text{soft}$. $M_1$ and  $M_2$ are the bino and wino mass parameters respectively, $\mu$ the higgsino mass parameter. The vacuum expectation values $\langle H_{u/d}^0 \rangle$ are noted as $v_{u/d}$, $g$ and $g^\prime$ describe the \ac{SM} coupling constants. 
+
+% \begin{align}
+% \textbf{M}_{\tilde{\chi}_i^0} = \begin{pmatrix}
+% M_1 & 0 & -g^\prime v_d / \sqrt{2} & g^\prime v_u/\sqrt{2} \\
+% 0 & M_2 & g v_d / \sqrt{2} & -g v_u / \sqrt{2}\\
+% -g^\prime v_d / \sqrt{2}  & g v_d / \sqrt{2} & 0 & \mu \\
+% g^\prime v_u/\sqrt{2} & -g v_u / \sqrt{2} & -\mu & 0 \\
+% \end{pmatrix} \label{eq:theo:Mneutralino}
+% \end{align}
+
+% \begin{align}
+% \textbf{M}_{\tilde{\chi}_j^\pm} = \begin{pmatrix}
+% \textbf{0} & \textbf{X}^T\\
+% \textbf{X} & \textbf{0} \\
+% \end{pmatrix}, \text{ with } \textbf{X} = \begin{pmatrix} M_2 & gv_u \\
+% gv_d & \mu 
+% \end{pmatrix}
+% \label{eq:theo:Mchargino}
+% \end{align}
+
+% Depending on the comparable size of the \ac{MSSM} parameters $M_1, M_2$ and $\mu$, neutralinos can be bino-dominated ('bino-like'), wino-dominated ('wino-like'), higgsino-dominated ('higgsino-like') or mixed with no clear dominating component. 
+
+% Similar to the gaugino mixing described above,  the third generation sleptons $\tilde{\tau}_1, \tilde{\tau}_2$ can have mass eigenstates differing from their gauge eigenstates ($\tilde{\tau}_L,\tilde{\tau}_R$).
+
+% %\begin{table}[h]
+% %	\centering
+% %	\begin{tabular}{|c|c|c|}\hline
+% %		Names & mass eigenstates & gauge eigenstates \\ \hline \hline
+% %		neutralinos & \None,\Ntwo,\Nthree,\Nfour &  \Bino,\WinoZero,\HiggsinoUpZero,\HiggsinoDownZero\\ \hline
+% %		charginos & \Cone, \Ctwo & \Winoplusminus, \HiggsinoUpPlus,\HiggsinoDownMinus \\ \hline
+% %	\end{tabular}
+% %	\caption{Mass and gauge eigenstates of neutralinos and charginos \label{tab:theory:gaugeeigenstates}}
+% %\end{table} 
+
+
+% \subsection{Interactions in the MSSM}
+
+% Gauginos can be produced at hadron colliders through the following interactions, depending on their field content:
+
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[scale=0.7]{figures/Theory/gauginoproductionFromPrimer.pdf}
+% \caption{Gaugino production mechanisms at hadron colliders,  adapted from \cite{SUSYPrimer} \label{fig:theory:gauginoproduction}. Here $\tilde{N}_{1,2,3,4}$ is equivalent to $\tilde{\chi}^0_{1,2,3,4}$ and $\tilde{C}^\pm_ {1,2}$ to $\tilde{\chi}^\pm_{1,2}$.}
+% \end{figure}
+% Gauginos are pair-produced as a consequence of R-parity conservation.  The pair production relates to \ac{SUSY} particles in general,  therefore also a chargino-neutralino production as shown in Figure \ref{fig:theory:gauginoproduction} (last row). 
+% These feynman diagrams showing example production modes are governed by the same interaction vertices as the decay of gaugino particles and leptons. 
+% This would for example allow for the decay of a $\tilde{\tau}$ particle into a bino-like neutralino as well as a \ac{SM} tau lepton,  which can be constructed using the $\tilde{B}$ vertex shown in figure \ref{fig:theory:winobinovertices}.
+
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=0.25\linewidth]{figures/Theory/binowinovertices1.pdf}
+% 	\includegraphics[width=0.55\linewidth]{figures/Theory/binowinovertices2.pdf}
+% 	\caption{Wino and bino field vertices in the MSSM \cite{Catena2014} \label{fig:theory:winobinovertices}}
+% \end{figure}
+ 
+% \section{The bigger picture}
+% \label{sec:theory:biggerPicture}
+% As discussed in section \ref{sec:theory:susy},  the \ac{MSSM} has a large set of free parameters. Most notably,  the masses of all particles in the \ac{MSSM} are free.  This significantly impacts the expected signatures within particle detectors as well as the cross sections.  A multitude of searches for supersymmetric particles are carried out at the \ac{LHC} with the help of \textit{simplified models}.  These models present a slice of parameter space of the \ac{MSSM}, often assuming 100\% branching ratios in their decay chains as well as expecting particles not participating in the process to be decoupled.  The parameter space is reduced to parameters accessible to collider experiments such as the particle masses and cross sections. 
+% The concept of simplified models serves multiple purposes (a comprehensive discussion can be found in \cite{SimplifiedModels}): determine the limits of search sensitivity,  study the properties of new physics signals and derive limits on more general models.  When considering results of a search based on simplified models,  identifying the boundaries of sensitivity such as reconstruction efficiencies helps experimentalists and theorists realize uncovered and unaccessible detector signatures and serve as a reference to other theoretical models with similar decay topologies.  In the case of an observation of a new physics signal,  simplified models help understand the properties such as particle masses of such a new signal,  leading to broader model development. 
+% Lastly,  search results of simplified models can be used to be interpreted in more general models.  This can be done through upper limits on observable signal events and compared to predictions of other models. 
+% Using simplified models,  the \ac{ATLAS} Collaboration has a wide search program for supersymmetric particles.  Given that the \ac{LHC} is a hadron collider,  the production of squarks and gluinos is an initially most promising window into \ac{SUSY} searches. 
+% An overview of the most recent limits (as of March 2022) on the production of gluinos ($\tilde{g}$) and their consecutive decay into the lightest \ac{SUSY} particles,  here either the lightest neutralino, \None,  or the gravitino,  $\tilde{G}$ are given in Figure \ref{fig:theory:gluinoLimits}. 
+
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[width=0.6\linewidth]{figures/Theory/GluinoLimits.png}
+% \caption{Latest summary of gluino mass exclusion limits by \ac{ATLAS} for various simplified models \label{fig:theory:gluinoLimits}.  Shown are exclusion limits at 95 \% Confidence Level in a lightest neutralino (\None) versus gluino ($\tilde{g}$) mass plane.  Different simplified models are shown in different coloured lines \cite{SUSYSummaryATLAS}. }
+% \end{figure}
+
+% Different simplified models are shown in different colours.  As can be seen for example in the light blue line,  showing a simplified model of $\tilde{g}\rightarrow q \bar{q} WZ\tilde{\chi}^0_1$,  different consecutive decays of the \ac{SM} bosons, leading to different final states (here either $\geq 7-12$ jets,  one or at least two light leptons) can be investigated.  These analysis results can be combined to lead to results in a simplified model considering all consecutive \ac{SM} boson decays. 
+% Gluino masses up to ~2 TeV have been excluded for the assumption of a massless \None, for various decay modes. Similar searches for the production of gluinos have been carried out by the CMS Collaboration,  resulting in comparable exclusion limits on gluino masses up to around 2 TeV \cite{CMSSusyPublicSummaryPlots},  as displayed in Figure \ref{fig:theory:CMSgluinoLimits}. 
+
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[width=0.6\linewidth]{figures/Theory/GluinoLimitsCMS.png}
+% \caption{Latest summary of gluino mass exclusion limits by \ac{CMS} for various simplified models \cite{CMSSusyPublicSummaryPlots}.  The excluded mass scale for the gluino is given for light \ac{LSP}s on the x-axis, with the associated simplified model and final state highlighted in each bar. \label{fig:theory:CMSgluinoLimits}}
+% \end{figure}
+
+% A further example of extensive \ac{SUSY} searches with the ATLAS detector are the searches for the scalar top quark. 
+% Due to the top quarks' large coupling to the Higgs boson,  its scalar, the supersymmetric partner is of particular interest for naturalness arguments.  In Figure \ref{ref:theory:stopLimits},  a summary of the latest searches for the pair production of the top squark and consecutive decay to the \None is given.  Three simplified models with different consecutive decays of the stop are considered, therefore showing 3 different kinematically forbidden regions. 
+% Stop masses up to 1250 GeV are excluded for a massless \ac{LSP}.  Comparable stop masses for the same simplified model have been excluded by the CMS Collaboration \cite{CMSSusyPublicSummaryPlots} (see Figure \ref{fig:theory:CMSstopLimits}).
+
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[width=0.7\linewidth]{figures/Theory/StopLimits.png}
+% \caption{Latest exclusion plots summarising searches for pair production of stop particles by \ac{ATLAS} \cite{SUSYSummaryATLAS}. The limits shown are given at 95 \% confidence level,  with the stop mass on the x-axis and the \None mass on the y-axis. \label{ref:theory:stopLimits}}
+% \end{figure}
+
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[width=0.65\linewidth]{figures/Theory/CMSSquarkLimits.png}
+% \caption{Latest exclusion plots summarising searches for pair production of stop particles by \ac{CMS}  \cite{CMSSusyPublicSummaryPlots}. The x-axis is showing the 95 \% confidence level exclusion limit on various squark masses.  The bars along the y-axis highlight the simplified models considered to yield the exclusion limits. \label{fig:theory:CMSstopLimits} }
+% \end{figure}
+
+
+% So far, we have not observed hints for \ac{SUSY} through these production mechanisms. As will be further discussed in section \ref{sec:analysis:intro},  the high masses excluded for these strong interaction production mechanism motivates investigations into electroweak production of \ac{SUSY},  which will be the main topic of this thesis.
+
+
+% %https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2022-013/fig_01.png
+
