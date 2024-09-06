@@ -9,41 +9,8 @@
 
 \subsection{Fixes, to dos}
 \begin{itemize}
-    % \item Have to fix the subfigure class/command - right now doesnt work - check Fabs thesis
-    \item clean up single electron trigger performance plots
-    %  \item current 2017 pileup distribution is only going up to 45 - why? how did that get fixed in the paper? potentially something got re-submitted? check! --> fixed, was due to data file
-    %  \item understand effect of 2017 low pileup range on overall efficiency - also AFII vs FS 2017 data differences -- has been consistenty not included for AFII and FS SFs, so all good
-    \item what exactly is the pileup variable in the Tag and probe showing? is it the average interactions per bunch crossing, actual inter. per bunch crossing..., look up
-    \item \textcolor{red}{why have such increased data/mc difference in the high eta bin? Am at the edge of the EM end caps? what is not well modelled there? very significant drop in data efficiency- also have to mention at some point in the efficiency distributions that these are integrated over the variables that are not shown! paper says increased amount of inactive material --> explains drop in efficiency, but not necessarily poor modelling? since that doesnt count in the crack region?}
-    \item\textcolor{red}{find exact l1 seed restriction of the isolation and explain the shift between l1 iso et value and hlt et value}.
-    \item \textcolor{red}{pt or et? in the offline electron likelihood binning}\\
-    \item \textcolor{red}{need to include a description of what pile up is at some point - so far first mentioned in the met trigger }
-    \item \textcolor{red}{sliding window - here only within the range of the RoI? how is the original l1 seed identified?}
-    \item \textcolor{red}{have to double check at which point topo-clusters are actually used - double check this in the DAQ electron section! as well as trigger electron section to start with! topoclusters superclusters, need to introdcue}
-    \item \textcolor{yellow}{at the moment completely avoid to talk about topo cluster and energy calibration! need to fix that} 
-    \item sliding window - partially mentioned in electron offline reconstruction!
-    \item \textcolor{yellow}{careful with momentum and energy and transverse energy - often used exchangably at the moment, but have to be precise as to what is used when!!!}
-    \item make sure that met and what is missing transverse momentung/missing transverse energy is introduced
-    \item \textcolor{yellow}{maybe able to make a connection between the soft term met// other met terms and fake met in the e.g. multijet case?}
-    \item to an extend avoid talking about calibration - might have to talk about it!
-    \item need to talk about pileup reweighting somewhere
-    \item have to mention the scale factors on electron muon and tau reconstruction and ID? are we including any scale factor on the RNN performance?
-    \item need to talk  about calibration at some point - have mentioned at some points 
-    \item are uncertainties related to the reco and id considered in the trigger scalefactor calculation - or is this completely factorised out through the ratio?
-    \item does the GRL have any efffect on the monte carlo? connected to the pileup reweighting? 
-    \item Gambit motivation and constraints on the model - do not want to discuss in the thesis - but can have prepared for the viva in case it comes up
-    \item \textcolor{purple}{highlight why its beneficial to include the SS final state, want to talk about the CMS result, too?}
-    \item \textcolor{blue}{might want to compare that to a via slepton production as well?}
-    \item \textcolor{purple}{look at the latest CMS result here: 2106.14246}
-    \item \textcolor{red}{be clear about what is included in the multijet contirbution}
-    \item \textcolor{blue}{in the theory section - have to explain the tau decay, its mass and dominant decay mode - or hav eot do that in the DAQ part! -- see that its explained at least once somewhere!}
-    \item \textcolor{red}{cant find a source for the BDT separation of taus vs electrons! even reference in the paper is currently still pointing to a likelihood discrimination, which is not what is happening!} \textcolor{yellow}{ASK MARIO}
-    \item \textcolor{purple}{have to be careful int he definitioin of jets - need a source for the jvt as well as jet cleaning - in paper mentioned jet by ratio cleaning? double check this!!}
-    \item \textcolor{red}{top modelling - think about why this is only happening for sum mt and mt2 - not in any other of the variables - e.g.  nt clear trend in met or mvis - some visible in the tau pt! why is that?}
-    \item \textcolor{red}{why are we not considering ckkw, qsf and css\_kin uncertainties for top modelling?}
-    \item have talked about calibration at all? need to check that and potentially include! s
+    \item test
     \item \textcolor{red}{need to include a definition on met in the object definition part? }
-    \item double check all object definitions and DAQ chapter explanantions are consistent!!
 \end{itemize}
 
 
@@ -53,12 +20,6 @@
 \subsection{Thoughts to work with}
 \begin{itemize}
     \item have to be consistent with times in the description - discuss with Fab about it
-    \item find what the main driving factors for the design of the trigger chains are! why is it important to keep the threshold for these the same? is this motivated by some e.g. Higgs analyses? this is the case for the diphoton triggers? dig a bit and discuss this
-    \item what is the level one seed for the e60 single electron trigger and others? unisolated L1?
-    \item \textcolor{orange}{need to define <mu> - werners def: average number of inelastic collisions}
-    \item \textcolor{red}{need to describe the different algorithms at least with their connection to the trigger chain requirements - read up on the level one selection of things, and need to highlight how this differs to the description given for the offline reconstruction!!}
-    \item \textcolor{red}{double check at which point the sliding window algorithm is used and introduce that!}\\
-        \textcolor{red}{is the track only isolation requirement based on the precision tracks? whats the difference between fast track reco and precision track reco? }
 \end{itemize}
 
 
@@ -68,9 +29,4 @@
 \subsection{Might be good to answer for viva preps}
 \begin{itemize}
     \item how is the reconstruction considered overall? are there different
-    reconstruction working points that are the basis of the offline electron definitions? these refers to athena releases!
-    \item think about what exactly are the backgrounds for this - this being the Z tag and probe method, what can end up in the z selection?
-    \item tau trigger - what gets passed from L1 to HLT
-    \item met reconstruction - fake met contributions
-    \item L1 accept - which info is sent to the L1? what is exactly based on the detector,  what is away from it? are e.g. the L1Topo, MUCTPI and preprocessors based on the detector, directly after the front end elecs? 
 \end{itemize}
