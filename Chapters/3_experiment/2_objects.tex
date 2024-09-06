@@ -1,86 +1,181 @@
-\chapter{Data Acquisition,  Reconstruction and Monte Carlo Simulation}
-\label{ch:DAQ}
+\chapter{Reconstruction and identification of physical objects}
+\label{ch:objects}
 \epigraph{\emph{“Champions keep playing until they get it right.”}}{Billie Jean King}
 
-yet another template (yat)
 
-% %\section{Data Aquisition}
-% A crucial step in the recording of collision events with ATLAS is the selection through dedicated signature triggers.  These trigger decisions are emulated in Monte Carlo simulation in order to replicate the selection in data.  
-% After events have been selected by the ATLAS trigger system and saved to disk,  further detailed reconstruction and identification algorithms can be performed.  In the following,  a short overview of the signature triggers of importance to this thesis as well as a summary of the reconstruction and identification processes for the particles and physics objects used in this thesis is given. 
-% Additionally,  a brief description of Monte Carlo concepts and ATLAS detector simulation is given.
+The particles (and products of their decays) produced at every collission, interact with the detector in a particular manner according to their nature. The information recollected by all the sub-detectors described in the previous chapter allow for the reconstruction and identification of the physical objects present in each accepted event by the trigger system. Two types of reconstruction and identification exist. The \textit{online} one, is carried out at the same time the \pp collissions take place, and the \textit{offline} one, done after the events are saved to storage. The reconstruction is done event by event, and is carried in the same way for events recorded by the \ac{ATLAS} detector and for simulated \ac{MC} events. In the following, a brief overview of the offline reconstruction and identification of the objects used in this thesis is given.
 
-% \section{Signature triggers}
-% \label{sec:DAQ:SignatureTriggers}
 
-% %have to include a discussion about prescaled triggers, unprescaled triggers as well as RERUN triggers! also be clear what a trigger chain is! 
-% %need to talk about trigger 'budget' or how the rate reduces from step to step,  e.g. referring to trigger budget of 1kHz at the HLT  in the trigger chapter
-% %have to mention isolation in the electron trigger chain case
-% An introduction to the ATLAS trigger system was given in section \ref{sec:ExpSetup:trigger}; in the following an overview of the trigger signatures of importance to this thesis are discussed.
-% All the trigger signatures combined form a \textit{trigger menu},  a selection of triggers  simultaneously active in ATLAS in order to select all events of interest to the multitude of physics analyses in the ATLAS collaboration. 
-% A trigger is a unique identifier for a sequence of trigger algorithms and the requirements that have to be fulfilled after each algorithm step,  including a specification of the Level-1 hardware trigger requirements.  A signature here refers to the combination of specific interactions that different \ac{SM} particles have with the various ATLAS detector layers.  
 
-% %\begin{figure}[htpb!]
-% %\centering
-% %\includegraphics[width=0.6\linewidth]{figures/DAQ/TrigOpsPublicWinter2019_HLT_group_rates_ATLASStyle_359872.pdf}
-% %\caption{Exemplary overview of physics stream trigger rates at the \ac{HLT} as a function of time.  \label{fig:DAQ:TriggerBudget}}
-% %\end{figure}
 
-% %Taken from \textit{https://twiki.cern.ch/twiki/bin/view/AtlasPublicTriggerOperationPublicResults#Trigger_rates_and_bandwidth}
 
-% \subsection{Electron triggers}
-% The electron trigger signature uses signals from the electromagnetic and hadronic calorimeters at Level-1 to select high energetic clusters of calorimeter towers.  Based on that decision,  a fast selection,  followed by precision algorithm-based selections at HLT are performed.  Very detailed work on the electron trigger has been part of the PhD work of the candidate,  therefore  a detailed discussion of the electron trigger signature as well as its performance in Run-2 is discussed in chapter \ref{ch:trigger}.
- 
-% \subsection{Muon triggers}
-% The muon trigger signature relies on signals from the \ac{MS} and tracks from the \ac{ID}.  
-% In the Barrel of the detector,  the Level-1 muon trigger signal consists of coincidences of hits in two or three \ac{RPC} segments for high and low $p_T$ momentum muons,  respectively.  
-% In the End-Cap region ($1.04 < \abs{\eta} < 2.4$),  the  Level-1 muon decision is based on coincidences in the \ac{TGC} segments of the Big Muon Wheel.  After this first Level-1 step,  information on \ac{ID} tracks is accessible at \ac{HLT}.  
-% Multiple isolation requirements on the muons at trigger level can be applied. 
-% The lowest unprescaled single muon trigger uses a lower momentum threshold of 20 GeV in 2015,  raised to 26 GeV from 2016 onwards.  The efficiency of the lowest unprescaled single muon trigger between 2016 and 2018 is shown in Figure \ref{fig:DAQ:muontrigger}.  
-% An extensive description of the muon trigger and its performance in Run-2 can be found in \cite{MuonTriggerPerformance},  here only a short overview can be given.
-% The efficiency of the trigger is calculated on recorded collision events with selections targeting events with Z-bosons decaying into a opposite-sign di-muon final state.  A selection of muons from this decay,  is used as unbiased \textit{probe} sample to test the trigger's selection efficiency.  The trigger efficiency is defined as a ratio of the selected probe muons fullfilling the trigger selections over all available probe muons. The trigger in Figure  \ref{fig:DAQ:muontrigger} shows a fast turn-on of its efficiency in dependency of the probe muon's momentum,  reaching almost 70\% efficiency in the barrel regions and 90\% in the detector end-caps,  with a close agreement between data and Monte Carlo simulation visible in the lower panels.   
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.95\linewidth]{figures/DAQ/MuonTrigger.png}
-% \caption{Efficiency of the lowest unprescaled muon trigger in data collected between 2016 and 2018 in the detector barrel ($|\eta| < 1.05$) and end-cap ($1.05 < |/eta| < 2.5$) regions\label{fig:DAQ:muontrigger}, from \cite{MuonTriggerPerformance}}
-% \end{figure}
-% The lower trigger efficiency observed in the barrel region compared to the end-cap is due to a smaller geometric coverage at the Level-1 trigger stage.  
 
-%  \subsection{Missing transverse momentum triggers}
 
-% Missing transverse energy (\Met) in the detector is one of the essential features in many \ac{BSM} searches in ATLAS.  In connection with R-parity conserving \ac{SUSY},  the lightest neutralino particle is stable and can escape the detector without being detected. 
-% This detector signature is similar to neutrinos escaping the detector. 
-% Triggering on missing transverse momentum in this thesis is used in combined triggers with taus.
-% The \MET  trigger is solely based on calorimeter information; multiple algorithms are available on the High-Level-Trigger to calculate the missing transverse momentum,  varying in the definition of used calorimeter clusters and their calibration.
-% In essence,  a projection and summation of the clusters as described in equation \eqref{eqn:daq:met} \cite{MetTrigger} is performed.  
-% \begin{align}
-% \begin{split}
-% E_x^\text{miss} = - \sum_{i=1}^{|\text{Elements}|} E_i \sin\theta_i \cos\phi_i\\
-% E_y^\text{miss} = - \sum_{i=1}^{|\text{Elements}|} E_i \sin\theta_i \sin\phi_i
-% \label{eqn:daq:met}
-% \end{split}
-% \end{align}
-% A detailed explanation of the \MET trigger and its performance in Run-2 can be found in \cite{MetTrigger}.  For data analysis and selection discussed in this thesis,  only the most rudimentary missing transverse energy \ac{HLT} algorithm is used.  This is extracting \Met from a sum of all calorimeter cells with their uncalibrated energy above a noise threshold.  This noise threshold is included to avoid electronic noise and pile-up contributions.
+\section{Track and vertex reconstrucion}
 
-%   \subsection{Tau Triggers}
-%   \label{sec:daq:tautriggers}
-% The tau trigger signature is based on a fast selection of electromagnetic and hadronic clusters at Level-1,  followed by reconstruction and identification algorithms run at the \ac{HLT}.  A detailed description can be found in \cite{TauTrigger}; a summary is given below.\\
-% The applied selections are based on hadronic tau decays happening before traversing the active detector region. These signatures are showing as narrow calorimeter energy deposits with a small number of associated tracks. 
-% At ~Level-1, ~ a core region made of $2\times2$ trigger towers ( each $0.1 \times 0.1$ in $\Delta\phi \times \Delta \eta$) is defined, with the $E_T$ of the hadronic tau candidate made up of the two most energetic consecutive cells. 
-% Around this core region, an isolation region of $4\times4$ trigger towers is used to determine the isolation in the electromagnetic calorimeter. 
+In a high-pileup event, there can be of the order of 1000 charged particles passing through the \ac{ATLAS} detector. The information from the \ac{ID} (\Sect{\ref{subsec:atlas:atlas:id}}) is used to reconstruct the trajectories of charged particles, called \textit{tracks}.
 
-% The tau energy reconstruction at Level-1 does not include any calibrations or clustering algorithms and has a worse energy resolution than observed in the offline tau reconstruction. This leads to a signal efficiency loss for low transverse energy tau candidates.
-% Regions-of-Interest selected by the Level-1 are passed to the HLT. 
-% The tau selection here includes three steps: a calorimeter only selection, a track preselection, and an offline-like selection. 
-% The calorimeter-only selection step uses the full detector granularity,  making use of the topological clustering algorithm \cite{TopoClusters}. This algorithm,  generating so-called \textit{Topo-Clusters} considers the significance of the electronic signal of each calorimeter cell and removes calorimeter cells if they are not close to cells with a large signal.  This topological clustering includes information about the shape and location of the cluster, allowing for calibrations to be applied.  In the tau trigger case described here,  a simplified tau energy calibration is applied. 
-% The track preselection step makes use of a two-stage fast-tracking reconstruction. 
-% At first, tracks within a narrow area along the beam axis are reconstructed, finding the tau vertex. In a second step, tracks in a larger $\Delta R$ window are considered, but in a narrow interval around the tau vertex. 
-% This allows for fast reconstruction of the vertex and significantly reduces the CPU usage compared to a reconstruction of tracks in a large $\Delta R$ and z window.
-% Eventually,  an offline-like selection is applied. 
-% The tracks reconstructed in the previous step are now passed through precision tracking and therefore available with higher accuracy.  Together with the calibrated clusters,  multiple kinematic variables are used as input to a Boosted Decision Tree. This \ac{BDT} is similar to an identification method previously used to identify offline taus.  The \ac{BDT} is trained to distinguish taus from jets, using features such as the maximum distance in $\Delta R$ of the tracks associated to the tau,  with tracks associated with jets expected to be more wide-spread than tau associated tracks.  A detailed description of the \ac{BDT} can be found in \cite{TauRecoBDT}. %fix this reference: https://cds.cern.ch/record/2064383
-% Multiple tau identification working points are defined based on fixed cuts on the \ac{BDT} output score.  At trigger level,  a medium working point is used. 
-% %To allow for low tau pt thresholds, an additional requirement at level  1 must be made.  L1Topo is used to ask for an additional jet in the event. This is necessary to lower the trigger rates. 
+Tracking charged particles is a critical step in reconstruction. Tracks encode charged particles' momentum and trajectory, playing an essential role in particle identification and primary vertex reconstruction. As the inner detector is closest to the beamline and comprises minimally ionizing detector material with high granularity, it plays the main role in track reconstruction. A charged particle passing through different layers of \ac{ID} leaves a signal via ionization. As the \ac{ID} solenoidal field is homogenous, the resulting trajectory is circular in the \(xy\) plane. Five parameters shown in FIGURE define charged particle tracks:
+\begin{itemize}
+    \item \(q/\pt\): the ratio of the charge and transverse momentum defining the curvature
+    \item \(d_0\): the distance of the closest approach to the primary vertex in \(xy\)-plane defining the transverse impact parameter
+    \item \(z_0\): the longitudinal impact parameter along the \(z\)-axis
+    \item \(\phi_0\): the azimuthal angle
+    \item \(\theta_0\): the polar angle of the particle direction oat the closest point of approach~\cite{PerformanceTracksRun2}.
+\end{itemize}
 
- 
+
+The track reconstrucion used in Run-2 uses two complementary approaches: the \textit{inside-out} approach, and the \textit{outside-in}~\cite{ATLASNEWT}. 
+
+The first step in the inside-out track reconstruction is the seed-finding, where three hits in the silicon detector are searched for to seed the track reconstruction. Using these three hits and assuming an uniform magnetic field, a first estimate of the track parameters is obtained. Using the track seeds, the track is extrapolated to the other silicon layers, from which a combinatorial Kalman filter is used to estimate the track parameters. At this stage of the process there can be several track candidates for each track seed. Once the track is formed, an ambiguity resolution algorithm is applied to reassign shared clusters to the track with a better match~\cite{ATLASNNClustering}, and the final track candidate is fitted using a global \chisq method. The last part of the inside-out method consists on extending the tracks to the \ac{TRT}, and including the \ac{TRT} hits to the track, to improve the track's momentum resolution.
+
+To improve the eciency for tracks from decays displaced from the original collision point, an outside-in track reconstruction algorithm is also used. The track is seeded with hits from the \ac{TRT}. The track is extended to include hits from the silicon detector, with an ambiguity solver again applied to mitigate the hit sharing between two tracks.
+
+Primary and secondary vertices are of vital importance for the subsequent object reconstruction in \ac{ATLAS}. In this step, the tracks found as explained previously are used as input to the vertexing algorithm~\cite{ATLASPVReconstruction,ATLASVertexReconstruction}. First of all, the \ac{PV} is defined as the location where two protons collide. \acp{PV} are reconstructed by matching up intersecting tracks, which proceeds in three main steps: seeding, track assignment, and fitting. The vertex with the largest \(\sum \pt^2\) for all associated tracks is labeled as the hard-scatter vertex. There are some particles that decay rapidly after their production, such as \(\tau\) leptons or heavier quarks (\(b\) or \(\cquarks\)), and their decay position can be measured. From the remaining tracks originated from these decays, it is possible to identify secondary vertices. All the remaining reconstructed vertices are considered to be pile-up.
+
+
+
+
+
+
+
+
+\section{Photons and electrons}
+
+The reconstruction of electrons and photons in \ac{ATLAS} is based on the energy deposition in the \ac{ECAL}. Since electrons and photons leave similar signals in the \ac{ECAL}, their reconstrucion is done simultaneously, distinguishing between them by the reconstructed track information left in the \ac{ID}.
+
+
+\subsection{Reconstruction}
+
+The \textit{offline} photon and electron reconstruction~\cite{ATLASEGammaPerformance20152017,ATLASTopoClustersRun2} makes use of dynamic, variable-size clusters, connected topologically between the \ac{ECAL} and \ac{HCAL} cells~\cite{ATLASTopoClustersRun1}, called topo-clusters. This approach allows for the clusters to recover energy from bremsstrahlung photons or from electrons from photon conversions.
+
+There are three types of objects:
+\begin{itemize}
+    \item Electrons: consists of a cluster built from the energy deposits in the \ac{ECAL} and a matched track.
+    \item Converted photons: consits of a cluster mathed to a conversion vertex (or vertices)
+    \item Unconverted photons: cluster matched to neither an electron track nor a conversion vertex.
+\end{itemize}
+The algorithm for the reconstruction of electrons and photons proceeds as shown in FIGURE.
+
+The reconstruction process begins with the topo-cluster formation. First, proto-clusters are formed in the \ac{ECAL} and \ac{HCAL} by grouping cells that have a required energy, and by subsequently adding neighbouring cells in four consecutive steps, obtaining the topo-cluster. Reconstructions starts only in those cases where the topo-clusters energy in the \ac{ECAL} is greater than \(400~\mev\).
+
+The algorithm also builds conversion vertices out of the refitted tracks and matches them to the selected topo-clusters.
+After the initial track-cluster matching and conversion building, the electron and photon supercluster algorithms run separately in parallel. In the first stage, topo-clusters are evaluated for use as seed cluster candidates, which form the basis of superclusters; in the second stage, clusters near the seed candidates are identified as satellite cluster candidates, which may emerge from bremsstrahlung radiation or topo-cluster splitting. Satellite clusters are added to the seed candidates to form the final superclusters, if they pass the necessary selection criteria
+After applying initial position corrections to the resultant superclusters, the reconstruction algorithm matches tracks to
+the electron superclusters and conversion vertices to the photon superclusters.
+
+Since one object may be reconstructed as both an electron and a photon, an ambiguity resolution is performed to remove part of the overlap. However, some overlap is allowed in order to maintain a high reconstruction efficiency for electrons and photons, to which physics analyses may apply their own criteria. The final electrons and photons are then built and calibrated, facilitating the calculation of additional variables used for quality cuts and ambiguity resolution
+
+
+
+\subsection{Identification}
+
+In order to distinguish real photons (those coming from the collision) from background photons which have much larger production cross sections (coming from hadrons decays, also called fake photons), it is necessary to rely on a algorithm of identification with high signal efficiency and background rejection, for photon candidates with \(\pt \sim 10~\gev\) up to the \tev scale. 
+Currently, photon identification in ATLAS is based on a set of rectangular cuts on \acp{SSV} computed from the energy deposited in the cells of the cluster in the first and second layer of the \ac{ECAL}, and from the leakage to the \ac{HCAL}. These variables describe the passage of the photons through the calorimeters, characterizing the lateral and longitudinal electromagnetic showers.
+In general, real photons produce narrower energy deposits in the \ac{ECAL}, and have lower leakages to the \ac{HCAL}, compared to those photons proveninent from hadrons. The reason behind this behaviour is the presence of additional neighbouring hadrons close to the fake photon.
+Furthermore, since the first layer of the \ac{ECAL} consists on fine strips, it is possible to discriminate photon candidates coming from \(\pizero\to\gamma\gamma\) decays, characterized by two local maxima due to the presence of two nearby photons.
+
+In the following, the \acp{SSV} used for photon identification are detailed.
+The first variable makes use of the energy measured in the \ac{HCAL}:
+\begin{itemize}
+    \item Hadronic leakage: is the trasnverse energy deposited in the \ac{HCAL}, normalized to the energy deposited in the \ac{ECAL}:
+        \begin{equation}
+            {\rhad}_{(1)} = \frac{\et^{\text{had}}}{\et^{\text{EM}}}
+        \end{equation}
+        In order to minimize the effects of resolution degradation, in the barrel-endcap transition region of the \ac{HCAL} (\(0.8\leq \abseta\leq 1.37\)) the energy deposit in the whole \ac{HCAL} is used (\rhad). On the reminaing of the detector, only the energy deposited in first layer of the \ac{HCAL} is used (\rhado).
+\end{itemize}
+The following variables use the second-layer information of the \ac{ECAL}:
+\begin{itemize}
+    \item Lateral energy profile in \(\eta\):
+        \begin{equation}
+            \reta = \frac{E_{3\times7}^{s2}}{E_{7\times7}^{s2}}
+        \end{equation}
+        where \(E_{i\times j}^{s2}\) is the energy sum in the second calorimeter layer contained in a window of \(i \times j \) cells (units of \(\eta \times \phi\) cells), centered at the most energetic cell. This variable gives a measure of the showers' width in the \(\eta\) direction.
+    \item Lateral energy profile in \(\phi\):
+        \begin{equation}
+            \rphi = \frac{E_{3\times3}^{s2}}{E_{3\times7}^{s2}}
+        \end{equation}
+        defined in a similar way as \reta. However, this variable behaves very different for converted and unconverted photons. Due to the action of the magnetic field, the electrons and positros are curved into opposite directions in \(\phi\), having as a result, \ac{EM} showers much wider in the case of converted photons than those for unconverted ones.
+    \item Lateral shower width in \(\eta\):
+        \begin{equation}
+            \weta = \sqrt{
+                \frac{\sum E_i \eta_i^2}{\sum E_i}
+                -
+                \left(\frac{\sum E_i \eta_i}{\sum E_i}\right)^2
+            }
+        \end{equation}
+        measures the proper width of the \ac{EM} shower, where \(E_i\) is the energy in the \(i\)-th cell of the \ac{ECAL}, measured in a window of \(3\times 5 \) cells in \(\eta \times \phi\).
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %  \section{Object Reconstruction}
 %  \label{sec:DAQ:ObjectReco}
 % After the selection of events through the signature triggers described above,  the particle signatures are reconstructed and identified \textit{offline},  after they have been saved to storage.  This reconstruction is done event by event with the same procedure applied to Monte Carlo simulation and recorded ATLAS data. 
