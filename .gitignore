@@ -9,6 +9,7 @@
 *.out
 *.synctex*
 *.toc
+*.lot
 
 
 *.code-workspace
