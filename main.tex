@@ -49,12 +49,7 @@
 %---------------------------------------------------
 \begingroup
     \newpage
-    \setlength{\parskip}{0pt} % To restore distance between Chapters, sections and subsections in the table of contents
-    \pdfbookmark[0]{Contents}{contents_bookmark}
-    \pagestyle{custom}% Set page style to custom
-    \chapterstyle{hansen} % Set chapter style
-    { \hypersetup{hidelinks} \tableofcontents* } % as per in memoir class
-    \listoffigures
+    \input{FrontBackMatter/Contents.tex}
 \endgroup
 
 
