@@ -355,7 +355,7 @@ FUNCTION {format.report}
 FUNCTION {format.howpublished}
 { howpublished empty$
     { "" }
-    { howpublished capitalize
+    { howpublished
     }
   if$
 }
