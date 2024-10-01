@@ -1,0 +1,104 @@
+%Inlcude general description of stat concepts important here
+%
+%explanation and definition of CLs
+%test statistics
+%likelihood
+%nuisance parameter
+%With all standard model backgrounds estimated as described above,  the final goal of this search is to make a statement about the compatibility of data with the predicted \ac{SM}  backgrounds,  compared to its compatibility with the investigated \ac{SUSY} model in addition to the \ac{SM} backgrounds.
+%To make such a statement,  a statistical interpretation of the search results is necessary.  A brief overview of the statistical concepts used in the described search for new supersymmetric particles is given in the following.  
+%Transfer factors are used to apply the normalisation extracted in the control region to the signal region. 
+%\textcolor{red}{have to look up how exactly the transfer factor plays into the histfitter setup and the impact on the nuisance parameters - double check this on the theory uncertainty implementation and see if there is anything here that should be mentioned! }
+
+%\subsection{Construction of likelihood}
+All regions defined in the analysis as described in section \ref{sec:analysis:srcrvr}, \ref{sec:analysis:sroptimisationSection} and \ref{sec:analysis:bkgestimation} are combined into a joint likelihood. 
+In general,  a likelihood $L(\theta)$ is the probability of the outcome of an experiment with measured value $x$,  given a model with parameter $\theta$ (see \eqref{eq:stats:likelihoodGeneral}).
+\begin{align}
+L(\theta) = P(x|\theta) \label{eq:stats:likelihoodGeneral}
+\end{align}
+In the case of this analysis, the measurement is that of the data events in all kinematic phase space regions defined,  in the following denoted as $n$.  The regions are defined in orthogonal phase spaces and are therefore statistically independent.  As is given and discussed for example in reference \cite{Cowan},  the probability of independent measurements is given through the product of their probabilities. 
+The probability density function of a number of data events in region $i$,  $n_i$ is given through a Poisson distribution ($\lambda_i$) in dependency of the free parameters,  $\vb*{\theta}$,  the signal and background expectation $s,\vb*{b}$, as well as normalisation factors for signal and backgrounds ($\mu_{SIG},  \vb*{\mu}$).
+This would lead to a likelihood function,  \eqref{eq:stats:likelihoodWoGaussian},  with free model parameters $\vb*{\theta}$.
+
+\begin{align}
+L(\vb*{n}|\vb*{\theta}, s, \vb*{b}, \mu_{SIG}, \vb*{\mu}) = \prod_{i \in \text{regions}} P(n_i | \lambda_i(\mu_{SIG},\vb*{\mu}, s, \vb*{b}, \vb*{\theta}))
+\label{eq:stats:likelihoodWoGaussian}
+\end{align}
+The free model parameters $\vb*{\theta}$ include all systematic as well as statistical uncertainties since they can vary the signal and background expectation.  In the likelihood given in \eqref{eq:stats:likelihoodWoGaussian},  these uncertainties are free parameters in the background and signal modelling,  in the following also called \textit{nuisance parameters}. 
+
+The vector $ \vb*{\mu}$ in the likelihood includes all normalisation factors for all normalised backgrounds.  The definition of a normalisation factor $\mu_p$ for a \ac{SM} background process $p$ and its connection to the background estimated in the signal region ($N_p(SR)$) is shown in equation \eqref{eq:stats:normalisationFactor},  in dependence on the Monte Carlo expectation in the control and signal region ($MC_p(CR)$ and $MC_p (SR)$, respectively).  
+
+\begin{align}
+\begin{split}
+N_p(CR) &= \mu_p \times MC_p(CR)\\
+N_p(SR) &= \mu_p \times MC_p (SR)\\
+\end{split}
+\label{eq:stats:normalisationFactor}
+\end{align}
+
+This is how the normalisation factor is included in the likelihood,  the same factor simultaneously applied in all regions to scale a background contribution.  Since the control regions are designed to be pure in the specific background,  these regions will define the normalisation factor. 
+An alternative formulation of the normalised background contribution through a transfer factor,  extrapolating the background estimation from a control region to the signal region is shown in \eqref{eq:stats:transferFactor} (adapted from \cite{HistFitter}).  
+
+\begin{align}
+\begin{split}
+N_p(SR) &= N_p(CR) \times TF_p \\
+TF_p &= \frac{MC_p(SR)}{MC_p(CR)}
+\end{split}
+\label{eq:stats:transferFactor}
+\end{align}
+
+This interpretation of the connection between control region and signal region yields is particularly helpful in connection with systematic uncertainties.  Due to the ratios of Monte Carlo expectations,  some systematic uncertainties can be partially cancelled in the extrapolation from the control to the signal region. 
+
+In the reality of the experiment conducted here, the uncertainties of the model are constrained through auxiliary measurements.  The experimental and theoretical uncertainties have a measured value $\theta^0$,  but also these uncertainty parameters follow an underlying statistical model.  To constrain the free parameters $\vb*{\theta}$, they are assumed to follow a Gaussian distribution around the central values $\vb*{\theta^0}$.  All auxiliary measurements are assumed to be statistically independent,  leading to a product of Gaussian distributions of all $\vb*{\theta}$ components.  This additional term is becoming part of the likelihood (adapted from \cite{HistFitter}): 
+ 
+ \begin{align}
+L(\vb*{n}, \vb*{\theta^0}|\vb*{\theta}, s, \vb*{b}, \mu_{sig}, \vb*{\mu}) = \prod_{i \in \text{regions}} P(n_i | \lambda_i(\mu_{sig},\vb*{\mu}, s, \vb*{b}, \vb*{\theta})) \times \prod_{j \in \text{systematics}} G( \vb*{\theta}^0_j -  \vb*{\theta}_j)
+\label{eq:stats:likelihoodWGaussian}
+\end{align}
+
+%\subsection{Hypothesis testing}
+The likelihood described above can give a probabilistic model of the observed events given specific values of the model parameters.  
+%It offers no frequentist interpretation of the outcome of the measurement.  
+An important quantity needed to gauge the agreement of the model with different hypotheses is the test statistic.  Within the analysis and inherent measurement described here,  a profile likelihood test statistic is used as given in equation \eqref{eq:stats:teststatistics} (from \cite{HistFitter}) and discussed in detail in \cite{TestStatistics}.  
+
+\begin{align}
+q_{\mu_{sig}} = -2 \log(\frac{L(\mu_{sig},\hat{\hat{ \vb*{\theta}}})}{L(\hat{\mu}_{sig},\hat{ \vb*{\theta}})})
+\label{eq:stats:teststatistics}
+\end{align}
+
+The numerator $L(\mu_{sig},\hat{\hat{ \vb*{\theta}}})$ shows the likelihood as defined in equation \eqref{eq:stats:likelihoodWGaussian} with parameters $\hat{\hat{ \vb*{\theta}}}$ maximising the likelihood for the fixed choice of $\mu_{sig}$. In the denominator likelihood, $L(\hat{\mu}_{sig},\hat{ \vb*{\theta}})$,  both $\mu_{sig}$ and $ \vb*{\theta}$ are chosen to jointly maximise the likelihood.
+Assuming the case of high enough statistic,  the distribution of this test statistic follows a $\chi^2$ distribution.  Within this thesis,  this limit has been assumed,  but validated through toy experiments, sampling the test statistic distribution. 
+
+Two hypotheses are of importance for a search for new physics described here.  A \textit{background-only} hypothesis,  assuming that there is no \ac{BSM} signal present and only contributions from the \ac{SM} have to be taken into consideration.  In contrast to this,  a \textit{background plus signal} hypothesis,  assuming a \ac{BSM} signal is present in addition to the \ac{SM} prediction.
+Once a distribution of the test statistic is evaluated for these two hypotheses (fixing the assumptions on $\mu_{SIG}$),  p-values and composite expression of p-values are used to make statements of the statistical likelihood of the observation or a more extreme outcome to agree with one or the other hypothesis. 
+A possible definition of the p-value with respect to the test statistic $q_{\mu_{sig}}$ defined in equation \eqref{eq:stats:teststatistics} is the following (adapted from \cite{CLs}):
+
+\begin{align}
+p_\mu = \int_{q_{\mu,obs}}^{\infty} f(q_{\mu_{sig}} | \mu_{sig}) dq_{\mu_{sig}}
+\end{align}
+A one-sided p-value is an integral of a probability density function from the observed value to the end of the distribution.  In particle physics this is often displayed through a significance measure,  $Z$ (see equation \eqref{eq:stats:Z}, from \cite{TestStatistics}).  This uses the Quantile ($\Phi$) of a Gaussian distribution to transform the p-value into a measure of $Z$ standard deviations of a Gaussian distribution away from the central value.
+
+\begin{align}
+Z  =  \Phi^{-1}(1-p) \label{eq:stats:Z}
+\end{align}
+
+To quantify whether an observation is in agreement with the \textit{signal plus background} hypothesis in comparison with the \textit{background-only} hypothesis,  the $CL_s$ value is used as defined in equation \eqref{eq:stats:cls} \cite{CLs}. 
+
+\begin{align}
+CL_s = \frac{CL_{s+b }}{CL_b}  \label{eq:stats:cls} \\
+1 - CL_s \leq CL  \label{eq:stats:clsCL}
+\end{align}
+With $CL_{s+b}$ and $CL_b$ representing the p-value of the signal plus background and background-only test-statistic, respectively. 
+Even though the $CL_s$ is not strictly a confidence level,  it can be interpreted as such.  In the following,  a confidence level of 95\% is associated with a $CL_s$ value below 0.05, according to equation \eqref{eq:stats:clsCL}.
+
+\subsection{Fit strategies}
+As hinted in relation to equation \eqref{eq:stats:teststatistics},  a maximisation of the likelihood for different choices of $\mu_{sig}$ is performed to evaluate the test statistic.  Larger values of the test statistic for the background-only hypothesis (\ac{SM} contribution only, $\mu_{SIG}=0$) or background plus signal hypothesis (\ac{SM} plus \ac{SUSY} signal, $\mu_{SIG}=1$) indicate better agreement with the respective hypothesis.  In general,  three strategies of a fit of the likelihood are used within the \ac{ATLAS} \ac{BSM} community and followed in this thesis:
+\paragraph{Background-only fit}
+A so-called \textit{background-only} fit is aiming to extract a background estimate with normalisation factors and extrapolate the estimate to the signal and validation regions.  This is done using a maximum likelihood estimation \cite{Cowan} of the normalisation parameters as free parameters and is performed in the control regions only.  The parameters can then be applied to a fixed likelihood including the validation regions.  Once the background predictions have been validated,  the likelihood can be further expanded to include the signal regions. No contribution from signal processes is taken into account,  neglecting any signal contamination in the control regions.  
+\paragraph{Model-independent fit}
+In the case of a \textit{model-independent} fit,  the background estimation of the background-only fit is compared with a generic signal expectation.  No model-dependent signal expectation is included, but an upper limit on the signal yield contributing to the signal regions is extracted by including a dummy signal in the signal regions only.  No signal contamination in the control regions is assumed.  This fit aims to evaluate the agreement with the background-only fit and extract an upper limit on the cross-section of a potential signal contribution that is not specifically investigated through the model in this thesis. 
+\paragraph{Model-dependent fit}
+When including the signal expectation in a so-called \textit{model-dependent} fit,  the signal and control regions are used simultaneously.  Under the signal-plus-background hypothesis,  a normalisation factor for the signal expectation as well as for the backgrounds is extracted simultaneously.  If the $CL_s$ value for a specific signal point falls below 0.05 (95 \% confidence level),  this signal point is excluded.
+
+Within all performed fit strategies,  a total error on the background estimation is extracted,  based on the normalisation factors and nuisance parameters in the fit.
+The overall background error is following error propagation and includes a term with a correlation coefficient between different nuisance parameters and normalisations.  This correlation can lead to larger or smaller overall errors than the uncorrelated squared sum of the single uncertainty errors would.  All fits are performed using the \texttt{HISTFITTER} software framework \cite{HistFitter},  with dependencies to \texttt{HistFactory} \cite{HistFactory}.
+

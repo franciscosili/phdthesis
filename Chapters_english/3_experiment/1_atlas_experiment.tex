@@ -1,0 +1,827 @@
+\chapter{The ATLAS Experiment}
+\label{ch:atlas}
+
+\epigraph{\emph{Something.}}{Someone}
+
+The work in this thesis has been performed using data from the \ac{ATLAS} detector, one of the particle detectors recording collisions of protons accelerated by the \ac{LHC} particle accelerator at \ac{CERN}. 
+In the following chapter, an introduction to the \ac{LHC} is given in \Sect{\ref{sec:atlas:LHC}}, followed by a discussion of the \ac{ATLAS} detector in \Sect{\ref{sec:atlas:atlas}}. The discussion is focused on aspects important to the analyses of this thesis.
+
+
+
+
+
+
+
+\section{LHC}
+\label{sec:atlas:LHC}
+
+The \ac{LHC} \cite{LHC-TDR,LHC-Machine} is the largest hadron accelerator in the world, located at \ac{CERN}, in the French-Swiss border. It has a longitude of 27 km, located between 50 and 174 meters underground.
+The \ac{LHC} is designed to collide protons (and heavy ions) at a center of mass energy of \(14~\tev\). To keep the protons and heavy ions on the accelerator ring, overall 9593 magnets are used. These magnets include superconducting dipole and quadrupole magnets, cooled down to 1.9 K (-271 $^{\circ} C$). The dipole magnets generate a magnetic field of 8.3 T.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{3_experiment/lhc/AcceleratorComplex2022_large.png}
+    \caption{Overview of the \ac{LHC} complex where all the accelerators that lead up to the \ac{LHC} are shown~\cite{LHC-complex}.}
+    \label{fig:atlas:lhc:lhc}
+\end{figure}
+
+In \Fig{\ref{fig:atlas:lhc:lhc}} a general overview of the \ac{LHC} accelerator facilities is shown. The protons are sourced from hydrogen gas by stripping its electrons and are accelerated in a first linear accelerator (LINAC2) to \(50~\mev\). Subsequently, the protons are successively accelerated in the \ac{PSB}, the \ac{PS}, and the \ac{SPS}, where they reach an energy of \(450~\gev\) before being injected into the \ac{LHC}.  Overall 8 radiofrequency cavities can push the energy of the protons in the \ac{LHC} up to \(14~\tev\).
+
+The protons are injected as bunches of \(\mathcal{O}(10^{11})\) protons into the \ac{LHC} with a spacing of 25 ns (7.5 m). These bunches are later brought to collision in so-called bunch crossings. The filling scheme of the pre-accelerator chain, in combination with finite switching times of the injection and dumping magnets, results in regular patterns of filled and empty bunches.
+
+The \ac{LHC} so far provided proton and heavy ion beams for two data-taking periods, and is undergoing a third. Between 2009 and 2013 (known as \RunOne), the \ac{LHC} operated with centre-of-mass energy ($\sqrt{s}$) of 7 TeV and 8 TeV.  After a long shutdown (LS1), the second run (\RunTwo) started in 2015 and ended in 2018, providing 13 TeV collisions to the experiments around the \ac{LHC} ring. In 2022 the Run-3 began, at which \pp collisions happen at an energy of \(13.6~\tev\), estimated to run until 2026.
+The four yellow dots in shown \Fig{\ref{fig:atlas:lhc:lhc}} there are four interaction points, housing the \acs{ALICE}~\cite{ALICE}, \acs{LHCb}~\cite{LHCb}, \acs{CMS}~\cite{CMS}, \acs{ATLAS}~\cite{ATLAS}, \acs{LHCf}~\cite{LHCf}, \acs{TOTEM}~\cite{TOTEM}, \acsu{MoEDAL}~\cite{MoEDAL} experiments, among many other experiments.
+
+
+One of the most important parameters to characterize the functioning of the accelerator is the instantaneous luminosity \(\mathcal{L}\), defined as the number of particles per unit time per unit area, and can be calculated from the relation
+\begin{equation}
+    \mathcal{L} = \frac{N_b^ 2n_b f_{rev}\gamma_r}{4\pi\epsilon_n\beta^*}F
+    \label{eq:atlas:LHC:instantaneous_lumi}
+\end{equation}
+where $N_b$ is the number of particles per bunch, $n_b$ the bunches per beam, $\gamma_r$ is the relativistic gamma factor, $\epsilon_n$ is the normalised transverse beam emittance and $\beta^*$ being the beta function at the collision point which determining the transverse spread of the particle beam. The correction term F takes into account the beam crossing angle. The revolution frequency is represented by $f_{rev}$ which is \(\sim 11~\)kHz, and with the bunch-spacing of \(25~ns\), allows for beam crossing at the four interaction points with a frequency of \(\sim 40~\)MHz. 
+
+A measure for the total recorded data is the integrated luminosity over time is given by
+\begin{equation}
+    N_{event} = L_{int} \sigma_{event} = \sigma_{event} \int \mathcal{L} dt,
+    \label{eq:atlas:LHC:integrated_lumi}
+\end{equation}
+connecting the luminosity with the number of events. More details regarding the luminosity measurements in \ac{ATLAS} are shown in \Sect{\ref{sec:atlas:runs}}.
+
+
+
+
+
+
+
+
+\FloatBarrier
+\section{ATLAS}
+\label{sec:atlas:atlas}
+
+\ac{ATLAS} is one of the multi-purpose detectors of the \ac{LHC}, located at Point-1 along the \ac{LHC}. It was designed and built to study the \pp (and heavy ion) collisions at the \tev scale.
+
+The overall shape of the detector is that of a cillinder as shown in \Fig{\ref{fig:atlas:atlas:atlas}}. It has a length of 44m and 25m in diameter, being the largest particle detector built so far. The \ac{ATLAS} detector is divided geometrically in two parts: the central part called \textit{barrel}, and the outer caps called \textit{end-caps}.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{3_experiment/atlas/ATLAS_full.png}
+    \caption{Overview of the \ac{ATLAS} detector and all its sub-detectors, including the systems added during the \ac{LS2}~\cite{ATLAS-Diagram}.}
+    \label{fig:atlas:atlas:atlas}
+\end{figure}
+
+\ac{ATLAS} is built in layers of sub-detectors, each of which designed to have a different role on the identification and reconstruction of particles produced in the collisions. \ac{ATLAS} provides hermetic coverage around the beam axis, enabling detection of all charged particles generated in the collisions in the plane orthogonal to the beam axis. This is particularly important in searches for new physics, relying on analyses of momentum balances in the orthogonal plane.
+
+It is built up of multiple layers, starting from the innermost component, the \acf{ID}, providing tracking hits close to the beam pipe. Around the \ac{ID}, there is a superconductor solenoid which creates an axial magnetic field of \(\sim 2\) T to curve the \ac{ID} tracks of charged particles.
+After the first magnet, there is a system of two calorimeters: the \ac{ECAL} and \ac{HCAL}. The former is in charge of measuring the kinetic energy of photons and electrons, and the latter measures the energy of the jets.
+The outermost parts of \ac{ATLAS} are built by the muon spectrometer, providing momentum reconstruction for muons passing through the inner detector layers. Intertwined with the muon spectrometer, there are a total of 8 barrel toroid coils, providing a total magnetic field of 4 T (0.5 T per coil) to measure the momentum of muons. The toroid magnetic field is completed by the end-cap toroids,  also generating a magnetic field up to 4T for muons leaving \ac{ATLAS} close to the beam pipe.
+
+Every component in \ac{ATLAS} working together enables the reconstruction and identification of a variety of particles with high precision. An overview of the design capabilities of \ac{ATLAS} in terms of the momentum and energy resolution is given in \Tab{\ref{tab:atlas:atlas:expected_performance}}, adapted from \Refn{\cite{ATLAS}}.
+Here the resolution given lists first a stochastic term, measuring the uncertainty based on the statistically dominated interaction of a particle with the material, followed by a noise term, which accounts for uncertainties due to electronic noise in the readout process. 
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[]
+    \caption{General performance goals of the \ac{ATLAS} detector. The units of \pt and \(E\) are in \gev. Extracted from \Refn{\cite{ATLAS}}}
+    \begin{tabular}{|l|c|c|c|}
+        \hline
+        \multirow{2}{*}{\textbf{Detector Component}}    & \multirow{2}{*}{\textbf{Required resolution}}     & \multicolumn{2}{c|}{\textbf{$\eta$ coverage}}             \\\cline{3-4} 
+                                                        &                                                   & Measurement              & Trigger                        \\ \hline
+        Tracking                                        & \( \sigma_{\pt}/\pt = 0.05\%\pt \oplus 1\%    \)  & \( \pm 2.5 \)            &                                \\ \hline
+        EM calorimetry                                  & \( \sigma_{E}/E = 10\%/\sqrt{E} \oplus 0.7\%  \)  & \( \pm 3.2 \)            & \( \pm 2.5 \)                  \\ \hline
+        Hadronic calorimetry (jets)                     &                                                   &                          &                                \\
+        $\quad$barrel and end-cap                       & \( \sigma_{E}/E = 50\%/\sqrt{E} \oplus 3\%    \)  & \( \pm 3.2 \)            & \( \pm 3.2 \)                  \\
+        $\quad$forward                                  & \( \sigma_{E}/E = 100\%/\sqrt{E} \oplus 10\%  \)  & \( 3.1 < \abseta< 4.9 \) & \( 3.1 < \abseta< 4.9 \)       \\ \hline
+        Muon spectrometer                               & \( \sigma_{\pt}/\pt = 10\%\) at \(\pt =1~\tev \)  & \( \pm 2.7 \)            & \( \pm 2.4 \)                  \\
+        \hline
+    \end{tabular}
+    \label{tab:atlas:atlas:expected_performance}
+\end{table}
+
+% \begin{table}[htpb!]
+% \includegraphics[width=\linewidth]{figures/ExpSetup/ResolutionATLASDesign.pdf}
+% \caption{Performance goals of the \ac{ATLAS} detectors' subsystems.  Units are given in GeV.  $\bigoplus$ indicating a sum in quadrature of the single terms for the total uncertainty \label{tab:expSetup:Resolutions}\cite{ATLAS}. }
+% \end{table}
+
+
+\subsection{ATLAS Coordinate system}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{3_experiment/atlas/ATLAS_coordinates}
+    \caption{\ac{ATLAS} coordinate system~\cite{ATLAS-Diagram}.}
+    \label{fig:atlas:atlas:atlas_coordinates}
+\end{figure}
+
+The coordinate system used within \ac{ATLAS}, displayed in \Fig{\ref{fig:atlas:atlas:atlas_coordinates}}, is used throughout this thesis and shortly described in the following~\cite{ATLAS}. 
+The origin of the right-handed coordinate system is at the nominal interaction point, with the positive x-axis pointing towards the centre of the \ac{LHC}.  The x-y plane is perpendicular to the beam axis, defining the z-axis. Towards the surface defines the positive y-axis. An azimuthal angle $\phi$ is defined around the beam axis, and a polar angle $\theta$ is the angle from the beam axis. Instead of $\theta$ the rapidity $y$ is used for heavy objects:
+\begin{equation}
+    y = \frac{1}{2} \ln[(E+p_z)/(E-p_z)].
+\end{equation}
+Differences in rapidity are invariant under boosts along the beam axis. For massless objects or relativistic objects ($m << \vb*{p}$),  the pseudorapidity is used instead: 
+\begin{equation}
+    \eta = -\ln(\tan(\theta/2)).
+\end{equation}
+To quantify the distance between two objects,  $\Delta R$ is defined:
+\begin{equation}
+    \Delta R = \sqrt{\Delta\phi^2 + \Delta\eta^2}
+\end{equation}
+The transverse momentum and energy are defined in the x-y plane, with the transverse momentum given as $\pt = \sqrt{p_x^2 +p_y^2}$.
+
+
+
+
+
+
+\subsection{Inner Detector}
+\label{subsec:atlas:atlas:id}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{3_experiment/atlas/inner_detector.jpg}
+        \caption{\ac{ID} with all its submodules in the barrel and endcap regions~\cite{ATLAS-InnerDetector-Diagram}.}
+        \label{fig:atlas:atlas:atlas_inner_detector:general}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{3_experiment/atlas/inner_detector_layers}
+        \caption{Layers of the \ac{ID} showing their distance to the beam~\cite{ATLAS-InnerDetector-Layers}.}
+        \label{fig:atlas:atlas:atlas_inner_detector:layer_radius}
+    \end{subfigure}
+    \caption{\ac{ATLAS} \ac{ID} diagrams showing the different submodules, with their corresponding dimensions.}
+    \label{fig:atlas:atlas:atlas_inner_detector}
+\end{figure}
+
+A cross-section of the \acf{ID} system \cite{ATLAS-ID-TDR} is shown in \Fig{\ref{fig:atlas:atlas:atlas_inner_detector}}, highlighting the distance of each subsystem from the beampipe. The innermost part of the \ac{ID} is the \ac{IBL}, followed by three layers of pixel detectors. At 299 mm radial distance from the beam pipe, four layers of \ac{SCT} modules are located before the \ac{TRT}, which extends the overall \ac{ID} detector size to a radius of 1082 mm. The \ac{ID} allows for particle track reconstruction within $\abseta < 2.5$.
+
+
+The role of the \ac{ID} is the trajectory tracking of changed particles to determine their charge and momentum. It is immersed in a 2 T magnet field generated by the \ac{ATLAS} solenoid magnet system, that bends the trajectories of charged particles. The curvature radius is proportional to the particle momentum and its direction distinguishes positive from negative charges. The detected particle tracks allow for the reconstruction of primary collision vertices, which is important to distinguish pile-up collisions from the collision of interest, and of secondary decay vertices of longer-lived particles, which is crucial for the identification of e.g. \(B\) mesons or \(\tau\) leptons.
+
+
+\paragraph{IBL - Insertable B-layer}
+After Run-1, during a long shutdown in 2013-2014, the pixel detector system was subject to maintenance and upgrades. Within this set of upgrades, a 4th pixel layer at a 3.3 cm distance from a new, smaller beam pipe (33 mm outer radius, originally 36 mm), whic was the first in particle physics experiments~\cite{ATLAS-IBL-TDR,ATLAS-IBL-proceedings} and has led to significant improvements in interaction vertex reconstruction and identification of b-hadron jets.
+
+
+\paragraph{Pixel Detector}
+The innermost pixel layer, the IBL, is surrounded by three layers of pixel detectors, arranged in barrels around the beam pipe \cite{ATLAS-Pixel-DesignPerformance,ATLAS-Pixel-Performance-Proceedings}. The method of detection of charged particles is the measurement of deposited induced charges in a silicon layer, product of ionization. The first layer is at a distance of 50.5 mm from the beam pipe's centre. As can be seen in \Fig{\ref{fig:atlas:atlas:atlas_inner_detector:general}}, the end caps of the pixel layer consist of 3 disks around the beampipe, stretching the length of the pixel component of the \ac{ID} to 1.4 m length along the beam axis.  The pixel detector consists of overall 1744 pixel modules with a nominal size of $50 \mu m x 400 \mu m$ in the $(\phi, z)$ plane ($\phi, r$ for the disk panels), comprising over 80 million readout channels.  
+The pixel and \ac{IBL} part of the \ac{ATLAS} detector is crucial for tracking, providing 4 pixel hits over the entire \ac{ID} pseudorapidity coverage ($|\eta| < 2.5.$).  
+
+\paragraph{Semiconductor Tracker}
+The pixel detector and \ac{IBL} are located within \ac{SCT} modules \cite{ATLAS-SCT}.  
+Similar to the pixel detector modules, the \ac{SCT} modules are semiconductor-based, arranged into cylindrical layers around the beampipe in the barrel region, forming disks in the endcap. Since the \ac{SCT} modules only provide precise location along one axis, two modules are combined back-to-back and rotated against each other to gain two dimensional spacial information. Four layers are arranged in the barrel, nine disks in each endcap side (see \Fig{\ref{fig:atlas:atlas:atlas_inner_detector:general}}). Including the endcap disks, the \ac{SCT} extends up to $|z| < 2735 mm$.
+
+\paragraph{Transition Radiation Tracker}
+The last part of the \ac{ID} is the \ac{TRT} \cite{ATLAS-TRT-DesignPerformance}, in the barrel stretching from 554 mm to 1082 mm radial distance. This detector is composed of 4 mm diameter straw tubes, arranged in parallel to the beam pipe or radially in the barrel and end-cap, respectively. Within $|\eta| < 2.0$, three barrel rings and 18 end-cap units provide typically 36 hits per track. The straws are intertwined with polypropylene fibres for passing through particles to create transition radiation. Inside the straws is a thin tungsten wire, collecting charges drifting through the straws gas mixture (Xe, CO2 and O2). The level of radiation and collected charges in each straw can be used to discriminate between electrons and charged pions.  The \ac{TRT} only offers spatial information in the $(R-\phi)$ plane, no information in the z-direction can be extracted due to the straws orientation. There is a total of 50000 tubes in the barrel region, while the end-caps contain 320000 tubes.
+
+
+
+
+
+
+
+
+\subsection{Calorimeters}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{3_experiment/atlas/calorimenters.jpg}
+    \caption{\ac{ATLAS} calorimeter system, showing the \acf{ECAL} and the \acf{HCAL}~\cite{ATLAS-Calorimeter-Diagram}.}
+    \label{fig:atlas:atlas:atlas_calorimeters}
+\end{figure}
+
+As previously mentioned, the \ac{ID} system is surrounded by two calorimeters: the \acf{ECAL} and the \acf{HCAL}, as shown in \Fig{\ref{fig:atlas:atlas:atlas_calorimeters}}. These calorimeters are designed to measure the energy and position of the incident particles, via the deposited energy by the secondary particle cascades produced by the incident ones. It covers the whole \(\phi\) range and up to \(\abseta<4.9\), with a finer granularity in the region that coincides with the \ac{ID}.
+The calorimeter system allows for the discrimination between photons and electrons from hadrons (jets). Furthermore, it allows to measure the energetic imbalance (thanks to its total coverage and hermiticity) and it provides the trigger system with the necessary information for the event selection.
+
+Both calorimeters are so-called sampling calorimeters with alternating layers of absorber and active material. The absorber layer triggers a shower development of consecutive interactions with the detector material, the active layer detects the signal.
+The shower development and properties are of vital importance for the particle identification, as it will be shown later.
+Two important quantities in connection with the calorimeters are the radiation length, $X_0$, and the interaction length $\lambda$. The radiation length refers to the distance after which an particle (electrons for example) energy has been reduced to \(1/e\) of its initial energy. The interaction length describes the mean free path before the occurrence of an hadronic interaction.
+
+The design resolution of the system on the calorimetric energy is given by
+\begin{equation}
+    \frac{\sigma(E)}{E} = 
+    \frac{a}{\sqrt{E}} \oplus b \oplus \frac{c}{E}
+\end{equation}
+where \(\oplus\) means that the terms are summed in quadrature. The stochastic term \(\frac{a}{\sqrt{E}}\) is related with the fluctuations on the shower developments, the constant term \(b\) takes into account the inhomogeneities of the detector, and the last term is associated with the electronic noise and is proportional to \(\frac{1}{E}\). The value of the coefficients \(a\) and \(b\) depend on the incident objects. For the electrons' case in the \ac{ECAL}, \(a\sim 10\%~\gev^{1/2}\) and \(b~\sim 0.7\%\), while those for charged pions in the center of the detector are \(a~\sim50\%~\gev^{1/2}\) and \(b\sim5\%\) \cite{ATLAS-Calorimeters-PerformanceRun2}.
+
+
+
+\subsubsection{Electromagnetic Calorimeter - ECAL}
+\label{subsubsec:atlas:atlas:cals:ecal}
+
+The \ac{ECAL} specializes on the detection of electrons, positrons and photons, which deposit their energy in relatively dense showers: energetic electrons that radiate Bremsstrahlung photons, while energetic photons convert to electron-positron pairs when traversing the dense material.
+The absorber is made of lead (Pb) with stainless steel sheets, while \ac{LAr} is used as the active material with copper and kapton electrodes for readout.
+
+
+The calorimeter has an accordion geometry which provides complete \(\phi\) symmetry without azimuthal cracks. 
+It is divided into two half barrels covering the central detector region (\(\abseta<1.475\)), with a small (4 mm) gap at $z = 0$ and one end-cap on each side of the beamline (\(1.375<\abseta<3.2\)).
+The transition region between the barrel and end-cap is referred as the \textit{crack} region, and the majority of physics analysis using the \ac{ECAL} require that the photons and electrons are outside of it.
+Additionally, the \ac{LAr} technology is used for the hadronic calorimeters end-caps as well as a \ac{FCAL} ($3.1 < \eta < 4.9$).
+
+The thickness of the \ac{ECAL} is over 22 radiation lengths (\(X_0\)) in the barrel region, while over \(24 X_0\) in the end-cap region. For photons, the distance at which the energy dropped to \(1/e\) is \(9/7 X_0\), therefore all the photon's electromagnetic energy is deposited in the \ac{ECAL}, and only a small part reaches the \ac{HCAL}.
+
+The mode of measurement is as follows. The incident particles interact with the absorbent medium (Pb), initiating a shower of charged and neutral particles. The charged particles ionize the \ac{LAr} medium and the electrodes, with the help of an applied magnetic field, collect the electrons produced in the ionization process. The total signal of the active medium is then proportional to the total real energy of the incident particle.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{3_experiment/atlas/ecal_cells}
+    \caption{Segment of the \ac{ECAL} showing the layer arrangement and cell dimensions in each layer~\cite{ATLAS}.}
+    \label{fig:atlas:atlas:cals:ecal:ecal_cells}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.46\linewidth]{3_experiment/atlas/ecal_radiation_lengths1}
+    \includegraphics[width=0.46\linewidth]{3_experiment/atlas/ecal_radiation_lengths2}
+    \caption{Radiation lengths as a function of \abseta for the \ac{ECAL}, separated for each sublayer~\cite{ATLAS}.}
+    \label{fig:atlas:atlas:cals:ecal:ecal_radiation_length}
+\end{figure}
+
+Within the region accepted for precision measurements (\(\abseta<2.5\) excluding the crack), the \ac{ECAL} is segmented in three longitudinal layers, displayed in \Fig{\ref{fig:atlas:atlas:cals:ecal:ecal_cells}}.
+The first layer consists on fine-granularity bands (also called the strip layer) which helps with the discrimination between isolated photons and pairs of photons spacialy closed originating from \(\pizero\to\gamma\gamma\) decays. This layer has a constant thickness of \(\sim 6 X_0\) as a function of \(\eta\) (see \Fig{\ref{fig:atlas:atlas:cals:ecal:ecal_radiation_length}}), and provides a precise measurement of this variable.
+For high energy photons and electrons, the majority of their energy is collected in the second layer, which has a lateral granularity of \(0.025 \times 0.025\) in \((\eta, \phi)\) and a thickness of \(\sim 24 X_0\).
+The third layer collects the energy deposited by the tails of the electromagnetic shower, with thickness that varies between 2 and 12 \(X_0\).
+There is also a presampler (not shown in figures), that covers the region \(\abseta<1.8\) that improves the energy measurement for particles that start showering before entering the calorimeter.
+
+
+
+
+\subsubsection{Hadronic Calorimeter - HCAL}
+
+
+
+Three hadronic calorimeter layers surround the \ac{ECAL} and provide additional discrimination for electrons and photons when measuring the hadronic energy. The \ac{HCAL} extends in pseudorapidity up to \(\abseta<4.9\), allowing virtually the entirety of the solid angle to be covered from the interaction point. In the barrel region (\(\abseta<1.7\)), the tile calorimeter, a sampling calorimeter using steel as absorbing material and plastic scintillator tiles as active material~\cite{ATLAS-Tile-TDR}, is located. It is divided into two parts (\(\abseta<1.0\) and \(0.8<\abseta<1.7\)). The scintillators, arranged in a periodic array, are connected to an optical fiber that carries the light produced by the passing particles to a photomultiplier tube. This array extends, in \(R\), from 2.28 to 4.25 m. In the endcap region (\(1.5<\abseta<3.2\)) there is an hadronic sampling calorimeter, the \ac{HEC}, with copper plates as absorber and liquid argon as active material. Each side of the endcap consists of two wheels, one behind the other with the flat Cu plates arranged perpendicular to the beam axis, with a radius of 2.3 m. Finally there is the \ac{FCAL}, a sampling calorimeter that extends the coverage of the system to \(\abseta<4.9\), coaxial to the beam axis and located 4.7 m on either side of the interaction point. The main material of the modules is \ac{LAr} (with copper or tungsten), and while not used for precision measurements, it provides information for computation of the missing transverse energy and reconstruction of jets in regions very close to the beam axis.
+
+The \ac{HCAL} has a thickness greater than \(7.7~\lambda\) in the barrel region (\(9.7~\lambda\) in total if the \ac{ECAL} is counted). Analogous to the radiation length mentioned for the \ac{ECAL}, a hadronic interaction length is defined as the average distance over which the energy of a hadron is reduced to \(1/e\) of its initial energy. Thus, all the energy with which the hadrons arrive at the \ac{HCAL} is deposited there.
+
+
+
+
+
+\subsection{Muon spectrometer}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{3_experiment/atlas/muon_detector}
+    \caption{\ac{ATLAS} \acf{MS}~\cite{ATLAS}.}
+    \label{fig:atlas:atlas:muon_spectrometer:muon_spectrometer}
+\end{figure}
+
+The high \pt muons generated at the interaction point have very high penetrating power and are poorly interacting. Therefore, the \ac{MS} \cite{ATLAS-Muon-TDR} is located in the outermost part of the \ac{ATLAS} detector, embedded within the 4 T magnetic field generated by the barrel and endcap toroid magnets, and is designed to obtain high precision position and momentum measurements of high \pt muons. This is the largest subdetector and the one that gives \ac{ATLAS} its size.
+
+The \ac{MS} is designed to precisely measure muons within \(\abseta<2.7\) and to provide muon trigger information up to \(\abseta<2.4\), shown in \Fig{\ref{fig:atlas:atlas:muon_spectrometer:muon_spectrometer}}, highlighting the different subsystems
+
+The \ac{MS} is composed of different types of muon detection chambers (see \Fig{\ref{fig:atlas:atlas:muon_spectrometer:muon_spectrometer}}). \acp{MDT} are responsible for most of the precision measurements and cover the range of \(\abseta<2.7\). They operate similarly to the \ac{TRT}, with tubes filled with an ionising gas and a central anode collecting the electrons produced, and the drift time is associated with the distance to the track. In the endcap region there are \ac{CSC} that have high spatiotemporal resolution and a coverage of \(\abseta>2.0\). These chambers work by measuring the charge deposited on an anode as a result of the cascade of electrons created near the anode. \acp{RPC} provide a fast estimation of the muon momentum at triggerl-level with a coverage of \(\abseta<1.05\)\footnote{The innermost End-Cap layer has been replaced with the \ac{ATLAS} \ac{NSW} after \RunTwo~\cite{ATLAS-NSW}. It features MicroMegas as precision trackers as they provide better performance at the high rates expected in future LHC operations.}. \acp{RPC} measure the discharge between two parallel resistive plates subjected to a high potential difference, following the ionisation of the internal gas volume caused by the passage of energetic muons. Finally, in the endcap region, there are \acp{TGC}, similar in function to \acp{CSC}. They also provide information to the trigger system in this region and have a coverage of \(\abseta<2.4\).
+
+If hits in the \ac{ID} and the \ac{MS} can be associated with a single muon, a very good momentum resolution of up to
+\begin{equation}
+    \frac{\sigma(\pt)}{\pt} = 
+    0.02\% \cdot \pt~[\gev] \oplus 2\%
+\end{equation}
+is achieved. The momentum resolution degrades accordingly if a track is identified in only one of the two systems.
+
+
+
+
+
+
+\subsection{The Trigger System}
+
+
+
+The \ac{ATLAS} trigger system \cite{ATLAS-Trigger-Performance-2010,ATLAS-Trigger-Performance-2015,ATLAS-Trigger-Performance-Run2} uses information from the detector to reject events that do not possess interesting physics (physics already known for example), reducing the event frequency from 40 MHz (bunch-crossing frequency mentioned in \Sect{\ref{sec:atlas:LHC}}) to around 1.5 kHz. It is necessary to emphasize here the central role of the trigger system for the proper functioning of the whole experiment, being responsible for deciding which events are saved and, ultimately, which physics will be encountered (or not) during the event analysis. Without an efficient trigger system, all the subdetectors described above would be wasted. To achieve such a reduction in event frequency and, at the same time, have a high efficiency in selecting those of interest, the trigger system is composed of two consecutive levels capable of performing increasingly complex particle identification; a first hardware-based trigger level, \ac{L1}, and then a high-level software-based trigger, the \ac{HLT}. Each level allows events to be analyzed in greater detail, increasing the accuracy of the selection criteria and the complexity of the algorithms used.
+
+
+\subsubsection{Level-1 trigger}
+
+The trigger decision starts with the hardware-based \ac{L1} trigger \cite{ATLAS-L1Trigger}, which identifies \acp{ROI}. These \ac{ROI} consist of neighbouring cells in the \ac{ECAL} and \ac{HCAL} and are defined from the position in the calorimeter of each object found in a potentially interesting event, which extends as a cone from the interaction point along the detector.
+Regarding muons, it takes the information read by the \ac{MS}, more specifically the \ac{TGC} and \ac{RPC} and allows to obtain a fast estimate of the muon \pt.
+The \ac{L1} trigger also has a component that allows for topological requirements such as invariant mass selections and distance measures to be taken into account in the \ac{L1} decision, referred as the \ac{L1Topo}.
+
+The design of the \ac{L1} allows to have an acceptability in the range of \(\abseta<2.5\) for electrons, photons, muons and taus, up to \(\abseta<3.2\) for jets, and \(\abseta<4.9\) for the missing transverse momentum calculation.
+Using the \acp{ROI}, the \ac{L1} trigger must make the decision to keep or discard the event, reducing the event rate from 40 MHz to less than 100 kHz in approximately 2.5 \(\mu s\), time determined in part by the limited size of the memory buffers and in part by the time it takes for the muons produced in the event to reach the \ac{MS}. This final decision is done by the \ac{CTP}, and then passes the \acp{ROI} to the next trigger level: the \ac{HLT}.
+
+
+
+\subsubsection{The High Level Trigger}
+
+
+When an event is accepted by the \ac{L1}, the \ac{HLT}~\cite{ATLAS-HLTTrigger} executes a sequence of algorithms starting from the \acp{ROI} defined by the \ac{L1}, and allows to reduce the event rate that is stored at 1.5 kHz in 0.2 s. 
+The reconstruction and identification of candidate particles in the \ac{HLT} is evaluated in a sequence of steps where different algorithms are applied. 
+If the selection fails in a certain step, the following steps are no longer executed to save execution time. 
+In \ac{HLT}, the algorithms are grouped into sets of fast reconstruction algorithms executed first, and then a set of precision reconstruction algorithms similar to those used offline are executed, thanks to the latency time available.
+The fast reconstruction algorithms use the calorimeter and track information from the \ac{ID} only within the \ac{ROI} to perform candidate selection and identification, and perform background rejection as quickly and early as possible.
+If the candidate particle passes the criteria defined by the fast reconstruction selection, precision selection algorithms are run. These have access to detector information outside the RoI, at the highest granularity and including details on calorimeter energy calibration, sub-detector alignment and magnetic field mapping.
+
+The exact sequence and type of algorithms considered at the \ac{HLT} are defined in the trigger \textit{menu}. This comprises a database of triggers, each of one defining a sequence of algorithms and requirements on these algorithms for an event to pass the \ac{HLT}.
+% The overall set of triggers targeting various detector signatures associated with particles, such as electrons, muons or photons as well as missing transverse energy.
+The trigger requirements are designed and budgeted in a way that the overall \ac{HLT} rate does not exceed 1 kHz. In some cases, even the reduction in event rate achieved through the \ac{HLT} algorithms for desired trigger requirements, such as low momentum triggers, is too high. To keep the overall \ac{HLT} rate below 1 kHz in these cases, triggers can still be included in the menu, but with a prescale. A prescale is an artificial scaling of the trigger, only accepting every Nth trigger decision if the prescale factor is N. This allows triggers with an otherwise high rate to still collect events.
+
+The \ac{HLT} algorithms run on approximately 40 thousand CPU cores. In addition, partial event construction is used for trigger-level analysis, detector monitoring, and detector subsystem calibrations. Finally, the accepted events by the \ac{HLT} are saved to a disk and distributed, available \textit{offline} for any study or analysis.
+
+
+
+
+
+
+\FloatBarrier
+\section{Data-taking during Run-2}
+\label{sec:atlas:runs}
+
+
+The operation of the \ac{LHC} is organized into distinct periods known as data-taking Runs. Each run typically spans several years and is characterized by specific experimental conditions, including the energy at which the protons are collided and the intensity of the beams. Since its commissioning, the \ac{LHC} has undergone multiple data-taking runs: Run-1 (2010-2013) operated at collision energies up to 8 TeV, Run-2 (2015-2018) at 13 TeV, and Run-3 (2022-present) at 13.6 TeV. Each data taking period, once the \ac{LHC} announces stable beams, is divided into \acp{LB} of approximately two minutes. At each \ac{LB}, the instantaneous luminosity is practically constant and the beam conditions are stable. Due to the high complexity of the \ac{LHC} and the \ac{ATLAS} detector, it is expected to have inefficiencies in the detectors and sub-detectors and/or in the data acquisition chain. During each Run, each part of \ac{ATLAS} is monitored and any failure or problem is registered, including inactive components, or problems on the \ac{LHC} beam.
+
+In order to guarantee the high-quality data, free from significant defects, the \acp{LB} and ranges within them that pass all the quality criteria are compiled into \ac{GRL}. The lists are produced and distributed in a centralized manner, in order to provide any \ac{ATLAS} group with the same collection of \acp{LB}. Since during the runs different parts of the detector are available (in an optimal run, all of the subdetectors are available), there are multiple \acp{GRL} available to use. Each analysis, then, selects which \ac{GRL} to use depending their tolerance to the subdetectors' faults.
+
+The present thesis uses \ac{ATLAS} data recollected from \pp collissions during the Run-2 (2015-2018), at a centre of mass energy of \(\sqrt{s} = 13~\tev\). During this run, the \ac{LHC} delivered a total of \(156~\ifb\), from which \ac{ATLAS} collected \(147~\ifb\). The total integrated luminoity avaliable for Phyiscs analysis is \(140.07~\ifb\)\footnote{First measurements and initial \acp{GRL} led to a total of \(139~\ifb\)}, as seen from \Fig{\ref{fig:atlas:runs:lumi_run2}}. The uncertainty in the combined integrated luminosity for Run-2 is \(0.83\%\)~\cite{ATLAS-Lumi-Run2}, obtained using the LUCID-2 detector~\cite{ATLAS-LUCID2}.
+Combining the 2022, 2023 and 2024 years of data taking for Run-3, 159 \ifb of data was recollected, shown in \Fig{\ref{fig:atlas:runs:lumi_run3}}~\cite{ATLAS-Lumi-Run3-2022,ATLAS-Lumi-Run3-2023}.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{3_experiment/lhc/DeliveredLuminosityRun2}
+        \caption{Run-2 (2015-2018)}
+        \label{fig:atlas:runs:lumi_run2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{3_experiment/lhc/DeliveredLuminosityRun3}
+        \caption{Early Run-3 (2022-2024)}
+        \label{fig:atlas:runs:lumi_run3}
+    \end{subfigure}
+    \caption{Luminosity delivered by the \ac{LHC} and recorded by \ac{ATLAS} during the Run-2~\cite{ATLAS-Lumi-Run2} and Run-3 data taking periods. For Run-2, the fraction of data good for physics analyses is also displayed.}
+    \label{fig:atlas:runs:lumi}
+\end{figure}
+
+Another important concept in \ac{ATLAS} data acquisition is pileup, which occurs when particles produced in more than one \pp collision arrive at the detector at the same time, or more generally, when signals overlap in a way that cannot be separated. When bunches of protons collide, the probability of an interaction is proportional to the particle density, or better, to the particle flux, which is expressed by the instantaneous luminosity. The actual number of particle collisions that take place when two bunches intersect is a random variable that follows a Poisson distribution. For low luminosities, in most beam crossings, no collisions occur, but for high instantaneous luminosities, in most crossings many particle collisions occur at the same time. Depending on the subdetector and the type of measurement, it may or may not be possible to distinguish between particles coming from different simultaneous interactions. This is called in-time pile-up. In contrast, out-of-time pile-up includes the effects that arise when the time the detector needs to return to its waiting state is longer than the time between bunches crossing. A quantitative measure of pile-up and event activity is the mean value of \pp inelastic interactions per bunches crossing, \avgmu.
+
+The maximum instantaneous luminosities increased by a factor of four over the four years of Run-2, resulting in an increase of \avgmu from 10 up to 60, as shown in \Fig{\ref{fig:atlas:runs:pileup_run2}}. For Run-3, pileup was drastically increase up to values of 57 for year 2024, in average increasing up to 52 interactions per bunch crossing, displayed in \Fig{\ref{fig:atlas:runs:pileup_run3}}.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{3_experiment/lhc/PileupConditionsRun2.png}
+        \caption{Run-2}
+        \label{fig:atlas:runs:pileup_run2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{3_experiment/lhc/PileupConditionsRun3.png}
+        \caption{Run-3}
+        \label{fig:atlas:runs:pileup_run3}
+    \end{subfigure}
+    \caption{Pileup conditions during Run-2 and Run-3.}
+    \label{fig:atlas:runs:pileup}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \section{Monte-Carlo simulations}
+% \label{sec:atlas:MC}
+
+% The \acf{MC} method uses a series of computational algorithms based on the repetition of events with a variable and random factor, which allows obtaining global numerical results. In the context of particle physics, it is not only used to reproduce the randomness imposed by unique quantum mechanics, but also to perform different approximations, such as numerical integrals. \ac{MC} simulations play a fundamental role in the prediction of the theory, playing a key role in practically all the analyses carried out by the \ac{ATLAS} collaboration.
+
+% After the event generation, the interaction between the particles and the detector is simulated. This is done using programs that simulate the passage of particles through matter, together with a full simulation of the \ac{ATLAS} detector, where the materials used and their dimensions are precisely detailed. This step is performed using the \GEANT4 software~\cite{Geant4} for full detector simulations.
+% It is also possible to perform a simplified interaction simulation in order to save resources and computational time, called \textsc{AtlFast3}~\cite{AtlFast3}. Once the simulation of the detector has been performed, the events are reconstructed with the same algorithms used for data. Three simulation runs, \texttt{mc20a}, \texttt{mc20d} and \texttt{mc20e}, are generated with the expected pile-up distribution for data taken in the years 2015+2016, 2017 and 2018 respectively.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% The \ac{LHC} \cite{LHCTDR,LHCMachine} is the largest particle accelerator in the world.  It is located at the \ac{CERN},  in Geneva,  Switzerland.  With its 27 km circumference, the accelerator ring is partially located in Switzerland and partially in France,  between 50-175 meters underground. 
+% The \ac{LHC} was designed to accelerate protons in two separate beam pipes up to a centre of mass energy of 14 TeV.  It is also capable of accelerating heavy ions. 
+% To keep the protons and heavy ions on the accelerator ring,  overall 9593 magnets are used.  These magnets include superconducting dipole and quadrupole magnets,  cooled down to 1.9 K (-271 $^{\circ}  C$).  The dipole magnets generate a magnetic field of 8.3 T. 
+
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[width=0.99\linewidth]{figures/ExpSetup/CernAcceleratorComplex2013.jpeg}
+% \caption{Overview of the CERN accelerator facilities,  including the acceleration chain leading up to the \ac{LHC} \cite{CERNAcceleratorComplex2013} \label{fig:expSetup:acceleratorComplex}}
+% \end{figure}
+
+% Before the protons enter the \ac{LHC},  a chain of accelerators is used (see Fig.  \ref{fig:expSetup:acceleratorComplex}): starting from a hydrogen bottle,  negative hydrogen ions are fed into the Linear Accelerator 2 (LINAC2) and are accelerated up to 50 MeV.  Before getting inserted into the \ac{PSB} the ions are stripped of their electrons only leaving protons. The up to 2 GeV accelerated protons are then inserted into the Proton Synchrotron (PS),  followed by the \ac{SPS} which accelerates the protons from 60 GeV to 450 GeV before feeding the \ac{LHC}. Overall 8 radiofrequency cavities can push the energy of the protons in the LHC up to 14 TeV. 
+
+% The \ac{LHC} so far provided proton and heavy ion beams for two data-taking periods.  Between 2009 and 2013 (known as Run-1), the LHC was operating with a centre-of-mass energy ($\sqrt{s}$) of 7 TeV and 8 TeV.  After a long shutdown (LS1) , the second run (Run-2) started in 2015 and ended in 2018,  providing 13 TeV collisions to the experiments around the \ac{LHC} ring.  In Figure \ref{fig:expSetup:acceleratorComplex} visualised yellow dots, there are four interaction points, housing the \acs{ALICE} \cite{ALICE},  \acs{LHCb} \cite{LHCb}, 
+% \acs{CMS} \cite{CMS},  \acs{ATLAS} \cite{ATLAS}, \acs{LHCf} \cite{LHCf} , \acs{TOTEM} \cite{TOTEM}, \acs{MoEDAL} \cite{MoEDAL} experiments,  among many other experiments.
+
+% The instantaneous luminosity \cite{LHCMachine} is a measure of the accelerator:
+
+% \begin{align}
+% \mathcal{L} = \frac{N_b^ 2n_bf_{rev}\gamma_r}{4\pi\epsilon_n\beta^*}F
+% \label{eq:theory:instantaneousLumi}
+% \end{align}
+% With $N_b$ the number of particles per bunch,  the bunches per beam $n_b$,  revolution frequency $f_{rev}$,  the relativistic gamma factor $\gamma_r$,   $\epsilon_n$ normalised transverse beam emittance as well as $\beta^*$, the beta function at the collision point,  determining the transverse spread of the particle beam.  The correction term F takes into account the beam crossing angle. 
+
+% \begin{align}
+% N_{event} = L_{int} \sigma_{event} = \sigma_{event} \int \mathcal{L} dt \label{eq:theory:integratedLumi}
+% \end{align}
+
+% A measure for the recorded data is the integrated luminosity over time, (see equation \eqref{eq:theory:integratedLumi}), connecting the luminosity with the number of events.  This can be seen for each month during Run-2 in Figure \ref{fig:expsetup:LumiOverview}.  This illustrates the overall 156 $\text{fb}^{-1}$ of a proton-proton collisions delivered to \ac{ATLAS} by the \ac{LHC} as well as the 139 $\text{fb}^{-1}$  of data collected by \ac{ATLAS} with detector conditions good enough to use the events in data analysis.
+
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[width=0.75\linewidth]{figures/ExpSetup/DeliveredRecordedLumi.png}
+% \caption{Summary of the luminosity delivered by the LHC,  recorded by the ATLAS detector as well as the overall data good to use for physics analyses \cite{LumiPublicResultsPage} \label{fig:expsetup:LumiOverview}}
+% \end{figure}
+
+% As already hinted to in equation \eqref{eq:theory:instantaneousLumi},  protons in the acceleration chain are accelerated in so-called bunches to generate high instantaneous luminosity.  
+% As a consequence,  many proton-proton interactions can happen during one crossing of bunches.  In Figure \ref{fig:expsetup:pileup},  the mean number of interactions per bunch crossing is given for all years of Run-2 data-taking. This so-called \textit{pile-up} reached above 70 number of interactions per bunch crossing in 2017.  
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[width=0.75\linewidth]{figures/ExpSetup/PileupConditionsRun2.png}
+% \caption{Pileup conditions throughout Run-2 \cite{LumiPublicResultsPage} \label{fig:expsetup:pileup}}
+% \end{figure}
+
+
+
+
+
+
+
+% %
+% %\textcolor{gray}{
+% %discuss accelerator chain - which energies in which accelerator 
+% %some parts about magnet structure 
+% %RF cavities for accelerations
+% %include that the LHC is filled by single hydrogen bottle, its tilted to avoid water accumulating in the tunnel, magnet structure of the Lhc,  to focus beams and the RF cavities to accelerate.
+% %}
+% %.
+
+
+% %include that the LHC is filled by single hydrogen bottle, its tilted to avoid water accumulating in the tunnel, magnet structure of the Lhc,  to focus beams and the RF cavities to accelerate.
+% %Include some words on the bunch structure and the acceleration complex before the LHC. 
+% %inlcude pileup discussion plot from lumi public results
+% %integrated luminosity and instantaneous luminosity 
+% %need to mention bunches, filling schemes to an extend, how often collisions are happening..
+% %\textcolor{red}{have to mention what runs are - in connection with good runs lists}
+% %\textcolor{red}{have to introduce run 1 and run 2 - because have run 1 analysis comparisons at some point? }
+
+
+
+
+
+% %=====================================
+% \FloatBarrier
+% \section{ATLAS}
+% \label{sec:ExpSetup:ATLAS}
+% \FloatBarrier
+% %=====================================
+% The \ac{ATLAS} detector is located at Point 1 along the \ac{LHC}. This is the only \acs{CERN} site along the LHC ring with access to a main experiment, the \ac{SPS} as well as the LHC. 
+% The overall structure is comparable to a barrel,  leading to the centre part of the detector being referred to as the barrel, as well as the large,  25m in diameter,  wheels on each side referred to as endcaps. 
+% With its 25 meters tall and 44 meters length,  \ac{ATLAS} is the largest particle detector built on a collider so far. 
+% It consists of multiple sub-systems and sub-detectors,  all built with different purposes in mind,  targeting momentum and energy reconstruction.  \ac{ATLAS} provides hermetic coverage around the beam axis,  enabling detection of all charged particles generated in the collisions in the plane orthogonal to the beam axis.  This is particularly important in searches for new physics, relying on analyses of momentum balances in the orthogonal plane such as discussed within this thesis.
+% An illustration of the design of \ac{ATLAS} is given in Figure \ref{fig:expSetup:ATLASoverall}.  It is built up of multiple layers,  starting from the innermost component,  the \acf{ID},  providing tracking hits close to the beam pipe.  Surrounding the \ac{ID} is a system of two calorimeters. The outermost parts of \ac{ATLAS} are built by the muon spectrometer,  providing momentum reconstruction for muons passing through the inner detector layers. 
+% Arguably one of the most striking features of \ac{ATLAS} is given through its magnet system.  Three superconducting Niobium-Titanium (NbTi) magnets span an overall length of 26m.  The first magnet system, the central solenoid,  is wrapped around the \ac{ID},  providing a 2 T axial magnetic field to curve the \ac{ID} tracks of charged particles. 
+% The largest magnet parts are the eight barrel toroid coils,  intertwined with the outer muon system,  providing a total magnetic field of 4 T (0.5 T per coil) to measure the momentum of muons.  The toroid magnetic field is completed by the end-cap toroids,  also generating a magnetic field up to 4T for muons leaving \ac{ATLAS} close to the beam pipe. 
+
+% \begin{figure}[htpb]
+% \centering
+% \includegraphics[width=0.9\linewidth]{../figures/ExpSetup/ATLAS_full.pdf} 
+% \caption{Overview graphic of the ATLAS detector design \label{fig:expSetup:ATLASoverall},  with two people illustrated for scale reference \cite{ATLASfull}}
+% \end{figure}
+
+% Every component in \ac{ATLAS} working together enables the reconstruction and identification of a variety of particles with high precision.  An overview of the design capabilities of \ac{ATLAS} in terms of the momentum and energy resolution is given in Table \ref{tab:expSetup:Resolutions},  adapted from \cite{ATLAS}.
+% Here the resolution given lists first a stochastic term,  measuring the uncertainty based on the statistically dominated interaction of a particle with the material,  followed by a noise term,  which accounts for uncertainties due to electronic noise in the readout process. 
+
+% \begin{table}[htpb!]
+% \includegraphics[width=\linewidth]{figures/ExpSetup/ResolutionATLASDesign.pdf}
+% \caption{Performance goals of the \ac{ATLAS} detectors' subsystems.  Units are given in GeV.  $\bigoplus$ indicating a sum in quadrature of the single terms for the total uncertainty \label{tab:expSetup:Resolutions}\cite{ATLAS}. }
+% \end{table}
+
+% In the following, a brief overview of the detector is given; a more comprehensive description can be found in \cite{ATLAS} as well as the Technical Design Reports of the subsystems,  as cited throughout the description below. 
+
+% \subsection{ATLAS Coordinate system}
+% The coordinate system used within \ac{ATLAS} is used throughout this thesis and shortly described in the following \cite{ATLAS}. 
+% The origin of the right-handed coordinate system is at the nominal interaction point,  with the positive x-axis pointing towards the centre of the \ac{LHC}.  The x-y plane is perpendicular to the beam axis,  defining the z-axis.  Towards the surface defines the positive y-axis.
+% An azimuthal angle $\phi$ is defined around the beam axis, and a polar angle $\theta$ is the angle from the beam axis.  Instead of $\theta$ the rapidity $y$ is used for heavy objects:
+% \begin{align}
+% y = \frac{1}{2} \ln[(E+p_z)/(E-p_z)]
+% \end{align}
+% Differences in Rapidity are invariant under boosts along the beam axis.
+% For massless objects or relativistic objects ($m << \vb*{p}$),  the pseudorapidity is used: 
+% \begin{align}
+% \eta = -\ln(\tan(\theta/2)) 
+% \end{align}
+% To quantify the distance between two objects,  $\Delta R$ is defined:
+% \begin{align}
+% \Delta R = \sqrt{\Delta\phi^2 + \Delta\eta^2} \label{eq:expsetup:deltaR}
+% \end{align}
+% The transverse momentum and energy are defined in the x-y plane,  with the transverse momentum given as $p_T = \sqrt{p_x^2 +p_y^2}$.
+
+% %=====================================
+% \subsection{Inner Detector}
+% %=====================================
+% A cross-section of the \ac{ID} system \cite{IDTDR} is shown in Figure \ref{fig:expSetup:InnerDetectors}, highlighting the distance of each subsystem from the beampipe. The innermost part of the \ac{ID}  is the \ac{IBL},  followed by three layers of pixel detectors.  At 299 mm radial distance from the beam pipe, four layers of \ac{SCT} modules are located before the \ac{TRT},  which extends the overall \ac{ID} detector size to a radius of 1082 mm.  The \ac{ID} allows for particle track reconstruction within $|\eta| < 2.5$.
+
+% \begin{figure}[htpb!]
+% \centering
+% \subfloat[Sketch of the \ac{ID} and distances of its sub-detectors]{\includegraphics[width=0.49\linewidth]{figures/ExpSetup/ID_includingIBL.png}}
+% \subfloat[Overview of barrel and end-cap \ac{ID} components, apart from \ac{IBL} \label{fig:expsetup:idendcaps}]{\includegraphics[width=0.49\linewidth]{figures/ExpSetup/ID_overview_noIBL.eps}}
+% \caption{Slice view of the Inner Detector,  highlighting each sub-detectors distance to the beampipe \cite{IDsketchwithIBL} (a) and cut-out view of the barrel and endcap components,  not including the \ac{IBL} \cite{ATLAS} (b).  \label{fig:expSetup:InnerDetectors}  }
+% \end{figure}
+% \paragraph{IBL - Insertable B-layer}
+% After Run-1,  during a long shutdown in 2013-2014,  the pixel detector system was subject to maintenance and upgrades.  Within this set of upgrades,  %the \ac{DBM} was inserted within the pixel detector volume,  
+% a 4th pixel layer at a 3.3 cm distance from a new,  smaller beam pipe (33 mm outer radius,  originally 36 mm).  A fourth pixel layer was a first in particle physics experiments \cite{IBLTDR,IBLproceedings} and has led to significant improvements in interaction vertex reconstruction and identification of b-hadron jets. 
+
+% \paragraph{Pixel Detector}
+% The innermost pixel layer,  the IBL,  is surrounded by three layers of pixel detectors,  arranged in barrels around the beam pipe \cite{PixelDesignPerformance,PixelPerformanceProceedings}.  The first layer is at a distance of 50.5 mm from the beam pipe's centre.  As can be seen in Figure \ref{fig:expsetup:idendcaps},  the end caps of the pixel layer consist of 3 disks around the beampipe,  stretching the length of the pixel component of the \ac{ID} to 1.4 m length along the beam axis.  The pixel detector consists of overall 1744 pixel modules with a nominal size of $50 \mu m x 400 \mu m$ in the $(\phi, z)$ plane ($\phi, r$ for the disk panels), comprising over 80 million readout channels.  
+% The pixel and \ac{IBL} part of the ATLAS detector is crucial for tracking,  providing 4 pixel hits over the entire \ac{ID} pseudorapidity coverage ($|\eta| < 2.5.$).  
+% %The resolution in the barrel is 10 mm (R-f) and 115 mm (z),as in the end-cap.
+
+% \paragraph{Semiconductor Tracker}
+% The pixel detector and \ac{IBL} are located within \ac{SCT} modules \cite{SCT}.  
+% Similar to the pixel detector modules, the \ac{SCT} modules are semiconductor-based,  arranged into cylindrical layers around the beampipe in the barrel region,  forming disks in the endcap.  Since the \ac{SCT} modules only provide precise location along one axis,  two modules are combined back-to-back and rotated against each other to gain two dimensional spacial information.  Four layers are arranged in the barrel,  nine disks in each endcap side (see Fig. \ref{fig:expsetup:idendcaps}). Including the endcap disks, the \ac{SCT} extends up to $|z| < 2735 mm$. 
+
+% \paragraph{Transition Radiation Tracker}
+% The last part of the \ac{ID} is the \ac{TRT} \cite{TRTDesignPerformance},  in the barrel stretching from 554 mm to 1082 mm radial distance.  This detector is composed of 4 mm diameter straw tubes,  arranged in parallel to the beam pipe or radially in the barrel and end-cap, respectively.  Within $|\eta| < 2.0$,  three barrel rings and 18 end-cap units provide typically 36 hits per track. The straws are intertwined with polypropylene fibres for passing through particles to create transition radiation.  Inside the straws is a thin tungsten wire,  collecting charges drifting through the straws gas mixture (Xe, CO2 and O2). The level of radiation and collected charges in each straw can be used to discriminate between electrons and charged pions.  The \ac{TRT} only offers spatial information in the $(R-\phi)$ plane, no information in the z-direction can be extracted due to the straws orientation. 
+ 
+% %70% Xe, 27% CO2 and 3% O2.
+% %R − phi direction, while no information is provided
+% %along the z-direction.
+% %and can provide up to 36 hits per track.
+% %up the TRT are straw tubes 4 mm in diameter,
+% %with walls made of two multi-layer films, each 35  m thick.
+% %The TRT is designed to provide a large number of hits, typically 36 per track,
+% %with a coverage of j j < 2:0. It has an intrinsic accuracy of 130  m in R 􀀀  ,
+% %providing no information in the z-direction
+% %The TRT [71] consists of three barrel rings, with 32 modules each, and 18 end-caps units
+% %31 2.2 The ATLAS detector
+% %with 224 layers.
+% %These are positioned
+% %parallel to the beam pipe in the barrel and radial in the end caps. The
+% %n the TRT this is done by polypropylene
+% %fibres (foils), which are interwoven between the barrel (end-cap) straws, that enable
+% %the production of transition radiation in the formof X-rays. The amount of radiation
+% %produced can be used to distinguish between, e. g. electrons and charged pions, as the
+% %amount of radiation would depend on how relativistic the charged particle is.
+
+% %The TRT can discriminate between two signals, according to their
+% %amplitude: the lowest charge is due to the minimum-ionising particles (MIPs) crossing the
+% %gas, while the strongest signal is given by the transition-radiation photons absorbed in
+% %the gas. This last class of events is originated by the electrons, hence the TRT is able to
+% %contribute to electron identification on a straw-by-straw basis
+% %\subsubsection*{SCT - Semiconductor Tracker }
+% %\subsubsection*{TRT - Transition Radiation Tracker}
+% %
+% %gaseous/polypropylene-fibre transition radiation tracker (TRT) a
+% %\subsubsection*{BCM - Beam Condition Monitor} --> beam condition monitor
+% %\cite{BCM}
+% %=====================================
+% \subsection{Calorimeter System}
+% %=====================================
+% The overall \ac{ID} system is surrounded by two sets of calorimeters \cite{ATLAS}.  An \acf{ECAL} \cite{LArTDR} in the inner most part, followed by a \ac{HCAL} \cite{TileTDR} (see Figure \ref{fig:expSetup:calorimeters}).  Both systems are designed to record the energy deposits of mainly electromagnetically interacting particles (electron,  photons) or the energy of hadrons,  based on hadronic interactions. 
+
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[width=0.75\linewidth]{figures/ExpSetup/Calorimeter_overview.eps}
+% \caption{Illustration of the \ac{ATLAS} calorimeter system \cite{ATLAS} \label{fig:expSetup:calorimeters}}
+% \end{figure}
+
+% Both calorimeters are so-called sampling calorimeters with alternating layers of absorber and active material.  The absorber layer triggers a shower development of consecutive interactions with the detector material,  the active layer is detecting the signal. The shower development and properties can be a helpful characteristic in particle identification.
+% Overall,  the calorimeters cover the $|\eta|$ range below 4.9.  Two important quantities in connection with the calorimeters are the radiation length, $X_0$,  and the interaction length $\lambda$.   The radiation length  refers to the distance after which an electrons energy has been reduced to 1/e of its initial energy.  The interaction length describes the mean free path before the occurrence of an hadronic interaction.
+
+
+% \paragraph{Liquid Argon Calorimeter}
+% Liquid Argon (LAr) calorimeters \cite{LArTDR} are used in multiple parts of the calorimeter system.  First,  it is comprising the \ac{ECAL},  with two half barrels covering the central detector region, with a small (4 mm) gap at $z = 0$ and one end-cap on each side of the beamline (see Fig. \ref{fig:expSetup:ecal}).  Additionally,  the LAr technology is used for the hadronic calorimeters end-caps as well as a \ac{FCAL} ($3.1 < \eta < 4.9$). 
+% The active material is LAr,  with copper and kapton electrodes for readout.  The absorber is made of lead with stainless steel sheets.  As can be seen in Figure \ref{fig:expSetup:ecal},  an accordion symmetry is used to ensure homogeneous coverage all over $\phi$.
+
+% \begin{figure}[htpb!]
+% \centering
+% \subfloat[\label{fig:expSetup:ecal}]{\includegraphics[width=0.45\linewidth]{figures/ExpSetup/ECalVis.png}}
+% \subfloat[\label{fig:expSetup:crack}]{\includegraphics[width=0.45\linewidth]{figures/ExpSetup/CrackRegionmaterial.png}}
+% \caption{Visualisation of an \ac{ECAL} slice at $\eta = 0$ (a),   next to an overview of the material in terms of radiation lengths infront of the presampler and main \ac{ECAL} (b).  Both from \cite{ATLAS}.}
+% \end{figure}
+
+% Infront of the \ac{ECAL} between $|\eta| < 1.52$ in the barrel region and $1.5 < |\eta| < 1.8$ in the end cap,  there is an additional layer of instrumented Liquid Argon,  the \textit{presampler}.  This is included in order to account for energy losses of particles before entering the \ac{ECAL}.  The first layer of the \ac{ECAL} has the finest granularity, comprising 4.3 $X_0$, followed by the second layer of 16 $X_0$ radiation lenghts in depth and a third layer with coarse granularity. 
+% The total thickness in the barrel of the \ac{ECAL} is over 22 $X_0$,  over 24 $X_0$ in the endcap. 
+% In Figure \ref{fig:expSetup:crack},  the amount of material infront of the presampler as well as the accordion part of the calorimeters is given in radiation lenghts.  Within the region of $ 1.37 < |\eta| < 1.52$,  a large amount of material is present.  This is due to the transition between the barrel and end-cap cryostats,  housing the calorimeters.  This region is knowns as the \textit{crack} region or transition region. 
+
+% \paragraph{Tile Hadronic Calorimeter}
+% The hadronic calorimeter is built of a tile calorimeter technology \cite{TileTDR} in the barrel and extend barrel region (between $0 < |\eta| < 1.7$,  see Figure \ref{fig:expSetup:calorimeters}).  Similar to the \ac{LAr} calorimeter the tile calorimeter is a sampling calorimeter,  with a steel absorber material as well as plastic scintillator tiles as active material.  The scintillator tiles are combined with optical fibres and photo-multipliers for signal readout.  In the barrel,  the tile calorimeter has an overall depth of roughly 9.7 interaction lengths. 
+
+% %=====================================
+% \subsection{Muon System}
+% %=====================================
+% The outermost part of the \ac{ATLAS} detector is the \ac{MS} \cite{MuonTDR}. It is embedded within the 4 T magnetic field generated by the barrel and endcap toroid magnets.  In Figure \ref{fig:expSetup:MS},  a quarter of the muon system is visualised, highlighting the different subsystems.  \acp{MDT} and \acp{RPC} form three layers around the barrel,  \acp{CSC} are used close to the beam pipe.  The \textit{Big Muon wheels},  forming the "lids" of the \ac{ATLAS} barrel structure,  are comprised of \ac{TGC} and \ac{MDT} subdetectors.  A short overview of the subsystems is given in the following.
+
+% %d drift tube (MDT) and cathode strip (CSC) chambers for momentum determination an
+% %resistive plate (RPC) and thin gap (TGC) chambers for triggering. The
+
+% \begin{figure}[htpb!]
+% \centering
+% \includegraphics[width=0.8\linewidth]{figures/ExpSetup/MuonSpectrometer.png}
+% \caption{Overview of a quarter of the muon spectrometer, showing all subsystems \cite{MuonTriggerPerformance} \label{fig:expSetup:MS}}
+% \end{figure}
+
+% \paragraph{MDT - Monitored Drift Tubes}
+% The \ac{MDT} subdetectors of the muon spectrometer are drift tubes with a diameter of 29.97 mm.  They are filled with 93\% Ar,  7 \% CO2 and have a tungsten-rhenium wire in the middle.  There are in total 1171 \ac{MDT} chambers,  each layer with up to eight layers of drift tubes.  Overall 354240 tubes cover a pseudorapidity range up to $|\eta| < 2.7$,  providing high precision track coordinates perpendicular to the magnetic field.  In the innermost end-cap layer,  the \ac{MDT} chambers are replaced by \ac{CSC}'s. 
+
+% %29.97 mm diameter drift tubes
+% %93%Ar Å 7%CO2
+% %tungsten-rhenium wire, measuring 50 ¹m in
+% %Three to eight layers of drift tubes are used in
+% %both barrel and end-caps to allow a total of twenty measurements for each track.\\
+% %precision tracking
+% %1171 MDT chambers, with a combined total of 354240 tubes.
+% %ionisation
+% %The coverage of the MDTs extends to
+% %j j < 2:7 except in the innermost end-cap layer where they are limited to
+% %j j < 2:0,
+% %track coordinates
+% %in the bending direction.
+% %⌘| < 2.7.
+% \paragraph{CSC - Cathode Strip Chamber}
+% In the endcap in a pseudorapidity range of $2.0 < |\eta| < 2.7$,  the \ac{CSC} detectors provide a fast response and high spatial resolution,  similar to \ac{MDT}'s.  Since \ac{MDT} reach their maximum operational radiation tolerance close to the beampipe,  \ac{CSC} are used at the high radiation environment close to the beampipe.
+% \ac{CSC} detectors are multiwire proportional chambers filled with the same gas mixture as \ac{MDT}'s.  They provide both $r$ and $\phi$ coordinates.
+% %precision tracking
+% %2:0 < j j < 2:7 replacing mdt's
+% %incoming neutron
+% %rate is expected to exceed 150 Hz=cm2, the maximum for safe operation of the
+% %MDTs.
+% %multiwire proportional chambers, using the same gas mixture
+% %radial direction wire
+% %characterised by a
+% %fast response time and high spatial resolution
+% %both radial and phi coordinate with
+% Both \ac{MDT} and \ac{CSC} detectors are used for precision momentum measurements,  whereas \ac{RPC} and \ac{TGC} 
+% detectors are used to provide fast information to the \ac{ATLAS} trigger system (see section \ref{sec:ExpSetup:trigger}).
+
+% \paragraph{RPC - Resistive Plate Chambers}
+% In combination with \ac{MDT}'s , \ac{RPC} detectors are used to provide a coarse,  quick,  secondary coordinate measurement.
+% Each \ac{RPC} consists of two detector layers orthogonal to each other, providing $\phi$ and $\eta$ coordinate measurements.  The \ac{RPC} covers an overall pseudorapidity region up to $|\eta| < 1.05$.
+% The detectors are named after the two resistive parallel plates of phenolic-melaminic plastic laminate within each chamber,  enclosing a gas mixture.
+% %
+% %triggering
+% %provide a measure of the second coordinate in the
+% %barrel.
+% %They cover the pseudorapidity region |⌘| < 1.05.
+% %much quicker response time compared
+% %with the CSCs.
+% %coarsely measure a second tracking coordinate in the
+% %no-bending phi-projection to complement the
+% %The chambers are filled with a gas mixture of C2H2F4 and a small fraction of resistive component
+% %SF6 contained in two resistive parallel plates of bakelite, kept at a 2mm distance.
+% %The two detector layers which form the chamber are placed orthogonally to read both the h and f
+% %Two layers of chambers (middle station) provide the trigger for low-pT muons, while a
+% %third one (outer station) is used for high pT trigger thresholds.
+
+% \paragraph{TGC - Thin Gap Chambers}
+% The last component of the \ac{MS} are \ac{TGC}.  They are multi-wire proportional chambers similar to \ac{CSC}'s,  but with a coarser granularity.  The gas filling is a mixture of CO2 and n-pentane (n-C5H12).  Similar to \ac{RPC} detectors,  \ac{TGC} are able to provide a signal faster than 25 ns,  allowing for a matchin of a signal to a specific bunch crossing.  Their fast readout time is used in the trigger system,  additional to \ac{MDT}, s they provide a secondary measurement of the azimuthal angle.   
+% %triggering
+% %TGCs are multi-wire
+% %proportional chambers, filled with a mixture of CO2 and n-pentane (n-C5H12), and have a similar
+% %structure as the CSCs but a higher granularity.
+% %They are used as trigger chambers for muon tracks
+% %and, in addition to the MDTs, they provide a second measurement of the azimuthal coordinate. Both
+% %TGC and RPC chambers are designed to provide a signal over a time shorter than 25 ns.
+
+% %=====================================
+% %\subsection{Magnet System}
+% %=====================================
+% %\subsection{Forward Detectors}
+% %%=====================================
+% %%\subsubsection*{LUCID - Luminosity Cherenkov Integrating Detector}
+% %%%\subsubsection*{AFP - ATLAS Forward Proton}
+% %%\subsubsection*{ALFA - Absolute Luminosity For ATLAS}
+% %%\subsubsection*{ZDC - Zero Degree Calorimeter}
+
+
+% \FloatBarrier
+% \subsection{The Trigger System}
+% \label{sec:ExpSetup:trigger}
+% %\subsubsection*{L1}
+% %\subsubsection*{HLT}
+% %\subsubsection*{MBTS - Minimum Bias Trigger Scintillator}
+
+% With all the components of the ATLAS detector described above,  any interactions and electrical signals from the entire detector convolute into a large set of read-out information. Even without any proton-proton collisions provided by the \ac{LHC},  ATLAS can detect feedback from the detectors through for example cosmic muons. Storing every single interaction within ATLAS during collisions would exceed the storage capabilities of the CERN computing centres and simultaneous would not provide any differentiation between high energetic collision interactions and low energy scattering of the protons.
+% The ATLAS trigger system has been designed to select collision events of interest to the multitude of physics analyses performed with ATLAS data.  To do so,  a two-stage trigger system was used during Run-2.  A visualisation of the trigger system, as well as the flow of data through this system, is given in Figure \ref{fig:expSetup:trigVis}.
+
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.8\linewidth]{figures/ExpSetup/triggerSystem_withoutFTK.pdf}
+% \caption{Overview of the ATLAS trigger system during Run-2.  Adapted from \cite{Run2TriggerOperation} \label{fig:expSetup:trigVis}}.
+% \end{figure}
+
+% The first trigger level is based in hardware.  This \textit{Level-1} trigger is built of processors digitizing the calorimeter readout and information from the muon spectrometers (\ac{TGC}, \ac{RPC}),  identifying electrons, photons,  tau leptons,  jets,  and can calculate missing transverse energy.  The L1Topo component of the Level-1 system allows for topological requirements such as invariant mass selections and distance measures to be taken into account in the Level-1 decision.  The final decision to keep or discard an event at Level-1 is made by the \ac{CTP}.  This Level-1 trigger step reduces the 40 MHz collision rate down to a maximum rate of 100 kHz \cite{Run2TriggerOperation} and passes on Regions-of-Interest in $\eta$ and $\phi$ to the next trigger step,  the \acf{HLT}.  Regions-of-Interest consist of neighbouring calorimeter cells in the \ac{ECAL} and \ac{HCAL},  a detailed discussion in connection with electron triggers is given in Chapter \ref{ch:trigger}.\\
+% The \ac{HLT} is a software-based trigger,  a computing farm allowing for sequences of algorithms.  The \ac{HLT} is designed to reduce the event rate from 100 kHz to around 1 kHz that is saved.  The algorithms run on the \ac{HLT} farm have access to higher granularity calorimeter information as well as tracking information from the \ac{ID}.  A typical trigger sequence includes fast algorithms, designed to quickly reject events not targeted by the trigger,  followed by more precise algorithms that can run more time-consuming reconstruction and identification similar to events stored offline.  The exact sequence and type of algorithms considered at the \ac{HLT} are defined in the trigger \textit{menu}.  This comprises a database of triggers,  each trigger defining a sequence of algorithms and requirements on these algorithms for an event to pass the \ac{HLT}.  
+% The overall set of triggers targeting various detector signatures associated with particles,  such as electrons,  muons or photons as well as missing transverse energy.  The trigger requirements are designed and budgeted in a way that the overall \ac{HLT} rate does not exceed 1 kHz. 
+% In some cases,  even the reduction in event rate achieved through the \ac{HLT} algorithms for desired trigger requirements,  such as low momentum triggers,  is too high.  To keep the overall \ac{HLT} rate below 1 kHz in these cases,  triggers can still be included in the menu, but with a \textit{prescale}.  A prescale is an artificial scaling of the trigger,  only accepting every Nth trigger decision if the prescale factor is N.  This allows triggers with an otherwise high rate to still collect events.
+% %\textcolor{red}{need to mention what trigger towers are}
+% %\textcolor{red}{have mentioned the bandwidth and budgets of the different signatures? -- might have built up to this in the DAQ section}
+
+

@@ -1,0 +1,171 @@
+%---------------------------------------------------
+% University of Sussex thesis template
+% Last Edit by Fabrizio Miano, Oct 2017
+%---------------------------------------------------
+%!TeX root = ../main.tex
+\documentclass[a4paper,11pt,oneside]{memoir}
+\usepackage[british]{babel}
+
+
+\input{metadata_english}
+\RequirePackage{latex/atlaslatexpath}
+\usepackage{latex/packages}
+\usepackage{definitions}
+
+
+\graphicspath{{./figures/}} % directory with all the pictures
+
+
+%---------------------------------------------------
+% BEGIN DOCUMENT
+%---------------------------------------------------
+\begin{document}
+% --- to fix figure numbers
+\makeatletter
+\renewcommand{\counterwithin}{\@ifstar{\@csinstar}{\@csin}}
+\makeatother
+
+
+
+%---------------------------------------------------
+% PREAMBLE: roman page numbering i, ii, iii, ...
+%---------------------------------------------------
+\pagestyle{custom}% Set page style to custom
+\chapterstyle{hansen} % Set chapter style
+
+\begingroup
+    \frontmatter
+    \pagenumbering{roman}
+    \clearpage\input{FrontBackMatter_english/Titlepage}
+    \clearpage\input{FrontBackMatter_english/Dedication} % Dedication page
+    \clearpage\input{FrontBackMatter_english/Acknowledgments} % Acknowledgements page
+    \clearpage\input{FrontBackMatter_english/Declaration} % Declaration
+    \clearpage\input{FrontBackMatter_english/Abstract} % Abstract page
+\endgroup
+
+
+
+%---------------------------------------------------
+% TABLE OF CONTENTS, LISTS OF TABLES & FIGURES
+%---------------------------------------------------
+\begingroup
+    \newpage
+    \input{FrontBackMatter_english/Contents.tex}
+\endgroup
+
+
+
+
+%---------------------------------------------------
+% MAIN THESIS TEXT: arabic page numbering 1, 2, 3, ...
+% THESIS CONTENT - CHAPTERS
+%---------------------------------------------------
+\mainmatter
+\pagenumbering{arabic}
+
+
+
+\input{Chapters_english/ToDoAndNotes}
+
+\input{Chapters_english/1_introduction}
+
+
+
+\part{Theory Motivation}
+\input{Chapters_english/2_theory/1_theory.tex}
+
+
+\FloatBarrier
+\part{Experimental setup}
+\input{Chapters_english/3_experiment/1_atlas_experiment.tex}
+\input{Chapters_english/3_experiment/2_objects.tex}
+% \input{Chapters_english/3_experiment/3_data_mc.tex}
+
+
+\FloatBarrier
+\part{Photon shower shape corrections}
+\input{Chapters_english/4_showershapes/1_introduction.tex}
+\input{Chapters_english/4_showershapes/2_fudgefactors.tex}
+\input{Chapters_english/4_showershapes/3_cellrw.tex}
+
+
+\FloatBarrier
+\part{New Physics}
+\input{Chapters_english/5_new_physics/1_strategy_motivation.tex}
+\input{Chapters_english/5_new_physics/2_samples.tex}
+\input{Chapters_english/5_new_physics/3_event_selection.tex}
+\input{Chapters_english/5_new_physics/4_bkg_estimation.tex}
+\input{Chapters_english/5_new_physics/5_bkg_modeling.tex}
+\input{Chapters_english/5_new_physics/6_systematics.tex}
+\input{Chapters_english/5_new_physics/7_statistical_analysis.tex}
+\input{Chapters_english/5_new_physics/8_results.tex}
+
+\FloatBarrier
+
+\input{Chapters_english/6_conclusions.tex}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%---------------------------------------------------
+% APPENDICES
+%---------------------------------------------------
+\appendix
+% \input{Chapters_english/appA.tex}
+% \input{Chapters_english/appB.tex}
+\backmatter
+\input{FrontBackMatter_english/Acronyms.tex}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%---------------------------------------------------
+% BIBLIOGRAPHY
+%---------------------------------------------------
+\clearpage
+\phantomsection
+% \nocite{*}
+\bibliography{BibliographyLink/bibliography,BibliographyLink/ATLAS_CP,BibliographyLink/ATLAS_DAQ,BibliographyLink/ATLAS_detectors,BibliographyLink/ATLAS_NOTES,BibliographyLink/CERN_experiments,BibliographyLink/thesis}
+% \bibliography{Chapters_english/bibliography}
+%using an on-the-go bibliography
+%\bibliographystyle{IEEE}
+%\bibliographystyle{ieeetr}
+% \bibliography{BibliographyLink/IncludedInThesis}
+% \bibliography{BibliographyLink/IncludedInThesis_correctionsPostViva}
+%\printbibliography
+%\bibliography{BibliographyLink/IncludedInThesis_etall}
+% \bibliography{BibliographyLink/ToReadAndFollowUp}
+% \clearpage\input{FrontBackMatter_english/Colophon}
+
+
+
+
+
+
+
+%---------------------------------------------------
+% END DOCUMENT
+%---------------------------------------------------
+\end{document}
