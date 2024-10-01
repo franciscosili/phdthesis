@@ -1,0 +1,358 @@
+\chapter{Search for SUSY in a final state with at least two hadronically decaying tau leptons}
+\label{ch:analysis}
+\epigraph{\emph{"Let us choose for ourselves our path in life, and let us try to strew that path with flowers."}}{Emilie du Chatelet}
+%“All sorts of things can happen when you’re open to new ideas and playing around with things.” — Stephanie Kwolek
+
+
+%\textcolor{purple}{have to still include CMS result in the review of the analysis? might be able to compare that to the SUSY2022 slides on CMS search!\\}
+
+This chapter is describing a search for supersymmetric particles in a final state with at least two hadronically decaying tau leptons.  This search has been the author's main project and has been the author's sole responsibility.  This work has been published as \ac{ATLAS} conference note \cite{AnalysisConf} and was presented at ICHEP2022 through a poster contribution by the author \cite{ICHEP2022Poster}.
+%Have to cite this: https://agenda.infn.it/event/28874/contributions/175844/
+An introduction to the theoretical model of interest to this search, together with a short motivation of the model is given in section \ref{sec:analysis:intro}.  In section \ref{sec:analysis:previous}, an overview of other experimental searches for this model is given.  The strategy of the analysis discussed here is given in section \ref{sec:analysis:strategy},  with an overview of the considered samples (\ref{sec:analysis:samples}) and the selection process employed in this search (\ref{sec:analysis:eventselection}).  Definitions of the analysis objects are given in section \ref{sec:analysis:objectDef}, followed by the signal region optimisation (\ref{sec:analysis:sroptimisationSection}) and  background estimation (\ref{sec:analysis:bkgestimation}).  An overview of the considered uncertainties is given in section \ref{sec:analysis:systematics}.  Before discussing the final results and interpretation in section \ref{sec:analysis:results} and \ref{sec:analysis:interpretation},  the statistical concepts relevant for this analysis (\ref{sec:analysis:stats}) are summarised.   
+The described search has then been combined with a search for the same model in a different final state.  This search has not been performed by the author but the statistical combination has been; therefore a brief overview of this orthogonal search is given in section \ref{sec:analysis:os}, before illustrating the gain of the statistical combination of the analyses in section \ref{sec:analysis:combination}.
+
+\section{Introduction and theoretical motivation}
+\label{sec:analysis:intro}
+Supersymmetry is a promising extension of the \ac{SM},  with a multitude of possible production mechanism of supersymmetric particles at the \ac{LHC}.  In hadron-hadron collisions,  the production of particles through strong interactions is the dominant mechanism.  As can be seen in Figure \ref{fig:analysis:xsec}, the strong production of supersymmetric particles has a larger cross section than an electroweak production through gauginos or sleptons.  However, if strongly produced particles (gluinos and squarks) are heavy,  electroweak production cross sections can become the leading production mode of \ac{SUSY} particles at the \ac{LHC}.  Given the latest status of strong and third generation squark searches as discussed in section \ref{sec:theory:biggerPicture},  gluinos and squark masses are expected to be larger than 1 TeV in most cases. This is motivating the investigation of electroweak production modes of \ac{SUSY} as presented within this thesis. 
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{figures/SUSY_xsecs_13TeV_overview.pdf}
+\caption{Cross section comparison in 13 TeV proton-proton collisons \cite{SUSYXSecWorkingGroup,XSecCalcPaper} \label{fig:analysis:xsec}}
+\end{figure}
+%
+This electroweak production of \ac{SUSY} particles includes the production of charginos and neutralinos.  Assuming R-Parity conservation (see equation \eqref{eq:theory:rparity}),  \ac{SUSY} particles are pair-produced and the lightest \ac{SUSY} particle is stable.  A stable lightest supersymmetric particle can be a candidate for Dark Matter. 
+In the search for \ac{SUSY} particles described here,  a simplified model (Figure \ref{fig:analysis:simplifiedmodel}) is considered in order to optimise search regions and interpret the results. 
+The lightest Chargino (\Cone) is produced together with the next-to-lightest neutralino (\Ntwo).  This can happen through a multitude of proton-proton interactions,  which is visualised through the larger gray shaded area. 
+
+\begin{figure}[!htpb]
+\centering
+\includegraphics[width=0.45\linewidth]{figures/C1N2-tautautauvN1N1-stausnu.pdf}
+\caption{Feynman diagram of the simplified supersymmetric model considered in this thesis \label{fig:analysis:simplifiedmodel} \cite{AnalysisConf}}
+\end{figure}
+In this simplified SUSY model,  the \Ntwo and \Cone are assumed to be mass degenerate and Wino dominated.  The \Cone, \Ntwo consecutively decay via a \stau or \sneutrino into the lightest,  bino-like neutralino (\None).  In many parameter configurations of \ac{SUSY},  third generation sleptons can be the lightest sleptons \cite{SUSYPrimer},  motivating the \Cone \Ntwo decay via \stau or \sneutrino. The \None is assumed to be the lightest supersymmetric particle and therefore stable under R-parity conservation and a \ac{DM} candidate.  
+The \Stau and \sneutrino masses are fixed through a parameter $x$ as described in equation \eqref{eqn:analysis:staumass}  (adapted from \cite{DiTauC1N2_2018}).  In the investigation of the model considered here,  this parameter is fixed to 0.5.  As discussed in section \ref{sec:theory:susy},  the gauge and mass eigenstates of the \stau 's can differ. In this simplified model,  $\tilde{\tau}_L$ and $\tilde{\tau}_R$ are assumed to be mass-degenerate.  
+\begin{equation}
+m_{\tilde{\tau}/ \tilde{\nu_\tau}} = m_{\tilde{\chi}_1^0} + x * \Delta m(\tilde{\chi}_2^0 - \tilde{\chi}_1^0)
+\label{eqn:analysis:staumass} 
+\end{equation}
+%
+In this simplified model,  the \Cone decays via a \Stau and \nutau or \sneutrino and $\tau$ further into either a $\tau$ or \nutau and a \None. In both cases,  one neutrino,  one tau and one \ac{LSP} are the final state of this leg of the simplified model.  The \Ntwo decays via a \stau or \sneutrino into a pair of two $\tau$ leptons or $\tau$ neutrinos.  In order to achieve a final state with at least two hadronically decaying tau leptons,  the \Ntwo has to decay via a \stau. 
+
+%Light electroweakinos up to around 1 TeV are of phenomenological interest -- \textcolor{red}{references in the all hadronic paper are looking at wino LSP - not the case here!}
+%%
+Supersymmetric models with light sleptons,  such as the \stau considered in the discussed model,  can offer a Dark Matter candidate that can be compatible with the observed relic Dark Matter density,  thanks to possible co-annihilation of neutralinos via these light sleptons \cite{Coannihilation}. 
+Since lepton flavour universality is not a fixed symmetry in the \ac{SM} and \ac{SUSY},  considering all lepton flavours in searches for new physics is crucial.
+%\textcolor{purple}{want to further discuss any other motivations of this model? - are there any gambit or other references?}
+%%https://link.springer.com/article/10.1007/JHEP04(2020)165
+%%https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.3484
+%%https://journals.aps.org/prd/abstract/10.1103/PhysRevD.56.4424
+%
+%%\textcolor{gray}{\begin{itemize}
+%%	\setlength\itemsep{-0.5em}
+%%\item introduction of simplified model 
+%%\item derivation/assumptions on that from pMSSM
+%%\item Dark Matter reasoning
+%%\item stau coannihilation
+%%\item GAMBIT motivations 
+%%\end{itemize}
+%%}
+
+
+
+\section{Previous model investigations}
+\label{sec:analysis:previous}
+The above described simplified model has been previously investigated with the \ac{ATLAS} detector during Run-1 \cite{Run1analysis,Run1combination} and most recently using partial Run-2 data \cite{DiTauC1N2_2018}. 
+Within the partial Run-2 data analysis, a search for the \Cone \Ntwo production described above,  as well as a simplified model of \Cone pair production decaying via staus,  was considered. 
+In the analysis,  a final state with at least two hadronically decaying taus of opposite electric charge was considered. 
+No significant excesses were observed,  leading to an interpretation in the \Ntwo, \None mass plane given in Figure \ref{fig:previous:mnonentwo}.  For a massless \ac{LSP},  \Ntwo masses up to 760 GeV were excluded. 
+In addition to mass points with a fixed stau and sneutrino mass parameter $x$ (as defined in equation \eqref{eqn:analysis:staumass}),  two benchmark points were investigated with $x$ varying between and 0.05 and 0.95.  The $CL_s$ significance for a scenario with lower mass splitting,  investigating a signal point with \None mass of 100~GeV and \Ntwo mass of 250 GeV is shown in Figure \ref{fig:previous:xvariation}.  The $CL_s$ significance is here used to express the confidence level connected with the $CL_s$ value - a detailed discussion of the statistical concepts behind the model-dependent exclusion discussed here is given in section~ \ref{sec:analysis:stats}.
+
+\begin{figure}[htpb!]
+\centering
+\subfloat[\label{fig:previous:mnonentwo}]{\includegraphics[width=0.49\linewidth]{figures/C1N2SS/previousAnalyses/fig_07b.pdf}}
+\subfloat[\label{fig:previous:xvariation}]{\includegraphics[width=0.49\linewidth]{figures/C1N2SS/previousAnalyses/fig_08c.pdf}}
+\caption{Results of previous model investigations in partial Run-2 data \cite{DiTauC1N2_2018} \label{fig:analysis:previousresults}. In its \Mnone vs \Mntwo interpretation,  as well as for a benchmark point in dependency of the stau mass splitting parameter $x$. }
+\end{figure}
+
+As can be seen in both exclusion plots,  the mass point (\Ntwo,\None) = (250,100) GeV is excluded by the analysis.  For no values of $x$ the $CL_s$ significance has dropped below the dashed line,  highlighting a confidence level below 95\%.  
+Even though there is a visible dependency on the stau mass parameter $x$ on the sensitivity of the analysis,  this dependency does not change the conclusion of the model investigation. This is a further motivation to continue with an assumption of $x = 0.5$ within the analysis described in the following.  \\
+The \acs{CMS} Collaboration has performed a search for the production of a \Cone and \Ntwo with a consecutive decay via sleptons \cite{CMSDitauGaugino} that includes a decay via stau leptons as described above. This search in 2016-2018 proton-proton collisions used multiple final states,  including multi-leptonic final states with a light lepton and at least one hadronically decaying tau.  A parametric neural network was used to enhance the sensitivity to the supersymmetric particle signal. No significant excesses have been observed in this search,  leading to the exclusion of \Ntwo masses up to 970 GeV for massless \None. 
+The larger available statistics offered by the full LHC Run-2 dataset used within this thesis allows for an investigation of the previously unaccessible regions of phase space,  particularly towards higher \Cone masses and low mass splittings between \Cone and \Ntwo. The same-sign di-tau final state considered in this thesis will offer a orthogonal approach to the analyses considered before, with different background compositions than in a opposite sign di-tau final state.  The orthogonality of both approaches will significantly increase the phase space coverage of the model. %%%The enhanced statistics compared to the previous \ac{ATLAS} investigation of the simplified model will significantly extend the 
+%%%%%%%%%%%%TODO%%%%%%%%%%%%%%%%%%%%%%%%
+%\textcolor{purple}{highlight why its beneficial to include the SS final state, want to talk about the CMS result, too?}
+%\textcolor{blue}{might want to compare that to a via slepton production as well?}
+%\textcolor{purple}{look at the latest CMS result here: 2106.14246}
+% https://arxiv.org/pdf/2106.14246.pdf
+
+%\textcolor{gray}{\begin{itemize}
+%	\setlength\itemsep{-0.5em}
+%\item partial run-2 ATLAS result -- done
+%\item CMS result
+%\item limitations of previous results -- not discussed
+%\item motivation of the SS extension next to OS final state -- not discussed
+%\item show exclusion limit in dependence of x to motivate choice of x -- done?
+%\end{itemize}
+%}
+\section{Analysis strategy}
+\label{sec:analysis:strategy}
+The simplified supersymmetric model presented in section \ref{sec:analysis:intro} has been investigated in a final state with at least two hadronically decaying tau leptons,  with the leading two taus of same electric charge.  
+Apart from the hadronic tau final state,  the composition of \ac{SM} backgrounds largely depends on the additional objects in the event.  One significant difference in the composition of the collision events considered is the amount of missing transverse momentum present.
+In regions with low and moderate amount of \Met, the dominant processes have \Met originating from single neutrinos or from mis-measurements.  \ac{SM} decays involving more neutrinos in the decay chain can lead to higher \Met. 
+Differences in the magnitude of missing momentum in the event are directly connected with differences in the assumed masses of the supersymmetric particles.  The lightest neutralino, \None ,  will not decay into \ac{SM} particles,  nor interact with the detector material.  Therefore the magnitude of missing transverse energy reconstructed is connected with the mass and momentum of the \None.
+To target different mass ranges of the simplified model,  two strategies have been designed.  One targeting low \None masses as well as low mass splittings between the \None and \Cone,  a second scenario targets high \None and \Cone masses,  leading to higher \Met. 
+
+\begin{figure}[!htpb]
+\centering
+\subfloat[Multi-jet \label{fig:feynmans:multijet}]{\includegraphics[height=3cm]{figures/FeynmanDiagrams/multijet.pdf}}
+\subfloat[Multiboson]{\includegraphics[height=3cm]{figures/FeynmanDiagrams/WZdilep.pdf}}
+\subfloat[Top \label{fig:feynmans:ttbar}]{\includegraphics[height=3cm]{figures/FeynmanDiagrams/ttbar.pdf}}\\
+\subfloat[W+jets \label{fig:feynmans:wjets}]{\includegraphics[height=3cm]{figures/FeynmanDiagrams/wjetslep.pdf}}
+\subfloat[Z+jets \label{fig:feynmans:zjets}]{\includegraphics[height=3cm]{figures/FeynmanDiagrams/zjetstau.pdf}}
+\subfloat[Higgs \label{fig:feynmans:higgs}]{\includegraphics[height=3cm]{figures/FeynmanDiagrams/ttH.pdf}}\\
+\caption{Overview of \ac{SM} processes contributing to a di-tau final state \label{fig:bkgestimation:feynmanOverview}}
+\end{figure}
+
+An overview of the \ac{SM} processes considered,  which can enter a di-tau final state is given in Figure \ref{fig:bkgestimation:feynmanOverview}. Here only a few selected feynman diagrams for these \ac{SM} processes are shown for illustration.
+\textit{Multi-jet} processes include all QCD processes that end up in a final state with multiple jets.  The example shown in Figure \ref{fig:feynmans:multijet} shows a gluon fusion process.  The parton showering of these gluons into jets can lead to jets that are mis-identified as hadronically decaying tau leptons.  In \textit{Multi-boson} processes,  the associate production of multiple \ac{SM} $Z$ or $W$ bosons can lead to a final state with two tau leptons.  This is governed by the branching ratios of the $Z$ and $W$ boson decaying into tau leptons ($3.37\%$  and $11.38\%$ respectively \cite{PDG2022}).  This also applies to the associate production of $W$ or $Z$ bosons with jets,  as shown in Figures \ref{fig:feynmans:wjets} and \ref{fig:feynmans:zjets}.  In this single boson productions, at least one of the hadronic taus in the final state is a so-called \textit{fake tau},  originating from mis-identified jets. 
+Processes associated with top quarks like the top quark pair production shown in Figure \ref{fig:feynmans:ttbar} can contribute to a di-tau final state both through hadronically decaying taus or mis-identified, fake taus.  This is due to the decay of the top quarks into a bottom quark and $W$ boson,  which can consecutively decay into a tau lepton.
+In this thesis,  all \ac{SM} processes containing a Higgs boson,  even in association with top quarks as depicted in Figure \ref{fig:feynmans:higgs} are considered as \textit{Higgs} processes.  Similar to the top associated processes,  whether the final state tau objects are misidentified jets or tau leptons depends on the decay of the Higgs boson as well as the top quark decay.  The background estimation techniques described within section \ref{sec:analysis:bkgestimation} do not separate the backgrounds based on the number of fake taus, but rather based on the \ac{SM} processes as highlighted in Figure \ref{fig:bkgestimation:feynmanOverview}.
+
+
+\section{Data and simulation samples}
+\label{sec:analysis:samples}
+An introduction to Monte Carlo simulation principles used in particle physics as well as an overview of the Monte Carlo generators of importance to this thesis was given in section \ref{sec:DAQ:MC}.  In the following,  details about the simulated events used in this analysis for the various \ac{SM} backgrounds as well as \ac{SUSY} signal is given.
+
+For all samples considered here,  \texttt{PYTHIA8} was used to overlay simulated soft QCD processes.  This simulation is usually performed before the exact pile-up conditions in data are known.  Therefore the simulation is corrected through re-weighting of events to match the year-by-year pileup conditions described in section \ref{sec:ExpSetup:LHC}. 
+
+\textbf{Top} related processes include top quark pair production (\ttbar) as well as single-top production via s-, t- and Wt-channels. These processes were simulated using  \texttt{POWHEG},  interfaced with \texttt{PYTHIA8} for the parton showering.  \texttt{POWHEG} includes a next-to-leading order matrix element calculation.  A \ac{NNLO} cross section calculation, including resummation of \ac{NLL} soft-gluon terms was used to normalise the top quark pair production \cite{Beneke_2012,Cacciari_2012,B_rnreuther_2012,Czakon_2012,Czakon_2013,Czakon_2013_2,Czakon_2014}.
+Single top production via the Wt-channel was normalised using \ac{NNLO} cross sections with \ac{NNLL} corrections,  s- and t-channels were normalised using NLO cross section calculations \cite{Kant_2015, Aliev_2011}. 
+%The \ttbar sample was normalised to next-to-next-to-leading order in QCD cross section prediction \cite{}.  
+Top quark pair productions with an additional W or Z boson were simulated using \texttt{MadGraph5\_aMC@NLO} for a \ac{NLO} matrix element calculation,  in combination with \texttt{PYTHIA8} for fragmentation and hadronisation. The cross-section calculation was done at next-to-leading order \cite{Lazopoulos_2008,Campbell_2012}.
+
+\textbf{$W/Z$ + jets} production was generated using \texttt{Sherpa}, with \ac{NLO} matrix elements with up to two additional partons and \ac{LO} with four additional partons.  All decays of $W$ into $e/\mu/\tau + \nu$ were considered.  For the $Z$ boson production in association with jets,  $Z\rightarrow ee$,   $Z\rightarrow \mu\mu$,   $Z\rightarrow \tau\tau$ as well as $Z\rightarrow \nu\nu$ decay was considered. The cross-sections used were next-to-next-to leading order \cite{Catani_2009}.
+
+\textbf{Multi-boson} production includes di-boson as well as tri-boson production,  with the \ac{SM} bosons here excluding the Higgs boson.  Di-boson samples including WW, WZ and ZZ production decaying semi- or fully leptonic were generated using \texttt{Sherpa}.  Tri-boson samples simulated with \texttt{Sherpa} were also included.  The matrix elements were generated at \ac{NLO}.
+
+\textbf{Higgs} boson related events produced in gluon-gluon fusion and vector-boson fusion were generated using \texttt{POWHEG} next-to-leading order matrix element in combination with \texttt{PYTHIA8} parton showering.  The production of a Higgs boson in association with a vector boson was simulated using \texttt{PYTHIA8}; the production of a Higgs boson in association with a top pair was simulated using \texttt{MadGraph5\_aMC@NLO}.  Cross-sections from \cite{CERNYellowReportHiggs} were used to normalise the samples.
+
+\textbf{SUSY signal} samples were generated using \texttt{MadGraph5\_aMC@NLO} in combination with \texttt{PYTHIA8}. 
+The signal cross section was calculated up to next-to-leading order in QCD coupling constant,  including resummation up to next-to-leading logarithmic accuracy using the \texttt{RESUMMINO} framework \cite{XSecOrig,Resummino}.  Uncertainties on the nominal cross section were included based on an envelope of variations of PDF as well as factorisation and renormalisation scales \cite{SigXSecVariation}.   %of soft gluon emissions 
+In the simplified model described in section \ref{sec:analysis:intro},  two parameters of the model are free.  The masses of the \Cone/\Ntwo as well as the \ac{LSP} mass,  \None. 
+A set of signal samples have been generated, varying the two mass parameters.  An overview of the available signal mass points can be seen in Figure \ref{fig:analysis:grid}.
+Towards the kinematic diagonal,  with small mass differences between \Cone and \None, a finer granularity in signal mass points has been chosen.  In this phase space region,  small mass differences can lead to noticeable differences to the analysis' signal selection efficiency. A finer granularity allows for a more stable extrapolation of the analysis' sensitivity and helps avoid fluctuations in sensitivity due to statistical fluctuations. 
+\FloatBarrier
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/gridC1N2stau_extendedFornote_tilde.pdf}
+\caption{Visualisation of the available signal mass points \label{fig:analysis:grid}}
+\end{figure}
+
+\textbf{Data} is collected by the ATLAS detector as described throughout chapter \ref{ch:expsetup}.  A total of $139 \text{ fb}^{-1}$ integrated luminosity collected during Run-2 of data-taking has been analysed.  The selection procedure for collision events is described in section \ref{sec:analysis:eventselection}.  These selection criteria are mimicked in the Monte Carlo simulation. 
+
+\section{Event selection}
+\label{sec:analysis:eventselection}
+Three types of proton-proton collision events are considered: Events are selected with at least two hadronically decaying tau leptons, for the definition of signal and control regions.  For background estimation and validation, events are selected with either exactly one muon and at least one tau lepton, or two muons and at least one tau lepton. These events are selected through the use of multiple triggers,  summarized in table \ref{tab:analysis:trigger}, together with the offline cuts required when a given trigger is used.
+As can be seen in table \ref{tab:analysis:trigger},  the tau trigger includes a \texttt{medium1} selection,  specifying the tau trigger \ac{BDT} identification requirement with at least one associated track.  The \texttt{tracktwo} specification in the trigger highlights that a two-step tracking procedure is used. From 2015-2017 this two-step tracking was performed as a fast tracking step,  in 2018 the \texttt{EF} highlights the tracking procedure being performed at the precision step. 
+The use of a ditau + \Met trigger allows for lower tau $p_T$ thresholds.  Due to a slow turn on in efficiency of the \Met trigger,  a cut of 150 GeV is required in order to reach the trigger efficiency plateau. 
+For the single muon trigger,  a combination of the lowest unprescaled,  isolated trigger (\texttt{iloose}) in 2015, \texttt{ivarmedium} from 2016 onwards) with higher momentum threshold is used. 
+% Preview source code for paragraph 0
+
+\begin{table}[htpb!]
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c|c|c|}
+\hline 
+ & \textbf{asymmetric di-tau trigger} & \textbf{offline requirements {[}GeV{]}}\tabularnewline
+\hline 
+\hline 
+\multirow{2}{*}{2015-2017} & \multirow{2}{*}{HLT\_tau80\_medium1\_tracktwo\_L1TAU60\_tau50\_medium1\_tracktwo\_L1TAU12} & $\tau_{1}p_{T}>95$\tabularnewline
+%\cline{3-3} 
+ &  & $\tau_{2}p_{T}>60$\tabularnewline
+\hline 
+\multirow{2}{*}{2018} & \multirow{2}{*}{HLT\_tau80\_medium1\_tracktwoEF\_L1TAU60\_tau60\_medium1\_tracktwoEF\_L1TAU40} & $\tau_{1}p_{T}>95$\tabularnewline
+%\cline{3-3} 
+ &  & $\tau_{2}p_{T}>75$\tabularnewline
+\hline 
+ & \textbf{ditau + \Met trigger} & \textbf{offline requirements {[}GeV{]}}\tabularnewline
+\hline 
+\hline 
+\multirow{3}{*}{2015-2017} & \multirow{3}{*}{HLT\_tau35\_medium1\_tracktwo\_tau25\_medium1\_tracktwo\_xe50} & \Met$>150$\tabularnewline
+%\cline{3-3} 
+ &  & $\tau_{1}p_{T}>50$\tabularnewline
+%\cline{3-3} 
+ &  & $\tau_{2}p_{T}>40$\tabularnewline
+\hline 
+\multirow{3}{*}{2018} & \multirow{3}{*}{HLT\_tau60\_medium1\_tracktwoEF\_tau25\_medium1\_tracktwoEF\_xe50} & \Met$>150$\tabularnewline
+%\cline{3-3} 
+ &  & $\tau_{1}p_{T}>75$\tabularnewline
+%\cline{3-3} 
+ &  & $\tau_{2}p_{T}>40$\tabularnewline
+\hline 
+ & \textbf{single muon trigger} & \textbf{offline requirements {[}GeV{]}}\tabularnewline
+\hline 
+\hline 
+\multirow{2}{*}{2015} & HLT\_mu20\_iloose\_L1MU15 & \multirow{2}{*}{$\mu_{1}p_{T}>50$}\tabularnewline
+ & HLT\_mu50 & \tabularnewline
+\hline 
+\multirow{2}{*}{2016-2018} & HLT\_mu26\_ivarmedium & \multirow{2}{*}{$\mu_{1}p_{T}>50$}\tabularnewline
+ & HLT\_mu50 & \tabularnewline
+\hline 
+\end{tabular}
+}
+\caption{Trigger strategy for the used Run-2 dataset \label{tab:analysis:trigger}}
+\end{table}
+
+After the events are selected by the triggers,  multiple steps of \textit{event cleaning} are applied.  This starts with removing runs of data-taking that are not included in a so-called \ac{GRL}.  \acp{GRL} are used during data-taking as a result of dedicated monitoring and data-quality checks to record the detector status and mark periods of stable data-taking useful for physics analyses \cite{DQandGRL}.  
+Events are required to have at least one primary vertex \cite{PrimaryVertex},  where a primary vertex is defined as a vertex with at least two associated tracks with $p_T > 400$ MeV.  In case an event has more than one primary vertex,  the vertex with the larger momentum of associated tracks is selected.  Additionally,  to remove events with cosmic muons crossing the \ac{ATLAS} detector,  events with muon candidates with large longitudinal or transverse impact parameters ($|z_0| > 1 $ mm or $ |d_0| > 0.2$  mm,  respectively) are removed.
+
+\section{Object definitions}
+\label{sec:analysis:objectDef}
+%\textcolor{gray}{\begin{itemize}
+%	\setlength\itemsep{-0.5em}
+%\item brief overview of object definitions
+%\item discuss and introduce fake taus vs prompt taus - has been used in the estimation section
+%\item have to include the tau elec bdt 
+%\item also have to include the overlap removal procedure 
+%\item need to explain TES at some point in the reconstruction - have not mentioned that in the DAQ part!
+%\end{itemize}
+%}
+%\textcolor{gray}{use same arrangement as was used in the intro sections on DAQ: electrons, muons, jets (bjets), taus, met - then overlap removal}
+\ac{SM} particles and their reconstruction and identification as \textit{physics objects} in ATLAS is a multi-step process with different choices of possible properties. 
+A first, loose,  \textit{baseline} definition of objects is used to identify candidate objects.  At this stage, objects can be considered by multiple reconstruction algorithms, therefore an \textit{overlap removal} between close-by objects is performed.  Stricter requirements are then required on top of baseline objects to define \textit{signal} objects, used in the analysis.
+
+\textbf{Hadronically decaying tau leptons} follow the offline reconstruction and identification procedures described in section \ref{sec:DAQ:ObjectReco:Taus}.  Baseline taus have a minimum $p_T$ of 20 GeV and lie outside the detector's transition region ($|\eta| \in [0.,1.37] or [1.52, 2.5]$) to avoid inefficiencies in reconstruction and identification due to inactive material.  The tau candidates have either exactly one associated track or three associated tracks.  A \textit{medium} \ac{BDT} working point is required to separate taus from electrons.  A \textit{medium} \ac{RNN} identification working point is required for baseline and signal tau leptons to distinguish  hadronically decaying taus from jets.  For some background estimation techniques,  described in section \ref{sec:analysis:bkgestimation},  the baseline tau ID working point is lowered to \textit{very loose}. 
+
+\textbf{Jet} reconstruction is seeded by particle flow jets with the anti-$k_T$ clustering algorithm and a 0.4 radius parameter. Their minimum $p_T$ is 20 GeV,  with a pseudorapidity $|\eta| <2.8$.  Events with at least one jet from non-collision backgrounds are removed \cite{JetCleaning}.  Non-collision background for jets can come from beam-induced background (such as proton losses before the ATLAS interaction point), cosmic ray showers or calorimeter noise.  A \textit{Tight} working point of the \ac{JVT} is chosen, together with a maximum transverse momentum of 60 GeV.% for the application of the tagger.  
+
+\textbf{Jets associated with a decay of a b-quark} are based on the particle flow jets with the anti-$k_T$ clustering algorithm,  but with a slightly smaller pseudorapidity range of $|\eta| <2.5$.  The DL1 algorithm \cite{DL1btagging} is used to identify jets as associated to a b-quark. A b-jet efficiency working point of 77\% is used,  which offers a light quark rejection factor over 100 for a c-jet rejection of five.
+
+\textbf{Electron} objects at baseline level have a minimum transverse momentum of 4.5 GeV and a pseudorapidity of $|\eta| < 2.47$, to stay within the coverage of the electromagnetic calorimeter.  An electron identification working point of \textit{LooseAndBLayerLLH} is required for the likelihood discriminant discussed in section \ref{sec:DAQ:ObjectReco:Electrons}.  Quality restrictions on the transverse and longitudinal impact parameter significances are applied ($\frac{d_0}{\sigma(d_0)}<5$ ,  $z_0 \sin\theta < 0.5\text{ mm}$, respectively),  witch $\sigma$ denoting the uncertainty on the impact parameters.  Signal electrons need to pass a \textit{TightLLH} likelihood identification criteria as well as the isolation working points \textit{FCLoose} for $p_T<200 $ GeV or a loosened,  calorimeter only working point, \textit{FCHighPtCaloOnly} for $p_T > 200$ GeV.  
+
+\textbf{Muon} candidates at baseline level are defined as having $p_T > 3$ GeV,  $|\eta| < 2.7$,  a \textit{medium} ID requirement and a cut on the quantity $z_0 \sin(\theta)$ (< 0.5 mm). 
+If the candidate muons have a large uncertainty on their momentum to charge measurement ($\frac{\sigma(q/p)}{ |q/p|} > 0.2$), they are rejected.  Muons with larger transverse momentum of$p_T >25 $ GeV as well as $\frac{d_0}{\sigma(d_0)}<3.0$, together with a \textit{FCLoose} isolation are defined as signal muons.
+
+\begin{table}[htpb!]
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+\multirow{2}{*}{\textbf{Step}} & \textbf{Object}  & \textbf{Object}  & \multirow{2}{*}{\textbf{Condition}} & \multirow{2}{*}{\textbf{Further Comment}}\tabularnewline
+ & \textbf{removed} & \textbf{compared to} &  & \tabularnewline
+\hline 
+\hline 
+\multirow{2}{*}{1} & \multirow{2}{*}{jet} & \multirow{2}{*}{muons} & \multirow{2}{*}{multiple overlap criteria} & Includes restrictions on $\Delta R$ ,\tabularnewline
+ &  &  &  & jet track multiplicity, muon ID/isolation\tabularnewline
+\hline 
+2 & tau & electron & $\Delta R<0.2$ & \tabularnewline
+\hline 
+3 & tau & muon & $\Delta R<0.2$ & \tabularnewline
+\hline 
+4 & electron & muon & shared \ac{ID} track & \tabularnewline
+\hline 
+5 & jet & electron & $\Delta R<0.2$ & \tabularnewline
+\hline 
+6 & electron & jet & $\Delta R<rad$ & $rad=min(0.04+\frac{10\text{ GeV}}{p_{T}(e)},0.4)$ \tabularnewline
+\hline 
+\multirow{2}{*}{7} & \multirow{2}{*}{jet} & \multirow{2}{*}{muon} & Number of tracks \textless{} 3  & \multirow{2}{*}{}\tabularnewline
+ &  &  & $\Delta R<0.2$  & \tabularnewline
+\hline 
+8 & muon & jet & $\Delta R<rad$ & $rad=min(0.04+\frac{10\text{ GeV}}{p_{T}(\mu)},0.4)$ \tabularnewline
+\hline 
+9 & jet & tau & $\Delta R<0.2$ & \tabularnewline
+\hline 
+\end{tabular}
+\caption{Summary of the overlap removal process \label{tab:analysis:overlapremoval}}
+\end{table}
+
+Based on the baseline objects described above,  an overlap removal procedure is performed to remove ambiguities in the object definitions.  The steps performed are described and summarised in table \ref{tab:analysis:overlapremoval}.  The steps in the overlap removal procedure are performed consecutively,  as described in the first column of table \ref{tab:analysis:overlapremoval}. Two types of baseline objects are compared with each other, based on their closeness in terms of $\Delta R$ as well as other criteria.  In each step,  if the overlap criteria highlighted under \textit{Condition} is met,  the object listed under the \textit{Object removed} column gets discarded,  whereas the \textit{Object compared to} is kept in the event.  This way ambiguities in the object reconstruction are resolved and double counting of detector signals as two different types of objects is avoided. 
+
+\FloatBarrier
+%\section{Statistical concepts}
+\section{Signal region, control region and validation region definitions}
+%\textcolor{red}{include a discussion about transfer factors and restrition of nuisance parameters in that!}
+\label{sec:analysis:srcrvr}
+\input{Chapters/Subsections/SRCRVRdefs.tex}
+
+\section{Signal region optimisation}
+\label{sec:analysis:sroptimisationSection}
+\input{Chapters/Subsections/SRoptimisation}
+\label{sec:analysis:sroptimisation}
+
+%\input{Chapter/Subsections/SRoptimisation}
+\FloatBarrier
+\section{Standard Model background estimations}
+\label{sec:analysis:bkgestimation}
+\input{Chapters/Subsections/BackgroundEstimation}
+
+
+\section{Systematic uncertainties}
+\label{sec:analysis:systematics}
+\subsection{Experimental uncertainties}
+To construct a complete statistical model of the analysis (see section \ref{sec:analysis:stats}),  all sources of uncertainties influencing the background and signal compositions have to be included.
+In the following,  a description of the \textit{experimental} uncertainties is given. Here referred to as experimental uncertainties are uncertainties related to all steps in the data collection,  from uncertainties on the collected luminosity to object reconstruction and identification uncertainties. 
+%The naming included here is mirroring the uncertainty naming convention chosen in the fit procedure. \\
+
+\begin{description}
+\item[Tau reconstruction] The reconstruction and identification of tau leptons is associated with systematic uncertainties \cite{TauRNNID}.  Considered here are systematic uncertainties connected with the \ac{RNN} based differentiation between jets and hadronic taus.  Additionally tau reconstruction efficiency uncertainties,  uncertainties on the tau energy scale and systematics in the \ac{BDT} used to distinguish taus from electrons  are included.
+\item[Light lepton reconstruction] A simplified model considering uncorrelated uncertainties for the electron energy calibration (scale and resolution) is assumed\cite{ElecCalibration}. Uncertainties related to the efficiency estimation of the electron and muon reconstruction,  identification and isolation are included in the analysis.  For muons, additional uncertainties take into account variations of the muon momentum scale as well as uncertainties in the track-to-vertex association \cite{MuonID}.
+\item[Jet reconstruction] Uncertainties on the jet energy scale are taken into account through a reduced set \cite{JESJER},  additionally uncertainties on the jet energy resolution are included.  Scale Factors and their uncertainty correcting the efficiency performance of the DL1 b-tagging in Monte Carlo have been taken into account.
+\item[\Met reconstruction] Systematic uncertainties of the \Met reconstruction include uncertainties on the scale and resolution of the track soft term.  This is extracted through comparisons of data and simulation as well as Monte Carlo generator comparisons \cite{MetPerformance}.
+\item[Event based uncertainties] A $\pm 1.7  \%$ uncertainty on the measured luminosity is taken into account \cite{Lumi},  next to variations in the applied pileup reweighting and uncertainties on trigger scale factors for Monte Carlo Simulation.   
+\end{description}
+
+\subsection{Theoretical and Modelling uncertainties}
+\label{subsec:theoUnc}
+\input{Chapters/Subsections/TheoUncertainties}
+
+\section{Statistical concepts}
+\label{sec:analysis:stats}
+\input{Chapters/Subsections/StatConcepts}
+
+\section{Results}
+\label{sec:analysis:results}
+\input{Chapters/Subsections/Results}
+
+\FloatBarrier
+\section{The opposite sign analysis}
+\label{sec:analysis:os}
+As was discussed in section \ref{sec:analysis:previous},  the simplified model under investigation in the same-sign di-tau final state search described above has been previously searched for in partial Run-2 data in an opposite-sign di-tau final state \cite{DiTauC1N2_2018}. 
+
+This opposite-sign di-tau final state search has been re-optimised for the full Run-2 data set and statistically combined with the same-sign analysis to improve the overall model sensitivity. 
+
+The author has not been involved in the design of the opposite-sign analysis,  they have been developed alongside each other with a final statistical combination in mind,  sharing the data and Monte Carlo samples described in section \ref{sec:analysis:samples}. 
+The statistical combination has been performed by the author.  For context, a quick overview of the opposite-sign analysis is given in the following. 
+
+\begin{figure}[htpb!]\centering
+\subfloat[(\Cone\Ntwo) production \label{fig:analysis:c1n2}]{\includegraphics[width=0.35\linewidth]{figures/C1N2-tautautauvN1N1-stausnu.pdf}}
+\subfloat[(\Cone\Cone) production \label{fig:analysis:c1c1}]{\includegraphics[width=0.35\linewidth]{figures/C1C1-tautauvvN1N1-stausv.pdf}}
+\caption{Simplified models considered in the opposite-sign analysis  \label{fig:analysis:osmodels}}
+\end{figure}
+
+Two separate analysis strategies have been developed for the two simplified models targeted (see Fig. \ref{fig:analysis:osmodels}.  One for the chargino pair (\Cone\Cone) production (Fig \ref{fig:analysis:c1c1}) and one for the chargino-neutralino (\Cone\Ntwo) production (Fig \ref{fig:analysis:c1n2}).  The signal regions used to target the two scenarios are not orthogonal.  Therefore separate exclusion fits are performed for the two scenarios.  If the \Cone mass is assumed to be equal to the \Ntwo mass in the chargino pair production model,  the sensitivity of the opposite-sign analysis can be estimated to both scenarios jointly.  This is done in the (\Cone\Ntwo) signal regions.  This combined sensitivity and combined exclusion contour of the opposite sign analysis is used for the statistical combination with the same-sign analysis. 
+
+The leading background contributions for the opposite-sign analysis are Multi-jet , Multi-boson, W+jets as well as Z+jets contributions. 
+An ABCD method similarly to the one described in section \ref{sec:bkgestimation:ABCD} is used to estimate the Multi-jet contribution in the signal regions.  A dedicated W+jets control and validation region is defined in a final state including a muon and a hadronically decaying tau lepton.  Validation regions are defined for top related processes, Z+jets as well as Multi-boson processes. 
+
+\section{Combined gaugino pair results}
+\label{sec:analysis:combination}
+A summary of all validation and signal regions considered in both the opposite-sign as well as same-sign analyses after the analysis-specific background-only fit is shown in Figure \ref{fig:analysis:osssregions}. Good agreement between the \ac{SM} expectation and data in all validation regions can be observed.  In the SR-C1C1-LM,  a slight underfluctuation of data with respect to the \ac{SM} expectation can be seen.
+
+\begin{figure}[htpb!]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/PaperDraft/fig_VRs_stau_smaller.pdf}
+\caption{Summary of all validation and signal regions considered in the opposite-sign and same-sign analyses after the analysis-specific background-only fits \label{fig:analysis:osssregions} \cite{DiTauConfNote2022}. }
+\end{figure}
+
+\begin{figure}[htpb!]\centering
+\subfloat[\label{fig:results:combination}]{\includegraphics[width=0.5\linewidth]{figures/PaperDraft/fig_combination.pdf}}
+\subfloat[\label{fig:results:combinationDM}]{\includegraphics[width=0.5\linewidth]{figures/PaperDraft/fig_combination_DM.pdf}}
+\caption{Combined exclusion contours of the opposite-sign and same-sign analysis \cite{DiTauConfNote2022}.  In (a) the exclusion limits at 95 \% \acs{CL} are given in the \Cone/\Ntwo versus \None mass plane.  In (b) the same exclusion limits are shown with respect to the mass splitting $\Delta m (\tilde{\chi}_1^\pm,\tilde{\chi}_1^0)$ in dependency to the \Cone/\Ntwo mass.}
+\end{figure}
+
+Figure \ref{fig:results:combination} shows the statistical combination of the opposite-sign and same-sign analyses.
+Shown in green is the expected and observed contour of the joint SR-C1N2SS-LM and SR-C1N2SS-HM exclusion.  In blue  is given the opposite-sign analyses sensitivity to both the chargino pair as well as chargino-neutralino production as achieved in the (\Cone\Ntwo) signal regions. 
+
+To further visualise the gain in sensitivity through both analyses towards the kinematic diagonal,  the $\Delta m (\tilde{\chi}_1^\pm,\tilde{\chi}_1^0)$ is given for low \Cone/\Ntwo masses.  The same-sign analysis extends the sensitivity in the di-tau final state to lower mass splittings,  down to as little as 30 GeV for a \Cone mass of 80 GeV.  The combined model interpretation is excluding \Cone masses up to 1160 GeV for a massless \None, exceeding the sensitivity of previous model investigations. This result presents a world-leading sensitivity to this simplified model both in the high \Cone/\Ntwo mass range as well as low mass splittings of $\Delta m (\tilde{\chi}_1^\pm,\tilde{\chi}_1^0)$ in a hadronic di-tau final state and has not been investigated by other experiments to a similar extend. 
+

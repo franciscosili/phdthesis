@@ -1,0 +1,319 @@
+\chapter{The ATLAS Electron Trigger Performance in Run-2}
+\label{ch:trigger}
+%\epigraph{\emph{'Don't let anyone rob you of your imagination, your creativity, or your curiosity. It's your place in the world; it's your life. Go on and do all you can with it, and make it the life you want to live.'}}{Mae Jemison}
+\epigraph{\emph{My mission in life is not merely to survive but to thrive and to do so with some passion, some compassion, some humor, and some style.}}{Maya Angelou}
+%\epigraph{\emph{'I didn’t want to just know names of things. I remember really wanting to know how it all worked.'}}{Elizabeth Blackburn}
+%\textcolor{red}{double check whether the single electron trigger in 2015 actually didn't have an e60 chain in it! make sense because it is already lhmedium, but check!}\\ --> have calculated this in the confg with the e60 chain, but effectively not gaining any efficiency benefits through it - so the official single electron OR does not include it here - its the same efficiency but shifted to higher et turn on - ignore the e60lhmedium chain 
+The following chapter gives an introduction to the electron trigger in ATLAS and describes the performance of selected electron triggers during Run-2.  This work is part of the author's involvement in the ATLAS electron and photon trigger signature group between 2018-2022.  The main focus of this work is the measurement of trigger efficiencies as well as the calculation of trigger scale factors,  which have been widely used in physics analyses of the Run-2 dataset.
+This work has contributed in a major way to the first electron and photon trigger performance publication in ATLAS \cite{TrigEgammaPaper} and has been presented by the author at the ICNFP2019 conference \cite{ICNFPtalk, ICNFPProceedings}.  \\
+In section \ref{sec:trigg:Intro},  an introduction to the electron trigger signature is given,  followed by a discussion and motivation of the electron trigger menu in section \ref{sec:trigg:Menu}.  A brief explanation of the efficiency and scale factor calculation methodology is given in section \ref{sec:trigg:methodology}. The trigger performance throughout Run-2 including full Geant4 detector simulation (section \ref{sec:trigg:fullsimPerformance}) as well as parametrised AF2 simulation (section \ref{sec:trigg:fastsimPerformance}) is then completed by a short discussion on the perspectives and limitations of these studies in section \ref{sec:trigg:perspectives}. 
+\section{The ATLAS electron trigger}
+\label{sec:trigg:Intro}
+Triggers selecting electron signatures are widely used in ATLAS.  They target a detector signature of tracks in the \ac{ID},  combined with energy deposits in the \ac{ECAL}.
+As described in section \ref{sec:ExpSetup:trigger},  the first selection step for any signature is the Level-1 trigger.  For electrons,  this consists of clusters in the electromagnetic calorimeter.  The Level-1 trigger identifies a \ac{RoI},  a group of neighbouring trigger towers.  A trigger tower presents a sum of calorimeter cells in a $\Delta \eta \times \Delta \phi$ region in the detector,  including the various layers in the \ac{ECAL} and \ac{HCAL}.  As can be seen in the visualisation given in Figure \ref{L1Vis},  this Region-of-Interest is the local maximum of transverse energy deposited in the calorimeter cells.  A specified energy threshold is passed at Level-1 if any of the 2x1 or 1x2 connected trigger towers in the \ac{RoI} exceed the specified threshold.  The trigger towers have a granularity of $\Delta \eta \times \Delta \phi = 0.1 \times 0.1$ \cite{TriggerSystem2015}. The energy of the clusters has undergone a electromagnetic energy scale calibration.  This calibration reconstructs the energy deposited through an electromagnetic shower,  but is not able to correctly account for energy losses in hadronic shower developments.  An energy threshold variable in $\eta$ around a nominal $E_T$ threshold can be applied,  accounting for geometrical dependencies in the energy cluster calibrations.  Illustrated through a bright yellow ring in Figure \ref{L1Vis},  a requirement on the isolation of the core can be made. This sets a limit on the sum of transverse energy contained in the 12 trigger towers surrounding the Region-of-Interest,  in comparison to the energy contained in the core.  Lastly,  a limit on the hadronic leakage can be required.  This limit restricts the energy contained in the hadronic calorimeter trigger towers behind the central 2x2 clusters in the electromagnetic calorimeter.
+Any requirements on the hadronic leakage or isolation are only applied to transverse energies reconstructed at Level-1 below 50 GeV \cite{TrigEgammaPaper}.
+
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=0.4\linewidth]{figures/TrigEgamma/EGammaTauAlgo.pdf}
+\caption{Visualisation of the Level-1 electron selection \cite{TriggerSystem2015} \label{L1Vis}}
+\end{figure}
+
+The selections required from the Level-1 trigger form the basis to all \ac{HLT} triggers.  They can be summarized through the following nomenclature:\\
+\texttt{L1\_\{multiplicity\}EM\{$E_T$threshold\}\{possible additional requirements: V H I \}},  with \texttt{V} allowing the $E_T$ threshold to vary up to $^{ +3}_{- 2}$ GeV from the nominal value dependent on $\eta$, \texttt{H} vetoing a hadronic energy deposit behind the \ac{ECAL} cluster and \texttt{I} imposing an electromagnetic isolation.  As an example,  a \texttt{L12EM10VH} Level-1 trigger requires two electromagnetic clusters with at least 10 GeV transverse energy,  without significant energy leakage into the hadronic calorimeter and allows for the energy threshold to vary in $\eta$.  No isolation of the clusters in the \ac{ECAL} is required. 
+As has been previously discussed in section \ref{sec:ExpSetup:trigger} and is illustrated in Figure \ref{fig:expSetup:trigVis},  once an event is accepted by the Level-1 system,  a Region-of-Interest is passed on to the \ac{HLT}.
+%
+%The energy threshold required for the particular Level-1 item is denoted in the following manner,  \textit{L1EM20},  where here an exemplary 20 GeV threshold is denoting the minimum energy threshold of the total cluster.  This Level-1 \textit{seed} can have multiple additional requirements,  next to the energy threshold.  A variable energy threshold,  depenend on the location of the clusters in $\eta$ can be required,  denoted with \textit{V} in the \ac{L1} chain.  A veto on leakage of the electrons energy shower into the hadronic calorimeter can be required (\textit{H}) as well as an isolation requirement in the form of a limit on the energy contained in a $\Delta R$ area around the core energy cluster (\textit{I}). This isolation requirement is only active below a Level-1 reconstructed energy of 50 GeV.  
+
+A visualisation of the consecutive \ac{HLT} algorithms in use for non-isolated electron triggers over a 15 GeV transverse energy threshold can be seen in Figure \ref{fig:TrigEgamma:chainVis}.  For all electron triggers,  the first set of algorithms focus on a fast reconstruction.  The main goal of these selection steps is the fast rejection of events that do not include electrons in order to reduce the input for the following time-consuming precision algorithms,  especially those employing tracking information.
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.3\linewidth]{figures/TrigEgamma/chainVis.png}
+\caption{Visualisation of the consecutive algorithms of the electron trigger signature at the \ac{HLT} for non-isolated electron trigger.  Adapted from \cite{TrigEgammaPaper} \label{fig:TrigEgamma:chainVis}}
+\end{figure}
+From 2017 onwards,  the first step in the electron trigger at \ac{HLT} is the so-called \textit{Ringer} algorithm.  The Ringer algorithm replaced a cut-based fast calorimeter reconstruction step,  which is discussed in detail in Ref.  \cite{TrigEgammaPaper}. The neural network based Ringer algorithm was developed for electrons above a 15 GeV energy threshold due to the low available statistics of $Z$ to $ee$ events below that threshold.  The overall idea behind this neural network is to use the lateral development of electromagnetic showers in the form of a cone to construct concentric rings in the calorimeter layers around the most energetic calorimeter cell.  A vector of all energy sums of these concentric rings,  normalised to the energy contained in the RoI,  are used as input for a neural network.  More details on the design of the neural network can be found in \cite{TrigEgammaPaper}.
+Following either the Ringer algorithm or cut-based fast calorimeter algorithm,  a fast track reconstruction is performed in the RoI and the electron candidates are required to have a track matching the calorimeter clusters in order to proceed to the precision steps. 
+All precision steps are similar to the offline reconstruction steps described in section \ref{sec:DAQ:ObjectReco:Electrons},  a special focus on the differences with respect to offline reconstructions is given in the following. 
+The precision calorimeter reconstruction has access to calorimeter cells extending the \ac{RoI}  and constructs calorimeter clusters following a sliding window algorithm. 
+The cluster is then calibrated,  following an offline like calibration described in \cite{ElecCalibration}.  The energy threshold for electron trigger at \ac{HLT} is applied based on this calibrated energy clusters. 
+As last steps,  a precise track reconstruction and electron reconstruction,  matching the precision tracks with the electromagnetic clusters is completed by the precise electron selection.  This selection uses a likelihood electron identification similar to the offline electron identification described in section \ref{sec:DAQ:ObjectReco:Electrons}.  The most notable differences compared to the likelihood constructed offline are the following: no refitting of tracks (with \ac{GSF}) is used to account for Bremsstrahlung effects on trigger level.  Fixed-size Topo-clusters are used instead of dynamic, variable sized Topo-clusters \cite{ElectronRecoID1516}.  Due to computational limitations at trigger level, the average number of interactions per bunch-crossing, $<\mu>$, is used as a measure of pile-up instead of the number of primary vertices.
+Additional to the algorithms visualised in Figure \ref{fig:TrigEgamma:chainVis},  a track-based isolation criteria can be required. 
+The typical electron trigger nomenclature used to clarify the requirements of a trigger can be visualised like the following: \\
+\texttt{HLT\_\{multiplicity\}e\{$E_T$ threshold\}\_\{identification\}\_\{optional isolation\}}\\
+At trigger level,  there are three different levels of identification, based on the likelihood discriminant: \texttt{lhvloose}, \texttt{lhloose}, \texttt{lhmedium} and \texttt{lhtight}.  An additional specification of \texttt{nod0} highlights a version of the likelihood identification without a restriction on the transverse impact parameter,  $d_0$. The transverse impact parameter describes the minimum transverse distance of a track to the beam axis, the longitudinal impact parameter measures the distance from that intersection to the primary vertex along the beam axis.  The electron likelihood definition at the \ac{HLT} without $d_0$ has previously been introduced due to observed mismodellings of the impact parameter within the trigger reconstruction. Only one isolation variant is available for electrons at trigger level,  \texttt{ivarloose},  requiring a track-only isolation,  limiting the momentum contribution in a variable sized cone in $\Delta R$ around the electron candidate's track.  Some special triggers fall outside this naming convention and typical flow of consecutive algorithms,  such as \texttt{HLT\_e200\_etcut},  a 200 GeV energy threshold electron trigger,  but without using any likelihood based identification. 
+
+
+\section{Electron trigger menu in Run-2}
+\label{sec:trigg:Menu}  
+Even with the nomenclature of electron triggers highlighted and discussed in the previous section,  this does not specify the version of trigger algorithms used at \ac{HLT} or which triggers are active during data-taking or whether or not they are prescaled.  This is all defined in the \textit{trigger menu}.
+The trigger menu defines all triggers active for different trigger signatures throughout the years.  The trigger menu includes single object triggers,  such as single electron triggers, as well as multiple-object triggers (e.g. di-electron trigger) and combined object triggers (e.g. electron-muon trigger).  Different trigger are categorized into primary trigger,  important for crucial physics analyses,  and supporting trigger,  used mainly for monitoring purposes.  Different maximum \ac{HLT} rates are allocated to the triggers accordingly.  Additionally,  every trigger signature is allocated a maximum overall `budget'  of \ac{HLT} rate in order to allow for a multitude of signatures.  
+
+The two primary electron triggers are single electron as well as di-electron triggers.  To allow these triggers to stay unprescaled and therefore collect as much data as possible,  their energy threshold, as well as isolation and identification criteria, have to be adapted throughout the years of data taking.
+In Table \ref{tab:trigger:ChainEvolution},  the evolution of these primary triggers in the trigger menu throughout the Run-2 data-taking can be seen. 
+The single electron trigger as used in physics analysis is a combination of the single electron triggers listed in Table \ref{tab:trigger:ChainEvolution} for the respective year.  The trigger rate is a leading factor in adapting trigger energy and algorithm thresholds throughout data taking.  This has been monitored in Run-2 and is shown in Figure \ref{fig:trigg:OverallRates}.  Here Figure \ref{fig:trigg:SELowestUnprescaledRates} shows the trigger rate evolution of the lowest unprescaled single electron trigger.  The steep rate increase with instantaneous luminosity in 2015 clearly shows that the increased energy threshold in the consecutive years was needed to reduce the trigger rates and keep them below roughly 200 Hz. This restriction is due to the overall possible trigger rate of 1 kHz and the need to budget this rate across all trigger signatures.  In general,  the linear increase of the trigger rate with the instantaneous luminosity is expected,  since the instantaneous luminosity is a measure of the amount of collisions in \ac{ATLAS},  providing a larger amount of collision events the trigger can select.  \\
+
+\begin{figure}[h]
+      \centering
+\subfloat[Lowest unprescaled energy threshold single electron triggers \label{fig:trigg:SELowestUnprescaledRates}]{\includegraphics[width=0.4\linewidth]{figures/TrigEgamma/SingleElec2426_rate.pdf}}
+\subfloat[Single non-isolated electron triggers \label{fig:trigg:SEnonIsoRates}]{\includegraphics[width=0.4\linewidth]{figures/TrigEgamma/SingleElec60_rate.pdf}}\\
+\subfloat[Loose unprescaled single electron triggers \label{fig:trigg:SELooseUnprescaledRates}]{\includegraphics[width=0.4\linewidth]{figures/TrigEgamma/SingleElecLooseTrigScreenshot.png}}
+\caption{Single electron trigger rates during Run-2 \label{fig:trigg:OverallRates} \cite{TrigEgammaPaper}. The three graphs show the the three lower energy triggers with electron likelihood selection making up the single electron trigger as discussed in Table \ref{tab:trigger:ChainEvolution}. Omitted here are the high energy triggers without likelihood selection.  In (a) the lowest energy threshold trigger with a 24 GeV and 26 GeV energy threshold in 2015 and 2016-2018, respectively can be seen.  In (b) the rate of the 60 GeV threshold trigger without isolation requirement in use from 2016-2018 is shown.  Figure (c) shows the trigger rate for the loose likelihood trigger with 120 (140) GeV energy threshold in 2015 (2016-2018). }
+\end{figure}
+
+In addition to an increased energy threshold,  in 2016 an isolation requirement (\textit{ivarloose}) was included in the lowest unprescaled trigger.  At higher energy thresholds,  the trigger rate drops sufficiently to allow for less stringent identification and isolation requirements on the trigger electron.  Therefore the \texttt{e60\_lhmedium\_nod0} trigger was  included in the single electron trigger combination from 2016 onwards,  as shown in \ref{fig:trigg:SEnonIsoRates}.  At even higher electron $E_T$,  a loose likelihood selection is possible.  In 2015, this threshold was above 120 GeV,  in 2016-2018 raised to 140 GeV.  The trigger rates of these loose triggers are given in Figure  \ref{fig:trigg:SELooseUnprescaledRates}.\\ 
+
+\begin{table*}
+\small
+\begin{centering}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Trigger type} & \textbf{2015} & \textbf{2016} & \textbf{2017-2018}\tabularnewline
+\hline 
+\multirow{4}{*}{\textbf{single electron}} & e24\_lhmedium (EM20VH) & \multicolumn{2}{l|}{e26\_lhtight\_nod0\_ivarloose (EM22VHI)}\tabularnewline
+ &  & \multicolumn{2}{l|}{e60\_lhmedium\_nod0}\tabularnewline
+ & e120\_lhloose & \multicolumn{2}{l|}{e140\_lhloose\_nod0}\tabularnewline
+ & e200\_etcut & \multicolumn{2}{l|}{e300\_etcut}\tabularnewline
+\hline 
+\multirow{2}{*}{\textbf{dielectron}} & 2e12\_lhloose & 2e17\_lhvloose\_nod0 & 2e17\_lhvloose\_nod0 (2EM15VHI)\tabularnewline
+ & (2EM10VH) & (2EM15VH) & 2e24\_lhvloose\_nod0 (2EM20VH)\tabularnewline
+\hline 
+\end{tabular}
+\par\end{centering}
+\caption{Evolution of the primary electron trigger during Run-2. given in brackets are the Level-1 seeds used for the given \ac{HLT} trigger.  \label{tab:trigger:ChainEvolution}}
+\end{table*}
+
+Di-electron trigger allow for a further reduction in energy threshold and loose identification criteria due to the increased electron multiplicity.  The di-electron trigger chains in Run-2 can be seen in Table \ref{tab:trigger:ChainEvolution}.  \\
+In 2017 and 2018,  not only one but two primary di-electron trigger were defined.  This was motivated by the used Level-1 seed,  selecting two electromagnetic energy clusters.  The \textit{2EM15VH} seed used in 2016 showed a high Level-1 acceptance rate. (see Figure \ref{fig:trigg:L1EMrates}).  \\
+To mitigate this and reduce the rate of the associated \ac{HLT} di-electron trigger,  an isolated \ac{L1} trigger (\textit{L12EM15VH}\textbf{I}) was used instead from 2017 onwards,  allowing for the threshold to be kept at the same level.  A second di-electron trigger without isolation at Level-1 is used additionally. \\
+Compared to a non-isolated Level-1 trigger with otherwise same selections, the rate is reduced by around a factor of four.  Even increasing the energy threshold by 5 GeV achieves less reduction in rate (see Figure \ref{fig:trigg:L1EMrates}).\\
+
+\begin{figure}[h]
+  \centering
+\includegraphics[width=0.5\linewidth]{figures/TrigEgamma/Level1WithV.pdf}
+\caption{Level-1 rate for isolated (L1\_{}2EM15VHI) and non-isolated triggers (L1\_{}2EM15VH, L1\_{}2EM20VH) \label{fig:trigg:L1EMrates} \cite{TrigEgammaPaper}}
+\end{figure}
+
+\section{Efficiency measurements and scale factor calculation}
+\label{sec:trigg:methodology}
+%εtotal = εreconstruction × εidentification × εisolation × εtrigger
+When using electrons in a physics analysis,  the overall efficiency for electrons in ATLAS has to be considered. 
+This total efficiency can be factorised into four terms referring to different steps to select and identify an object as electron,  as shown in equation \eqref{eqn:trig:totalEff} \cite{ElectronEfficiencyMeasurements2015}.
+\begin{equation}
+\epsilon_{\text{total}} = \epsilon_{\text{reconstruction}} \times \epsilon_{\text{identification}} \times \epsilon_{\text{isolation}} \times \epsilon_{\text{trigger}}  
+\label{eqn:trig:totalEff}\end{equation}
+The trigger efficiency is evaluated with respect to \textit{offline} electrons,  electrons that have been reconstructed and identified based on precision algorithms used after the event has been selected and stored by a trigger.  This allows analyses to correct the trigger efficiency according to the choice in identification and isolation algorithms used on stored data.
+
+\subsection{The Z tag-and-probe method}
+
+To evaluate the trigger efficiency,  an unbiased sample of electrons is needed.  The Z boson's decay into two oppositely charged electrons can be used to achieve this with the so-called \textit{Z~tag-and-probe} method.  Events are selected if one of the electrons fullfills the requirements of the lowest unprescaled single electron trigger (\textit{fires} the single-electron trigger).  If this electron was produced through a Z-boson decay,  a second electron of opposite charge is expected to be in the event.  Since the event has already been selected by the single-electron trigger,  the second electron does not need to be selected by any other triggers and is therefore unbiased in terms of trigger decisions.
+The first electron selecting the event is referred to as \textit{tag} electron,  the second electron is referred to as \textit{probe} electron.  To ensure a low contribution of non-prompt electrons as tag electrons,  the tag electron is required to pass a more stringent identification working point than the probe electron.
+To select a probe candidate,  electrons of opposite charge to the tag electron are considered,  with the invariant mass of the tag and probe pair required to be within a window around the Z boson mass  $m_Z$.  
+
+An illustration of the Z tag-and-probe method with an exemplary tag electron configuration is given in Figure \ref{fig:trigger:TnP}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{figures/TrigEgamma/ZtagAndProbe_ICNFPversion.png}
+\caption{Illustration of the \textit{Z tag-and-probe} method  \label{fig:trigger:TnP}}
+\end{figure}
+
+The selection of probe electrons through the Z tag-and-probe method allows for an unbiased selection of electrons to measure trigger efficiencies. 
+When selecting events based on the Z tag-and-probe method additional non-Z-boson originated processes can enter the selections. This can happen when two electrons not from a Z-boson decay fall within the invariant mass window consistent with a Z boson.
+Since this background is combinatorial,  it does not reproduce a similar Z-boson mass peak,  but  generate a flat component in the di-electron invariant mass distribution.  
+This flat component of the invariant mass distribution is estimated to follow a polynomial  distribution.  Due to its combinatorial nature,  these events populate a same-sign di-electron final state in a similar manner than a opposite sign di-electron final state.  
+Therefore, a replication of the Z tag-and-probe electron selection is repeated,  but with the two electrons being of same electric charge.
+The contributions to this same-sign selection are used to normalise the polynomial distribution.  Once normalised, the number of probe electrons predicted through this \textit{background template} is subtracted from the opposite-sign Z tag-and-probe selection.
+In all events selected,  the probe electrons transverse energy,  pseudorapidity as well as the average number of pileup interactions contributing to the event is noted. 
+To evaluate the efficiency of an electron trigger in question,  wether or not a probe electron would pass the selection of \ac{HLT} trigger algorithm requirements is checked. 
+The number of all probe electrons fulfilling the trigger requirements after background subtraction ($N_{probe}^{triggered}$) is compared to the overall set of probe electrons after background subtraction $N_{probe}$.  This ratio as described in equation \ref{eq:trigger:eff} yields a trigger efficiency measurement with reference to an eligible set of electron candidates,  for one specific choice of tag and probe electrons.
+
+\begin{align}
+\epsilon_{trigger} = \frac{N_{probe}^{triggered}}{N_{probe}}
+\label{eq:trigger:eff}
+\end{align}
+
+Since the trigger efficiencies are calculated for electrons fulfilling offline reconstruction and identification requirements,  such as offline identification working points, the contribution of backgrounds to the trigger efficiency is negligible in all cases discussed in this thesis.  Indeed, in most of the efficiency distributions presented in the following,  the background subtraction step has been omitted, since it has shown to be smaller than per-mill level efficiency differences and within uncertainties.
+
+\subsection{Trigger effciency evaluation and scale factor calculation}
+The Z tag-and-probe method described above allows for the calculation of trigger efficiencies for one specific set of method parameters.  The parameters that define the calculated trigger efficiency include: the tag electron definition,  including its identification working point and optional isolation requirement., as well as the di-electron invariant mass window used to define the phase space region consistent with a Z-boson decay.  Lastly,  the template used to subtract non Z-boson backgrounds.  Even though the trigger efficiency is also varying with the definition of the probe electron,  this is not considered as a parameter of the method,  since the interest lies in providing trigger efficiencies with respect to a specific offline electron definition,  therefore the offline electron definition is reflected in the probe electron definition. 
+
+In order to consider the uncertainty due to a specific choice of parameters,  the Z tag-and-probe method is repeated for variations of the parameter configurations.  The variations are the following: 
+\begin{itemize}
+\item The tag electron offline working point:  \textit{Tight}  identification working point as well as \textit{Tight} and \textit{Medium} likelihood identification with additional isolation are used
+\item The invariant mass window around $m_Z$: $[[80,100],[75,105],[70,110] \text{ GeV}$ 
+\item The background subtraction template - two varying templates are considered
+\end{itemize}
+The nominal trigger efficiency for a specific probe electron definition is determined as the average of the trigger efficiency calculation from all combinations of all of these method parameters.  The systematic uncertainty in the averaged result is obtained from the root-mean-square (RMS) of the individual results \cite{ElectronRecoID1516}.
+%A systematic uncertainty of the Z tag-and-probe method is assigned to the nominal trigger efficiency as the maximum variation in trigger efficiency from the average value.  
+The statistical uncertainty of the trigger efficiency calculated is the average statistical uncertainty observed in all variations. \\
+Correction factors for Monte Carlo simulation, also called trigger efficiency scale factors,  are calculated from the above described efficiencies. 
+These correction factors are needed to scale the trigger efficiency performance as simulated in Monte Carlo simulation to its actual performance as observed in data. 
+It is calculated as the ratio of the trigger efficiency in data ($\epsilon_{\text{data}}$) over the efficiency in simulation ($\epsilon_{\text{MC}}$):
+\begin{align}
+SF = \frac{\epsilon_{\text{data}}}{\epsilon_{\text{MC}}}
+\end{align} 
+The Monte Carlo simulation used to extract $\epsilon_{MC}$ is a $Z \rightarrow ee$ set of events simulated with \texttt{POWHEG} interfaced to \texttt{PYTHIA8} and \texttt{EvtGen}.
+The $Z \rightarrow ee$ process is overlaid with soft QCD processes simulated by  \texttt{PYTHIA8} and re-weighted to mimic the pileup conditions in data.
+This extracted scale factor presents a reweighting factor that can be applied to Monte Carlo simulation on an event-by-event basis to correct the simulated trigger efficiency to its actual efficiency observed in data.
+
+\section{Run 2 performance studies on fully simulated events}
+\label{sec:trigg:fullsimPerformance}
+%rate same efficiency drops --> select more background events or has other inefficiencies in the selection compared to offline! 
+The trigger efficiencies of a large set of electron triggers have been studied.  The following discussion is focused on the single electron and di-electron trigger performance throughout Run-2.  A more extensive discussion on the overall electron trigger performance in Run-2 can be found in \cite{TrigEgammaPaper}.
+\subsection{Single electron trigger}
+%Single-electron comparisons throughout the year - will show without background subtraction.
+% plots taken from /its/home/dk352/Desktop/Grid_Download/ComparisonPlots/SingleElec_Mu
+
+Next to trigger rates,  the efficiencies of the single electron trigger chain play an important role in understanding their performance,  both a-priori during data taking as well as long term performances such as presented in the following.  Figure \ref{fig:trigg:SERun2Performance} compares the trigger efficiency in data,  dependent on $E_T$ (\ref{fig:trigg:SERun2PerformanceEt}),  $\eta$ ( \ref{fig:trigg:SERun2PerformanceEta}) as well as $<\mu>$ (\ref{fig:trigg:SERun2PerformanceMu}) of the considered offline electron. 
+\begin{figure}[h]
+    \centering
+  \subfloat[ \label{fig:trigg:SERun2PerformanceEt}]{ \includegraphics[width=0.45\linewidth]{figures/TrigEgamma/fig_17a.pdf}}
+  \subfloat[\label{fig:trigg:SERun2PerformanceEta}]{ \includegraphics[width=0.45\linewidth]{figures/TrigEgamma/fig_17b.pdf}}\\
+  \subfloat[\label{fig:trigg:SERun2PerformanceMu}]{
+  \includegraphics[width=0.45\linewidth]{figures/TrigEgamma/fig_18.pdf}}
+  \caption{Single electron trigger performance in Run-2\label{fig:trigg:SERun2Performance}.  Shown is the trigger efficiency with respect to the offline electron's transverse energy (a),  pseudorapidity (b) and the pileup in the event. Bins with low statistics have been removed.}
+\end{figure}
+The overall structure of the single electron trigger combination, consisting of all triggers in Table \ref{tab:trigger:ChainEvolution} is strikingly visible in Figure \ref{fig:trigg:SERun2PerformanceEt}.  Around an electron energy of 60 GeV, a jump in efficiency can be observed.  This is the point when the looser, \textit{lhmedium},  trigger electron identification with higher energy threshold has reached its efficiency plateau and becomes more efficient than the lower energy \textit{lhtight} the single electron trigger. 
+This is clearly visible in the 2016-2018 triggers including a \textit{medium} identification trigger chain, as listed in table \ref{tab:trigger:ChainEvolution}.  An overall loss in efficiency can be seen from 2015 to 2016.  The shift in the turn-on of the efficiency in the $E_T$ distribution is due to the increased energy threshold from 2016 onwards.
+Even though the trigger and its nomenclature described in Table \ref{tab:trigger:ChainEvolution} have not changed  from 2016 to 2017 or 2018,  the efficiency can be seen to decrease in 2016,  compared to 2017 and 2018 (visible throughout Figures \ref{fig:trigg:SERun2PerformanceEt},  \ref{fig:trigg:SERun2PerformanceEta} and \ref{fig:trigg:SERun2PerformanceMu}. This is due to changes to the underlying \ac{HLT} algorithms of the single electron trigger.
+In 2016 some inefficiencies were observed with respect to offline electron identifications,  this was recovered through a simpler selection within the precision electron selection in 2017-2018 data taking. 
+Additionally,  the trigger algorithms were tuned to the performance observed in 2016 and improved.  This is causing the increased efficiency observed in the last two years of Run-2. \\
+As well as on data,  it is crucial to study the trigger performances in Monte Carlo simulation.
+In Figure \ref{fig:trigg:SE2018},  the efficiency of the single electron trigger in data is compared between data and simulation. 
+Even though the detector architecture and material density are very well modelled in Monte Carlo simulation,  operational effects such as inactive detector modules can not be reflected in the simulation.  
+This can lead to an overestimation of the trigger efficiency in simulation,  as can be seen in the $E_T$ (\ref{fig:trigg:SE2018_et}) as well as $\eta$ (\ref{fig:trigg:SE2018_eta}) distributions. 
+Within the detector crack-region ($ 1.37 < \abs{\eta} < 1.52$),  the efficiency of electron triggers is significantly lower than in other $\eta$ regions.  This is due to a high amount of inactive material such as detector support structures.  Many analyses will not consider electrons reconstructed within this region. 
+Similarly to this,  towards high $\eta$,  an increase of inactive material is leading to a reduced trigger efficiency in data.
+
+%An increased data to Monte Carlo difference is observed in high $\eta$ bins.  
+
+
+\begin{figure}[h]
+    \centering
+  \subfloat[\label{fig:trigg:SE2018_et}]{   \includegraphics[width=0.45\linewidth]{figures/TrigEgamma/Improved/se2018_eff_et.pdf}}
+  \subfloat[ \label{fig:trigg:SE2018_eta}]{   \includegraphics[width=0.45\linewidth]{figures/TrigEgamma/Improved/se2018_eff_eta.pdf}}\\
+ % \subfloat[]{   \includegraphics[width=0.4\linewidth]{figures/TrigEgamma/se2018_eff_mu_unapproved.png}}
+ \caption{Single electron trigger efficiency in 2018 in dependency of the offline electron $E_T$ and $\eta$ \label{fig:trigg:SE2018}}
+\end{figure}
+
+As described previously in the calculation methods of trigger efficiencies and scale factors, the observed differences between efficiency modelling in simulation to its actual performance in data are accounted for through scale factors. 
+These scale factors are calculated dependent on $E_T$ and $\eta$ with scale factor maps in dependency of $E_T$ and $\eta$ provided to physics analyses.
+An example visualisation of such a scale factor map can be seen in Figure \ref{fig:trigg:SF2018}. The largest differences are visible in the crack region as well as in the turn-on of the trigger,  when the trigger efficiency has not yet reached a plateau. 
+
+\begin{figure}[h]
+    \centering
+ \includegraphics[width=0.6\linewidth]{figures/TrigEgamma/Improved/se2018_sf.pdf}
+ \caption{Single electron trigger combination scale factor in dependency of $E_T$ and $\eta$ of the offline electron \label{fig:trigg:SF2018}}
+\end{figure}
+
+\subsection{Di-electron trigger}
+Because they allow for looser $E_T$ selections than single electron triggers,  di-electron triggers are heavily used in multileptonic physics analyses.  As discussed in section \ref{sec:trigg:Menu},  in 2017 and 2018 two di-electron chains have been used: A first one uses a Level-1 seed requiring the electromagnetic energy cluster in the \ac{ECAL} to be isolated;  another one is defined without the isolation requirement. 
+The efficiency shown in Figure \ref{fig:trigg:DERun2} represents the trigger efficiency of one part of the dieelectron trigger,  the \textsc{ e12\_lhloose} for the overall \textsc{ 2e12\_lhloose} dieelectron trigger used in 2015.  The total efficiency of the di-electron trigger is calculated at analysis level taking into account combinatorics of all electrons in the analysis events,  based on the provided efficiency.
+A loss in efficiency in the $E_T$ distribution (\ref{fig:trigg:DERun2Et}) for the di-electron triggers using a L1 isolation can be seen. This only affects the $E_T$ range below 50 GeV,  since the Level-1 isolation is only active below that energy threshold. 
+Also within the $\mu$ dependency of the efficiency (\ref{fig:trigg:DERun2Mu}),  a loss in efficiency through the isolation requirement can be seen.  To mitigate this efficiency loss,  most physics analyses use a combination of isolated and non-isolated di-electron trigger. 
+
+\begin{figure}[h]\centering
+  \subfloat[\label{fig:trigg:DERun2Et}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/Improved/fig_20a.pdf}}
+  \subfloat[  \label{fig:trigg:DERun2Eta}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/Improved/fig_20b.pdf}}\\
+  \subfloat[  \label{fig:trigg:DERun2Mu}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/Improved/fig_21.pdf}}
+  \caption{Di-electron trigger efficiency in Run-2.  Shown is the trigger efficiency with respect to the offline electron's transverse energy (a),  pseudorapidity (b) and the pileup in the event. Bins with low statistics have been removed \cite{TrigEgammaPaper}.
+  \label{fig:trigg:DERun2}}
+\end{figure}
+
+%\subsection{Multilepton triggers - a comment on working point dependencies}
+%\textcolor{red}{Look at multi lepton trigger leg and plot the dependency on the working point - e.g. different isolation for a non-isolated chains}
+%
+%\begin{figure}
+%\centering
+%  \subfloat[ $E_T$ \label{fig:trigg:MEpointsEt}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/fig_22a.pdf}}
+%   \subfloat[ $\eta$ \label{fig:trigg:MEpointsEt}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/fig_22b.pdf}}
+% \caption{Multi- lepton leg trigger efficiency in 2018 for different offline electron working points.}
+%\end{figure}
+
+\section{Full Run 2 AF2 fast simulation studies}
+\label{sec:trigg:fastsimPerformance}
+In physics analyses,  Monte Carlo samples in use are generated with a full detector simulation of ATLAS,  but also with a simplified parametrised approach of the calorimeter simulation.  A detailed discussion can be seen in section \ref{sec:DAQ:AF2}.  This simplified approach is widely used for the generation of large parameters spaces of \ac{BSM} samples,  but also variations in the modelling of \ac{SM}  processes. 
+To ease the following discussion,  Monte Carlo samples using Geant4 detector simulation for all detector components are here referred to as \textit{full} simulation , whereas simulations using the AFII setup as introduced in section \ref{sec:DAQ:AF2} are referred to as \textit{fast} simulation.
+In many cases,  analyses assume the validity of full-simulation trigger scale factors also in fast simulation.  This has last been studied during Run-1 (see \cite{AFIIprinciple}),  but has since not been revisited. 
+To validate or correct this assumption,  the behaviour of the lowest unprescaled single electron trigger has been studied in fast simulation samples and compared to its equivalent performance in full Geant4 detector simulation.  
+
+
+\subsection{Single electron trigger}
+In the first year of Run-2 data taking,  the lowest possible energy threshold of the single electron trigger is at $24 \text{ GeV}$,  including a \textit{medium} likelihood identification working point.  The 2015 single electron trigger efficiency in dependency of the electron energy,  pseudo-rapidity as well as pileup is shown in Figure \ref{fig:AF2performance:2015}.  \\
+Considering the trigger performance as a function of pileup or energy,  integrated over $\eta$,  a close agreement of full simulation and fast simulation is observed in Figures \ref{fig:AF2performance:2015:Et} and \ref{fig:AF2performance:2015:mu}.  The pseudorapidity displayed in Figure \ref{fig:AF2performance:2015:Eta} shows up to $5\% $ differences in trigger efficiency in the crack region of the detector, compared to full simulation,  with full simulation closer emulating the trigger efficiency in data.  The closest agreement between full simulation and fast simulation can be seen in the central detector region,  where the accuracy of the FastCaloSim calorimeter layout assumptions are closest to the actual detector layout.  This is visible in the central pseudorapidity region of $\abs{\eta} <= 1.5$ in Figure \ref{fig:AF2performance:2015:Eta}.
+Towards higher pseudorapidity ($\abs{\eta} >2$), the accuracy of the fast simulation is falling behind the full simulation. 
+Even though the parametrised simulation can reproduce the full simulation's pileup dependency,  both simulations are not mimicking the falling trigger efficiency with a higher number of simultaneous collisions observed in 2015 (Fig.  \ref{fig:AF2performance:2015:mu}). 
+%/its/home/dk352/Desktop/Grid_Download/AF2/ComparingAF2FullSim/tight_three_one_15
+
+\begin{figure}[h!]\centering
+  \subfloat[ \label{fig:AF2performance:2015:Et}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/15_AFII_comparisons/plot_Et_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}
+  \subfloat[  \label{fig:AF2performance:2015:Eta}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/15_AFII_comparisons/plot_Eta_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}\\
+  \subfloat[\label{fig:AF2performance:2015:mu}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/15_AFII_comparisons/plot_Mu_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}
+  \caption{2015 single electron trigger efficiency comparison of full simulation and fast simulation samples.Shown is the trigger efficiency with respect to the offline electron's transverse energy (a),  pseudorapidity (b) and the pileup in the event.}
+  \label{fig:AF2performance:2015}
+\end{figure}
+
+%/its/home/dk352/Desktop/Grid_Download/AF2/ComparingAF2FullSim/tight_three_one_16
+As discussed in section \ref{sec:trigg:Menu} various requirements defining the single electron trigger had to be tightened in 2016.  The effects on this can also be seen in the behaviour in fast simulation shown throughout Figures \ref{fig:AF2performance:2016:Et} to \ref{fig:AF2performance:2016:mu}.  \\
+Generally,  it should be noted that the tightening of the online working point used in the lowest unprescaled trigger is compared with an offline tight electron,  so effects that are partially hidden through a tighter offline compared to an online working point in 2015 can show up in the 2016 and onward performance more distinctively.  Which can be observed comparing Figure \ref{fig:AF2performance:2015} and Figure \ref{fig:AF2performance:2016}.
+As is the case for 2015, the differences between fast and full simulation are most pronounced in the pseudorapidity distribution.  In the bulk of the distribution before the crack region,  the parametrised simulation is closer to the performance in data, whereas, towards higher $\abs{\eta}$,  this behaviour is inverting to differences between parametrised and full simulation up to 3\%.
+The fast simulation is more accurately representing the pileup dependency in data than the full simulation (Fig.  \ref{fig:AF2performance:2016:mu}), even improving to higher pileup values.  Within the turn-on of the trigger efficiency concerning the electron energy (Fig.  \ref{fig:AF2performance:2016:Et}), the efficiency is similarly closer to data in AF2 than in full simulation, whereas in the trigger efficiency plateau reached above 50 GeV the differences decrease. 
+
+
+\begin{figure}[h]\centering
+  \subfloat[\label{fig:AF2performance:2016:Et}]{\includegraphics[width=0.47\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/16_AFII_comparisons/plot_Et_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}
+  \subfloat[\label{fig:AF2performance:2016:Eta}]{\includegraphics[width=0.47\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/16_AFII_comparisons/plot_Eta_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}\\
+  \subfloat[\label{fig:AF2performance:2016:mu}]{\includegraphics[width=0.47\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/16_AFII_comparisons/plot_Mu_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}
+  \caption{2016 single electron trigger efficiency comparison of full simulation and fast simulation samples. Shown is the trigger efficiency with respect to the offline electron's transverse energy (a),  pseudorapidity (b) and the pileup in the event. \label{fig:AF2performance:2016}}
+\end{figure}
+
+% have to include same for 2017
+%/its/home/dk352/Desktop/Grid_Download/AF2/ComparingAF2FullSim/tight_three_one_17
+%/its/home/dk352/Desktop/ElectronComparisonPlotsForThesis/17_AFII_comparisons_newFS_newdata/
+
+In the two later years of Run-2 an increased instantaneous luminosity led to collision events with a higher number of pileup (as discussed in Section \ref{sec:ExpSetup:LHC} and Fig \ref{fig:expsetup:pileup}).  This can be seen in the larger pileup range in 2017 as well as 2018 in Figures \ref{fig:AF2performance:2017:mu} and \ref{fig:AF2performance:2018:mu} respectively. 
+
+\begin{figure}[h]\centering
+  \subfloat[\label{fig:AF2performance:2017:Et}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/17_AFII_comparisons_newFS_newdata/plot_Et_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}
+  \subfloat[\label{fig:AF2performance:2017:Eta}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/17_AFII_comparisons_newFS_newdata/plot_Eta_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}\\
+  \subfloat[\label{fig:AF2performance:2017:mu}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/17_AFII_comparisons_newFS_newdata/plot_Mu_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}
+  \caption{2017 single electron trigger efficiency comparison of full simulation and fast simulation samples. Shown is the trigger efficiency with respect to the offline electron's transverse energy (a),  pseudorapidity (b) and the pileup in the event.}
+\end{figure}
+
+Even though the parametrised calorimeter simulation can closely replicate the trigger efficiency for lower pileup conditions around $<\mu> \leq 40$ (even closer than the behaviour in full detector simulation). The predicted efficiency drops to lower values than observed in data.  This can be seen in Figures \ref{fig:AF2performance:2017:mu} and \ref{fig:AF2performance:2018:mu}.  In both years, the fast simulation is underestimating the trigger efficiency in the bulk of the detector ($\abs{\eta} < 1.5 $,  whereas full simulation is overestimating the efficiency (Figures \ref{fig:AF2performance:2017:Eta} and \ref{fig:AF2performance:2018:Eta}).  This behaviour is also observable throughout the trigger turn-on in Figures \ref{fig:AF2performance:2017:Et} and \ref{fig:AF2performance:2018:Et}. 
+
+%single electron 2018 comparisons: ~/Desktop/Grid_Download/AF2/ComparingAF2FullSim/tight_three_one_18_highStats
+\begin{figure}[h]\centering
+  \subfloat[\label{fig:AF2performance:2018:Et}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/18_AFII_comparisons/plot_Et_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}
+  \subfloat[\label{fig:AF2performance:2018:Eta}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/18_AFII_comparisons/plot_Eta_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}\\
+  \subfloat[ \label{fig:AF2performance:2018:mu}]{\includegraphics[width=0.45\linewidth]{figures/TrigEgamma/electriggerplotsforthesis/18_AFII_comparisons/plot_Mu_zoom_SingleLeptonAFIIvsFS_SingleLeptonAFIIvsFS.pdf}}
+  \caption{2018 single electron trigger efficiency comparison for full and fast simulation.  samples. Shown is the trigger efficiency with respect to the offline electron's transverse energy (a),  pseudorapidity (b) and the pileup in the event.}
+  \label{}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \subfloat[Fast Simulation scale factor]{\includegraphics[width=0.9\linewidth]{figures/TrigEgamma/AFII/SFComp18/CentralValueSF_tight_tight_AFII.pdf}}\\
+  \subfloat[Full Simulation scale factor]{\includegraphics[width=0.9\linewidth]{figures/TrigEgamma/AFII/SFComp18/CentralValueSF_tight_tight_FS.pdf}}
+  \caption{Scale Factor maps in dependency of $\eta$ and $E_T$ for fast simulation (a) as well as full simulation (b). 
+  \label{fig:SF:AF2FScomparison}}
+\end{figure}
+
+The differences observed in the trigger efficiency are a culmination of multiple effects and can not be pointed towards one factor.  Differences in performance of the online identification in full and fast simulation can be caused through varying modelling of e.g. the shower shape variables used in the identification likelihood (as described in section \ref{sec:DAQ:ObjectReco:Electrons}), only to name one.  
+
+
+The main objective of the described studies was to determine where an assumption of the full simulation trigger behaviour is accurate also in fast simulation samples and to provide correction factors for AF2 samples.
+An exemplary comparison of correction factors extracted from full simulation as well as AF2 samples can be seen in Figure \ref{fig:SF:AF2FScomparison}.
+After the trigger has reached its efficiency plateau, the scale factors are largely within 1\% difference to 1.
+The most significant differences are visible within the trigger turn on,  below 60 GeV.  Even though the scale factors are close to each other in AF2 and full simulation,  they are not consistent within their uncertainties,  given that the total scale factor errors are in the per-mill regime.
+
+%/its/home/dk352/Desktop/Grid_Download/AF2/18_highStats/tight_three_one_backup/output/maps_SF
+%/its/home/dk352/Desktop/Grid_Download/Recovering18SE_tight_three/tight_three_one/output/maps_SF
+\FloatBarrier
+\section{Summary and future perspectives of this work}
+\label{sec:trigg:perspectives}
+
+The studies presented in this chapter comparing fast and full simulation have shown the need for specific trigger scale factors for samples simulated with the AF2 procedure.  Many precision measurements in ATLAS have since moved to using these scale factors provided to the ATLAS community. 
+Currently,  there are large efforts under way further improving the AF2 fast simulation using machine learning algorithms and further tunings to data \cite{AF3}.  
+Given the convolution of factors contributing to the efficiency of a trigger in data as well as simulation, next to ongoing efforts on a move to the improved parametrised detector simulation,  no in-depth studies were performed to reach a complete understanding of all visible effects of the AF2 trigger performance.
+Following the studies above,  rather similar studies of the trigger efficiency on these improved parametrised detector simulation have been encouraged for Run-3. 
