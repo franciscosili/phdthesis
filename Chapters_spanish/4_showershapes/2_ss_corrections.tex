@@ -1,0 +1,623 @@
+\chapter{Correcciones de las \acfp{SS}}
+\label{ch:ss_corrections}
+\epigraph{\emph{“Champions keep playing until they get it right.”}}{Billie Jean King}
+
+
+En el capítulo anterior se vio que los \acp{SF} (cociente entre las eficiencias de los datos y las obtenidas a partir de la simuluaci\'on \ac{MC}) se desvían de la unidad. Dado que la identificación de fotones se basa en los cortes de las \acp{SS} de fotones, se vio que las diferencias de hecho aparecen en estas variables. Desde el Run-1, estas se han corregido con lo que se conoce como \acfp{FF}, que se han calculado como simples desplazamientos a las distribuciones \ac{MC} y se ha visto que proporcionan muy buenas mejoras de los \acp{SF}. Sin embargo, como se ha visto antes, siguen habiendo discrepancias entre las distribuciones que hay que abordar para poder contar con una simulación aún mejor.
+En la la \Sect{\ref{sec:ss_corrections:ffs}}, se presenta un enfoque más sofisticado basado en un cálculo de orden superior para corregir las \acp{SS}. Asimismo, en la la \Sect{\ref{sec:ss_corrections:cell_rw}} se estudia y aborda un nuevo enfoque que utiliza directamente las energías de las celdas. Los estudios presentados en este capítulo constituyen uno de los principales temas de trabajo de la presente tesis.
+
+
+
+
+
+\section{\acfp{FF}}
+\label{sec:ss_corrections:ffs}
+
+
+\subsection{Muestras de datos y simulaciones \ac{MC}}
+\label{subsec:ss_corrections:ffs:samples}
+
+Los \acp{FF} se calculan utilizando el conjunto completo de datos de Run-2, recolectados a una energ\'ia de centro de masa de \(\sqrt{s}=13~\tev\) y con una luminosidad integrada correspondiente a \(140~\ifb\).
+Las muestras simuladas de \ac{RZ} y \ac{SP} se utilizan para este estudio, ya que representan rangos \pt complementarios. Los eventos de \ac{RZ} se generan con \SHERPA 2.2.11~\cite{Sherpa2.2}, mientras que \SHERPA 2.2.1 se utiliza para los eventos de fondo \(\Zboson \to \ell\ell\). Respecto a las muestras \ac{SP}, los eventos se generan con \PYTHIA 8.186~\cite{Pythia8.1}, que incluye eventos \gammajet de \acf{LO} procedentes tanto de procesos directos (\(qg\to q\gamma\) y \(\qqbar \to g \gamma\)) como de fragmentación de fotones procedentes de eventos \ac{QCD} dijet.
+
+En ambos casos, el detector \ac{ATLAS} se simula utilizando \GEANT~\cite{Geant4} y los eventos \ac{MC} se escalean para que sus distribuciones de pileup se asemejen a las de los datos, para cada año del periodo de toma de datos.
+
+
+\subsection{C\'alculo de \acfp{FF}}
+\label{subsec:ss_corrections:ffs:calculation}
+
+
+
+
+
+El cálculo se realiza por separado para las dos muestras consideradas: \ac{RZ} para fotones con \(7\leq\pt\leq 50~\gev\) y \ac{SP} para fotones con \(\pt> 50~\gev\), que ya se discutieron en la la \Sect{\ref{subsec:pid_ss:pid:event_selection}}. Dado que las distribuciones de las \acp{SS} varían en función de \pt y \abseta, el cálculo se realiza en bines de estas variables:
+\begin{gather*}
+    \ptgam:
+    \begin{cases}
+        \text{\ac{RZ}}: [7,\, 15,\, 20,\, 30,\, 50] ~\gev\\
+        \text{\ac{SP}}: (50,\, 60,\, 80,\, 100,\, 150,\, 300,\, 600,\, \infty] ~\gev\\
+    \end{cases}\\
+    \abseta: [0,\, 0.6,\, 0.8,\, 1.15,\, 1.37,\, 1.52,\, 1.81,\, 2.01,\, 2.37].
+\end{gather*}
+Además, como se menciona en la \Sect{\ref{sec:pid_ss:ss}}, hay variables muy sensibles al estado de conversión del fotón, es decir, si los fotones están convertidos o no. Por esta razón, el cálculo se hace por separado para fotones convertidos y no convertidos. En total se corrigen nueve variables con este método: \eratio, \fside, \reta, \rphi, \rhad, \rhado, \wone, \weta y \wstot; ya que son en las que se observan las mayores discrepancias entre los datos y \ac{MC}.
+
+Para cada \ac{SS}, se crean histogramas de \ac{MC} y datos de 100 bines. La elección del \textit{binneado} se basa en disponer de estadística suficiente en cada bin y también en capturar todas las características de las variables.
+Después, cada histograma se suaviza utilizando una herramienta del paquete de TMVA~\cite{TMVA} denominada \acf{KDE}. El método \ac{KDE} consiste en estimar la forma de una \acf{PDF2} mediante la suma sobre eventos suavizados. La \ac{PDF2} \(p(x)\) de una variable \(x\) es entonces
+\begin{equation*}
+	p(x) = \frac{1}{N}\sum_{i=1}^{N} K_h(x-x_i)
+\end{equation*}
+donde \(N\) es el número de eventos, \(K_h(t) = K(t/h)/h\) es la función kernel, y \(h\) es el ancho de banda del kernel. La idea básica es que cada evento se considera como una función Dirac-\(\delta\), que se sustituye por una función Kernel (Gaussiana) y finalmente se suman para formar la \ac{PDF2} final. El m\'etodo de suavizado \ac{KDE} puede aplicarse de dos formas: no adaptativo o adaptativo, como se ve en la \Fig{\ref{fig:ss_corrections:ffs:calculation:adaptive_nonadaptive_kde}}. En el primer caso, el ancho de banda es constante para toda la muestra \(h_{NA}\), mientras que en el segundo, se utiliza el valor de \ac{KDE} no adaptativo pero que varía en función de \(p(x)\) como
+\begin{equation*}
+	h_A = \frac{h_{NA}}{\sqrt{p(x)}}.
+\end{equation*}
+El m\'etodo \ac{KDE} adaptativo mejora la forma de la \ac{PDF2} especialmente en regiones de baja estadística, pero en regiones de alta estadística puede dar lugar a un exceso de suavizado o \textit{oversmoothing}. El grado de suavizado se ajusta multiplicando el ancho de banda \(h\) por lo que se denominan \textit{fine factors}.
+Estos factores son parámetros definidos por el usuario que se ajustan para permitir que la \ac{PDF2} conserve las características importantes del histograma original y también para evitar fluctuaciones estadísticas. Los valores más altos de los factores indican funciones Kernel más amplias y, por lo tanto, la \ac{PDF2} capta menos fluctuaciones estadísticas.
+En la \Fig{\ref{fig:ss_corrections:ffs:calculation:smoothing_ss}} se muestran ejemplos del procedimiento de suavizado aplicado a \rhad para casos en los que los histogramas originales tienen baja y alta estadística.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{4_photonid/ffs/smoothing/kde}
+    \caption{Esquema del suavizado no adaptativo y adaptativo del m\'etodo \ac{KDE}.}
+    \label{fig:ss_corrections:ffs:calculation:adaptive_nonadaptive_kde}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/smoothing/can__pdfhist__mc__ph_rhad1__c_pt15p0_eta1p15}
+        \caption{Caso de baja estad\'istica: muestras de \ac{RZ}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/smoothing/can__pdfhist__mc__ph_rhad1__u_pt0060p0_eta1p15}
+        \caption{Caso de alta estad\'istica: muestras de \ac{SP}}
+    \end{subfigure}
+    \caption{Suavizado utilizando el m\'etodo \ac{KDE} aplicado a la \ac{SS} \rhad para fotones en \(0.8<\abseta<1.15\) bajo dos posibles escenarios: baja y alta estad\'istica. El histograma original se muestra con los puntos azules y las correspondientes \acp{PDF2} con la l\'inea naranja. Adem\'as, se muestran los valores de los fine factors usados en cada caso.}
+    \label{fig:ss_corrections:ffs:calculation:smoothing_ss}
+\end{figure}
+
+
+Una vez creados las \acp{PDF2} de los datos y la simulaci\'on \ac{MC} para una dada variable, bin de \pt y \abseta, y tipo de conversión, la \ac{PDF2} de \ac{MC} se normaliza al de los datos y se calcula un valor \chisq entre ambos como~\cite{Chi2Histograms}:
+\begin{equation}
+	\chisq = \sum_{i=1}^{N} \dfrac{(w_{\text{MC},i} W_{\text{data}} - w_{\text{data},i} W_{\text{MC}})^2}{s_{\text{MC},i}^2 W_{\text{data}}^2 + s_{\text{data},i}^2 W_{\text{MC}}^2}.
+\end{equation}
+\(N\) es el número de bines de las \acp{PDF2}, \(w_{\text{MC},i}\) y \(w_{\text{data},i}\) son los números de eventos de \ac{MC} y datos en cada bin, respectivamente, \(s_{\text{MC},i}\) y \(s_{\text{data},i}\) son los errores del bin y, por último, \(W_{\text{data}}\) y \(W_{\text{MC}}\) son la suma de los pesos en datos y \ac{MC}, respectivamente.
+
+\subsubsection{Correcciones \textit{shift-only}}
+
+Como ha sido mencionado anteriormente, las correcciones a las \acp{SS} de \ac{MC} han sido realizadas a partir de simples corrimientos de ellas. Estos corrimientos o desplazamientos se denominan, de aqu\'i en adelante, \textit{shift fugde-factors} \ac{FF}, o simplemente \textit{shifts}.
+Para ello, se desplaza a la \ac{PDF2} de \ac{MC} a la izquierda y a la derecha un bin a la vez.
+El número inicial de bines que se debe desplazar a la distribución \ac{MC} se calcula mediante la diferencia de los valores medios de las distribuciones de datos y \ac{MC}. A partir de este valor inicial, se consideran shifts de 100 bines a cada lado.
+Como consecuencia de este procedimiento, la resolución del shift depende directamente del ancho del bin de la \acp{PDF2}, por lo que bines m\'as pequeños conducen a una mejor resolución del shift. Dado que los histogramas, en primer lugar, se construyen con bines relativamente anchos, la \acp{PDF2} puede construirse utilizando bines pequeños de alta precisión para asegurar una alta resolución. Después de pruebas de convergencia de los \acp{FF}, se decide construir las \acp{PDF2} con 5000 bines.
+
+Para cada bin que se ha desplazado la distribución, se calcula y se registra el valor \chisq antes mencionado. Suponiendo que los errores \(s_{\text{MC},i}\) y \(s_{\text{data},i}\) tienen una distribución gaussiana est\'andar~\footnote{Este requsito se cumple siempre que los contenidos de los bines de ambas \acp{PDF2} sean mayores que 10, lo que también se satisface puesto que los histogramas se construyen con bines relativamente amplios.}, se espera que la forma seguida por los valores \chisq cerca del m\'inimo sea aproximadamente parab\'olica.
+
+Para extraer los \acp{FF}, se realiza un ajuste a los valores de \chisq cercanos al mínimo (5 bines a cada lado del bin mínimo) utilizando una función parabólica y el \ac{FF} de shift se obtiene a partir del mínimo ajustado. Por último, utlilizando este valor, se puede corregir a la \acp{SS} evento a evento como:
+\[
+	x = x_{\text{old}} + \text{shift}.
+\]
+donde \(x_{\text{old}}\) y \(x\) representan el valor original y el valor post-correcci\'on de la variable la cual se quiere corregir, respectivamente.
+
+
+\subsubsection{Correcciones \textit{shift+stretch}}
+
+Se observó que incluso después de aplicar correcciones de shift a las \acp{SS} de \ac{MC}, seguían existiendo diferencias en las formas de las mismas, y en algunos casos éstas pueden ser bastante sustanciales. Una forma de seguir mejorando el acuerdo entre los datos y \ac{MC} es incluir otra corrección que se denomina \textit{stretching}. Las dos correcciones, actuando en conjunto, son denominadas como correcciones shift+stretch (o desplazamiento+estiramiento), que pretenden corregir simultáneamente el valor medio y los anchos de las distribuciones de \ac{MC}.
+
+El método de corrección shift+stretch empieza por encontrar el máximo de la \ac{PDF2} de \ac{MC}. Posteriormente, la \ac{PDF2} se estira al alrededor del m\'aximo calculando la nueva posición de cada bin por el producto \(\text{stretch}\times (x - \text{stretch point})\), donde \(x\) es el centro del bin en cuesti\'on. De este modo, el centro de cada bin conserva la distancia inicial al centro de la distribución, multiplicada por el factor de stretch. En el escenario en el que el stretch es \(>1\), puede haber casos en los que sea lo suficientemente grande como para dar lugar a bines vacíos. El contenido de estos bines vacíos se interpola linealmente a partir de los bines vecinos distintos de cero.
+Una vez \textit{estirada} la \ac{PDF2}, se desplaza a izquierda y derecha siguiendo el mismo procedimiento que para el caso de shift-only, calculando los valores \chisq para cada \(\text{shift}_i\) después de aplicar el \(\text{stretch}_j\). Como resultado de este procedimiento, ahora se obtiene una grilla bidimensional de valores de \chisq en el plano de shift-stretch. El par shift-stretch se obtiene del el centro del bin mínimo, y comprenden ahora los \acp{FF}. Las correcciones pueden ser aplicadas a cada \ac{SS} \(x\), evento a event, como:
+\begin{equation}
+	x = \text{stretch}\times(x_{\text{old}} - \text{stretch point}) + \text{shift} + \text{stretch point},
+\end{equation}
+donde nuevamente \(x_\text{old}\) representa el valor de la variable sin corregir.
+
+Un ejemplo de los valores de \chisq resultantes para la variable \fside se muestra en la \Fig{\ref{fig:ss_corrections:ffs:calculation:fside_calculation:chi2}}, donde el shift est\'a representado en el eje \(x\) y el stretch en el eje \(y\). El valor óptimo de shift-stretch en este caso corresponde a \(\text{shift}=0.03\) y \(\text{stretch}=1.09\). En la \Fig{\ref{fig:ss_corrections:ffs:calculation:fside_calculation:pdfs}} se muestran las \acp{PDF2} antes y después de aplicar las correcciones, donde se comparan con la \ac{PDF2} de los datos. Como se ve en la figura, hay una gran mejora y las distribuciones coinciden casi a la perfección.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/procedure/can2d__chi2scan_nocontour__ph_fside__Isotightcaloonly_IdNone_u_pt15p0_eta2p01}
+        \caption{Valores de \chisq en el plano shift-stretch.}
+        \label{fig:ss_corrections:ffs:calculation:fside_calculation:chi2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/procedure/can__data_mc_fudged_comp__ph_fside__Isotightcaloonly_IdNone_u_pt15p0_eta2p01}
+        \caption{\acp{PDF2} de datos (puntos negros) y simulaci\'on \ac{MC} sin corregir (l\'inea roja) y corregida (l\'inea azul), mostrando el impacto de las correcciones.}
+        \label{fig:ss_corrections:ffs:calculation:fside_calculation:pdfs}
+    \end{subfigure}
+    \caption{C\'alculo de los \acp{FF} de shift+stretch para \fside utilizando fotones no convertidos con momento transverso de \(15<\pt<20~\gev\) y pseudorapidez \(2.01<\abseta<2.37\) }
+    \label{fig:ss_corrections:ffs:calculation:fside_calculation}
+\end{figure}
+
+
+
+
+
+
+
+\subsection{C\'alculo de incertezas}
+\label{subsec:ss_corrections:ffs:uncs}
+
+\subsubsection{Incertezas estad\'isticas}
+
+Para extraer las incertezas estadísticas de los \acp{FF} de shift y stretch, se realiza un ajuste al contorno de \(1\sigma\) (nivel de confianza del \(68.3\%\)) sobre los valores \chisq. Este contorno representa una elipse que toma la siguiente forma:
+\begin{equation}
+    \chi^2 = \chi^2_{\text{min}} + \frac{1}{1-\rho^2} \left[ \left( \frac{x-x_0}{\sigma_x} \right)^2 + \left( \frac{y-y_0}{\sigma_y} \right)^2 - 2\rho \left( \frac{x-x_0}{\sigma_x} \right) \left( \frac{y-y_0}{\sigma_y} \right) \right],
+\end{equation}
+donde \(\rho\) es el coeficiente de correlación entre ambas variables, \(\sigma_x\) y \(\sigma_y\) las incertezas sobre \(x\) y \(y\), respectivamente, \((x_0, y_0)\) es la posici\'on del centro de la elipse, y \(\chi^2_{\text{min}}\) es el valor mínimo de \(\chi^2\) obtenido del histograma bidimensional.
+
+
+Extrayendo los semiejes mayor y menor de la elipse ajustada, y con el ángulo de inclinación de la misma, las incertezas estadísticas sobre dos variables \(x\) y \(y\) (que en este caso representan el shift y el stretch, respectivamente) son (véase el \App{\ref{app:ellipse_formulae}}):
+\begin{gather}
+    \sigma_x = \sqrt{a^2 \cos^2\theta + b^2 \sin^2\theta}\\
+    \sigma_y = \sqrt{a^2 \sin^2\theta + b^2 \cos^2\theta}.
+\end{gather}
+
+\subsubsection{Incertezas sistem\'aticas}
+
+Las incertezas sistemáticas se obtienen variando los criterios de preselección, es decir, la identificación y el aislamiento de fotones. El cambio de los diferentes criterios de preselección permite que las \acp{SS} varíen dependiendo de la cantidad de contaminación de fondo, y en consecuencia también lo hacen los \acp{FF}.
+Las diferentes selecciones son, para cada muestra:
+\begin{itemize}
+    \item \acf{RZ}:
+        \begin{itemize}
+            \item Nominal: Sin criterio de identificaci\'on, aislamiento \texttt{FixedCutTightCaloOnly}.
+            \item Identificación loose, sin aislamiento.
+            \item Identificación loose, aislamiento \texttt{FixedCutTightCaloOnly}.
+            \item Sin identificación, aislamiento \texttt{FixedCutLoose}.
+        \end{itemize}
+    \item \acf{SP}:
+        \begin{itemize}
+            \item Nominal: identificaci\'on tight, aislamiento \texttt{FixedCutLoose}.
+            \item identificaci\'on tight, aislamiento \texttt{FixedCutTight} .
+        \end{itemize}
+\end{itemize}
+Todas las demás combinaciones (o falta de ellas) de criterios de selección darían como resultado una muestra con estadísticas demasiado bajas o una muy baja pureza.
+
+Los \acp{FF} se derivan para cada una de las selecciones anteriores, y se calcula la diferencia entre la nominal y la variada. La diferencia máxima se toma como incerteza sistemática, como el caso más conservativo. Finalmente, las incertezas estad\'isticas y sistem\'aticas se suman en cuadratura.
+
+
+
+
+
+
+
+
+
+
+\subsection{Resultados}
+\label{subsec:ss_corrections:ffs:results}
+
+
+Debido al hecho de que los \acp{FF} se calculan en un amplio rango de \pt y utilizando dos muestras distintas que abarcan regiones complementarias, los resultados se concatenan en \(50~\gev\), que coincide con el l\'imite entre ellas.
+
+A continuación, los valores de shift y stretch para distintas \acp{SS} ser\'an mostrados. Los valores de shift se normalizan utilizando la desviaci\'on est\'andar de la \ac{SS} luego de aplicar el \ac{FF} de stretch, ya que esta cantidad permite comprender cuánto se desplaza cada variable con respecto a su ancho. Además, proporciona una medida única para todas las variables consideradas, ya que cada una de ellas abarca rangos diferentes. No obstante, el ancho de las variables varía según los distintos bines de \pt y \abseta, lo que puede dar lugar a grandes diferencias entre bines vecinos.
+%En tales casos, no hay diferencias drásticas con respecto a los valores de shift originales, trat\'andose s\'olo de diferencias en los anchos de las distribuciones.
+
+En la \Fig{\ref{fig:ss_corrections:ffs:reslts:ffs}}, se presentan ejemplos de los \acp{FF} resultantes para las variables \reta y \weta utilizando fotones convertidos. Se puede observar que para ambas variables los \acp{FF} dependen de \pt, especialmente hacia momentos transversos más altos. Este comportamiento también se repite en todas las variables.
+Inspeccionando los comportamientos y tendencias de los \acp{FF}, también es posible recuperar información sobre el mal modelado de las \acp{SS} por el \ac{MC}. Como se mencion\'o en la \Sect{\ref{sec:pid_ss:ss_differences}}, se observaron anchos y perfiles en \(\eta\) más amplios para los datos en comparación con la simulación. De hecho, esto se puede inferir dado los valores de stretch aumentan hacia valores más altos de \pt, estirando las simulaciones \ac{MC} hasta el doble de su ancho inicial. En el caso de \reta (\weta) mostrado, la simulación \ac{MC} sobreestima (subestima) el valor central de la distribuci\'on en casi una desviación estándar después de corregir la ancho, lo que significa que las diferencias entre la distribución \ac{MC} sin corregir con la de los datos son muy grandes.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/combined/1d/can__comb__ph_reta__c__eta1p15__shift_normalized}
+        \caption{\reta}
+        \label{fig:ss_corrections:ffs:reslts:ffs:reta}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/combined/1d/can__comb__ph_weta2__c__eta1p15__shift_normalized}
+        \caption{\weta}
+        \label{fig:ss_corrections:ffs:reslts:ffs:weta}
+    \end{subfigure}
+    \caption{Valores de los \acp{FF} de shift y stretch para las \reta (izquierda) y \weta (derecha) para fotones convertidos con \(1.15<\abseta<1.37\), en funci\'on de \pt. Los resultados obtenidos por las muestras de \ac{RZ} est\'an representados por el color negro, mientras que los resultados de \ac{SP} se muestran en azul. Los puntos y las l\'ineas denotan los valores centrales con sus incertezas estad\'isticas, mientras que las regiones sombreadas representan las incertezas totales. Los valores de shift se muestran en el panel superior, los cuales son normalizados por el ancho de la distribuci\'on luego de ser estirada por el stretch, como se ha explicado en el texto. Este \'ultimo valor se muestra en el panel inferior de las figuras.}
+    \label{fig:ss_corrections:ffs:reslts:ffs}
+\end{figure}
+
+También es útil visualizar los \acp{FF} en un bin de \pt fijo y en función de \abseta, para as\'i determinar qu\'e tan dependientes de \abseta son las correcciones. Esto se muestra para \wstot utilizando fotones convertidos con \(50<\pt<60~\gev\) en la \Fig{\ref{fig:ss_corrections:ffs:reslts:ffs_eta_wstot}}. Como se puede notar, para \(\abseta>1.81\) (los dos últimos bines), los valores de shift normalizados son mayores que los de los bines anteriores en, al menos, un factor 2. Sin embargo, los valores de shift sin normalizar mostrados en la \Fig{\ref{fig:ss_corrections:ffs:reslts:ffs_eta_wstot:raw_shift}} no presentan un cambio tan brusco, observ\'andose s\'olo una peque\~na dependencia en \abseta. Como consecuencia de este comportamiento, se puede concluir que el cambio brusco observado es debido al cambio en el ancho de la distribuci\'on entre los distintos bines de \abseta., tal como se hab\'ia anticipado.
+
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/SP/1d/can__SP__ph_wstot__c__pt0050p0__shift_normalized}
+        \caption{Valores de shift normalizados.}
+        \label{fig:ss_corrections:ffs:reslts:ffs_eta_wstot:normalised_shift}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/SP/1d/can__SP__ph_wstot__c__pt0050p0}
+        \caption{Valores de shift sin normalizar.}
+        \label{fig:ss_corrections:ffs:reslts:ffs_eta_wstot:raw_shift}
+    \end{subfigure}\\
+    \caption{Valores de los \acp{FF} de shift y stretch para \wstot en funci\'on de \abseta utilizando fotones convertidos con \(50<\pt<60~\gev\) de las muestras de \ac{SP}. La \Fig{\subref{fig:ss_corrections:ffs:reslts:ffs_eta_wstot:normalised_shift}} muestra los valores de shift normalizados, mientras que los no normalizados se encuentra en la \Fig{\subref{fig:ss_corrections:ffs:reslts:ffs_eta_wstot:raw_shift}}. Los puntos con las l\'ineas de color muestran los valores centrales y las incertezas estad\'isticas, mientras que las \'areas sombreadas representan las incertezas totales en cada bin. Los valores de stretch se muestran en los paneles inferiores de cada figura.}
+    \label{fig:ss_corrections:ffs:reslts:ffs_eta_wstot}
+\end{figure}
+
+
+Para validar los \acp{FF} obtenidos, las correcciones se aplican a las \acp{SS} evento por evento.
+Las \Figs{\ref{fig:ss_corrections:ffs:results:ss_rz}}{\ref{fig:ss_corrections:ffs:results:ss_sp}} muestran la aplicación de los \acp{FF} a algunas de las \ac{SS} utilizando las muestras \ac{RZ} y \ac{SP}, respectivamente, divididas en las regiones barrel y endcap en \abseta. En la región barrel, las correcciones mejoran el acuerdo entre datos y \ac{MC}, pero la mejora no es tan significativa como en la región endcap, donde se observan excelentes acuerdos entre datos y \ac{MC}. Tomando como ejemplo las variables \wone y \wstot, se observan grandes diferencias en las formas entre la simulación nominal y los datos, que los métodos shift+stretch consiguen corregir. El mismo comportamiento se observa con las muestras \ac{SP}, en las que estas variables presentan dos o más picos, y que se corrigen correctamente con el método de \acp{FF}. En todos los casos mostrados, el \ac{MC} corregido y los datos son casi indistinguibles, lo que demuestra la importancia de estas correcciones y cómo logran un excelente acuerdo.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/RZ/corrections/c/ptFull/etaCoarse/can__correction__ph_fside__Isotightcaloonly_IdNone__c__ptFullpt07p0__etaCoarseeta0p00}
+        \caption{\fside, barrel.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/RZ/corrections/c/ptFull/etaCoarse/can__correction__ph_w1__Isotightcaloonly_IdNone__c__ptFullpt07p0__etaCoarseeta0p00}
+        \caption{\wone, barrel.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/RZ/corrections/c/ptFull/etaCoarse/can__correction__ph_wstot__Isotightcaloonly_IdNone__c__ptFullpt07p0__etaCoarseeta0p00}
+        \caption{\wstot, barrel.}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/RZ/corrections/c/ptFull/etaCoarse/can__correction__ph_fside__Isotightcaloonly_IdNone__c__ptFullpt07p0__etaCoarseeta1p52}
+        \caption{\fside, endcap.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/RZ/corrections/c/ptFull/etaCoarse/can__correction__ph_w1__Isotightcaloonly_IdNone__c__ptFullpt07p0__etaCoarseeta1p52}
+        \caption{\wone, endcap.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/RZ/corrections/c/ptFull/etaCoarse/can__correction__ph_wstot__Isotightcaloonly_IdNone__c__ptFullpt07p0__etaCoarseeta1p52}
+        \caption{\wstot, endcap.}
+    \end{subfigure}\\
+    \caption{Distribuciones de algunas \acp{SS} seleccionadas usando las muestras de \ac{RZ} para fotones convertidos luego de aplicar las correcciones de los \acp{FF} en la simulaci\'on. Las distribuciones de las \ac{SS} est\'an separadas para fotones en la regi\'on del barrel (fila de arriba) y en la regi\'on del endcap (fila de abajo). Los puntos negros representan los datos recolectados por \ac{ATLAS}, mientras que las simulaciones no corregidas y corregidas est\'an mostradas por las l\'ineas azules y verdes, respectivamente. Los paneles inferiores, en cada figura, muestra el cociente entre el histograma de datos con cada uno de los obtenidos de las simulaciones \ac{MC}.}
+    \label{fig:ss_corrections:ffs:results:ss_rz}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/SP/corrections/c/ptFull/etaCoarse/can__correction__ph_fside__Isoloose_Idtight__c__ptFullpt0050p0__etaCoarseeta0p00}
+        \caption{\fside, barrel.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/SP/corrections/c/ptFull/etaCoarse/can__correction__ph_w1__Isoloose_Idtight__c__ptFullpt0050p0__etaCoarseeta0p00}
+        \caption{\wone, barrel.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/SP/corrections/c/ptFull/etaCoarse/can__correction__ph_wstot__Isoloose_Idtight__c__ptFullpt0050p0__etaCoarseeta0p00}
+        \caption{\wstot, barrel.}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/SP/corrections/c/ptFull/etaCoarse/can__correction__ph_fside__Isoloose_Idtight__c__ptFullpt0050p0__etaCoarseeta1p52}
+        \caption{\fside, endcap.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/SP/corrections/c/ptFull/etaCoarse/can__correction__ph_w1__Isoloose_Idtight__c__ptFullpt0050p0__etaCoarseeta1p52}
+        \caption{\wone, endcap.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/ffs/results/SP/corrections/c/ptFull/etaCoarse/can__correction__ph_wstot__Isoloose_Idtight__c__ptFullpt0050p0__etaCoarseeta1p52}
+        \caption{\wstot, endcap.}
+    \end{subfigure}\\
+    \caption{\'Idem a la \Fig{\ref{fig:ss_corrections:ffs:results:ss_rz}} pero utilizando las muestras de \ac{SP}.}
+    \label{fig:ss_corrections:ffs:results:ss_sp}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Correcciones de energ\'ia de las celdas}
+\label{sec:ss_corrections:cell_rw}
+
+El diseño y la funcionalidad del \ac{ECAL} de \ac{ATLAS} se describi\'o en la \Sect{\ref{subsubsec:atlas:atlas:cals:ecal}}, así como el proceso a partir del cual los electrones y los fotones depositan sus energías en el \ac{ECAL}: creación de pares y radiación bremsstrahlung. Luego, a partir de estas deposiciones de energía en el \ac{ECAL} se construyen los \acp{SS} y se utilizan para la identificación de fotones. Sin embargo, el hecho de que las \acp{SS} calculadas mediante las simulaci\'on \ac{MC} y los datos \acp{SS} no coincidan, significa que las deposiciones de energía son diferentes entre estos dos, lo que lleva a un desacuerdo a un nivel inferior.
+
+Aunque el método de \acf{FF} descripto anteriormente condujo a una excelente mejora del acuerdo entre los datos y las distribuciones \ac{MC}, sigue basándose en la modificación de variables de alto nivel y todas independientemente unas de otras. En cambio, otro enfoque diferente es el de corregir directamente los depósitos de energía de las celdas en la simulación \ac{MC}.
+Esto permitir\'ia calcular todas las \acfp{SS} y cualquier otra variable que utiliza la energ\'ia de las celdas ya corregidas.
+
+El enfoque de corregir las energ\'ias de las celdas del \ac{ECAL} se ha desarrollado y probado inicialmente para electrones~\cite{thesis_khandoga}, y posteriormente para fotones~\cite{thesis_belfkir}. Para el caso de los electrones, los resultados han sido muy prometedores, ya que se corrigieron sustancialmente las \acp{SS} de la segunda capa del calor\'imetro. Sin embargo, para los fotones, el mismo método que se utilizó para los electrones no funcion\'o de la forma que se esperaba, ya que sólo permiti\'o corregir las energ\'ias en promedio. Otro enfoque para corregir la simulación se basó en hacer coincidir eventos de datos y eventos simulados, estudio que s\'olo fue probado pseudodatos y resulta técnicamente complicado, pero que condujo a mejores resultados~\cite{thesis_belfkir}.
+
+En la presente sección, se estudia una nueva forma de corregir las energías de celda en \ac{MC}, utilizando sólo la segunda capa del \ac{ECAL}, por simplicidad. El método comparte similitudes con el método \ac{FF}, lo que adem\'as facilita su comprensión.
+En primer lugar, se presenta la selección de eventos especiales utilizada para este estudio. Se discute brevemente el m\'etodo de correcci\'on de energ\'ias utilizado por los primeros estudios basados en electrones y fotones, y luego se presenta en detalle cómo se mejora este método.
+
+
+
+
+
+\subsection{Selecci\'on de eventos}
+\label{subsec:ss_corrections:cell_rw:event_selection}
+
+Los estudios presentados en esta sección se llevan a cabo con el mismo conjunto de datos utilizado para el cálculo \ac{FF}, descripto en la \Sect{\ref{subsec:ss_corrections:ffs:samples}}. Sin embargo, en este caso sólo se utilizan las muestras de \ac{RZ}.
+Los eventos se seleccionan como se describe en la \Sect{\ref{subsec:pid_ss:pid:event_selection}}, utilizando fotones que pasan el criterio de aislamiento loose. Sin embargo, dado que estos estudios se basan en la información de la segunda capa del \ac{ECAL}, es necesario tener en cuenta una selección especial de las celdas que la conforman.
+
+Cuando un electrón o fotón entra en el calorímetro, su huella en la segunda capa es un grupo visible de celdas que rodean a la más energética y central (también denominada \textit{hottest cell}). En este estudio, se consideran clusters de \(7\times 11\) celdas en \(\eta\times\phi\), mostradas en la \Fig{\ref{fig:ss_corrections:cell_rw:event_selection:cluster:arrangement}} donde tambi\'en se muestra la disposición utilizada.
+Aproximadamente, el 90\% de la energía del cluster se reparte entre las 9 celdas centrales, resaltadas en azul en la \Fig{\ref{fig:ss_corrections:cell_rw:event_selection:cluster:arrangement}}. La energía media normalizada de los datos se muestra en la \Fig{\ref{fig:ss_corrections:cell_rw:event_selection:cluster:energy}}, visualizando cómo se distribuye la energía.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=0.5\linewidth]{4_photonid/cell_rw/cells_visualization}
+        \caption{Disposici\'on de las celdas, mostrando para cada una su n\'umero. La celda central corresponde a la celda n\'umero 39 resaltada en azul oscuro, mientras que las 8 celdas vecinas se muestran resaltadas en celeste.}
+        \label{fig:ss_corrections:cell_rw:event_selection:cluster:arrangement}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{4_photonid/cell_rw/cells-energy-u-etainclusive}
+        \caption{Energ\'ia promedio en cada celda.}
+        \label{fig:ss_corrections:cell_rw:event_selection:cluster:energy}
+    \end{subfigure}
+    \caption{Disposici\'on de las celdas y distribuci\'on de la energ\'ia entre las celdas del cluster.}
+    \label{fig:ss_corrections:cell_rw:event_selection:cluster}
+\end{figure}
+
+En este trabajo, sólo se consideran los eventos en los que los clusters tienen el total de las 77 celdas. Además, se requiere en los eventos que la celda central sea la más energética.
+
+
+
+
+
+
+\subsection{C\'alculo de las correcciones}
+\label{subsec:ss_corrections:cell_rw:calculation}
+
+\subsubsection{Primeros pasos}
+\label{subsubsec:ss_corrections:cell_rw:calculation:previous}
+
+Todos los eventos que superen la selección mencionada tendrán asociado un cluster, cada uno de los cuales tendrá \(N\) celdas y cada celda tendrá una energía \(E_i\), con \(i=1,\dots,N\). Para cada evento, en primer lugar, se obtiene la energía total del cluster \(E\) sumando las energ\'ias de cada una de las celdas \(E_i\).
+El m\'etodo de las correcciones de las \acp{SS} mediante la correcci\'on de las energ\'ias depositadas en el \ac{ECAL} hace uso de las energ\'ias normalizadas en cada celda, \(e_i = E_i/E\). Estos valores dan a entender qu\'e proporci\'on de la energ\'ia total depositada tiene una celda en particular.
+
+El proceso de correcci\'on comienza entonces calculando el valor medio de las distribuciones \(e_i\) (obtenidas una vez que todas los eventos pasan la selecci\'on) para la \(i\)-\'esima celda, en la simulaci\'on \ac{MC} y en los datos, y la diferencia entre estos valores dan lugar a la correcci\'on \(\Delta_i\) en dicha celda:
+\begin{equation}
+    \label{eq:ss_corrections:cell_rw:calculation:previous:old_corrections}
+    \Delta_i = \overline{\left( \frac{ E_i^{\text{data}} }{ E^{\text{data}} } \right)} - \overline{\left( \frac{ E_i^{\text{MC}} }{ E^{\text{MC}} } \right)}
+    = \bar e_i^{\text{data}} - \bar e_i^{\text{MC}}.
+\end{equation}
+Los valores \(E^{\text{data/MC}}\) son las energías totales del cluster para los datos y \ac{MC}, respectivamente.
+
+La energ\'ia de la celda \(i\), se corrige entonces como
+\begin{equation}
+    \label{eq:ss_corrections:cell_rw:calculation:previous:correction_method}
+    E_i^{\text{MC-RW}} = E_i^{\text{MC}} + \Delta_i E^{\text{MC}},
+\end{equation}
+que se traduce en desplazar la energía normalizada de la celda \(e_i^{\text{MC}}\) en una cantidad \(\Delta_i\), para que los valores medios de las distribuciones de \(e_i\) de datos y \ac{MC} coincidan. 
+
+Tambi\'en es importante notar que, por definición, estos coeficientes de corrección suman 0 en todo el cluster:
+\begin{equation*}
+    \sum_i \Delta_i = \sum_i \overline{\left( \frac{ E_i^{\text{data}} }{ E^{\text{data}} } \right)} - \sum_i \overline{\left( \frac{ E_i^{\text{MC}} }{ E^{\text{MC}} } \right)}
+    = \overline{\sum_i \frac{ E_i^{\text{data}} }{ E^{\text{data}} }} - \overline{\sum_i \frac{ E_i^{\text{MC}} }{ E^{\text{MC}} }}
+    = 1 - 1 = 0,
+\end{equation*}
+implicando que el cambio de energ\'ia total del cluster se mantiene constante:
+\begin{equation*}
+    E^{\text{MC-RW}} \equiv \sum_i E_i^{\text{MC-RW}}
+    = \sum_i E_i^{\text{MC}} + \sum_i \Delta_i E^{\text{MC}} = E^{\text{MC}} + E^{\text{MC}} \sum_i \Delta_i = E^{\text{MC}}.
+\end{equation*}
+Este hecho es de vital importancia, ya que no se desea cambiar la energ\'ia total del cluster en la simulaci\'on \ac{MC}, sino que se desea lograr una redistribuci\'on de la energ\'ia entre las celdas, de forma tal que cada una se asemeje a la de los datos.
+
+Los coeficientes de correcci\'on resultantes para cada celda en clusters de 77 celdas, se pueden visualizar en la \Fig{\ref{fig:ss_corrections:cell_rw:calculation:previous:reweights}}. Como se puede notar de los valores mostrados, la celda central presenta una correcci\'on negativa, mientras que las 8 vecinas a la central tienen correcciones positivas. Esto se puede traducir a que en la simulaci\'on, la celda central suele tener m\'as energ\'ia, en promedio, que en los datos, mientras que lo opuesto ocurre en las vecinas. Mediante la aplicaci\'on de una correcci\'on negativa (implicando un corrimiento negativo de \(e_i\)), se remueve energ\'ia de la celda central que luego es distribu\'ida en las circundantes.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\linewidth]{4_photonid/cell_rw/old_method/reweights_method1u_ptInclusive_eta040_phiInclusive}
+    \caption{Correcciones a las energ\'ias de las celdas de la simulaci\'on \ac{MC} utilizando el mismo m\'etodo dise\~nado para electrones. \fixme{fix luminosity}}
+    \label{fig:ss_corrections:cell_rw:calculation:previous:reweights}
+\end{figure}
+
+A partir de las energ\'ias de las celdas, se pueden calcular las \acp{SS} de la segunda capa del \ac{ECAL}, las cuales son \reta, \rphi y \weta:
+\begin{gather*}
+    \reta = \frac{E_{3\times 7}}{E_{7\times 7}}\\
+    \rphi = \frac{E_{3\times 3}}{E_{7\times 3}}\\
+    \weta = \sqrt{\frac{\sum_i E_i \eta^2_i}{\sum_i E_i} - \left( \frac{\sum_i E_i \eta_i}{\sum_i E_i} \right)^2}
+\end{gather*}
+donde \(E_{i\times j}\) es la energía de la celda sumada en una región de \(\eta\times\phi=i\times j\) celdas alrededor de la celda central. Se demostró en los estudios anteriores~\cite{thesis_belfkir} que este método sólo corrige las formas de las variables en promedio, pero las diferencias en la forma de permanecer. Esto se debe al hecho de que este método sólo corrige los valores medios de energ\'ia en las celdas. Sin embargo, estas distribuciones de energía siguen presentando diferencias, especialmente en lo que se refiere a las formas, lo que conduce a una situación muy similar a la observada para los \acp{FF}. De este modo, se puede emplear un enfoque muy similar para corregir los valores medios y los anchos de las distribuciones de energía normalizadas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Nuevo m\'etodo de correcci\'on de energ\'ias}
+
+Este nuevo método pretende corregir tanto el valor medio como la varianza de las distribuciones normalizadas de energía de las celdas, mediante la aplicaci\'on de corrimientos (shift) y estiramientos (stretch) de las mismas. De forma similar al enfoque seguido para las \acp{SS} utilizando el m\'etodo de \acp{FF}, una primera aproximación a los valores de shift y stretch de las distribuciones de energía consiste en calcular el valor medio y la raíz cuadrática media (RMS) de las mismas en cada celda, respectivamente.
+Luego, la energía normalizada de la \(i\)-\'esima celda se obtiene como:
+\begin{equation}
+    \label{eq:ss_corrections:cell_rw:calculation:new:normalized_e}
+    e_i^{\text{MC-RW}} =
+    \underbrace{\frac{\text{RMS}_{e,i}^{\text{data}}}{\text{RMS}_{e,i}^{\text{MC}}}}_{\text{stretch}} e_i^{\text{MC}}
+    +
+    \underbrace{\left(\bar e_i^{\text{data}} - \frac{\text{RMS}_{e,i}^{\text{data}}}{\text{RMS}_{e,i}^{\text{MC}}} \bar e_i^{\text{MC}}  \right)}_{\text{shift}},
+\end{equation}
+donde el subíndice \(e\) en los valores de RMS indica que estos se calculan a partir de las distribuciones de energía normalizadas, y el \'indice \(i\) recorre todas las celdas del cluster. De la expresi\'on anterior se pueden identificar nuevamente un factor de shift, que es una transformaci\'on constante de la energ\'ia normalizada, y un factor de stretch, lineal en la variable que se requiere corregir.
+
+Dado que la energía normalizada en la celda \(i\) puede calcularse como \(e_i^{j} = E_i^{j} / E^{j}\), para \(j=\)MC-RW, MC y datos, y se requiere tener la misma energía total del cluster luego de aplicar las correcciones (\(E^{\text{MC-RW}} = E^{\text{MC}}\)), se puede multiplicar la \Eqn{\ref{eq:ss_corrections:cell_rw:calculation:new:normalized_e}} por \(E^{\text{MC-RW}}\) y llegar a una expresión para \(E_i^{\text{MC-RW}}\):
+\begin{equation}
+    \label{eq:ss_corrections:cell_rw:calculation:new:correction_method}
+    E_i^{\text{MC-RW}} =
+    \frac{\text{RMS}_{e,i}^{\text{data}}}{\text{RMS}_{e,i}^{\text{MC}}} E_i^{\text{MC}}
+    +
+    \left( \bar e_i^{\text{data}} - \frac{\text{RMS}_{e,i}^{\text{data}}}{\text{RMS}_{e,i}^{\text{MC}}} \bar e_i^{\text{MC}} \right) E^{\text{MC}}.
+\end{equation}
+Por último, para garantizar que la energía del cluster permanezca constante, las energías de las celdas se reescalan por \(\sum_i E_i^{\text{MC}} / \sum_i E_i^{\text{MC-RW}}\).
+
+Como el resultado de este procedimiento de correcci\'on de energ\'as involucra una correcci\'on de shift y otra de stretch, se obtienen dos matrices de correcci\'on, y un ejemplo de ellas se presenta en la \Fig{\ref{fig:ss_corrections:cell_rw:calculation:new:reweights}}.
+En lo que sigue, este nuevo método se aplica para corregir las energías de las celdas, y se computa de forma inclusiva en \pt y \abseta, sólo separando entre fotones no convertidos y convertidos.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/h_u_shift_mpl}
+        \caption{Shift}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/h_u_stretch_mpl}
+        \caption{Stretch}
+    \end{subfigure}
+    \caption{Ejemplo de las matrices de correcci\'on de shift (izquierda) y stretch (derecha). Los valores mostrados corresponden al c\'alculo de las correcciones utilizando fotones no convertidos. Los valores de shift son multiplicados por un factor de 100 para mejorar su visualizaci\'on.}
+    \label{fig:ss_corrections:cell_rw:calculation:new:reweights}
+\end{figure}
+
+
+
+
+
+
+
+
+
+\subsection{Resultados}
+\label{subsec:ss_corrections:cell_rw:results}
+
+La \Fig{\ref{fig:ss_corrections:cell_rw:calculation:new:reweights}} muestra las matrices de correcci\'on de shift y stretch obtenidas para fotones no convertidos. Puede observarse que, al igual que en el caso del m\'etodo anterior, la mayor corrección de shift se realiza en la celda central, donde el shift corresponde a un valor negativo. De la misma forma que en el caso anterior, los shifts de las celdas vecinas en la direcci\'on de \(\eta\) son positivos y grandes, indicando la redistribuci\'on de la energ\'ia de la celda central en estas dos vecinas.
+Sin embargo, se puede notar que las segundas celdas vecinas en la direcci\'on de \(\phi\) sufren una gran correcci\'on, quitando energ\'ia mediante el shift, pero aumentando tambi\'en el ancho de la distribuci\'on, dado por los estiramientos positivos. Del resto de las celdas del cluster, se nota que no presentan corrimiento significativo, pero presenta un stretch \(<1\), indicando que se hacen m\'as angostas, especialmente las celdas de los extremos del cluster.
+
+Utilizando estos factores de corrección para las energías normalizadas de cada celda, en las \Fig{\ref{fig:ss_corrections:cell_rw:results:cells}} se muestran las distribuciones de energía normalizadas resultantes para las celdas 28, 39 y 50~\footnote{Como fue mostrado en la \Fig{\ref{fig:ss_corrections:cell_rw:event_selection:cluster:arrangement}}, la celda número 39 es la central, mientras que las celdas 28 y 50 están a la izquierda y derecha, respectivamente, en la dirección \(\eta\).}. El nuevo método de correcci\'on consigue grandes mejoras en el acuerdo entre los datos y la simulaci\'on. Adem\'as, el m\'etodo logra corregir bien las colas de las distribuciones de todas las celdas, así como los picos de las mismas, lo que puede observarse especialmente en la celda 28.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/cells/c__u__L2_e_cell_028_normTo1}
+        \caption{Celda 28}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/cells/c__u__L2_e_cell_039_normTo1}
+        \caption{Celda 39}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/cells/c__u__L2_e_cell_050_normTo1}
+        \caption{Celda 50}
+    \end{subfigure}
+    \caption{Distribuciones de las energ\'ias normalizadas de las celdas 28, 39 y 50 de cluster de 77 celdas, para fotones no convertidos. Los puntos azules y rojos corresponden a las distribuciones de la simulaci\'on \ac{MC} con y sin las correcciones, respectivamente, mientras que el histograma gris representa los datos.}
+    \label{fig:ss_corrections:cell_rw:results:cells}
+\end{figure}
+
+
+
+Para evaluar el comportamiento del nuevo procedimiento de correcci\'on aplicado a las \acp{SS} de la segunda capa \ac{ECAL}, en la \Fig{\ref{fig:ss_corrections:cell_rw:results:ss}} se muestra la comparación de los métodos de corrección para las variables \reta, \rphi y \weta. En los tres casos, se observa una mejora con respecto al \ac{MC} sin corregir, especialmente para \rphi y \weta. El método de correcci\'on de energía, en el caso de fotones no convertidos, no alcanza el nivel de acuerdo con los datos logrado por el m\'etodo de \acp{FF}, que ha demostrado proporcionar una excelente acuerdo con los datos experimentales. Sin embargo, casi no se observan diferencias entre el método de correcci\'on de energ\'ias y el de \acp{FF} para fotones convertidos, lo que indica que a\'un hay margen de mejora en las correcciones.
+
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/ss/c__u_eta00__ss_Reta}
+        \caption{\reta, unconverted photons}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/ss/c__u_eta00__ss_Rphi}
+        \caption{\rphi, unconverted photons}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/ss/c__u_eta00__ss_Weta2}
+        \caption{\weta, unconverted photons}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/ss/c__c_eta00__ss_Reta}
+        \caption{\reta, converted photons}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/ss/c__c_eta00__ss_Rphi}
+        \caption{\rphi, converted photons}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{4_photonid/cell_rw/results/ss/c__c_eta00__ss_Weta2}
+        \caption{\weta, converted photons}
+    \end{subfigure}\\
+    \caption{Distribucioens de las \acp{SS} calculadas en la segunda capa del \ac{ECAL} para fotones no convertidos (fila superior) y convertidos (fila inferior) con pseudorapidez \(\abseta<0.6\), comparando los diferentes m\'etodos de correcci\'on con los datos. Los datos experimentales est\'an representados por los histogramas grises. La simulaci\'on \ac{MC} sin corregir se muestra con los puntos rojos, la simulaci\'on corregida por el m\'etodo de correcci\'on de energ\'ias con la l\'inea azul y la corregida por el m\'etodo de \acp{FF} con la l\'inea verde.}
+    \label{fig:ss_corrections:cell_rw:results:ss}
+\end{figure}
+
+
+
+
+
+
+\section{Conclusiones y trabajo futuro}
+\label{sec:ss_corrections:summary}
+
+En el presente capítulo se han estudiado dos métodos para corregir el desacuerdo observado en las \acfp{SS} entre los datos y la simulación \ac{MC}.
+
+El método de \acf{FF} se ha utilizado históricamente en la colaboración, al principio basado únicamente en simples desplazamientos de las distribuciones. A pesar de que las correcciones conducían a buenas mejoras y por tanto a la obtención de mejores \acp{SF}, seguían existiendo notables diferencias de forma entre los datos y la simulación. En el contexto de este trabajo, al añadir un término lineal a la transformación de la variable, se logra corregir los anchos de las distribuciones simuladas, lo que conduce a un acuerdo aún mejor con los datos. Este nuevo método de corrección de \acp{SS} mediante \acp{FF} se denomina método shift+stretch y actualmente se utiliza por toda la colaboración \ac{ATLAS}.
+
+También se ha desarrollado un método novedoso y de menor nivel de correcci\'on que pretende modificar las energías en las celdas del \ac{ECAL}. Utilizando las distribuciones de energía en cada celda en clusters alrededor de la celda más energética, es posible corregir todas las \acp{SS} en simult\'aneo. Este método usa la misma estrategia de shift+stretch, pero esta vez aplicado a las distribuciones de energ\'ia normalizada en cada celda de la simulación \ac{MC}, para que coincida con la distribución encontrada en los datos. Aunque el método es nuevo y aún necesita de mejoras, como tambi\'en extenderlo a las dem\'as capas del \ac{ECAL}, ha dado resultados prometedores en los que algunas variables se corrigen de la misma manera que con el \acp{FF}. El método de correcci\'on de las energ\'ias de las celdas muestra un gran potencial en la colaboración, no sólo en el contexto de la identificación de fotones \textit{offline}, sino también a nivel de trigger.
+
+\subsection{Trabajo a futuro}
+
+Uno de los enfoques más interesantes y prometedores para corregir el \acp{SS} es el método basado en las correcciones de las energ\'ias de las celdas. Como se ha mencionado anteriormente, este enfoque podría emplearse en diferentes pasos del proceso de identificación de fotones, como en el nivel de trigger, o de forma \textit{offline} para corregir todos los \acp{SS} simultáneamente. Otro uso potencial e importante es utilizar los clusters corregidos para calcular directamente la identificación de fotones, por ejemplo, considerando a los clusters como imágenes y utilizando una red neuronal convolucional (CNN) para realizar la identificación de fotones~\cite{thesis_belfkir}.
+
+Las \acfp{SS} tienen la gran ventaja de que se pueden interpretar fácilmente en términos físicos. Por esta razón, mantener estas variables sirve para comprender la física subyacente de los procesos. Seguir corrigiendo estas variables es de gran interés y hay varias formas de hacerlo. El método actual de transformar la variable pero utilizando términos de orden superior sigue siendo una tarea difícil, pero aún no explorada. Haciendo uso de las novedosas técnicas de Machine Learning (ML), es posible obtener factores de corrección para los términos de orden superior en la expansión, corrigiendo además los momentos de orden superior de las distribuciones (asimetría estad\'istica, curtosis, etc.). Otro enfoque interesante es el uso de un re-escaleo \acf{MV}, que se exploró en \Refn{\cite{thesis_spah}}, mostrando resultados muy prometedores.
