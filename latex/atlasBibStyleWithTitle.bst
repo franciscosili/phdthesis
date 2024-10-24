@@ -755,7 +755,7 @@ FUNCTION {article}
   format.title "title" output.check
   blank.sep
   crossref missing$
-  { journal missing$   
+  { journal missing$
         {}
         { format.journal add.doi "journal" output.check}
       if$
@@ -765,7 +765,10 @@ FUNCTION {article}
       if$
     }
     { format.article.crossref output.nonnull
-      format.pages output
+      pages missing$
+          {}
+          {format.pages output}
+        if$
       format.eprint output
     }
   if$
@@ -891,13 +894,13 @@ FUNCTION {incollection}
 { output.bibitem
   format.collaboration output
   format.authors "author" output.check
-  format.title add.doi "title" output.check
+  format.title "title" output.check
   blank.sep
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
-      format.bvolume output
-      format.number.series output
-      format.chapter.pages output
+      % format.bvolume output
+      % format.number.series output
+      % format.chapter.pages output
       new.block
       publisher "publisher" output.check
       address output
