@@ -1,413 +1,494 @@
-\chapter{The Standard Model and Beyond}
+\chapter{El Modelo Est\'andar y un poco m\'as}
 \label{ch:theory}
-\epigraph{\emph{"Nothing in life is to be feared. It is only to be understood. Now is the time to understand more, so that we may fear less"}}{Marie Curie}
-
-another template text
-
-% This thesis covers a search for new particles predicted by \ac{SUSY}  an extension to the \ac{SM} of particle physics. 
-% In the following chapter, the foundations for this search will be laid.  A summary of the core concepts of the \ac{SM} will be given in section \ref{sec:theory:SM},  discussing how quantum field theory in combination with gauge symmetries can explain and predict a large set of phenomena in our universe.  This is followed by a short discussion on the limitations of this current best theoretical description of fundamental particles and their interactions in section \ref{sec:theory:shortcomings}. 
-% Supersymmetry is an extension to the \ac{SM} that can resolve some of these shortcomings,  motivating an extensive search program within experimental particle physics.  An overview of \ac{SUSY}, focussing on the phenomenological consequences allowing for a search at hadron colliders,  is given in section \ref{sec:theory:susy}. 
-% The search presented in this thesis is brought into context in the broader field in a discussion of the bigger picture in section \ref{sec:theory:biggerPicture}.
-
-% \section{The Standard Model of Particle Physics}
-% \label{sec:theory:SM}
-% The Standard Model of Particle Physics is an extremely successful theory,  able to predict particle interactions to high precision.  This year (2022) marks the 10th anniversary of one of the biggest successes in particle physics to date - the discovery of the Higgs boson \cite{ATLASHiggsDiscovery, CMSHiggsDiscovery}.
-% With the \ac{SM} as it is today,  including the Brout-Englert-Higgs mechanism, we can put its predictions to stringent tests through precision measurements of its couplings, masses and interactions.  Searches for new physics like those described in this thesis are a crucial way to put the \ac{SM} to a test and increasingly go hand-in-hand with precision measurements.
-
-% \subsection{Quantum field theory and Gauge symmetries}
-% The \ac{SM} is a theory of quantum fields.  Similar to classical field theory,  a Lagrangian formalism is used to describe the components of the theory.  The basis of the Lagrangian formalism is presented through its connection with the action $S = \int d^4x \mathcal{L}$,  expressed through a Lagrangian density~$\mathcal{L}$ \cite{PeskinSchroeder}.   Connecting this with the principle of least action ($\delta S = 0 $),  postulating that every physical process is minimising its action,  leads to the Euler-Lagrange equation in \eqref{eq:theory:eulerLagrange}.  This is describing the equation of motion for a field $\psi$ with space-time indices $\mu$:
-
-% \begin{align}
-% \label{eq:theory:eulerLagrange}
-% \partial_\mu \left( \frac{\partial \mathcal{L} }{\partial ( \partial_\mu \psi )} \right) - \frac{\partial \mathcal{L}}{\partial \psi} = 0
-% \end{align}
-
-% Noether theorem \cite{Noether} connects symmetries of a Lagrangian with conserved charges.  In the \ac{SM}, these symmetries are in the form of local phase transformations $\psi(x) \rightarrow e^{i\alpha(x)}\psi(x)$ or \textit{gauge} transformations.  The transformations are connected with rotational symmetries of Lie groups  and can be summarized through the group structure \cite{Thomson}:
-
-% \begin{align}
-% U(1)_Y \otimes SU(2)_L \otimes SU(3)_C
-% \end{align}
-
-% Every local gauge transformation can be absorbed within a gauge field,  with the excitations of the gauge fields called \textit{gauge bosons}.
-% The conserved charges connected with the transformations of each group are indicated through the group subscripts. 
-% The $SU(3)_C$ part of the overall Standard Model symmetry group is the symmetry group of quantum chromo dynamics,  $C$ representing the strong interactions with conserved colour charge.  The gauge symmetry generates eight gauge bosons,  representing the eight possible gluons. 
-% The hypercharge Y presents the conserved charge under $U(1)$ transformations of the Lagrangian and can be expressed through the Gell-Mann-Nishijima formula (here in one of its forms, based on discussions in \cite{GellMann,Nishijima1,Nishijima2}): 
-
-% \begin{align}
-% Y = 2(Q_{em} -I_3)
-% \end{align}
-
-% This connects the electromagnetic and weak interaction,  including the electromagnetic charge $Q$ as well as the third component of the Isospin, $I_3$ and allows for the direct product of the $U(1)_Y\otimes SU(2)_L$ symmetry groups.
-% The gauge boson of the $U(1)_Y$ group is a neutral gauge boson,  $B_\mu$,  whereas the $SU(2)_L$ symmetries are absorbed in a set of three gauge fields,  $W_\mu^{(1)}, W_\mu^{(2)}, W_\mu^{(3)}$. 
-% These four massless gauge fields form eigenstates of the electroweak interaction \cite{Thomson},  connected through the weak mixing angle $\theta_W$: 
-
-% \begin{align}
-% \begin{split}
-% A_\mu &= B_\mu \cos \theta_w + W_\mu^{(3)}\sin\theta_w \\
-% Z_\mu &= -B_\mu \sin\theta_w +W^{(3)}_\mu \cos \theta_w \\
-% W^\pm &= \frac{1}{\sqrt{2}}(W^{(1)}_\mu \mp iW^{(2)}_\mu )
-% \end{split}
-% \end{align}  
-
-% The discovery of the Z-boson and its interactions in comparison with,  and together with,  the photon offer experimental proof of the above-described field configurations. 
-% If the Z boson would be a gauge boson of the weak interaction in itself,  a $W^0$,  it would only couple to left-handed particles.  This would lead to an asymmetry in polarised electron-positron collisions,  the so-called left-right asymmetry.  This has not been observed, confirming the right-handed coupling component in these interactions in measurements performed at the Stanford Linear Accelerator Center \cite{SLACZResonance}.
-
-% %Electroweak unification:  experiment shows that W boson not only couples to left-handed particles/right-handed antiparticles --> connection of electromagnetic and weak couplings
-% %\textcolor{red}{discuss the gauge bosons here before electroweak symmetry breaking -  reminder about the scales and what exactly is happening --> thomson// schailes lecture notes! merging of scales in discussion with supersymmetry - leave the scale discussion to the end,  discuss everything else now}
-% \subsection{The Higgs mechanism}
-% \label{sec:Higgs}
-% The gauge groups discussed above describe particle interactions under electroweak and strong interactions through gauge invariant principles.  Particle mass terms in the Lagrangian,  accounting for heavy bosons and massive particles observed in experiments, would break these gauge invariances.  Therefore an additional mechanism needs to be responsible for the generation of observed particle masses. 
-% Similar to the Mei{\ss}ner-Ochsenfeld effect \cite{MeissnerOchsenfeld,  SuperconductivityHiggsDiscussion} in superconductivity,  where a background field of scalar Cooper pairs \cite{CooperPairs} can lead to a photon appearing massive,  a background field could be the origin of particle masses.
-% Such a background field in combination with spontaneous symmetry breaking,  in which the ground state of a system does not include the symmetry of the system,  is the foundation of the mechanism developed by Brout,  Englert, Kibble and Higgs \cite{BroutEnglert, Kibble, Higgs}.  A short overview of this mechanism is first given in a simplified case,  followed by a short discussion of the mechanism within the \ac{SM}.  The discussion closely follows \cite{Thomson}.
-
-% To introduce a background field into the \ac{SM},  a Lagrangian term describing both its potential as well as a kinematic term has to be introduced.  In the case of a complex scalar field as in equation \eqref{eq:theory:Higgsfield},  its Lagrangian is described by equation \eqref{eq:theory:Higgspotential}.
-
-% \begin{align}
-% \phi &= \frac{1}{\sqrt{2}}(\phi_1 +i\phi_2) \label{eq:theory:Higgsfield}\\
-% \mathcal{L} &= (\partial_\mu \phi)^*(\partial^\mu \phi) - \mu^2(\phi^*\phi) - \lambda(\phi^*\phi)^2 \label{eq:theory:Higgspotential}
-% \end{align}
-
-% The last two terms in the Lagrangian \eqref{eq:theory:Higgspotential} define the potential of the complex scalar field,  which can be illustrated in dependency of its two real components, $\phi_1$ and $\phi_2$,  as shown in Figure \ref{fig:theory:Higgspotential}.
-% \begin{figure}[htpb!]
-% \centering
-% \includegraphics[width=0.25\linewidth]{figures/UpdatedThesisFigures/HiggsPotential.pdf}
-% \caption{Illustration of the complex scalar potential, adapted from \cite{Thomson} for the case of $\mu^2 < 0$ \label{fig:theory:Higgspotential}}
-% \end{figure}
-
-% This potential is often named as \textit{wine-bottle potential} or \textit{Mexican-hat potential}. The parameter $\lambda$ needs to be positive for this potential to have a minimum.  The Lagrangian described has a global $U(1)$ symmetry and has a multitude of possible minima,  which is defined through its \textit{vacuum expectation value} $v$. This can be visualised through the dashed circle in Figure \ref{fig:theory:Higgspotential}.
-
-% \begin{align}
-% \phi_1^2 + \phi^2_2 = \frac{-\mu^2}{\lambda} = v^2
-% \end{align}
-
-% Through the selection of a specific ground state (e.g.  $(\phi_1,\phi_2) = (v,0)$), the global symmetry is spontaneously broken.  
-% Any field can be expressed as an expansion around its ground state.  When expanding the complex scalar field with respect to two fields $\eta$ and $\xi$,  with $\phi = \frac{1}{\sqrt{2}}(\eta + v + i\xi)$,  the Lagrangian in equation \eqref{eq:theory:Higgspotential} can be expressed like: 
-
-% \begin{align}
-% \mathcal{L} = \frac{1}{2} (\partial_\mu\eta)(\partial^\mu\eta) - \frac{1}{2}\underbrace{(2\lambda v^2)}_{m_\eta^2}  \eta^2 + \frac{1}{2}(\partial_\mu\xi)(\partial^\mu\xi) - \underbrace{(\lambda v \eta^3 + \frac{1}{4}\lambda\eta^4+\frac{1}{4}\lambda\xi^4 + \lambda v \eta \xi^2 + \frac{1}{2} \lambda \eta^2\xi^2)}_{V_{int}(\eta,\xi)}
-% \end{align}
-
-% This presents a Lagrangian density for a massive field $\eta$ as well as a massless field $\xi$,  as well as interaction terms.
-% The massless field $\xi$ is a so-called \textit{Goldstone} boson, originating from the spontaneous symmetry breaking.  
-% %By choosing a unitary gauge of the Goldstone field,  the degrees of freedom associated with it can be absorbed into the massive scalars' longitudinal polarisation.
-
-% In the \ac{SM}, this mechanism of symmetry breaking is embedded within the electroweak symmetry. 
-% This is based on two complex scalar fields in a weak isospin doublet (see equation \eqref{eq:theory:HiggsfieldSM}).  Similar to the simplified case with one complex scalar field,  the spontaneous symmetry breaking of the Higgs field, with its vacuum expectation value $v=-\mu^2/\lambda$ and free parameter 
-% $\mu$ and $\lambda$ of the potential leads to the generation of mass terms.
-
-
-% \begin{align}
-% \phi = \begin{pmatrix}
-% \phi^+\\
-% \phi^0
-% \end{pmatrix}  = \frac{1}{\sqrt{2}} \begin{pmatrix}
-% \phi_1 + i\phi_2\\
-% \phi_3 + i \phi_4
-% \end{pmatrix}
-% \label{eq:theory:HiggsfieldSM}
-% \end{align}
-
-% This spontaneous symmetry breaking of the electroweak symmetry generates mass terms for the two W-bosons, the Z-boson, and a massless boson in agreement with the photon (here denoted as A) with weak mixing angle $\theta_W$ and weak coupling constant $g_W$ (see equation \eqref{eq:theory:masses}). 
-
-% \begin{align}
-% \begin{split}m_W &= \frac{1}{2} g_Wv \\
-% m_Z &= \frac{1}{2} \frac{g_W}{\cos\theta_W}v \\
-% m_A &= 0 \label{eq:theory:masses}\end{split} 
-% \end{align}
-
-% %The relation of the masses of the W and Z boson to the weak mixing angle $\theta_W$ given in equation \eqref{eq:theory:mzmw} offers an important experimental test of the Higgs mechanism. 
-
-% The excitation of the Higgs field, the Higgs boson (with $m_h^2 =2\lambda v^2$),  was discovered by the \acs{ATLAS} and \acs{CMS} collaborations in 2012 \cite{ATLASHiggsDiscovery,CMSHiggsDiscovery}.
-% In the last 10 years,  there have been extensive precision measurements of not only the Higgs mass but a multitude of its production and decay modes.  A most recent discussion on developments and a detailed summary of the latest measurements of the Higgs bosons properties throughout the last ten years since its discovery can be found in \cite{HiggsReviewATLAS10years,CMSHiggs10}.  An overview of the production and decay modes of the Higgs boson can be found in Figure \ref{fig:theory:HiggsReview}.
-
-% \begin{figure}[htpb!]
-% \centering
-% \subfloat[Higgs Production mechanisms and their cross section]{\includegraphics[height=0.45\linewidth]{figures/Theory/HiggsProduction_improved.png}}
-% \subfloat[Higgs decay modes and their branching ratio]{\includegraphics[height=0.45\linewidth]{figures/Theory/HiggsDecay_improved.png}}
-% \caption{Overview of most recent ATLAS Higgs results on the production cross sections (a) as well as decay mode branching fraction (b) \label{fig:theory:HiggsReview} \cite{HiggsReviewATLAS10years}. The dominant production processes include gluon-gluon Fusion (ggF) and Vector Boson Fusion (VBF), with Higgs production associated with other particles at smaller cross section values. }
-% \end{figure}
-
-% \subsection{Particle spectrum and interactions of the Standard Model}
-% With the Higgs boson as the latest part of the \ac{SM},  this sums up its particle content as shown in Table  \ref{fig:theory: SMcontent}.  This includes three generations of neutrinos and leptons,  as well as three generations of quarks.  As can be seen,  for neutrinos, an upper limit on the masses is included.  Massive neutrinos in itself present an extension to the \ac{SM} and are necessary through evidence of neutrino oscillations \cite{NeutrinoMasses}.
-
-% %Evidence of neutrino oscillations [22] implies that neutrinos are massive, which
-% %would require the addition of 3 neutrino masses and 4 mixing parameters to bring
-% %the total to 25.
-% %Below the electroweak scale, O(246) GeV, they
-% %split into the familiar EM and weak interactions through the mechanism of electroweak
-% %symmetry breaking (section 2.1.4).
-% %\textcolor{red}{still need to better describe what exactly the eleectroweak symmetry breaking is - 
-% %The underlying SU(2) symmetry of the Lagrangian is preserved,
-% %but the field picks up a vacuum expectation value (VEV) v, spontaneously breaking
-% %the symmetry --> below energies of v -- electroweak scale - the interactions behave like weak and QED --> since behave like massless?
-% %Below the electroweak scale (O(246) GeV) the EM and weak interactions behave as described
-% %--> below that , the masses of the bosons are important,  over that energy scale, the bosons and interacitons behave like massless boson interactions--> no symm.  breaking through higgs }
-
-% %\begin{figure}
-% %\centering
-% %\includegraphics[width=0.8\linewidth]{figures/Theory/SMcontent.pdf}
-% %\caption{Summary of the particle content of the \ac{SM} \cite{SMcontentPicture}}
-% %\end{figure}
-% %
-% %$W_\mu$
-% %need to have equations for the gauge fields that the susy gauginos are partners of!
-% %mixing into Wplus Wminus Z and photon
-% %--> after Higgs this is also giving mass to the bosons - look at the description beforehand! \\
-% \begin{table}[h]
-% 	\centering
-% 	\begin{tabular}{|c|c|c|c|c|c|}\hline
-% Particle & electric charge & spin & colour & weak $I_3$ (L)  & mass \\ \hline \hline
-% electron $e$ & -1 & 1/2 & - & +1/2 &  0.511 MeV \\
-% electron neutrino $\nu_e$ & 0 & 1/2 & - & -1/2 & $< 1.1$ eV\\
-% muon $\mu$ & -1 & 1/2 & -& +1/2 & 105.66 MeV \\
-% muon neutrino $\nu_\mu$ & 0 & 1/2 & - & -1/2 & $< 0.19$ MeV\\
-% tau $\tau$ & -1 & 1/2 & - & +1/2 &  1776.86 MeV\\
-% tau neutrino $\nu_\tau$ & 0 & 1/2 & - & -1/2 &  $<18.2$ MeV\\ \hline
-% up quark $u$ & + 2/3 & 1/2 & r,g,b & +1/2 &  2.2 MeV\\
-% down quark $d$ & -1/3 & 1/2 & r,g,b & -1/2 &  4.7 MeV\\
-% charm quark $c$ & +2/3 & 1/2 & r,g,b & +1/2 &  1.27 GeV \\
-% strange quark $s$ & -1/3 & 1/2 & r,g,b & -1/2 & 93.4 MeV\\
-% top quark $t$ & +2/3 & 1/2 & r,g,b & +1/2 &  172.69 GeV\\
-% bottom quark $b$ & -1/3 & 1/2 &r,g,b & -1/2 & 4.18 GeV\\ \hline
-% photon $\gamma$ & 1 & - & 0 & 0  &0 \\
-% gluon $g$ & 0 & 1 & 8  & 0 &  0\\
-% W boson $W$ & +/- 1 & 1 & - & +/- 1&  80.377 GeV\\
-% Z boson $Z$ & 0 & 1 & - & 0 &   91.1876 GeV\\ 
-% H boson $h$ & 0 & 0 & - & 0 &125.25 GeV \\ \hline
-% 	\end{tabular}
-% 	\caption{Overview of all SM particles and their properties, with the third weak isospin component $I_3$ \label{fig:theory: SMcontent}\cite{PDG2022}}
-% \end{table}
-
-% Below an energy scale of the order of 246 GeV (the \textit{electroweak} scale),  the interactions of the \ac{SM} can be split into electromagnetic,  weak and strong interactions:
-
-% \paragraph{Electromagnetic interactions} are mediated through massless photons.  The underlying symmetry group is the U(1) symmetry of \ac{QED}.  The conserved charge associated with this gauge symmetry is the electric charge.  The neutral photon does not self-interact.  Photons couple to left- and right-handed particles irrespectively.   
-% \paragraph{Weak interactions} are mediated through W- and Z-bosons.  The $SU(2)_L$ symmetry only applies to left-handed particles and is able to transform isospin states,  therefore creating weak isospin doublets of up type quarks (u,c,t) and down type quarks (d,s,b).  Through its left-handed only coupling,  the weak interaction is parity and charge-parity violating. 
-% \paragraph{Strong interactions} are mediated through massless gluons,  described by \ac{QCD}. They are gauge bosons of the $SU(3)_c$ symmetry group,  with conserved colour charge.  Values of the colour charge can be red (r),  green (g) and blue (b).  Gluons are self-interacting. This has two interesting phenomenological consequences (discussed in detail in \cite{PeskinSchroeder}):
-% the coupling constant increases for low energies and gets close to one,  therefore quarks and gluons are \textit{confined}.  They will form a bound state through strong interactions and have not been observed free.  Moreover, at high energies,  quarks become \textit{asymptotically free},  due to the decrease of the coupling constant with energy.  Consequently,  at high energies perturbation theory can be used to predict QCD interactions. 
-% %
-% %\textcolor{red}{QCD:: aymptottic freedom and confinement as consequenc of running coupling}
-% %\textcolor{red}{electroweak::see decay of tau lepton in detail here too, }
-% %19 parameters that are not predicted by the theory: 9 fermion
-% %masses (assuming massless neutrinos), 3 coupling constants, 1 Higgs VEV, 1 Higgs
-% %mass, 3 angles and 1 phase from CKM mixing and 1 strong CP parameter, which
-% %quantifies the degree to which strong interactions violate CP symmetry.
-% \FloatBarrier
-
-
-% \section{Shortcomings of the Standard Model}
-% \label{sec:theory:shortcomings}
-% The Standard Model as described above can account for a wide spectrum of phenomena and has been put to a stringent test by various experiments.  Nevertheless, there are open questions and unexplained phenomena that cannot be explained by the \ac{SM},  hinting to a need for an extension of our current best model beyond the \ac{SM}.
-
-% \subsection{Dark Matter}
-% A hint towards the incompleteness of the \ac{SM} is the presence of \ac{DM}.  First hints to the presence of non-luminous matter in galaxies has been found by Zwicky in 1933 \cite{Zwicky},  who found that the mass of the galaxies in the Coma cluster based on luminosity calculations was not providing enough gravitational pull to prevent galaxies from escaping the cluster.  Rubin and Kent's observation of rotation curves in galaxies \cite{RubinKent} in dependence to the distance to the galaxy's centre was important in 1970.  The velocity of galaxy components on the outer arms of the galaxy exceeded the expected rotational velocity in their measurements. This can be explained through the presence of non-luminous,  gravitational matter in a halo around the galaxies centre,  as illustrated on an exemplary galaxy,  NGC 3198 in Figure \ref{fig:theory:DMrotationcurve}.
-
-% \begin{SCfigure}
-% \centering
-% \includegraphics[width=0.7\linewidth]{figures/Theory/DarkMatterRotationCurve_adapted.png}
-% \caption{Exemplary analysis of rotation curves,  here showing observations in galaxy NGC 3198.  The dotted curve is the galaxy's gas component,  dashed line is its visible components.  The dotted-dashed line is visualising a contribution of a Dark Matter halo,  with the solid line a fit to the data points including all components. Figure adapted from \cite{RotationCurves} \label{fig:theory:DMrotationcurve}}
-% \end{SCfigure}
-
-% An additional hint for the presence of Dark Matter in our universe is offered through analyses of the \ac{CMB}, as done by the Planck Collaboration \cite{Planck},  showing a ~27\% Dark Matter composition in our universe. 
-% Lessons about the properties of \ac{DM} can be gained by analysing colliding galaxy clusters and specifically their interaction. The bullet cluster is a prominent example of such an analysis, offering limitations on the self-interaction of \ac{DM},  hinting to Dark Matter consisting of weakly interacting, massive particles (\acsp{WIMP})\cite{BulletCluster, OtherMergingClusters}.
-% %The Hubble telescope \cite{Hubble} offers another angle into the open question of Dark Matter.  Gravitational lensing,  the bending of light through masses present in the universe,  allows for the analysis of images with respect to the masses present.  A promising new window into galaxy cluster imaging will be the James Webb telescope,  which has most recently released first images of galaxy clusters with visible gravitational lensing effects \cite{JamesWebbPicture}.  
-% An alternative possible theoretical approach apart from the presence of Dark Matter would be the modification of gravity models,  governed by general relativity.   A discussion of this group of theories in comparison with the Dark Matter approach is outside the scope of this thesis.
-
-% \subsection{Matter-Antimatter asymmetry}
-% Our visible universe is dominantly made up of matter,  which can be measured through observations of the \ac{CMB},  for example through the Wilkinson microwave anisotropy probe,  whose measurements result in a matter-antimatter asymmetry of $n_S =  0.96 $ \cite{WMAP, Thomson}.
-% To achieve such an asymmetry between matter and antimatter in a theory describing our universe,  Sakharov defined a set of conditions necessary \cite{Sakharov}:
-% \begin{enumerate}
-% \item Presence of at least one process violating baryon number conservation
-% \item CP violating aspects in the overall theory
-% \item Interactions outside of equilibrium
-% \end{enumerate}
-
-% These three conditions are all fulfilled within the \ac{SM}:
-% The first condition can be met in \ac{SM} quantum effects associated with weak interactions.  A CP violating phase is present in the CKM (Cabibbo-Kobayashi-Maskawa) matrix,  connecting the quark mass and gauge eigenstates.  An interaction outside the equilibrium is given through electroweak phase transitions.
-% Despite the presence of all three Sakharov conditions,  the matter-antimatter asymmetry resulting from the \ac{SM} processes is not enough to explain the observed matter-antimatter asymmetry.
-% This is a further limitation of the current \ac{SM}, motivating extensions \acs{BSM}.%.beyond the \ac{SM}.
-
-% \subsection{Hierarchy Problem}
-% The matter-antimatter asymmetry as well as Dark Matter present phenomenological motivations of physics beyond the current \ac{SM}.  A theoretical, as well as experimentally motivated question, is the nature of the Higgs mass.  As discussed in section \ref{sec:Higgs},  the Higgs-boson has been observed at 125 GeV \cite{PDG2022}.  The Hierarchy problem connected with the Higgs-bosons mass here describes the following consideration (adapted from \cite{SUSYPrimer}):
-
-% Since the Higgs boson couples to both fermions as well as bosons,  its mass itself,  given through its propagator and all loop corrections to it, is influenced by the fermion and boson masses.  The correction terms of these contributions are given in equation \eqref{eq:theory:masscorrectionFermion} and \eqref{eq:theory:masscorrectionScalar} for fermion and boson (scalar) contributions, respectively. If the \ac{SM} is assumed to only be valid until a certain energy scale $\Lambda_{UV}$,  this cut-off scale is entering the Higgs loop corrections. A well-motivated cut-off scale would be the Planck scale,  at which gravitational effects reach similar orders of magnitude to the interactions governed within the \ac{SM}.
-
-
-% \begin{align}
-% \Delta m_{H, \text{fermion}}^2 &= -\frac{|\lambda_f|^2}{8\pi^2}\Lambda^2_{UV} + ... (\propto m_f)\label{eq:theory:masscorrectionFermion} \\
-% \Delta m_{H,\text{scalar}}^2 &= \frac{\lambda_S}{16 \pi^2} [ \Lambda^2_{UV} -2m_S^2 \ln (\Lambda_{UV}/m_S) + ...] \label{eq:theory:masscorrectionScalar}
-% \end{align}
-
-% With this cut-off at the Planck scale,  corrections to the Higgs mass would include multiple orders of magnitudes.  This would require artificial fine-tuning to generate the Higgs boson observed mass of 125 GeV.
-
-% \section{Supersymmetry}
-% \label{sec:theory:susy}
-% This artificial fine-tuning necessary to resolve the hierarchy problem could be avoided if there would be a symmetry in the \ac{SM},  connecting fermions and bosons.  This symmetry can be provided by an extension of the \ac{SM} called supersymmetry.  A discussion of supersymmetry and its phenomenology relevant to this thesis will be given in the following,  based on discussions in \cite{SUSYPrimer}.
-% Supersymmetry is generated through a fermionic generator $Q$,  transforming a fermion $\ket{f}$ into a boson $\ket{b}$ and vice-versa:
-
-% \begin{align}
-% \label{eqn:theory:susydefinition}
-% \begin{split}
-% Q\ket{b} &= \ket{f}  \\
-% Q\ket{f} &= \ket{b}
-% \end{split}
-% \end{align}
-
-% Following from the properties of the \ac{SUSY} generator,  and namely its commutation with space-time translations, the masses of the connected fermion and boson are equal. 
-% Supersymmetry would connect each mass correction to the Higgs-boson originating from fermionic loop corrections to a bosonic loop correction and vice-versa.  Given the opposite sign in the terms in equation \ref{eq:theory:masscorrectionFermion} and \eqref{eq:theory:masscorrectionScalar},  thus cancelling the quadratic divergences. \\
-
-% \subsection{Soft SUSY breaking}
-% Supersymmetry would be an unbroken symmetry if the supersymmetric partners to the \ac{SM} particles would have the same masses as their counterparts.  Since we have not yet observed any hints for supersymmetric particles at colliders,  \ac{SUSY} particles must be heavier than their \ac{SM} partner.
-% Therefore \ac{SUSY} needs to be a broken symmetry.  An additional SUSY breaking term can be introduced in the Lagrangian \cite{SUSYPrimer}:
-% \begin{align}
-% \mathcal{L} = \mathcal{L}_{SUSY} + \mathcal{L}_{\text{soft}}
-% \end{align}
-% This Lagrangian is only including \textit{soft} terms to avoid quadratic divergences in the Higgs mass loop corrections. The soft breaking is introducing new parameters determining the supersymmetric particles' masses into the \ac{MSSM},  leading to a large number of free parameters.  The spontaneous breaking of supersymmetry is assumed to happen in a hidden sector with different assumptions on the mediators between this breaking in the hidden sector to lower energies. 
-
-% \subsection{Particle spectrum of the MSSM}
-
-% The smallest possible supersymmetric extension of the \ac{SM} is the Minimal Supersymmetric Standard Model (\ac{MSSM}).
-% In this model fermions and bosons are paired into supermultiplets,  each \ac{SM} particle acquiring a supersymmetric partner. 
-%  \textit{Chiral} multiplets pair \ac{SM} spin 1/2 fermions with a supersymmetric complex scalar field.   \ac{SM} bosons with spin 1 are forming a \textit{gauge supermultiplet} with supersymmetric fermions. 
-% The \ac{SM} vector bosons ($W^+$, $W^-$, $W_0$ and $B_0$) \ac{SUSY} partners are referred to as gauginos (Wino, Bino).
-% In table \ref{tab:theory:mssmparticlecontent},  an overview of the supersymmetric particles in the \ac{MSSM} is given.  
-% Here a differentiation between their gauge and mass eigenstates is made,  since the gauge eigenstates are in some cases not equivalent to their mass eigenstates.  Some of these cases are discussed below.
-% %\textcolor{red}{why is the higgs sector extended in SUSY - why need already two higgs doublets before susyíng it?}
-% %\textcolor{red}{improve this discussion and include a differentiation to left and right-handed fermions and their susy partners!}
-
-% \begin{table}[htpb!]
-% \includegraphics[width=\linewidth]{figures/Theory/SUSYPrimerTable.pdf}
-% \caption{Particle content of the \ac{MSSM},  with the sfermion mixing of the first two families assumed to be negligible, from \cite{SUSYPrimer} \label{tab:theory:mssmparticlecontent}. Here $\tilde{N}_{1,2,3,4}$ is equivalent to $\tilde{\chi}^0_{1,2,3,4}$ and $\tilde{C}^\pm_ {1,2}$ to $\tilde{\chi}^\pm_{1,2}$.  The R-Parity $P_R$ as defined in equation \eqref{eq:theory:rparity} is listed highlighting its different values for \ac{SM} particles and \ac{SUSY} particles.}
-% \end{table}
-
-% In table \ref{tab:theory:mssmparticlecontent} $P_R$,  called R-parity is introduced.  This is defined as given in equation \eqref{eq:theory:rparity},  with the baryon number $B$,  lepton number $L$ and spin $s$.
-
-% \begin{align}
-% P_R = (-1)^{3(B-L)+2s} \label{eq:theory:rparity}
-% \end{align}
-
-
-% If R-Parity conservation is assumed within the \ac{MSSM} this has the following phenomenological consequences:
-
-% \begin{itemize}
-% \item Each \ac{SUSY} particle must eventually decay into an odd number of \ac{LSP}s.
-% \item \ac{SUSY} particles are pair produced.
-% \item The \ac{LSP} is stable and cannot further decay into \ac{SM} particles.  If the \ac{LSP} is only interacting weakly with other particles and is electrically neutral,  it can provide the right relic \ac{DM} density and can therefore be a potential \ac{DM} candidate.
-% \end{itemize}
-
-% The decision to conserve R-parity is well motivated phenomenologically since it is preventing proton decay,  which has not been experimentally observed. 
-
-% The gaugino fields of the MSSM mix with each other since their quantum numbers are identical. This leads to neutral and charged mass eigenstates (called neutralinos and charginos). This mixing is visible in the MSSM Lagrangian (\eqref{eq:theo:Lneutralino}, \eqref{eq:theo:Lchargino}) in the mixing matrices,  given in \eqref{eq:theo:Mneutralino} and \eqref{eq:theo:Mchargino} \cite{SUSYPrimer}. 
-
-
-% \begin{align}
-% \begin{split} \mathcal{L}_\text{neutralino mass} &= - \frac{1}{2} (\psi^0)^T \textbf{M}_{\tilde{\chi}_j^0}\psi^0 + c.c , \\ 
-% \text{with  } \psi^0 &= \text{(\Bino, \WinoZero, \HiggsinoDownZero,\HiggsinoUpZero )} \end{split} \label{eq:theo:Lneutralino}
-% \end{align}
-
-% \begin{align}
-% \begin{split}
-% \mathcal{L}_\text{chargino mass} &= - \frac{1}{2} (\psi^\pm)^T \textbf{M}_{\tilde{\chi}_i^\pm}\psi^\pm + c.c , \\
-% \text{with  } \psi^\pm &= \text{(\Winoplus, \HiggsinoUpPlus, \Winominus,\HiggsinoDownMinus )} \end{split} \label{eq:theo:Lchargino}
-% \end{align}
-
-% The parameters of the mixing matrices originate from the soft \ac{SUSY} breaking Lagrangian, $\mathcal{L}_\text{soft}$. $M_1$ and  $M_2$ are the bino and wino mass parameters respectively, $\mu$ the higgsino mass parameter. The vacuum expectation values $\langle H_{u/d}^0 \rangle$ are noted as $v_{u/d}$, $g$ and $g^\prime$ describe the \ac{SM} coupling constants. 
-
-% \begin{align}
-% \textbf{M}_{\tilde{\chi}_i^0} = \begin{pmatrix}
-% M_1 & 0 & -g^\prime v_d / \sqrt{2} & g^\prime v_u/\sqrt{2} \\
-% 0 & M_2 & g v_d / \sqrt{2} & -g v_u / \sqrt{2}\\
-% -g^\prime v_d / \sqrt{2}  & g v_d / \sqrt{2} & 0 & \mu \\
-% g^\prime v_u/\sqrt{2} & -g v_u / \sqrt{2} & -\mu & 0 \\
-% \end{pmatrix} \label{eq:theo:Mneutralino}
-% \end{align}
-
-% \begin{align}
-% \textbf{M}_{\tilde{\chi}_j^\pm} = \begin{pmatrix}
-% \textbf{0} & \textbf{X}^T\\
-% \textbf{X} & \textbf{0} \\
-% \end{pmatrix}, \text{ with } \textbf{X} = \begin{pmatrix} M_2 & gv_u \\
-% gv_d & \mu 
-% \end{pmatrix}
-% \label{eq:theo:Mchargino}
-% \end{align}
-
-% Depending on the comparable size of the \ac{MSSM} parameters $M_1, M_2$ and $\mu$, neutralinos can be bino-dominated ('bino-like'), wino-dominated ('wino-like'), higgsino-dominated ('higgsino-like') or mixed with no clear dominating component. 
-
-% Similar to the gaugino mixing described above,  the third generation sleptons $\tilde{\tau}_1, \tilde{\tau}_2$ can have mass eigenstates differing from their gauge eigenstates ($\tilde{\tau}_L,\tilde{\tau}_R$).
-
-% %\begin{table}[h]
-% %	\centering
-% %	\begin{tabular}{|c|c|c|}\hline
-% %		Names & mass eigenstates & gauge eigenstates \\ \hline \hline
-% %		neutralinos & \None,\Ntwo,\Nthree,\Nfour &  \Bino,\WinoZero,\HiggsinoUpZero,\HiggsinoDownZero\\ \hline
-% %		charginos & \Cone, \Ctwo & \Winoplusminus, \HiggsinoUpPlus,\HiggsinoDownMinus \\ \hline
-% %	\end{tabular}
-% %	\caption{Mass and gauge eigenstates of neutralinos and charginos \label{tab:theory:gaugeeigenstates}}
-% %\end{table} 
-
-
-% \subsection{Interactions in the MSSM}
-
-% Gauginos can be produced at hadron colliders through the following interactions, depending on their field content:
-
-% \begin{figure}[htpb!]
-% \centering
-% \includegraphics[scale=0.7]{figures/Theory/gauginoproductionFromPrimer.pdf}
-% \caption{Gaugino production mechanisms at hadron colliders,  adapted from \cite{SUSYPrimer} \label{fig:theory:gauginoproduction}. Here $\tilde{N}_{1,2,3,4}$ is equivalent to $\tilde{\chi}^0_{1,2,3,4}$ and $\tilde{C}^\pm_ {1,2}$ to $\tilde{\chi}^\pm_{1,2}$.}
-% \end{figure}
-% Gauginos are pair-produced as a consequence of R-parity conservation.  The pair production relates to \ac{SUSY} particles in general,  therefore also a chargino-neutralino production as shown in Figure \ref{fig:theory:gauginoproduction} (last row). 
-% These feynman diagrams showing example production modes are governed by the same interaction vertices as the decay of gaugino particles and leptons. 
-% This would for example allow for the decay of a $\tilde{\tau}$ particle into a bino-like neutralino as well as a \ac{SM} tau lepton,  which can be constructed using the $\tilde{B}$ vertex shown in figure \ref{fig:theory:winobinovertices}.
-
-% \begin{figure}[h]
-% 	\centering
-% 	\includegraphics[width=0.25\linewidth]{figures/Theory/binowinovertices1.pdf}
-% 	\includegraphics[width=0.55\linewidth]{figures/Theory/binowinovertices2.pdf}
-% 	\caption{Wino and bino field vertices in the MSSM \cite{Catena2014} \label{fig:theory:winobinovertices}}
-% \end{figure}
- 
-% \section{The bigger picture}
-% \label{sec:theory:biggerPicture}
-% As discussed in section \ref{sec:theory:susy},  the \ac{MSSM} has a large set of free parameters. Most notably,  the masses of all particles in the \ac{MSSM} are free.  This significantly impacts the expected signatures within particle detectors as well as the cross sections.  A multitude of searches for supersymmetric particles are carried out at the \ac{LHC} with the help of \textit{simplified models}.  These models present a slice of parameter space of the \ac{MSSM}, often assuming 100\% branching ratios in their decay chains as well as expecting particles not participating in the process to be decoupled.  The parameter space is reduced to parameters accessible to collider experiments such as the particle masses and cross sections. 
-% The concept of simplified models serves multiple purposes (a comprehensive discussion can be found in \cite{SimplifiedModels}): determine the limits of search sensitivity,  study the properties of new physics signals and derive limits on more general models.  When considering results of a search based on simplified models,  identifying the boundaries of sensitivity such as reconstruction efficiencies helps experimentalists and theorists realize uncovered and unaccessible detector signatures and serve as a reference to other theoretical models with similar decay topologies.  In the case of an observation of a new physics signal,  simplified models help understand the properties such as particle masses of such a new signal,  leading to broader model development. 
-% Lastly,  search results of simplified models can be used to be interpreted in more general models.  This can be done through upper limits on observable signal events and compared to predictions of other models. 
-% Using simplified models,  the \ac{ATLAS} Collaboration has a wide search program for supersymmetric particles.  Given that the \ac{LHC} is a hadron collider,  the production of squarks and gluinos is an initially most promising window into \ac{SUSY} searches. 
-% An overview of the most recent limits (as of March 2022) on the production of gluinos ($\tilde{g}$) and their consecutive decay into the lightest \ac{SUSY} particles,  here either the lightest neutralino, \None,  or the gravitino,  $\tilde{G}$ are given in Figure \ref{fig:theory:gluinoLimits}. 
-
-% \begin{figure}[htpb!]
-% \centering
-% \includegraphics[width=0.6\linewidth]{figures/Theory/GluinoLimits.png}
-% \caption{Latest summary of gluino mass exclusion limits by \ac{ATLAS} for various simplified models \label{fig:theory:gluinoLimits}.  Shown are exclusion limits at 95 \% Confidence Level in a lightest neutralino (\None) versus gluino ($\tilde{g}$) mass plane.  Different simplified models are shown in different coloured lines \cite{SUSYSummaryATLAS}. }
-% \end{figure}
-
-% Different simplified models are shown in different colours.  As can be seen for example in the light blue line,  showing a simplified model of $\tilde{g}\rightarrow q \bar{q} WZ\tilde{\chi}^0_1$,  different consecutive decays of the \ac{SM} bosons, leading to different final states (here either $\geq 7-12$ jets,  one or at least two light leptons) can be investigated.  These analysis results can be combined to lead to results in a simplified model considering all consecutive \ac{SM} boson decays. 
-% Gluino masses up to ~2 TeV have been excluded for the assumption of a massless \None, for various decay modes. Similar searches for the production of gluinos have been carried out by the CMS Collaboration,  resulting in comparable exclusion limits on gluino masses up to around 2 TeV \cite{CMSSusyPublicSummaryPlots},  as displayed in Figure \ref{fig:theory:CMSgluinoLimits}. 
-
-% \begin{figure}[htpb!]
-% \centering
-% \includegraphics[width=0.6\linewidth]{figures/Theory/GluinoLimitsCMS.png}
-% \caption{Latest summary of gluino mass exclusion limits by \ac{CMS} for various simplified models \cite{CMSSusyPublicSummaryPlots}.  The excluded mass scale for the gluino is given for light \ac{LSP}s on the x-axis, with the associated simplified model and final state highlighted in each bar. \label{fig:theory:CMSgluinoLimits}}
-% \end{figure}
-
-% A further example of extensive \ac{SUSY} searches with the ATLAS detector are the searches for the scalar top quark. 
-% Due to the top quarks' large coupling to the Higgs boson,  its scalar, the supersymmetric partner is of particular interest for naturalness arguments.  In Figure \ref{ref:theory:stopLimits},  a summary of the latest searches for the pair production of the top squark and consecutive decay to the \None is given.  Three simplified models with different consecutive decays of the stop are considered, therefore showing 3 different kinematically forbidden regions. 
-% Stop masses up to 1250 GeV are excluded for a massless \ac{LSP}.  Comparable stop masses for the same simplified model have been excluded by the CMS Collaboration \cite{CMSSusyPublicSummaryPlots} (see Figure \ref{fig:theory:CMSstopLimits}).
-
-% \begin{figure}[htpb!]
-% \centering
-% \includegraphics[width=0.7\linewidth]{figures/Theory/StopLimits.png}
-% \caption{Latest exclusion plots summarising searches for pair production of stop particles by \ac{ATLAS} \cite{SUSYSummaryATLAS}. The limits shown are given at 95 \% confidence level,  with the stop mass on the x-axis and the \None mass on the y-axis. \label{ref:theory:stopLimits}}
-% \end{figure}
-
-% \begin{figure}[htpb!]
-% \centering
-% \includegraphics[width=0.65\linewidth]{figures/Theory/CMSSquarkLimits.png}
-% \caption{Latest exclusion plots summarising searches for pair production of stop particles by \ac{CMS}  \cite{CMSSusyPublicSummaryPlots}. The x-axis is showing the 95 \% confidence level exclusion limit on various squark masses.  The bars along the y-axis highlight the simplified models considered to yield the exclusion limits. \label{fig:theory:CMSstopLimits} }
-% \end{figure}
-
-
-% So far, we have not observed hints for \ac{SUSY} through these production mechanisms. As will be further discussed in section \ref{sec:analysis:intro},  the high masses excluded for these strong interaction production mechanism motivates investigations into electroweak production of \ac{SUSY},  which will be the main topic of this thesis.
-
-
-% %https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2022-013/fig_01.png
+\epigraph{\emph{\enquote{Nothing in life is to be feared. It is only to be understood. Now is the time to understand more, so that we may fear less}}}{Marie Curie}
 
+
+Esta tesis abarca una búsqueda de nuevas partículas predichas por diferentes escenarios más allá del \ac{SM}. En este capítulo se sentarán las bases de esta búsqueda.
+El capítulo comienza con un resumen de los principales conceptos del \ac{SM} utilizados a lo largo de esta tesis en el \Sect{\ref{sec:theory:sm}}. En dicha sección, se hace especial hincapié en la teoría de la fuerza fuerte, en las interacciones hadrónicas en una colisión \pp, y en el proceso de producción de fotones \textit{prompt}.
+A continuación, en \Sect{\ref{sec:theory:bsm}} se ofrece una vista general de las limitaciones actuales del \ac{SM}, y c\'omo, con modelos de f\'isica \ac{BSM}, se pretenden resolver estos problemas.
+Por último, en \Sect{\ref{sec:theory:mc_simulation}}, el capítulo termina con cómo se simulan estos procesos del \ac{SM} utilizando \ac{MC}, mostrando los diferentes pasos y herramientas para hacerlo.
+
+
+
+
+\section{El Modelo Est\'andar}
+\label{sec:theory:sm}
+
+El \acf{SM} de física de partículas es la teoría matemática que describe todas las partículas elementales conocidas y sus interacciones.
+La teoría se ha ido desarrollando a lo largo de los últimos años del siglo XX, finalizándose en la década de 1970 tras la confirmación experimental de los quarks.
+Con el tiempo, y tras numerosos experimentos que respaldaron sus predicciones, se ha convertido en la teoría más completa y precisa de la física de partículas.
+
+El \ac{SM} logró describir, hasta hoy, tres de las cuatro fuerzas fundamentales de la naturaleza: las interacciones \ac{EM}, débil y fuerte.
+Estas interacciones actúan en distintos rangos y tienen distintas fuerzas. La gravedad, la cuarta fuerza, aunque no está incluida en el \ac{SM}, es la más débil de las interacciones y tiene un alcance infinito. La interacción \ac{EM} también tiene un alcance infinito, pero es mucho más fuerte que la gravedad. Por otro lado, las fuerzas débil y fuerte actúan en distancias muy cortas, y sólo dominan en el rango subatómico. La interacción débil es más débil que la \ac{EM} y la fuerte, pero sigue siendo mucho más fuerte que la gravedad. Por último, la fuerza fuerte es la más fuerte de todas.
+Las tres fuerzas descriptas por el \ac{SM} surgen del intercambio de partículas mediadoras llamadas \textit{bosones} entre todas las partículas de materia, llamadas \textit{fermiones}.
+
+
+
+\subsection{Part\'iculas elementales y sus interacciones}
+\label{subsec:theory:sm:particles_interaction}
+
+Según el \ac{SM}, toda la materia está formada por fermiones, que son partículas que siguen la estadística de Fermi-Dirac y tienen semi-entero spin. Estos fermiones interactúan entre sí mediante el intercambio de los bosones antes mencionados, que son partículas de spin entero, siguiendo la estadística de Bose-Einstein. Hasta la fecha, no ha habido ningún experimento capaz de encontrar pruebas de que estos fermiones tengan estructura interna.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=\linewidth]{2_theory/sm}
+    \caption{Part\'iculas del \ac{SM} y sus propiedades. Todos los fermiones participan en la interacción débil, pero sólo los quarks interaccionan con los gluones, mientras que tanto los quarks como los leptones cargados interaccionan mediante la fuerza \ac{EM}. Los neutrinos, al ser neutros e incoloros, sólo interaccionan con los bosones \Wboson y \Zboson a través de la fuerza débil. Por último, el gravitón, aunque aún no se ha descubierto, debería ser el correspondiente portador de la fuerza gravitatoria. Extraído de la \Refn{\cite{SM_diagram}}.}
+    \label{fig:theory:sm:particles_interaction:particles}
+\end{figure}
+
+Los fermiones se dividen en dos tipos de partículas elementales: los leptones y los quarks. Existen seis leptones clasificados según su carga, y se dividen en tres familias o generaciones, ordenadas en función de su masa. Las partículas de las generaciones superiores tienen mayor masa y son muy inestables, decayendo en leptones de generaciones inferiores. Por esta razón, la materia se construye a partir de leptones de primera generación. Los leptones son: electrón (\(e\)), muón (\(\mu\)) y tau (\(\tau\)), con sus respectivos neutrinos: neutrino electrón (\(\nu_{e}\)), neutrino muón (\(\nu_{\mu}\)) y neutrino tau (\(\nu_{\tau}\)), y las propiedades de cada uno se muestran en la \Fig{\ref{fig:theory:sm:particles_interaction:particles}}.
+También hay seis antileptones, que tienen la carga opuesta a la de los leptones, lo que aumenta el número de leptones en el \ac{SM} hasta 12. El electrón, el muón y el tau tienen carga eléctrica y una masa considerable, mientras que los neutrinos son eléctricamente neutros y tienen una masa muy pequeña.
+
+Del mismo modo, hay seis sabores (flavours) de quarks (que también tienen sus respectivas antipartículas): up (\(u\)), down (\(d\)), charm (\(c\)), strange (\(s\)), top (\(t\)) y bottom (\(b\)). Los quarks también presentan otra propiedad que es el color\footnote{No se trata de un color visible, si no de un n\'umero cu\'antico.}, que son 3, lo que da un total de 36 quarks, y sólo se mezclan de tal manera que forman objetos sin color. En la \Fig{\ref{fig:theory:sm:particles_interaction:particles}} se muestra un resumen de los quarks y sus propiedades.
+
+
+Cada una de las tres fuerzas unificadas en el \ac{SM} se describe mediante una \ac{QFT}, correspondiente al intercambio de un bosón mediador.
+La fuerza fuerte, mediada por gluones sin masa, es responsable de la unión de los quarks. Mientras que los gluones no llevan carga eléctrica, poseen carga de color, lo que conduce al fenómeno del \textit{confinamiento}. A pesar de no tener masa, la interacción fuerte se hace más fuerte a bajas energías, confinando quarks y gluones dentro de hadrones debido a la propiedad de libertad asintótica y a la ya mencionada propiedad de confinamiento.
+La fuerza \ac{EM} está mediada entre partículas cargadas por fotones. Los fotones no tienen masa y, en consecuencia, la interacción tiene un alcance infinito.
+Por último, la interacción débil está mediada por los bosones masivos \Wboson y \Zboson, que dan lugar a interacciones de corto alcance. Las propiedades fundamentales de estos bosones también se muestran en la \Fig{\ref{fig:theory:sm:particles_interaction:particles}}.
+
+
+
+
+
+
+
+
+
+\subsection{Formulaci\'on matem\'atica del Modelo Est\'andar}
+\label{subsec:theory:sm:mathematical}
+
+El \ac{SM} es una teoría de campos renormalizable basada en simetrías locales, que proporciona una descripción de las partículas fundamentales y sus interacciones: la fuerte, la débil y la \ac{EM}. Estas interacciones aparecen por el requisito de que la teoría es invariante bajo transformaciones gauge locales del grupo de simetría:
+\begin{equation*}
+    SU(3)_{C} \times SU(2)_{L} \times U(1)_{Y},
+\end{equation*}
+donde \(Y\) es la hipercarga, \(L\) la helicidad izquierda y \(C\) la carga de color, y representan las cantidades conservadas del grupo de simetría. Cada transformación gauge local puede ser absorbida dentro de un campo gauge, con las excitaciones de los campos gauge llamadas bosones gauge. El sector \ac{EW} del \ac{SM} \(SU(2)_{L} \times U(1)_{Y} \to U(1)_{\text{EM}}\) describe las interacciones débil y \ac{EM}, tras el mecanismo de ruptura espontánea de simetría en virtud del potencial de Higgs. El grupo no abeliano \(SU(3)_C\), con carga de color, describe las interacciones fuertes entre quarks y gluones, y la teoría se conoce como \ac{QCD}~\cite{Ellis-1996-book}.
+
+En principio, las partículas incluidas en el \ac{SM} carecen de masa, a diferencia de las partículas observadas en la naturaleza. Aunque las ecuaciones de la interacci\'on \ac{EW} describen correctamente partículas como el fotón, los bosones \Wboson y \Zboson, no dan cuenta de sus masas. Para solucionar este problema, se introdujo el concepto de \ac{EWSB}, conocido como mecanismo de Brout-Englert-Higgs~\cite{Higgs-1964_1,Higgs-1964_2,Higgs-1966,Englert_Brout-1964}. Este mecanismo explica cómo los bosones \Wboson y \Zboson adquieren masa a través de la ruptura espontánea de la simetría \ac{EW}, causada porque el campo escalar de Higgs adquiere un valor de expectaci\'on de vacío distinto de cero. Además, predice la existencia de una nueva partícula escalar, dando lugar a un nuevo bosón masivo de spin 0, denominado bosón de Higgs. Esta partícula fue confirmada experimentalmente en 2012 por las colaboraciones \ac{ATLAS} y \ac{CMS} en el \ac{LHC}, con una masa medida de \(125.25~\gev\)~\cite{ATLAS-HiggsObservation,CMS-HiggsObservation}.
+
+El Lagrangiano del \ac{SM} puede separarse en dos términos: el primero describe la interacción \ac{EW} (sector \ac{EW}) y el segundo representa las interacciones fuertes (el sector fuerte):
+\begin{equation*}
+    \mathcal{L}_{\text{SM}} = \mathcal{L}_{\text{EW}} + \mathcal{L}_{\text{QCD}}
+\end{equation*}
+
+
+
+
+
+
+
+
+\subsubsection{The \acf{EW} interaction}
+
+
+\subsubsection{The Higgs mechanism}
+
+
+\subsubsection{\acf{QCD}}
+\label{subsubsec:theory:sm:mathematical:qcd}
+
+El enorme esfuerzo por describir el gran espectro de resonancias de mesones y bariones que se descubrieron durante la década de 1950, llevó a Gell-Mann y Zweig a proponer en 1964 el modelo de los quarks~\cite{Gellmann-1964,Zweig-1964_1,Zweig-1964_2}, que afirma que los hadrones son en realidad compuestos de constituyentes más pequeños. Zweig denominó a las partículas elementales \textit{aces} mientras que Gell-Mann las llamó \textit{quarks}, pero finalmente la teoría pasó a llamarse modelo de los quarks.
+
+El modelo de los quarks se formalizó en la teoría de \ac{QCD} con quarks que llevan un número cuántico adicional llamado carga de color, \(C=R,G,B\). Sin carga de color, los quarks dentro de algunos hadrones existir\'ian en estados cuánticos simétricos, en violación del principio de exclusión de Pauli.
+La teoría satisface la simetría gauge del grupo \(SU(3)_C\), que tiene ocho generadores \(T^a = \frac{\lambda_{\alpha\beta}^a}{2}\), siendo \(\alpha\) y \(\beta\) los índices de color, \(\lambda_{\alpha\beta}^a\) las ocho matrices de Gell-Man (\(a=1,2,\dots,8\)). Estos ocho generadores introducen ocho nuevos campos gauge físicos: los gluones.
+Los mesones y bariones, hadrones compuestos por dos y tres quarks respectivamente, son singletes \textit{blancos} (carga de color neutro) de \(SU(3)_C\).
+
+La simetría local \(SU(3)_C\) se obtiene sustituyendo en la lagrangiana las derivadas covariantes
+\begin{equation*}
+    D_{\mu} = \partial_{\mu} - i g_s \sum_{a=1}^{8} \frac{\lambda_{\alpha\beta}^a}{2} G_{\mu}^a,
+\end{equation*}
+donde \(g_s\) es la constante de acoplamiento \ac{QCD} desnuda y suele sustituirse por \(\alpha_s = g_s^2 / 4\pi\). El tensor de campo de Yang-Mills \(G_{\mu\nu}^a\) para el grupo \(SU(3)_C\) puede escribirse como
+\begin{equation*}
+    G_{\mu\nu}^a = \partial_{\mu} G_{\nu}^a - \partial_{\nu} G_{\mu}^a + g_s f_{abc} G_{\mu}^b G_{\nu}^c,
+\end{equation*}
+donde \(f_{abc}\) son las constantes de estructura de \(SU(3)\). Es importante observar que el último término de la ecuación anterior describe la autointeracción de los gluones, responsable de la naturaleza no abeliana de \ac{QCD}.
+La densidad lagrangiana \ac{QCD} viene dada entonces por:
+\begin{align*}
+    \mathcal{L}_{\text{SM}} \supset \mathcal{L}_{\text{QCD}}
+    &=
+        -\frac{1}{2} \Tr\left\{G_{\mu\nu}G^{\mu\nu}\right\}
+        + 
+        \sum_{\text{flavours}} i \bar{q}_f \gamma^{\mu} D_{\mu} q_f\\
+    &=
+        -\frac{1}{4} \sum_{a=1}^{8} G_{\mu\nu}^a G^{\mu\nu}_a
+        + 
+        \sum_{\text{flavours}} i \bar{q}_f \gamma^{\mu} D_{\mu} q_f
+\end{align*}
+
+\paragraph{Renormalizaci\'on}
+
+Como se ha mencionado, el \ac{SM} es una \ac{QFT} renormalizable. A continuación se detalla brevemente a qué se refiere este término. Los efectos de orden superior introducen correcciones cuánticas, por ejemplo, en el cálculo de los acoplamientos en el \ac{SM}, que deben tenerse en cuenta. Al mismo tiempo, las partículas en estos \textit{loops} tienen momentos no acotados, por lo que surgen divergencias en los cálculos tanto para momentos bajos (\ac{IR}) como altos (\ac{UV}), que deben eliminarse para que la teoría sea consistente con las medidas experimentales. El proceso por el que las divergencias desaparecen o se \enquote{absorben} añadiendo una dependencia de escala a parámetros como los acoplamientos o las masas de las partículas se conoce como renormalización. De este modo, el lagrangiano física, con acoplamientos comparables a los experimentos, puede escribirse como un lagrangiano desnudo, menos un lagrangiano que contenga los términos que eliminan las divergencias, a costo de introducir una dependencia con la escala \(\mu\) del momento. Por lo tanto, la renormalización da lugar a que los acoplamientos (y otros observables) no sean consistentes y varíen con \(\mu\). El fenómeno de la libertad asintótica y el confinamiento del color en \ac{QCD} son consecuencias de este proceso de renormalización, que es a su vez una propiedad de las teorías gauge.
+
+\paragraph{La constante de acoplamiento \(\alpha_s\)}
+
+Una de las consecuencias de la naturaleza no abeliana de \ac{QCD} aparece en la renormalización de la constante de acoplamiento \(\alpha_s\) a través de los diagramas de polarización del vacío, que acaba dependiendo de la escala \(Q\) de interacción. Para \ac{QED}, la polarización del vacío está inducida por pares virtuales \ee, que (apantallan) la carga eléctrica y dan lugar a que el acoplamiento disminuya con la distancia. Por el contrario, los gluones no sólo producen pares \qqbar (que causan un efecto similar a \ac{QED}), sino que también crean pares de gluones adicionales, que tienden a antiapantallar la carga de color aparente. En el régimen de alta energía (distancias pequeñas), la constante de acoplamiento puede aproximarse con un cálculo de 1 loop en \ac{QCD} perturbativa, como sigue
+\begin{equation}
+    \label{eq:theory:sm:mathematical:qcd:alphas}
+    \alpha_s\left(Q^2\right) = 
+    \frac{
+        \alpha_s\left(Q^2_0\right)
+    }{
+        1 + \left(11 N_C - 2 N_f\right) \frac{\alpha_s\left(Q_0^2\right)}{12\pi} \log \left(\frac{Q^2}{Q_0^2}\right)
+    }
+    =
+    \frac{
+        12\pi
+    }{
+        \left(33 - 2 N_f\right)  \log \left(\frac{Q^2}{\Lambda_{\text{QCD}}^2}\right)
+    },
+\end{equation}
+donde \(N_C\) es el número de colores en la teoría (3), \(N_f\) es el número de sabores activos\footnote{Aquellos quarks con \(m_q \ll Q\), donde \(m_q\) es la masa del quark luego del proceso \ac{EWSB} producido por el bosón de Higgs.}, \(\alpha_s\left(Q_0\right)\) es el valor de la constante de acoplamiento a una escala fija \(Q_0\), determinada experimentalmente en el valor de la masa del bosón \Zboson al cuadrado, y \(\Lambda_{\text{QCD}}\) es la escala de \textit{cut-off} \ac{IR}, donde la aproximación perturbativa en \(\alpha_s\) deja de ser válida. Las medidas experimentales, comparadas con la predicción teórica, de la constante de acoplamiento \(\alpha_s\) se muestran en la \Fig{\ref{fig:theory:sm:mathematical:qcd:alphas}}, mostrando la excelente concordancia entre ambas.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{2_theory/alphas}
+    \caption{Medidas experimentales de la constante de acoplamiento de \ac{QCD} comparada con las predicciones calculadas a nivel de 5 loops~\cite{ParticleDataGroup2024}.}
+    \label{fig:theory:sm:mathematical:qcd:alphas}
+\end{figure}
+
+
+\paragraph{Confinamiento y libertad asint\'otica}
+
+Se dice que la constante de acoplamiento \textit{corre}, siendo grande a baja energía y haciéndose más pequeña a alta energía. De la \Eqn{\ref{eq:theory:sm:mathematical:qcd:alphas}}, a altas energías \(\alpha_s \to 0\) por lo tanto \ac{QCD} interactúa débilmente, y en consecuencia los quarks se comportan como partículas no acotadas, fenómeno conocido como libertad asintótica~\cite{Wilczek_Gross-1973,Politzer-1973}.
+Por otro lado, para bajas energías (\(Q^2 \to 0\)), el acoplamiento \(\alpha_s\) aumenta divergentemente, y por tanto \ac{QCD} interacciona fuertemente dando lugar al confinamiento de quarks y gluones~\cite{Glashow_Georgi-1974}. El confinamiento implica que ni los quarks ni los gluones pueden aparecer aislados, sólo pueden existir dentro de \enquote{partones}, compuestos sin color llamados hadrones.
+Además, a partir de la escala de corte infrarroja \(\Lambda_{\text{QCD}}\), donde la aproximación perturbativa a \(\alpha_s\) ya no es válida, la creación de pares quark-antiquark en el vacío es energéticamente más favorable que la separación de un par de quarks ligados. Por esta razón, a medida que pierden energía, los quarks y gluones producidos en un colisionador de protones sufren un proceso repetitivo conocido como hadronización, en el que se crean cascadas colimadas de hadrones, denominadas jets, que forman un cono desde el quark o gluón inicial hasta los calorímetros, donde se deposita toda su energía.
+
+
+\subsection{Interacciones hadr\'onicas en colisionadores prot\'on-prot\'on}
+\label{subsec:theory:sm:hadron_interactions}
+
+Como se discute en la \Sect{\ref{subsubsec:theory:sm:mathematical:qcd}}, la constante de acoplamiento \(\alpha_s\), que gobierna las interacciones fuertes entre quarks, tiene una fuerte dependencia de la escala de energía de cada interacción, modificando radicalmente la naturaleza de los procesos. La modelización de una colisión protón-protón en un experimento como lo es \ac{ATLAS}, en el que es necesario conocer su evolución desde la interacción entre los protones a \(\sqs \sim \tev\), hasta la interacción de las partículas en el estado final con los materiales activos y pasivos del detector a unos pocos GeV, representa un enorme reto, ya que abarca regímenes de comportamiento \ac{QCD} muy diferentes. Dado que el \ac{LHC} es un colisionador de protones, es obligatorio disponer de una descripción muy precisa de la estructura de los protones, ya que una colisión \pp a muy altas energías consiste básicamente en colisionar los constituyentes de los mismos.
+
+A energías muy altas, pero dentro del régimen perturbativo, la colisión entre dos protones puede estudiarse mediante el Modelo de Partones. Este modelo fue introducido por Feynman~\cite{Feynman-1969} y Bjorken~\cite{Bjorken-1969_1} a finales de los años 60, para interpretar la dispersión inelástica profunda electrón-núcleo en SLAC. Esta descripción ha demostrado ser una buena aproximación para interacciones partón-partón con gran transferencia de momento (es decir, el escalado de Bjorken~\cite{Bjorken-1969_2}), pero no es apropiada para modelizar la interacción a bajas energías.
+Bajo esta abstracción, los partones incluyen no sólo los quarks de valencia (\(u\), \(\bar{u}\) y \(d\) en el caso del protón), sino también los pares de partículas y antipartículas en el mar de quarks, y los gluones que median las interacciones entre ellos. El modelo asume una interacción permanente entre los partones, por lo que su momento individual es desconocido, aunque su fracción de momento con respecto al momento total del hadrón puede modelizarse como una variable aleatoria.
+Además, en el caso de la verificación experimental, los quarks y gluones en el estado final no se observan directamente debido a la hadronización (concepto discutido en \Sect{\ref{subsec:theory:mc_simulation:hadronisation}}). En su lugar, se calcula una sección transversal hadrónica efectiva, \(\sigma(\pp\to jj)\), entre los protones incidentes y los jets del estado final. Para realizar este paso, se utiliza el teorema de factorización~\cite{Ellis_Georgi_Politzer_Ross-1978,Feynman-1969,Collins_Soper_Sterman-book,Collins_Soper-1987}, que permite una separación sistemática entre las interacciones de corta distancia (de los partones), y las interacciones de larga distancia (responsables del confinamiento del color y de la formación de hadrones). Este teorema establece que la sección transversal total para dos hadrones puede obtenerse ponderando y combinando las secciones transversales para dos partones particulares. Esta ponderación se realiza utilizando lo que se conoce como una \ac{PDF1}, \(f_i(x,Q^2)\), que describe la densidad de partones para un part\'on de la especie \(i\) en un hadrón, con una fracción \(x\) de la energía-momento del hadrón cuando el hadrón se prueba a una escala de resolución \(Q^2\). La sección transversal para un proceso de dispersión dura \(\pp \to X\), iniciado por dos hadrones con cuadrimomentos \(P_1\) y \(P_2\) puede escribirse como:
+\begin{equation}
+    \label{eq:theory:sm:hadron_interactions:xs}
+    \sigma_{\pp\to X} = \sum_{ij} \int_0^1 \dd{x_1} \dd{x_2} f_i(x_1, \mu_F^2) f_j(x_2, \mu_F^2) \, \hat{\sigma}_{ij}\left(p_1, p_2, \alpha_s(\mu_R^2), Q^2/\mu_R^2, Q^2/\mu_F^2 \right),
+\end{equation}
+donde \(x_1\) y \(x_2\) son las fracciones de momento transportadas por los partones interactuantes, y \(p_1 = x_1 P_1\) y \(p_2 = x_2 P_2\) son los momentos de los partones interactuantes. La sección transversal partonica \(\hat{\sigma}_{ij}\), correspondiente a la interacción de los partones \(i\) y \(j\), se calcula a un orden fijo en \(\alpha_s\), que se evalúa a una cierta escala de renormalización, \(\mu_R\) y escala de factorización \(\mu_F\). La escala de renormalización \(\mu_R\) es importante para absorber las divergencias \ac{UV} en los cálculos a órdenes superiores. La sección transversal total se obtiene sumando todos los posibles flavours de part\'on e integrando todas las posibles fracciones de momento. Las \acp{PDF1}, \(f_i\) y \(f_j\), se evalúan a una escala de factorización, \(\mu_F\) , que puede considerarse como la escala que separa la física perturbativa de corta distancia de la física no perturbativa de larga distancia (es decir, separa los procesos duros de los blandos).
+
+Si la expansión perturbativa se llevara a todos los órdenes, la sección transversal en la \Eqn{\ref{eq:theory:sm:hadron_interactions:xs}} sería independiente de \(\mu_F\) y \(\mu_R\). Sin embargo, en el cálculo real de orden finito esto no es así. Suelen tomarse ambos como iguales, \(\mu_F = \mu_R = \mu\), elegidos a la escala típica \(Q^2\) del proceso, para minimizar la contribución de los términos de orden superior no calculados, cuyas formas son logarítmicas \(\log\left(Q^2/\mu_R^2\right)\) y \(\log\left(Q^2/\mu_F^2\right)\). La dependencia de la predicción de \(\mu_R\) y \(\mu_F\) se asigna como incertidumbre teórica. El hecho de que la sección transversal de un proceso deba ser independiente de la escala de factorización \(\mu_F\) condujo a las ecuaciones DGLAP (Dokshitzer-Gribov-Lipatov-Altarelli-Parisi)~\cite{Dokshitzer-1977,Gribov_Lipatov-1971,Altarelli_Parisi-1977}. Estas ecuaciones determinan la evolución de la \ac{PDF1} con \(Q^2\).
+Para el caso del protón, la \Fig{\ref{fig:theory:sm:hadron_interactions:pdfs}} muestra las \acp{PDF1} evaluadas a dos escalas de factorización diferentes para todos los partones posibles.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{2_theory/pdfs}
+    \caption{Fracci\'on del momento \(x\) del part\'on multiplicado por su correspondiente \acs{PDF1} \(f_i(x, Q^2)\) (donde \(i = u_v = u - \bar{u}, \, d_v = d - \bar{d},\, \bar{u},\, \bar{d},\, s\simeq\bar{s},\, c=\bar{c},\, b=\bar{b},\, g \)) obtenida por el an\'alisis global a \ac{NNLO} NNPDF3.0~\cite{NNPDF} para dos escalas diferentes: \(\mu^2 = 10~\gev^2\) (izquierda) y \(\mu^2 = 10^4~\gev^2\) (derecha), utilizando \(\alpha_s(M_Z^2) = 0.118\). Las figuras son extra\'idas de la \Refn{\cite{ParticleDataGroup2020}}.}
+    \label{fig:theory:sm:hadron_interactions:pdfs}
+\end{figure}
+
+
+
+
+\subsubsection{Descripci\'on del proceso de colisi\'on}
+
+Inicialmente dos hadrones se acercan en un curso de colisión, donde cada hadrón puede pensarse como un grupo de protones esencialmente colineales caracterizados cuantitativamente por las distribuciones de protones.
+Se denomina como colisi\'on dura a la colisi\'on entre los dos partones procedientes uno de cada hadr\'on. Esta proceso puede ser calculado por una aproximación perturbativa hasta cierto orden en \(\alpha_s\), que corresponde al número de partones salientes.
+En un escenario de colisión con partículas aceleradas que llevan carga \ac{EM} y cargas de color, procesos de bremsstrahlung pueden ocurrir antes y despues de la colisi\'on dura, como por ejemplo radiación de gluones como \(q \to qg\).
+Las emisiones que se inician a partir de los dos protones que colisionan se denominan \ac{ISR}, mientras que las radiaciones de los protones salientes se denominan \ac{FSR}. Con el desarrollo de la lluvia de protones, la intensidad del campo de \ac{QCD} aumenta (ve\'ase la \Fig{\ref{fig:theory:sm:mathematical:qcd:alphas}}) a medida que los protones pierden energía y pueden romperse mediante la producción de pares quark-antiquark. Así, quarks y antiquarks pueden combinarse para producir un hadrón primario. La creación de hadrones como consecuencia del fenómeno de confinamiento se denomina \enquote{hadronización}. Los productos adicionales de la colisión que no están explícitamente relacionados con el proceso duro (radiación, restos de hadrones, productos de interacciones de múltiples partones, etc.), se suelen agrupar y denominar \ac{UE}. Una visualización de la colisión \pp se muestra en la \Fig{\ref{fig:theory:sm:hadron_interactions:parton_shower}}.
+
+
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{2_theory/parton_shower}
+    \caption{Ilustraci\'on de las etapas de una colisi\'on hadr\'on-hadr\'on. El c\'irculo rojo en el centro de la figura representa la colisi\'on dura, rodeada por una estructura en forma de \'arbol que representa la radiaci\'on bremmstrahlung que la simulan \textit{parton showers}. El \'ovalo violeta en la parte inferior representa un ejemplo de un evento secundario de dispersi\'on dura (\ac{UE}). El proceso de hadronización está representado por los \'ovalos verdes claro, mientras que los c\'irculos verdes oscuro indican los decaimientos hadrónicos. Finalmente, las líneas amarillas señalan la radiación de fotones.~\cite{Hoche-2015}.}
+    \label{fig:theory:sm:hadron_interactions:parton_shower}
+\end{figure}
+
+
+
+A lo largo de los años, diferentes experimentos del \ac{LHC} han medido secciones eficaces de diferentes procesos del \ac{SM}. La \Fig{\ref{fig:theory:sm:hadron_interactions:sm_results}} muestra la buena concordancia entre las secciones transversales medidas por \ac{ATLAS} de algunos procesos y sus predicciones teóricas.
+
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{2_theory/sm_measurements}
+    \caption{Resumen de diversas medidas experimentales de las secciones eficaces de producci\'on de diferentes procesos del \ac{SM}, comparadas con las predicciones te\'oricas~\cite{ATLAS-SM_Measurements}.}
+    \label{fig:theory:sm:hadron_interactions:sm_results}
+\end{figure}
+
+
+
+\subsection{Teor\'ia de producci\'on de fotones \textit{prompt}}
+\label{subsec:theory:sm:prompt_photon}
+
+
+Los fotones de alto momento transverso (\enquote{prompt}) permiten investigar la interacción dura y su producción en colisiones protón-protón, \(\pp \to \gamma+X\), ofrece ciertas ventajas sobre otros análisis en eventos de producción de jets, el proceso más abundante en los colisionadores hadrónicos, proporcionando un escenario ideal para investigaciones sobre la teor\'ia \ac{QCD}. En este caso, la presencia de un vértice \ac{QED} a \ac{LO} hace que los cálculos teóricos sean más confiables y da acceso a un rango más bajo de \pt. Además, la resolución energética de los calorímetros electromagnéticos es en general mejor que la de los calorímetros hadrónicos\footnote{Una descripci\'on de ambos calor\'imetros se brinda en el \Ch{\ref{ch:atlas}}.}, y las incertidumbres sistemáticas en la escala de energía de los fotones son menores. Debido al hecho de que los fotones no hadronizan (véase \Sect{\ref{subsec:theory:mc_simulation:hadronisation}}), la dirección y la energía de los fotones se miden directamente en el calorímetro sin necesidad de contar con la reconstrucci\'on de un jet.
+
+La producción de fotones prompt tiene lugar a través de dos procesos: el proceso de fotones directos (D), en el que el fotón surge directamente de la interacción dura, y el proceso de fotones de fragmentación (F), en el que el fotón se emite en la fragmentación de un partón de alto momento transverso~\cite{Szczurek_Pietrycki-2007,Belghobsi_Fontannaz-2009}. Desde un punto de vista topológico, cuando se produce un fotón directo, generalmente est\'a separado de la actividad hadrónica, mientras que un fotón producido a partir de un proceso de fragmentación, lo más probable es que esté acompañado de hadrones.
+
+A \ac{LO} en teoría de perturbaciones, hay dos subprocesos que contribuyen a la producción de fotones directos: (a) el proceso Compton \(qg \to \gamma q\), y (b) el proceso de aniquilación \(\qqbar \to \gamma+g\), mostrado en las \Figs{\ref{fig:theory:sm:prompt_photon:feynman_lo_direct:compton}}{\ref{fig:theory:sm:prompt_photon:feynman_lo_direct:annihilation}}. A mediano y gran \(x\), hay una jerarquía natural de distribuciones de partones en el protón, \(q \gg g \gg \bar{q}\), mientras que a pequeño \(x\), \(g \gg q,\bar{q}\) (\Fig{\ref{fig:theory:sm:hadron_interactions:pdfs}}). Como consecuencia, en las colisiones protón-protón, el proceso Compton \(qg\) domina esencialmente en todo el rango \pt. Esto hace que la producción prompt de fotones sea particularmente útil para restringir la distribución de gluones.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{2_theory/diagrams/gammajet_compton}
+        \caption{Compton.}
+        \label{fig:theory:sm:prompt_photon:feynman_lo_direct:compton}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{2_theory/diagrams/gammajet_annihilation}
+        \caption{annihilation.}
+        \label{fig:theory:sm:prompt_photon:feynman_lo_direct:annihilation}
+    \end{subfigure}
+    \caption{Diagramas de Feynman de producci\'on de fotones directos a \ac{LO} en colisiones \pp.}
+    \label{fig:theory:sm:prompt_photon:feynman_lo_direct}
+\end{figure}
+
+Las correcciones a \ac{NLO} de este proceso se presentan en la \Fig{\ref{fig:theory:sm:prompt_photon:feynman_nlo_direct}}. En la \Fig{\ref{fig:theory:sm:prompt_photon:feynman_nlo_direct:gluon}}, existe una singularidad colineal cuando los momentos del quark y el gluón del estado final son paralelos. Esta divergencia se cancela cuando se suman las contribuciones real y virtual del gluón (véase la \Fig{\ref{fig:theory:sm:prompt_photon:feynman_nlo_direct:gluon_virtual}}), y el efecto neto es una corrección finita \(\mathcal{O}(\alpha_s)\) al proceso \ac{LO}. Por otro lado, en el diagrama de la \Fig{\ref{fig:theory:sm:prompt_photon:feynman_nlo_direct:photon}} hay otra singularidad colineal, esta vez, cuando los momentos del fotón y del quark son paralelos. Esta singularidad, sin embargo, no se cancela, sino que tiene que ser absorbida en una función de fragmentación de fotones \(D_q^{\gamma} (z, \mu^2_f )\) que representa la probabilidad de encontrar un fotón portando fracción de momento longitudinal \(z\) en un jet de quarks a escala \(\mu_f\). Esta función de fragmentación no es calculable en teoría de perturbaciones, y obedece a una ecuación de evolución DGLAP similar a la de las funciones de fragmentación hadrónicas. La contribución a la sección eficaz de la \Fig{\ref{fig:theory:sm:prompt_photon:feynman_nlo_direct:photon}} contiene un factor de la forma
+\begin{equation}
+    \label{eq:theory:sm:prompt_photon:fragmentation_contribution}
+    \hat{\sigma}(qg \to qg) \oplus D_q^{\gamma} \left(z, \mu_f^2\right).
+\end{equation}
+La contribución del proceso de fragmentación aparece cuando se produce una singularidad colineal quark-fotón de estado final en el cálculo de la contribución de subprocesos como \(qg \to gq\gamma\).
+A órdenes superiores, estas singularidades aparecen cada vez que part\'on de alto \pt experimenta una cascada de decaimientos colineales terminando en un sistema quark-fot\'on. Estas singularidades se factorizan a todos los órdenes en \(\alpha_s\) según el teorema de factorización, y se absorben en funciones de fragmentación de quarks y gluones del fotón, \(D_q^{\gamma} \left(z, \mu_f^2\right)\) y \(D_g^{\gamma} \left(z, \mu_f^2\right)\), respectivamente.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{2_theory/diagrams/gammajet_fsr_gluon}
+        \caption{Gluon \ac{FSR}.}
+        \label{fig:theory:sm:prompt_photon:feynman_nlo_direct:gluon}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{2_theory/diagrams/gammajet_fsr}
+        \caption{Photon \ac{FSR}.}
+        \label{fig:theory:sm:prompt_photon:feynman_nlo_direct:photon}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{2_theory/diagrams/gammajet_nlo_direct_virtualcorrection}
+        \caption{Virtual gluon correction.}
+        \label{fig:theory:sm:prompt_photon:feynman_nlo_direct:gluon_virtual}
+    \end{subfigure}\\
+    \caption{Diagramas de Feynman de producci\'on de fotones directos a \ac{NLO} en colisiones \pp.}
+    \label{fig:theory:sm:prompt_photon:feynman_nlo_direct}
+\end{figure}
+
+
+La función de fragmentación de fotones aumenta uniformemente con la escala en todo el rango de \(z\), eso es: es decir, \(D_k^{\gamma} \left(z, \mu_f^2\right) \sim d^{\gamma}(z)\ln(\mu^2)\) cuando \(\mu^2 \to \infty\). Cuando \(\pt \gtrsim \gev\), el crecimiento en la forma de \(\ln \pt^2\) de la función de fragmentación en la \Eqn{\ref{eq:theory:sm:prompt_photon:fragmentation_contribution}} compensa uno de los acoplamientos \(\alpha_s \left(\pt^2\right)\) en la sección eficaz del subproceso, y la contribución es efectivamente de orden \(\alpha_s \left(\pt^2\right) \alpha_{EM}\), es decir, la misma que la contribución a \ac{LO}. Los diagramas de Feynman correspondientes a la componente de fragmentación \ac{LO} se muestran en la \Fig{\ref{fig:theory:sm:prompt_photon:feynman_lo_frag}}.
+
+
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{2_theory/diagrams/gammajet_fragmentation_quark}
+        \caption{\ac{NLO} quark fragmentation.}
+        \label{fig:theory:sm:prompt_photon:feynman_lo_frag:quark}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.49\linewidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{2_theory/diagrams/gammajet_fragmentation_gluon}
+        \caption{\ac{NLO} gluon fragmentation.}
+        \label{fig:theory:sm:prompt_photon:feynman_lo_frag:gluon}
+    \end{subfigure}\\
+    \caption{Diagramas de Feynman de los procesos de producci\'on a \ac{LO} de fotones de fragmentaci\'on en colisiones \pp (\subref{fig:theory:sm:prompt_photon:feynman_lo_frag:quark}) \(qg \to g q(\gamma)\) y (\subref{fig:theory:sm:prompt_photon:feynman_lo_frag:gluon}) \(qg \to q g(\gamma)\).}
+    \label{fig:theory:sm:prompt_photon:feynman_lo_frag}
+\end{figure}
+
+
+La sección eficaz diferencial inclusiva en \(\etgam\) para la producción de un fotón no aislado viene dada por la suma de las contribuciones directas y de fragmentación:
+\begin{align}
+    \dv{\sigma}{\etgam} &= \dv{\sigma_{\text{dir}}}{\etgam} + \dv{\sigma_{\text{frag}}}{\etgam} \nonumber\\
+    &= \sum_{a,b=q,\bar{q},g} \int \dd{x_a} \dd{x_b} f_a\left(x_a, \mu_F^2\right) f_b\left(x_b, \mu_F^2\right) \times \nonumber\\
+    &\quad
+    \left[
+        \dd{\hat{\sigma}^{\gamma}_{ab} \left(p^{\gamma}; x_a, x_b, \mu_R, \mu_F, \mu_f\right)}
+        +
+        \sum_{c=q,\bar{q}, g} \int_{z_{\min}}^{1} \frac{\dd{z}}{z^2} \dd{\hat{\sigma}^c_{ab} \left(p^{\gamma}; x_a, x_b, z, \mu_R, \mu_F, \mu_f\right)} D_c^{\gamma} \left(z, \mu_f^2\right)
+    \right],
+\end{align}
+donde \(D_c^{\gamma} \left(z,\mu_f^2\right)\) es la función de fragmentación de un part\'on \(c\) a un fotón que lleva la fracción de momento \(z\), \(f_a \left(x_a, \mu^2_F \right)\) es la \ac{PDF1} de un part\'on \(a\), \(\mu_R\) y \(\mu_F\) son las escalas estándar de renormalización y factorización, y \(\mu_f\) es la escala de fragmentación. Las correcciones de la componente directa de la sección eficaz partonica \(\hat{\sigma}^{\gamma}_{ab}\) se conocen hasta el \ac{NNLO} en \ac{pQCD}, mientras que la componente de fragmentación \(\hat{\sigma}^c_{ab}\) sólo se conoce a \ac{NLO}.
+
+A \ac{LO}, los cálculos teóricos para los procesos directos y de fragmentación convergen por separado, y pueden considerarse independientemente. Sin embargo, esta distinción no tiene significado físico más allá de \ac{LO}, ya que ambos tipos de procesos deben considerarse al mismo tiempo para cancelar las singularidades colineales e infrarrojas del estado final. Por lo tanto, más allá del \ac{LO}, tanto los procesos directos como los de fragmentación no pueden considerarse por separado. Desde un punto de vista teórico, la distinción viene definida por una elección arbitraria. Se deriva de la necesidad de factorizar las singularidades colineales del estado final y absorberlas en las funciones de fragmentación. Esta factorización requiere la introducción de una escala de fragmentación arbitraria \(\mu_f\), que es un parámetro no físico. En términos más generales, depende de la elección arbitraria del esquema de factorización, que define la parte finita de las correcciones de orden superior que se absorbe en las funciones de fragmentación junto con las singularidades; la parte finita restante se incluye entonces en las contribuciones de orden superior a las secciones eficaces partonicas. La dependencia de esta arbitrariedad, y en particular, de \(\mu_f\), se cancela sólo en la suma de las contribuciones directas y de fragmentación, por lo que sólo esta suma es un observable físico.
+
+
+
+
+
+
+\section{F\'isica M\'as all\'a del Modelo Est\'andar}
+\label{sec:theory:bsm}
+
+En la sección anterior se han descripto brevemente la mayoría de las propiedades del \ac{SM}, junto con resultados de \ac{ATLAS} que muestran lo bien que concuerda el \ac{SM} con los datos experimentales. A pesar de ser una de las teorías más exitosas de la física en general, el modelo tiene naturalmente un rango de validez.
+Sin embargo, no puede considerarse la teoría definitiva (la que podría \enquote{explicarlo todo}), ya que tiene ciertas limitaciones, tanto desde el punto de vista teórico como experimental. El \ac{SM} se sigue considerando una teoría efectiva, una aproximación a baja energía de una teoría más fundamental. Hay tres tipos populares de teorías de la nueva física: (i) modelos con una simetría extendida o sector escalar, (ii) teoría de mayores dimensiones, y (iii) fermiones compuestos (es decir, los fermiones del \ac{SM} ya no son elementales~\cite{Kuhn_Zherwas-1984,Cabibbo_Maiani_Srivastava-1984,DeRújula_Maiani_Petronzio-1984,Baur_Spira_Zerwas-1990,Bhattacharya_Chauhan_Choudhary_Choudhury-2009,Zhan_Li_Liu_Li-2016}).
+A continuación, se presenta una vista general de las principales deficiencias del \ac{SM}. Luego, se discuten los dos últimos tipos de teorías de nueva física, enumerando los modelos teóricos utilizados en la búsqueda llevada a cabo en esta tesis.
+
+\begin{itemize}
+    \item \underline{Gravedad:} Una de las principales limitaciones del \ac{SM} es la imposibilidad de incluir la gravedad del mismo modo que otras interacciones. No sólo incluir la gravedad en la teoría no es suficiente para explicar las observaciones, sino que las matemáticas utilizadas enl \ac{SM} son prácticamente incompatibles con la formulación de la Relatividad General.
+    \item \underline{Problema de jerarqu\'ias:} En el contexto de la física de altas energías, se produce un problema de jerarquía cuando el valor fundamental de algún parámetro físico (como una constante de acoplamiento o una masa), en algún Lagrangiano es enormemente diferente de su valor efectivo, que es el valor que se mide en un experimento. Normalmente, el valor renormalizado de los parámetros se aproxima a sus valores fundamentales, pero en algunos casos, parece que se ha producido una delicada cancelación entre la cantidad fundamental y las correcciones cuánticas. En general, los problemas de jerarquía están relacionados con el ajuste fino de los parámetros en la teoría. El caso más conocido en la física de partículas es la diferencia en la escala \ac{EW} \(M_W \sim 10^2~\gev\) y la escala de Planck, donde los efectos de la gravedad cuántica empiezan a tomar el control \(M_P\sim10^{19}~\gev\), cuya relación es \(M_W / M_P \sim 10^{-17}\).
+    \item \underline{\acf{DM}:} Una pista hacia la incompletitud del \ac{SM} es la presencia de \ac{DM}. Según mediciones astrofísicas y consideraciones cosmológicas~\cite{Zwicky-1937,Rubin_Kent-1970,Planck-2014,Clowe-2006,Brada-2008}, la materia conocida sólo representa el \(4\%\) del total del universo. Por otra parte, el \(23\%\) del total de la materia está asociado a un tipo de materia desconocida, denominada \ac{DM}, ya que no emite radiación \ac{EM}, pero es masiva al tener efectos gravitatorios considerables sobre la materia visible. La única partícula \ac{SM} que podría ser un candidato \ac{DM} viable es el neutrino, pero como su masa es demasiado pequeña para explicar estos fenómenos, se ha descartado.
+    \item \underline{Masa de los neutrinos:} La observación de la oscilación de los neutrinos implica que, aunque ellos tienen una masa muy pequeña, ésta no es nula, en contraste con la predicción del \ac{SM}. Aunque existen varios mecanismos para incluirlos en el \ac{SM}, no hay pruebas suficientes para saber cuál es la forma correcta, y algunos modelos proponen la existencia de nuevas partículas pesadas aún no observadas~\cite{GellMann_Ramond_Slansky-2010,Glashow-1980,Ramond-2005}.
+\end{itemize}
+
+
+
+
+
+\subsection{Teor\'ias de quarks compuestos}
+\label{subsec:theory:bsm:qstar}
+
+En las teorías de fermiones compuestos, éstos ya no son los constituyentes fundamentales de la materia, sino estados ligados de partículas denominadas \textit{preones}~\cite{Pfeil-1981}. Se postula que estas últimas experimentan una fuerza desconocida hasta ahora a causa de una interacción gauge asintóticamente libre pero confinante~\cite{Hooft-1980}, que se hace muy fuerte a una escala característica \(\Lambda\), dando lugar así a los fermiones compuestos. En muchos de estos modelos~\cite{Pati_Salam_Strathdee-1975,Fritzsch_Mandelbaum-1981,Baur_Fritzsch-1984}, aunque no en todos, los quarks y los leptones comparten al menos algunos constituyentes comunes. Tal hipótesis conduce naturalmente a la existencia de estados excitados de fermiones a una escala de masa comparable a la dinámica de la nueva fuerza de enlace.
+
+Como los \enquote{estados excitados} sí sufren las interacciones gauge del \ac{SM}, pueden producirse en colisionadores que operen a energías suficientemente altas. Al producirse, decaerían en partículas del \ac{SM}, siendo un canal particularmente favorable el decaimiento radiativo en un fermión y un bosón gauge (fotón, \Wboson, \Zboson, o gluón). Si los quarks y los leptones no son constituyentes fundamentales sino que son compuestos, este hecho podría, en principio, revelarse ya sea mediante una acumulación de estadísticas a escalas de energía comparables a la escala de composición \(\Lambda\) en el \ac{LHC}. Si el valor de \(\Lambda\) no es demasiado alto, entonces se pueden producir \acp{EQ} \textit{in-shell}, mientras que a energías muy por debajo de \(\Lambda\), tales excitaciones podrían manifestarse a través \textit{contact interactions} de cuatro fermiones que involucrara sólo partículas del \ac{SM}.
+
+En general, las interacciones entre los \acp{EQ} (\qstar) y los bosones gauge pueden escribirse como~\cite{Zhan_Li_Liu_Li-2016}:
+\begin{equation}
+    \mathcal{L}_{\text{gauge}} = 
+    \frac{1}{2\Lambda}
+    \overline{\qstar_R}
+    \sigma^{\mu\nu}
+    \left[
+        g_s f_s \frac{\lambda_a}{2} G_{\mu\nu}^a +
+        g f \frac{\tau}{2} W_{\mu\nu} +
+        g' f' \frac{Y}{2} B_{\mu\nu} +
+    \right]
+    q_L
+    + \text{H.c},
+\end{equation}
+donde \(G_{\mu\nu}^a\), \(W_{\mu\nu}\) y \(B_{\mu\nu}\) son los tensores de intensidad de campo de los campos gauge SU(3), SU(2) y U(1), respectivamente. Los coeficientes \(g_s\), \(g = e / \sin \theta\), \(g' = e / \cos \theta\) son los acoplamientos gauge fuerte y \ac{EW}, \(\lambda_a\) es la matriz de Gell-Mann, \(\tau\) es la matriz de Pauli, y la hipercarga débil es \(Y = 1/3\), respectivamente. \(\Lambda\) es la escala de composición y \(f_s, \, f, \, f'\) son parámetros determinados por la dinámica de composición, que representan la fuerza de las interacciones entre el \acp{EQ} y los campos del \ac{SM}. Los diagramas de Feynman de los canales \(s\) y \(t\), a \ac{LO}, para dicho proceso se presentan en la \Fig{\ref{fig:theory:bsm:diagrams}}. Finalmente, la amplitud del decaimiento de \acp{EQ} a un fotón y un quark puede calcularse a \ac{LO}~\cite{Zhan_Li_Liu_Li-2016} como:
+\begin{equation}
+    \Gamma\left(\qstar \to q \gamma\right) =
+    \frac{1}{4}
+    \alpha
+    \left(f \tau_3 + f' \frac{Y}{2}\right)^2
+    \frac{\mq^3}{\Lambda^2}.
+\end{equation}
+que aumenta con la masa \mq del \ac{EQ} si se considera \(\Lambda = \mq\).
+
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.3\linewidth]{2_theory/diagrams/qstar_gammajet_s_channel}
+    \hspace{1cm}
+    \includegraphics[width=0.3\linewidth]{2_theory/diagrams/qstar_gammajet_t_channel}
+    \caption{Diagramas de Feynman de la producci\'on de \ac{EQ} en colisiones \pp y su decaimiento en un quark y photon en el canal \(s\) (izquierda) y \(t\) (derecha).}
+    \label{fig:theory:bsm:diagrams}
+\end{figure}
+
+
+En el \ac{SM} no hay un proceso de producción de resonancia que decaiga en un par fotón+jet producido en colisiones \pp, y la producción directa de fotón+jet a \ac{LO} ocurre vía dispersión Compton o aniquilación \qqbar, como se describi\'o en la \Sect{\ref{subsec:theory:sm:prompt_photon}}. Como resultado, la distribución de la masa invariante \gammajet (\myj) cae rápidamente. De esta forma, un \ac{EQ} pesado que decae en un par \gammajet puede ser descubierto si existe. En lo que sigue de la tesis, de los modelos de \ac{EQ} que se estudian, s\'olo se considerar\'an los que decaen en un fot\'on y un jet. En el \fixme{GIVE REFENRECE TO CHAPTER WITH SIGNALS} se da información sobre las secciones eficaces y las formas de las señales en el detector \ac{ATLAS}.
+
+\subsection{Teor\'ias de mayores dimensiones}
+
+Existen al menos dos escalas de energía aparentemente fundamentales en la naturaleza, la escala \ac{EW} \(m_{W}~\sim 10^3~\gev\) y la escala de Planck \(m_P = G^{-1/2} \sim 10^{18}~\gev\), donde \(G\) es la constante gravitatoria. Explicar la enormidad de la relación \(m_P / m_W\) ha sido la principal motivación para construir extensiones del \ac{SM}, como los modelos con supersimetría tecnicolor o de baja energía. Es notable que estas grandes estructuras teóricas, como lo son el \ac{SM} y la Teor\'ia de Relatividad General, se hayan construido sobre el supuesto de la existencia de dos escalas de energía fundamentales muy dispares. Sin embargo, existe una diferencia importante entre estas escalas. Mientras que las interacciones \acp{EW} se han investigado a distancias cercanas a \(\sim m_W^{-1}\), las fuerzas gravitatorias no se han investigado ni remotamente a distancias \(\sim m_P^{-1}\).
+
+Las propuestas de un espaciotiempo con más de tres dimensiones espaciales se remontan a los años 20, principalmente a través de los trabajos de Kaluza y Klein, en un intento de unificar las fuerzas de la naturaleza~\cite{Bailin_Love-1987}. Aunque su idea inicial fracasó, el formalismo que ellos y otros desarrollaron sigue siendo útil hoy en día. Hacia 1980, la teoría de cuerdas propuso de nuevo ampliar el número de dimensiones espaciales, esta vez como requisito para describir una teoría coherente de la gravedad cuántica. Se suponía que las dimensiones extra se compactarían a una escala cercana a la de Planck, por lo que no serían comprobables experimentalmente en un futuro próximo.
+
+Arkani-Hamed, Dimopoulos y Dvali (ADD)~\cite{ADD-1998} dieron un enfoque diferente, demostrando que la debilidad de la gravedad podría explicarse postulando dos o más dimensiones extra planas en las que sólo podría propagarse la gravedad. El tamaño de estas dimensiones extra debería oscilar entre aproximadamente un milímetro y \(\sim 1/\tev\), lo que daría lugar a posibles consecuencias observables en experimentos actuales y futuros. Otro enfoque, de Randall y Sundrum (RS)~\cite{RS1-1999_1,RS1-1999_2}, postula un espaciotiempo Anti-deSitter (AdS) de cinco dimensiones con geometría deformada, donde la compactificación es de la escala de \(1/\tev\).
+
+Estos modelos gravitatorios de baja escala~\cite{Antoniadis_Arkani_Dimopoulos_Dvali-1998,ADD-1998,RS1-1999_1,RS1-1999_2,Dvali-2008,Dvali-2010} permiten la producción de \acp{QBH} en colisiones de partículas~\cite{Argyres-1998,Banks-1999,Giddings-2002}.
+Los \acp{QBH}, a diferencia de los semiclásicos, muestran diferencias significativas a medida que su masa se aproxima a la escala de Planck. Los agujeros negros semiclásicos decaen térmicamente, perdiendo masa a la temperatura de Hawking con un efecto mínimo en el espaciotiempo circundante. Sin embargo, a medida que la masa del agujero negro disminuye y se acerca a la escala de Planck, la influencia de la reacción de retroceso en el espaciotiempo se vuelve sustancial, y el agujero negro ya no puede mantener el equilibrio térmico con su radiación. Las correcciones microcanónicas ayudan a refinar el modelo de decaimiento, pero finalmente dominan los efectos de la mecánica cuántica. Cuando la longitud de onda Compton del agujero negro supera su radio de Schwarzschild, comienza a aparecer un comportamiento cuántico que podría conferirle propiedades similares a las de las partículas. En este punto, los conceptos de temperatura y entropía bien definidos ya no son v\'alidos, lo que hace improbable que estos agujeros negros decaigan térmicamente~\cite{Meade-2008,Alberghi-2006,Alberghi-2007}.
+
+Centr\'andose en agujeros negros con una masa ligeramente superior a la escala de Planck, se espera que los decaimientos de los \ac{QBH} no sigan un patrón térmico. En su lugar, es probable que dominen los decaimientos en unas pocas partículas, y que estos procesos tengan lugar en una pequeña región del espaciotiempo. Un \ac{QBH} podría comportarse como una resonancia fuertemente acoplada o un estado ligado gravitatoriamente. Tras el decaimiento del agujero negro, tendrá lugar el proceso de hadronización \ac{QCD}, dada la implicación de cargas de color.
+
+En colisiones \pp, sólo una fracción de la energía total del centro de masa \sqs está disponible en el proceso de dispersión dura. Definiendo \(sx_ax_b \equiv s \tau \equiv \hat{s}\), donde \(x_a\) y \(x_b\) son las energías fraccionarias de los dos partones que colisionan (ver la \Sect{\ref{subsec:theory:sm:hadron_interactions}}), la sección eficaz completa \(\sigma\) se lee~\cite{Gingrich_Undseth-2020}:
+\begin{equation*}
+    \sigma_{\pp \to \text{BH} + X}(s) =
+    \sum_{a,b}
+        \int_{m^2/s}^{1} \dd{\tau}
+            \int_{\tau}^{1}
+            \frac{\dd{x}}{x}
+            f_a\left(\frac{\tau}{x}\right)
+            f_b(x)
+            \Theta\left(m - m_{\text{th}}\right)
+            \hat{\sigma}_{ab\to \text{BH}} (\hat{s} = m^2),
+\end{equation*}
+donde \(a\) y \(b\) recorrer todos los partones, y \(f_a\) y \(f_b\) son las \acp{PDF1} de ellos. La función escalón de Heaviside \(\Theta\) marca el umbral de masa mínima \(m_{\text{th}}\) en el que se podría producir un \acp{QBH}.
+El umbral se suele tomar como la escala de Planck \(m_P\) para un \acp{QBH}, o unas pocas veces \(m_P\) para agujeros negros clásicos. Para un \acp{QBH} el rango global en el que se considera que se producen es \(m_P \leq m \leq 3m_P\)~\cite{Gingrich-2010}.
+La sección eficaz a nivel de part\'on \(\hat{\sigma}\) se considera a menudo como la sección eficaz geométrica \(\sigma \sim \pi r_g^2\) con
+\begin{equation*}
+    r_g = k(D) \frac{1}{m_P} \left(\frac{m}{m_P}\right)^{\frac{1}{D-3}},
+\end{equation*}
+donde \(k(D)\) es un coeficiente numérico que depende sólo del número de dimensiones y de la definición de la escala fundamental de Planck:
+\begin{equation*}
+    k(D) = 
+    \left(
+        2^{D-4}
+        \left(\sqrt{\pi}\right)^{D-7}
+        \frac{\Gamma \left(\frac{D-1}{2}\right)}{D-2}
+    \right)
+    ^{\frac{1}{D-3}}
+\end{equation*}
+
+Basándonos en los límites experimentales y fenomenológicos actuales de la escala de Planck, es poco probable que los agujeros negros semiclásicos sean accesibles a energías producidas por el \ac{LHC}. Sin embargo, si la escala de Planck es lo suficientemente baja, los \acp{QBH} pueden producirse en abundancia en el \ac{LHC}, y éstos aparecerían como resonancias en la masa invariante de las partículas del estado final. Con respecto sólo al estado final \gammajet, hay seis estados de agujero negro no térmico posibles:
+\begin{alignat*}{2}
+    u + g       & \to QBH^{2/3}     && \to u + \gamma\\
+    \bar{d} + g & \to QBH^{1/3}     && \to \bar{d} + \gamma\\
+    q + \bar{q} & \to QBH^{0}       && \to g + \gamma\\
+    q + g       & \to QBH^{0}       && \to g + \gamma\\
+    d + g       & \to QBH^{-1/3}    && \to d + \gamma\\
+    \bar{u} + g & \to QBH^{-2/3}    && \to \bar{u} + \gamma,
+\end{alignat*}
+donde \(u\) representa todos los quarks de tipo up, \(d\) todos los quarks de tipo down y \(q\) todos los sabores de quark. Al igual que en el modelo \ac{EQ}, en el \fixme{GIVE REFENRECE TO CHAPTER WITH SIGNALS} se ofrece una descripción fenomenológica más detallada de los modelos.
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Simulaciones Monte Carlo}
+\label{sec:theory:mc_simulation}
+
+
+La técnica \ac{MC} es una forma de calcular integrales complejas mediante métodos numéricos. Las colisiones de alta energía entre partículas elementales producen normalmente estados finales complejos, poblados por muchos hadrones, leptones, fotones y neutrinos. La relación entre los estados finales y la descripción física subyacente no es sencilla debido a la falta de comprensión de la física y al hecho de que cualquier aproximación analítica no es factible debido a las grandes multiplicidades de partículas. Una dificultad adicional está relacionada con la necesidad de simular factores geométricos complicados que representan detectores, una situación rutinaria para la colaboraci\'on \ac{ATLAS}.
+Los métodos \ac{MC} permiten generar eventos completos con partículas finales (es decir, hadrones, leptones y fotones) junto con sus momentos, con el mismo comportamiento medio y las mismas fluctuaciones que los datos. Mientras que en los datos las fluctuaciones surgen del carácter mecánico cuántico de la teoría subyacente, en los generadores estas fluctuaciones son el resultado de la (cuasi)aleatoriedad del enfoque \ac{MC}.
+
+Los principales aspectos de los eventos simulados son: la colisi\'on dura, la lluvia de partones, la hadronización y los \acp{UE}, siguiendo el esquema mostrada en la \Fig{\ref{fig:theory:sm:hadron_interactions:parton_shower}}.
+Los principales generadores de eventos \ac{MC} utilizados en esta tesis son \PYTHIA 8~\cite{Pythia8.1,Pythia8.2,Pythia8.3} y \SHERPA 2.2.2~\cite{Sherpa2.2}.
+
+\subsection{Colisi\'on dura y lluvia de partones}
+
+Para describir un proceso \(2 \to n\) a partir del Lagrangiano de la teoría (donde \(n\) representa un número determinado de partones en el estado final), se comienza dibujando los diagramas de Feynman y estos se evalúan utilizando sus reglas específicas para calcular el \acp{ME1} en potencias de \(\alpha_s\). A medida que aumenta el número de partones en el estado final, el número de diagramas de Feynman crece factorialmente, haciendo que los cálculos de orden superior sean un reto. Sin embargo, los procesos complejos pueden simplificarse factorizándolos en procesos centrales \(2 \to 2\), que se convolucionan con probabilidades de división de partones para aproximar los efectos de orden superior. Los programas de simulación que aplican este enfoque son, por ejemplo, \pythia y \Herwig. Estos utilizan cálculos perturbativos a \ac{LO} de \acp{ME1} de procesos \(2 \to 2\) e implementan procesos de orden superior \ac{QCD} a través de las llamados \ac{PS} de estado inicial y final~\cite{Sjostrand-2006,Dobbs-2004} para producir el equivalente de estados finales multipartón.
+
+En un proceso duro con virtualidad \(Q^2\), los partones entrantes y salientes emiten gluones siguiendo un patrón en el que las emisiones divergen cuando los gluones se vuelven colineales con los quarks o cuando su energía desaparece. Las ramificaciones de gluones (\(g \to gg\)) muestran divergencias similares, mientras que \(g \to \qqbar\) no. Los programas de \ac{QCD} a \ac{NLO}, como \Sherpa y \POWHEG, deben hacer coincidir a las \acp{PS} con el cálculo de \ac{ME1} para evitar el doble cómputo de emisiones. Estas emisiones, ordenadas por virtualidad creciente, continúan hasta que coinciden con el \(Q^2\) del proceso duro. De forma similar, la \ac{FSR} disminuye la virtualidad de los partones hasta que se alcanza un límite inferior (\(Q^2_0 \equiv \Lambda_{\text{QCD}} \sim 1~\gev\)), más allá del cual la teoría de perturbaciones pierde relevancia y se produce la hadronización.
+
+\subsection{Hadronizaci\'on}
+\label{subsec:theory:mc_simulation:hadronisation}
+
+A medida que la evolución alcanza \(Q^2_0 = \Lambda_{\text{QCD}} \), la fase de \ac{PS} se trunca ya que las fuerzas de acoplamiento se vuelven significativas y se produce el confinamiento. Este fenómeno aún no puede describirse a partir de primeros principios y, por tanto, implica cierta modelización para transformar todos los partones con color salientes en hadrones blancos de una escala de masas típica de 1 GeV. La dinámica de esta evolución se absorbe generalmente en funciones de fragmentación que representan la probabilidad de que un partón se fragmente en un hadrón determinado del estado final. Muchos de estos hadrones primarios son inestables y siguen decayendo en varias escalas de tiempo. Los que tienen un tiempo de vida media relativamente largo tienen sus decaimientos visibles en el detector, o son estables. Existen varios modelos del proceso de hadronización, que intentan conectar los resultados de la \ac{PS} y el espectro final de partículas observado. Estos modelos pueden complementarse y ajustarse mediante observaciones experimentales. La hadronización se describe comúnmente mediante el modelo de fragmentación de cuerdas de Lund~\cite{Anderson-1983} (como se implementa en \Pythia), o el modelo de fragmentación de clusters~\cite{Webber-1984} (como se implementa en \Herwig y \Sherpa). Esencialmente, el modelo de fragmentación de cuerdas de Lund supone un confinamiento lineal, en el que se asume que la energía almacenada en el campo de color entre quarks y antiquarks aumenta linealmente con la separación de las cargas de color. Así, representa la fuerza del color mediante un potencial linealmente creciente a medida que se separan las cargas, por lo que puede romperse por la producción de nuevos pares quark-antiquark que apantallan los colores de los extremos. Entonces, quarks y antiquarks pueden combinarse para producir hadrones. El modelo de fragmentación de clusters se basa en la propiedad de preconfinamiento de color de los procesos de ramificación, que supone que la separación de las cargas de color que forman un singlete están inhibidas. Tras el proceso perturbativo de bifurcación de partones, los gluones restantes se dividen en pares livianos \qqbar, y entonces los quarks y antiquarks vecinos pueden combinarse en singletes de color (clusters incoloros), con distribuciones de bajas masas y son asintóticamente independientes de la escala del subproceso duro.
+
+
+\subsection{Evento subyacente}
+
+Además de la interacción dura generada por la simulación \ac{MC}, también es necesario tener en cuenta las interacciones entre los restos de protones. Esto se suele modelizar a través de la dispersión múltiple extra \(2 \to 2\), que se produce a una escala de unos pocos GeV. La modelización del \ac{UE} es crucial para reproducir con precisión el flujo de energía que acompaña a las dispersiones duras en los colisionadores hadrónicos. El \ac{UE} puede incluir interacciones duras adicionales y procesos blandos que no pueden calcularse perturbativamente. Estos se modelizan con parámetros ajustables que se ajustan a los datos experimentales.
+
+
+
+\subsection{Tunes}
+
+Debido a la naturaleza no-perturbativa, y por tanto incalculable, de gran parte de los procesos de la física blanda, como las aproximaciones de lluvia, hadronización y \ac{UE}, los generadores \ac{MC} contienen inevitablemente una serie de parámetros libres. Estos diferentes parámetros suelen ajustarse con datos procedentes de colisionadores. Un conjunto específico de parámetros elegidos para un generador \ac{MC} se denomina \enquote{tune}.
+En general, a lo largo de esta tesis se utiliza el tune A14 para \Pythia A14~\cite{Pythia-A14Tune}.
+El tune A14 se basa en el tune MONASH~\cite{MonashTune} de los autores de \Pythia, que utiliza datos de colisiones \ee para los parámetros de hadronización, y datos de colisiones \pp del tipo \textit{minimum-bias} en el \ac{LHC} para restringir los parámetros sensibles a la radiación del estado inicial y el \ac{UE}. El tune A14 utiliza además una gran variedad de datos de \ac{ATLAS} sensibles a las interacciones de múltiples partones y \ac{ISR}/\ac{FSR}, e incluye jets construidos a partir de trazas y variables sensibles a la estructura interna del jet.
+
+
+\subsection{Simulaci\'on del detector \acs{ATLAS}}
+
+Para comparar directamente los datos recolectados con el detector \ac{ATLAS} con la predicción de eventos simulados del \ac{SM} y \ac{BSM}, hay que adem\'as simular la interacción de las partículas producidas con el material del detector.
+El paquete de software \GEANT~\cite{Geant4} se utiliza para simular la interacción de las partículas producidas en colisiones \pp  con las diferentes partes del detector (el detector \ac{ATLAS} se describe en el \Ch{\ref{ch:atlas}}). \GEANT es un extenso paquete de simulación de partículas que gobierna todos los aspectos de la propagación de ellas a través de detectores, basándose en una descripción de la geometría de los componentes del detector y del campo magnético. Los procesos físicos incluyen, entre otros, ionización, Bremsstrahlung, conversiones de fotones, dispersión múltiple, centelleo, absorción y radiación de transición. El último paso consiste en la digitalización, que simula las salidas del detector en el mismo formato que los datos reales. Debido a la detallada y complicada geometría del detector \ac{ATLAS} y a la diversidad y complejidad de los procesos físicos implicados, el tiempo de cálculo consumido por evento es grande (\(\mathcal{O}\)(1 hora)).
+
+La simulación de un gran número de interacciones necesarias para imitar los datos obtenidos \ac{ATLAS} es computacionalmente extensa. Especialmente la simulación de los desarrollos de las lluvias en los calorímetros consume una gran cantidad de CPU y tiempo de cálculo. Para muchas búsquedas \ac{BSM}, hay que simular un gran número de parámetros que afectan a las masas de partículas e interacciones predichas, por lo que se ha desarrollado una simulación \enquote{rápida}, parametrizada, del detector para hacer frente a esta gran demanda de simulación.
+
+La llamada simulación AtlFast3 o AF3~\cite{ATLAS-AF3} (construida sobre AltFast2~\cite{ATLAS-AF2}) utiliza la simulación \GEANT~\cite{Geant4} para las interacciones en el \ac{ID} y el \ac{MS} (descriptos en el \Ch{\ref{ch:atlas}}), y se utilizan dos simulaciones parametrizadas de los \ac{ECAL} y \ac{HCAL}: FastCaloSim V2\footnote{La versi\'on previa, AtlFast2, hac\'ia uso de FastCaloSim~\cite{ATLAS-FastCaloSim} para simular el paso de partículas por los calorímetros.}, y FastCaloGAN.
+Las simulaciones paramétricas de la respuesta del calorímetro simulan la energía de una lluvia de partículas como un único paso basado en una parametrización subyacente en lugar de simular cómo cada partícula se propaga e interactúa dentro del volumen del calorímetro.
+
+AtlFast3 introduce varias mejoras clave en comparación con AtlFast2. En concreto, AtlFast3 mejora el manejo de las lluvias del calorímetro, mejorando significativamente cómo se simulan los depósitos de energía en las celdas del detector. Estas mejoras abordan las limitaciones de AtlFast2, en el que las estructuras de los subclusters y las formas de las lluvias laterales no se describían completamente. Esta nueva generación también integra simulaciones parametrizadas mejoradas y un modelo de calorímetro más preciso, lo que conduce a una reconstrucción mejorada de objetos físicos como jets y energía transversa faltante. Estos cambios mejoran la concordancia entre la simulación rápida y los resultados de la simulación completa.
+Además, AtlFast3 soporta algoritmos más avanzados para la simulación de trazas y calorímetros, lo que garantiza que se minimicen las discrepancias observadas en AtlFast2, como las imprecisiones en las formas de las lluvias y las fluctuaciones.
