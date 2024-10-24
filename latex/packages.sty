@@ -13,6 +13,7 @@
 \usepackage{subcaption}
 \usepackage[utf8]{inputenc}
 \usepackage{fourier} % font
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n} % do not change mathcal font
 \usepackage{physics}
 \usepackage{enumerate}
 \usepackage{epigraph}
@@ -65,9 +66,12 @@
 %---------------------------------------------------
 % BIBLIOGRAPHY STYLE
 %---------------------------------------------------
-%\usepackage[maxnames=3,minnames=3]{biblatex}
-\bibliographystyle{latex/atlasBibStyleWithTitle}
+% \usepackage[square,numbers]{natbib}
+% \bibliographystyle{unsrtnat}
+% \usepackage[maxnames=3,minnames=3]{biblatex}
 \usepackage{latex/atlasbiblatex}
+\bibliographystyle{latex/atlasBibStyleWithTitle}
+
 
 
 
@@ -159,7 +163,7 @@
 \makeoddhead{chapter}{}{\thepage}{}
 \makeoddfoot{chapter}{}{}{}
 
-\flushbottom
+% \flushbottom
 %%%%%%%%% remove indent before paragraph
 \setlength{\parindent}{0in}
 
