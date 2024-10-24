@@ -4,28 +4,28 @@
 
 
 
-El \ac{ECAL} se presentó brevemente en la \Sect{\ref{subsubsec:atlas:atlas:cals:ecal}}, donde se describió el mecanismo que utiliza para la medida de energ\'ia y posici\'on de fotones y electrones. En este subdetector, los fotones depositan su energía mediante la creación de pares electrón-positrón y la radiación bremsstrahlung, creando una lluvia \acf{EM}. El \ac{ECAL} hace un buen trabajo para calcular la energía de la lluvia \ac{EM}, pero identificar la partícula iniciadora sigue siendo una tarea difícil.
+El \ac{ECAL} se presentó brevemente en la \Sect{\ref{subsubsec:atlas:atlas:cals:ecal}}, donde se describió el mecanismo que se utiliza para la medida de energ\'ia y posici\'on de fotones y electrones. En este subdetector, los fotones depositan su energía mediante la creación de pares electrón-positrón y la radiación bremsstrahlung, creando una lluvia \acf{EM}. El \ac{ECAL} es eficiente para calcular la energía de la lluvia \ac{EM}, pero identificar la partícula iniciadora sigue siendo una tarea difícil.
 Sin embargo, en virtud de las diferentes capas y granularidades en el \ac{ECAL}, pueden estudiarse diferentes características de estas lluvias \ac{EM}, codificadas por diferentes variables llamadas \acfp{SS}.
 
 El cap\'itulo comienza con la descripci\'on de todas las \acp{SS}, que son centrales para poder identificar a los fotones reales de los falsos.
 % Las variables mencionadas se utilizan mucho en el proceso de identificación de fotones, ya que proporcionan la separación necesaria entre fotones reales y falsos.
-La optimizaci\'on del algoritmo de identificaci\'on de fotones est\'a basada en las \acp{SS}, y se encuentra descripta en la \Sect{\ref{sec:pid_ss:pid}}. Adem\'as, en dicha secci\'on, se presentan los m\'etodos usados para la estimaci\'on de las eficiencias de identificaci\'on de fotones.
-Por último, en la \Sect{\ref{sec:pid_ss:ss_differences}} se describe brevemente el mal modelado de las \acp{SS} en las simulaciones, un problema que tiene implicancias directas en los c\'alculos de eficiencias. Este mal modelado, sin embargo, ser\'a estudiado en detalle en el \Ch{\ref{ch:ss_corrections}}.
+La optimizaci\'on del algoritmo de identificaci\'on de fotones utiliza las \acp{SS}, y se encuentra descripta en la \Sect{\ref{sec:pid_ss:pid}}. Adem\'as, en dicha secci\'on, se presentan los m\'etodos usados para la estimaci\'on de las eficiencias de identificaci\'on de fotones.
+Por último, en la \Sect{\ref{sec:pid_ss:ss_differences}} se describe brevemente las deficiencias en el modelado de las \acp{SS} en las simulaciones, un problema que tiene implicancias directas en los c\'alculos de eficiencias. Este problema y sus posibles soluciones ser\'an estudiadas en detalle en el \Ch{\ref{ch:ss_corrections}}.
 
 
 
 
 
 
-\section{\acfp{SS}}
+\section{Shower shapes}
 \label{sec:pid_ss:ss}
 
-Como se menciona en la \Sect{\ref{subsec:objects:egamma:id}}, la identificación de fotones se basa en cortes rectangulares aplicados a las diversas \acp{SS} que conducen a una excelente capacidad de separación entre fotones reales aislados de fotones falsos procedentes de hadrones. Estas \acp{SS} se calculan a partir de los depósitos de energía de los candidatos a fotones en las celdas del \ac{ECAL} y \ac{HCAL}, y sirven para describir el paso de ellos a través de los calorímetros, caracterizando las lluvias \ac{EM} laterales y longitudinales.
+Como se menciona en la \Sect{\ref{subsec:objects:egamma:id}}, la identificación de fotones se realiza aplicando cortes rectangulares a las diversas \acp{SS} que proveen una excelente capacidad de separación entre fotones reales aislados de fotones falsos procedentes de hadrones. Las \acp{SS} se calculan a partir de los depósitos de energía de los candidatos a fotones en las celdas del \ac{ECAL} y \ac{HCAL}, caracterizando la forma lateral y longitudinal de las lluvias \ac{EM}, y sirven para describir el paso de los fotones por los calorímetros.
 
-En general, los fotones reales producen depósitos de energía más estrechos en el \ac{ECAL}, y tienen menores filtraciones hacia el \ac{HCAL}, en comparación con aquellos fotones procedentes de hadrones, donde la presencia de hadrones vecinos adicionales cerca del fotón falso tienden a ensanchar las lluvias. Además, dado que la primera capa del \ac{ECAL} presenta una gran resoluci\'on en \(\eta\), es posible discriminar los candidatos a fotones procedentes de decaimientos \(\pizero\to\gamma\gamma\) que est\'an caracterizados por dos máximos locales debidos a la presencia de dos fotones cercanos.
+En general, los fotones reales producen depósitos de energía más angostos en el \ac{ECAL}, y tienen menores filtraciones hacia el \ac{HCAL}, en comparación con aquellos fotones procedentes de hadrones, donde la presencia de hadrones vecinos adicionales cerca del fotón falso tienden a ensanchar las lluvias. Además, dado que la primera capa del \ac{ECAL} presenta una gran resoluci\'on en \(\eta\), es posible discriminar los candidatos a fotones procedentes de decaimientos \(\pizero\to\gamma\gamma\) que est\'an caracterizados por dos máximos locales debidos a la presencia de dos fotones cercanos.
 
 \begin{table}[ht!]
-    \caption{\acfp{SS} utilizadas para la identificaci\'on de fotones. Las tres columnas de la derecha denotan si la variable es utilizada o no para los \acp{WP} \textit{loose} (L), \textit{medium} (L) o \textit{tight} (T), descriptos en la \Sect{\ref{subsec:pid_ss:pid:optimisation}}.}
+    \caption{\acfp{SS} utilizadas para la identificaci\'on de fotones. Las tres columnas de la derecha denotan si la variable es utilizada o no para los \acp{WP} \texttt{Loose} (L), \texttt{Medium} (L) o \texttt{Tight} (T), descriptos en la \Sect{\ref{subsec:pid_ss:pid:optimisation}}.}
     \centering
     \resizebox{\textwidth}{!}{
         \begin{tabular}{p{.2\textwidth}p{.50\textwidth}p{0.12\textwidth}|p{.01\textwidth}p{.01\textwidth}p{.01\textwidth}}
@@ -69,16 +69,16 @@ En general, los fotones reales producen depósitos de energía más estrechos en
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=\linewidth]{4_photonid/introduction/diagrams/shower-shapes}
-    \caption{Representaci\'on esquem\'atica de las \ac{SS} de fotones. Los valores \(E_C^{S_N}\) representan la energ\'ia en la capa \(N\) del \ac{ECAL} en un cluster \(C\).}
+    \caption{Representaci\'on esquem\'atica de las \ac{SS} de fotones.}
     \label{fig:pid_ss:ss:ss_variables}
 \end{figure}
 
 A continuación, se detallan las \acp{SS} utilizadas para la identificación de fotones, que se muestran resumidas en \Tab{\ref{tab:pid_ss:ss:ss_variables}} y un esquema de c\'omo son calculadas se encuentra en la \Fig{\ref{fig:pid_ss:ss:ss_variables}}.
 Las primeras variables hacen uso de la energía medida en el \ac{HCAL}:
 \begin{itemize}
-    \item Filtraci\'on hadr\'onica: es la energía trasnversal depositada en el \ac{HCAL}, normalizada respecto a la energía depositada en el \ac{ECAL}:
+    \item Filtraci\'on hadr\'onica: es la energía transversal depositada en el \ac{HCAL}, normalizada respecto a la energía depositada en el \ac{ECAL}:
         \begin{equation}
-            {\rhad}_{(1)} = \frac{\et^{\text{had}}}{\et^{\text{EM}}}
+            {\rhad}_{(1)} = \frac{\et^{\text{HCAL}}}{\et^{\text{ECAL}}}
         \end{equation}
         Para minimizar los efectos de la degradación de la resolución, en la región de transición barrel-endcap del \ac{HCAL} (\(0.8\leq \abseta\leq 1.37\)) se utiliza la energía depositada en todo el \ac{HCAL} (\rhad). En el resto del detector, sólo se utiliza la energía depositada en la primera capa del \ac{HCAL} (\rhado).
 \end{itemize}
@@ -125,7 +125,7 @@ Las siguientes variables utilizan la información de la primera capa del \ac{ECA
             \deltae = E_{\text{max}, 2}^{s1} - E_{\text{min}}^{s1}
         \end{equation}
         representa la diferencia de energía entre el segundo máximo y la energía mínima reconstruida entre los dos máximos de la primera capa del \ac{ECAL}.
-    \item Cociente de energía
+    \item Asimetr\'ia de energía
         \begin{equation}
             \eratio = \frac{
                 E_{\text{max}, 1}^{s1} - E_{\text{max}, 2}^{s1}
@@ -152,21 +152,22 @@ Las siguientes variables utilizan la información de la primera capa del \ac{ECA
 \label{sec:pid_ss:pid}
 
 La identificación de fotones prompt frente a fotones falsos en colisiones hadrónicas es un gran desaf\'io. Los fotones falsos están ampliamente dominados por candidatos a fotones que surgen del decaimiento de hadrones en jets, mientras que una fracción más pequeña de candidatos falsos está asociada con hadrones que depositan una energía significativa en el \ac{ECAL}, imitando la de los fotones reales.
-Los procesos con fotones prompt en el estado final, que ocurren en colisiones \pp en el \ac{LHC}, desempeñan un papel central en el programa de física de \ac{ATLAS}. Tanto para las búsquedas como para las medidas de precisión, es importante contar con algoritmos y técnicas para identificar los fotones reales frente a los falsos. Estas b\'usquedas o medidas de precisi\'on se llevan a cabo en un rango muy amplio de energ\'ia del fotón, empezando, por ejemplo, por resonancias de baja masa del Higgs a un par de partículas tipo axión que decaen en 4 fotones (\(\PH\to aa \to 4\gamma\))~\cite{ATLAS-HiggsTo4Gamma}, donde el momento transverso del fotón es de \(\sim 25~\gev\), hasta fotones de muy alto \pt en búsquedas de resonancias \gammajet, donde los fotones tienen un momento transverso mayor a \(1~\tev\) \fixme{add reference once the chapter numbers are in place}.
+Los procesos con fotones prompt en el estado final, que ocurren en colisiones \pp en el \ac{LHC}, desempeñan un papel central en el programa de física de \ac{ATLAS}. Tanto para las búsquedas como para las medidas de precisión es importante contar con algoritmos y técnicas para identificar los fotones reales frente a los falsos. Estas b\'usquedas o medidas de precisi\'on se llevan a cabo en un rango muy amplio de energ\'ia del fotón, empezando, por ejemplo, por resonancias de baja masa del Higgs a un par de partículas tipo axión que decaen en 4 fotones (\(\PH\to aa \to 4\gamma\))~\cite{ATLAS-HiggsTo4Gamma}, donde el momento transverso del fotón es de \(\sim 25~\gev\), hasta fotones de muy alto \pt en búsquedas de resonancias \gammajet como los que se realizaron para esta tesis, donde los fotones tienen un momento transverso mayor a \(1~\tev\) \fixme{add reference once the chapter numbers are in place}.
 
-El identificaci\'on de fotones en \ac{ATLAS} se basa en cortes en las \acp{SS} y se definen differentes \acfp{WP} con diferentes caracter\'isticas: ya sea lograr un gran rechazo de fondo, o alta eficiencia de se\~nal, o simplemente bajos tiempos de c\'omputo. En esta sección se describe el procedimiento utilizado para la optimizaci\'on de estos \acp{WP} y luego se describen los m\'etodos para medir las eficiencias correspondientes de cada \ac{WP}.
+La identificaci\'on de fotones en \ac{ATLAS} se basa en cortes en las \acp{SS} y se definen diferentes \acfp{WP} con diferentes caracter\'isticas: ya sea lograr un gran rechazo de fondo, o alta eficiencia de se\~nal, o simplemente bajos tiempos de c\'omputo para la identificaci\'on \textit{online}. En esta sección se describe el procedimiento utilizado para la optimizaci\'on de estos \acp{WP} y luego se describen los m\'etodos para medir las eficiencias correspondientes.
 
 
 
 \subsection{Procesos de inter\'es y selecci\'on de eventos}
 \label{subsec:pid_ss:pid:event_selection}
 
-Dado el amplio rango en el que se utilizan los fotones en \ac{ATLAS}, la optimización de los \acp{WP} utiliza dos procesos diferentes que permiten obtener muestras limpias de fotones en los regímenes de bajo y alto \pt. En el caso de bajo \pt, se utiliza una fuente muy limpia de fotones procedentes de decaimientos radiativos del bos\'on \Zboson. Por otro lado, aunque con mayor contaminación de fondo, se emplean eventos \acf{SP} para fotones de alto \pt. En los siguientes párrafos se ofrece una descripción de cada de las muestra de fotones utilizadas.
+Dado el amplio rango de energ\'ias en el que se utilizan los fotones en \ac{ATLAS}, para la optimización de los \acp{WP} se utilizan dos procesos diferentes que permiten obtener muestras limpias de fotones en los regímenes de bajo y alto \pt. En el caso de bajo \pt, se utiliza una fuente muy limpia de fotones procedentes de decaimientos radiativos del bos\'on \Zboson. Por otro lado, aunque con mayor contaminación de fondo, se emplean eventos de fotones prompt (ver la \Sect{\ref{subsec:theory:sm:prompt_photon}}) para fotones de alto \pt. En los siguientes párrafos se ofrece una descripción de cada de las muestras de fotones utilizadas.
 
 
 \paragraph{Decaimientos radiativos del bos\'on \Zboson}
 
-En el rango de bajo \pt, los fotones procedentes del decaimiento radiativo del bosón \Zboson (\(\Zboson \to \ell\ell \gamma\)) se seleccionan como fotones de señal. Hay dos modos de producción posibles para los procesos del \ac{SM} de \(\pp\to \Zboson(\ellell)\gamma\), donde \(\ell\) es un electrón o un mu\'on. Estos son: \acf{ISR} donde el fotón es radiado desde los quarks, y \acf{FSR} (de ahora en m\'as también referido como decaimiento \acf{RZ}), donde el fotón es radiado desde uno de los leptones del estado final a través de bremsstrahlung. Ambos modos de producción se muestran en la \Fig{\ref{fig:pid_ss:event_selection:fsr_isr}}.
+En el rango de bajo \pt, se utilizan fotones procedentes del decaimiento radiativo del bosón \Zboson (\(\Zboson \to \ell\ell \gamma\)). Hay dos modos de producción posibles para los procesos del \ac{SM} de \(\pp\to \Zboson(\ellell)\gamma\), donde \(\ell\) es un electrón o un mu\'on. Estos son: \acf{ISR} donde el fotón es radiado por los quarks, y \acf{FSR}, donde el fotón es radiado por uno de los leptones del estado final a través de bremsstrahlung. Ambos modos de producción se muestran en la \Fig{\ref{fig:pid_ss:event_selection:fsr_isr}}.
+
 
 \begin{figure}[ht!]
     \centering
@@ -187,8 +188,9 @@ En el rango de bajo \pt, los fotones procedentes del decaimiento radiativo del b
 
 
 Ambos procesos \ac{FSR} y \ac{ISR} pueden identificarse fácilmente comparando la distribución de la masa invariante de los dos leptones (\mll) con la distribución de la masa invariante de los dos leptones junto con el fot\'on (\mlly).
-Para los eventos \ac{ISR}, \mll tiene su m\'aximo en la masa del \Zboson, y el fotón simplemente suma a la masa invariante de tres cuerpos (\mlly) haciéndola mayor que \(91~\gev\). En el caso \ac{FSR}, en cambio, la masa invariante de tres cuerpos \mlly presenta su m\'aximo en la masa del \Zboson, que se observa en la \Fig{\ref{fig:pid_ss:event_selection:mll_mlly_distribution:data}}.
-Para los estudios de identificación de fotones, sólo se consideran los fotones de los eventos \ac{FSR}. La razón detrás de la selección de \ac{FSR} sobre \ac{ISR} se debe a lo siguiente. Los eventos \ac{ISR} también sufren la contaminación de fondos provenientes de eventos \Zjets, en los que el jet se identifica erróneamente como un fotón, y adem\'as la sección eficaz \Zjets es de \'ordenes de magnitud mayor a la del proceso \(\Zboson+\gamma\). A partir de las \Figs{\ref{fig:pid_ss:event_selection:mll_mlly_distribution:bkg}}{\ref{fig:pid_ss:event_selection:mll_mlly_distribution:signal}}, donde se muestran las distribuciones de \mll en funci\'on de \mlly para los procesos \(\Zboson\to\ell\ell\) y \(\Zboson\to\ell\ell\gamma\), respectivamente, se puede apreciar la separación entre estos dos procesos cuando se seleccionan fotones \ac{FSR}.
+Para los eventos \ac{ISR}, \mll tiene su m\'aximo en el valor de la masa del \Zboson, y el fotón simplemente suma a la masa invariante de tres cuerpos (\mlly) haciéndola mayor que \(\sim 91~\gev\). En el caso \ac{FSR}, en cambio, la masa invariante de tres cuerpos \mlly presenta su m\'aximo en el valor de la masa del \Zboson.
+% , observado en la \Fig{\ref{fig:pid_ss:event_selection:mll_mlly_distribution:data}}.
+Para los estudios de identificación de fotones sólo se consideran los fotones de los eventos \ac{FSR} (de ahora en m\'as también referido como decaimiento \acf{RZ}). Los eventos \ac{ISR} también sufren la contaminación de fondos provenientes de eventos \Zjets, en los que el jet se identifica erróneamente como un fotón, y adem\'as la sección eficaz \Zjets es de varios \'ordenes de magnitud mayor a la del proceso \(\Zboson+\gamma\). A partir de las \Figs{\ref{fig:pid_ss:event_selection:mll_mlly_distribution:bkg}}{\ref{fig:pid_ss:event_selection:mll_mlly_distribution:signal}}, donde se muestran las distribuciones de \mll en funci\'on de \mlly para los procesos simulados de \(\Zboson\to\ell\ell\) y \(\Zboson\to\ell\ell\gamma\), respectivamente, se puede apreciar la separación entre estos dos procesos cuando se seleccionan fotones \ac{FSR}.
 
 \begin{figure}[ht!]
     \centering
@@ -216,30 +218,30 @@ Para los estudios de identificación de fotones, sólo se consideran los fotones
     \label{fig:pid_ss:event_selection:mll_mlly_distribution}
 \end{figure}
 
-Con la muestra \ac{RZ}, se requiere que los fotones tengan un momento transverso \(\pt>7~\gev\) y una pseudorapidez en el rango de \(\abseta<1.37\) o \(1.52<\abseta<2.37\), evitando as\'i la región del crack.
-Para los estudios de optimización no se aplica ningún requisimto de aislamiento sobre los fotones, pero para las medidas de eficiencia se utiliza el \ac{WP} de aislamiento \textit{loose}, descripto en la \Sect{\ref{subsec:objects:egamma:iso}}. Se requiere que los leptones tengan \(\et>10~\gev\), los muones una pseudorapidez \(\abseta<2.5\) y para los electrones \(\abseta<2.47\), excluyendo el crack. Tanto a los electrones como a los muones se les exige que pasen los requisitos de aislamiento \textit{loose} y que pasen el criterio de identificación \textit{medium}.
+Se requiere que los fotones tengan un momento transverso \(\pt>7~\gev\) y una pseudorapidez en el rango de \(\abseta<1.37\) o \(1.52<\abseta<2.37\), evitando as\'i la región del crack.
+Para los estudios de optimización no se aplica ningún requisito de aislamiento sobre los fotones, pero para las medidas de eficiencia se utiliza el \ac{WP} de aislamiento \texttt{Loose}, descripto en la \Sect{\ref{subsec:objects:egamma:iso}}. Se requiere que los leptones tengan \(\et>10~\gev\), los muones una pseudorapidez \(\abseta<2.5\) y para los electrones \(\abseta<2.47\), excluyendo el crack. Tanto a los electrones como a los muones se les exige que pasen los requisitos de aislamiento \texttt{Loose} y que pasen el criterio de identificación \texttt{Medium}.
 
 El fotón \ac{FSR} se selecciona entonces requiriendo \(80<\mlly<100~\gev\) y \(40<\mll<83~\gev\). Finalmente, para evitar cualquier sesgo en las \ac{SS} del fotón y en sus variables de aislamiento, se requiere una distancia mínima de \(\DeltaR>0.4\) entre dicho fot\'on y el leptón más cercano.
 
 
 \paragraph{\acf{SP}}
 
-La muestra de fotones inclusivos, o \acf{SP}, se recoge mediante triggers de un s\'olo fot\'on, cuyos umbrales var\'ian entre \(10~\gev\) y \(140~\gev\) y requieren una identificación \textit{loose}. Aunque los triggers utilizados para obtener esta muestra están preescalados (con la excepción del de \(140~\gev\)), proporcionan un gran conjuntos de datos de fotones de alto \pt.
+La muestra de fotones inclusivos, o \acf{SP}, se recoge mediante triggers que requieren un s\'olo fot\'on con umbrales que var\'ian entre \(10~\gev\) y \(140~\gev\) e identificación \texttt{Loose}. Aunque los triggers utilizados para obtener esta muestra están preescalados (con la excepción del de \(140~\gev\)), proporcionan un gran conjuntos de datos de fotones de alto \pt.
 Estos procesos incluyen eventos a \ac{LO} de \gammajet procedentes de la dispersión dura \(qg\to q\gamma\) y \(\qqbar \to g\gamma\), así como fotones prompt procedentes de la fragmentación de quarks en eventos de dijet de \acs{QCD}.
-Se requiere que estos fotones presenten una pseudorapidez de \(\abseta<2.37\) excluyendo el crack, y pasar el requisito de aislamiento \textit{loose}. Las muestras de \ac{SP} se utilizan tanto para los estudios de optimización como para la estimaci\'on de las eficiencias.
+Se requiere que estos fotones presenten una pseudorapidez de \(\abseta<2.37\) excluyendo el crack, y pasar el requisito de aislamiento \texttt{Loose}. Las muestras de \ac{SP} se utilizan tanto para los estudios de optimización como para la estimaci\'on de las eficiencias.
 
 
 \subsection{Optimizaci\'on}
 \label{subsec:pid_ss:pid:optimisation}
 
-A partir de las \acp{SS} anteriormente descriptas, se pueden definir tres \acp{WP} para los fotones: \textit{loose}, \textit{medium} y \textit{tight}~\cite{ATLAS-EGamma-Performance-2024}. El \ac{WP} loose emplea cortes a las variables definidas en la segunda capa y a la variable de filtraci\'on hadrónica, y es utilizado principalmente por el trigger.
-Los \acp{WP} medium y tight utilizan todas las variables definidas previamente. El primero está optimizado para tener una eficiencia fija de \(95\%\), mientras que el segundo proporciona un excelente rechazo de fondo. La \Tab{\ref{tab:pid_ss:ss:ss_variables}} muestra qué variables se utilizan para cada \ac{WP}.
+A partir de las \acp{SS} anteriormente descriptas se definen tres \acp{WP} para los fotones: \texttt{Loose}, \texttt{Medium} y \texttt{Tight}~\cite{ATLAS-EGamma-Performance-2024}. El \ac{WP} loose emplea cortes a las variables definidas en la segunda capa y a la variable de filtraci\'on hadrónica, y es utilizado principalmente por el trigger.
+Los \acp{WP} medium y tight utilizan todas las variables definidas previamente. El \ac{WP} medium está optimizado para tener una eficiencia fija de \(95\%\), mientras que el \ac{WP} tight proporciona un excelente rechazo de fondo. La \Tab{\ref{tab:pid_ss:ss:ss_variables}} muestra qué variables se utilizan para cada \ac{WP}.
 
 Para la optimización de los \acp{WP} se utilizan las dos muestras definidas previamente: los eventos \ac{RZ} para fotones con \(10<\pt<25~\gev\) como señales y eventos de \(\Zboson\to \ell\ell\) como fondos; y para el régimen de alto \pt (\(\pt>25~\gev\)) los eventos de \ac{SP} se consideran como señal mientras que los eventos dijet son los fondos.
 
-La identificación de fotones utiliza cortes en las \acp{SS}. En la \Fig{\ref{fig:pid_ss:optimisation:shower_shapes}} se muestran ejemplos de tres de estas \ac{SS} (\reta, \eratio y \weta) comparando eventos de señal y de fondo utilizando las muestras de \ac{RZ}, donde se observa un excelente poder discriminatorio.
-Los cortes en todas las \acp{SS}, para cada \ac{WP} de identificación, se optimizan en función de la energía transversal y la pseudo-rapidez del candidato a fotón, para tener en cuenta la forma de las variables para diferentes \(\eta\) y para variaciones en la cantidad de material y la geometría del calorímetro. Los \acp{WP} medium y tight también se optimizan por separado para fotones convertidos y no convertidos.
-Los cortes se optimizan utilizando un enfoque \ac{MV}, en el que las eficiencias de señal se escanean entre \(0\%\) y \(100\%\) mientras se intenta maximizar el rechazo de fondo.
+En la \Fig{\ref{fig:pid_ss:optimisation:shower_shapes}} se muestran ejemplos de tres de estas \ac{SS} (\reta, \eratio y \weta) comparando eventos de señal y de fondo utilizando las muestras de \ac{RZ}, donde se observa un excelente poder discriminatorio.
+Los cortes en todas las \acp{SS}, para cada \ac{WP} de identificación, se obtienen en función de la energía transversal y la pseudo-rapidez del candidato a fotón, para tener en cuenta la forma de las variables para diferentes \(\eta\) y para variaciones en la cantidad de material y la geometría del calorímetro. Los \acp{WP} medium y tight también se calculan por separado para fotones convertidos y no convertidos.
+Los cortes se optimizan utilizando un enfoque multivariable, en el que las eficiencias de señal se escanean entre \(0\%\) y \(100\%\) mientras se intenta maximizar el rechazo de fondo.
 
 \begin{figure}[ht!]
     \centering
@@ -271,16 +273,16 @@ Los cortes se optimizan utilizando un enfoque \ac{MV}, en el que las eficiencias
 
 \subsection{Estimaci\'on de las eficiencias}
 
-Una vez optimizados los diversos \acp{WP} de identificaci\'on, es fundamental contar con las eficiencias ya sea de los datos y las simulaciones \ac{MC}. Las estimaciones de eficiencias de fotones hace uso de tres m\'etodos diferentes y caracter\'isticos en diferentes rangos de \pt, que son detallados en la \Refn{\cite{ATLAS-EGamma-Performance-2015-2016}}, y son brevemente descriptos en los pr\'oximos p\'arrafos.
-Para los tres m\'etodos, se requiere que los fotones satisfagan el criterio de aislamiento loose definido en la \Sect{\ref{subsec:objects:egamma:iso}} y, por tanto, las eficiencias de los fotones se miden con respecto a este criterio de aislamiento. 
+Una vez optimizados los diversos \acp{WP} de identificaci\'on es fundamental estimar las eficiencias de los datos y las simulaciones \ac{MC}. Las estimaciones de eficiencias de fotones se realizan utilizando tres m\'etodos diferentes en diferentes rangos de \pt, que son detallados en la \Refn{\cite{ATLAS-EGamma-Performance-2015-2016}}, y son brevemente descriptos en los pr\'oximos p\'arrafos.
+Para los tres m\'etodos, se requiere que los fotones satisfagan el criterio de aislamiento loose definido en la \Sect{\ref{subsec:objects:egamma:iso}} y, por tanto, las eficiencias de identificaci\'on de los fotones se miden con respecto a este criterio de aislamiento. 
 
-Para el rango de bajo \pt (\(7<\pt<100~\gev\)), los fotones procedentes del pproceso \ac{RZ} se utilizan como fotones de señal. El m\'etodo para estimar las eficiencias se basa en el uso de ajustes a la distribución observada de la masa invariante de tres cuerpos (\mlly) antes y después de aplicar el criterio de identificaci\'on tight. El número de eventos de señal y de fondo puede contarse a partir de los ajustes, y las purezas de señal se calculan antes (\(P^{\text{total}}\)) y despu\'es (\(P^{\text{pass}}\)) de la aplicaci\'on de la identificaci\'on tight.
+Para el rango de bajo \pt (\(7<\pt<100~\gev\)), los fotones procedentes del proceso \ac{RZ} se utilizan como fotones de señal. El m\'etodo para estimar las eficiencias consiste en ajustar la distribución observada de la masa invariante de tres cuerpos (\mlly) antes y después de aplicar el criterio de identificaci\'on tight. El número de eventos de señal y de fondo puede estimarse a partir de los ajustes, y las purezas de señal se calculan antes (\(P^{\text{total}}\)) y despu\'es (\(P^{\text{pass}}\)) de la aplicaci\'on de la identificaci\'on tight.
 La eficiencia final en los datos viene dada por:
 \begin{equation*}
     \varepsilon_{ID} = \frac{ P^{\text{pass}} N_{\text{data}}^{\text{pass}} }{ P^{\text{total}} N_{\text{data}}^{\text{total}} }.
 \end{equation*}
 
-El segundo método para calcular eficiencias se basa en transformaciones de Smirnov~\cite{SmirnovTransform} para que las distribuciones de las \acp{SS} de los electrones se parezcan a los de los fotones. Las muestras usadas en este m\'etodo son decaimientos \(\Zboson\to ee\), en los que se requiere que los electrones pasen el criterio de aislamiento de fotones loose. Tambi\'en es necesario tener en cuenta la contribuci\'on de una peque\~na fracci\'on de fondo de procesos \Wjets y producción multijet. Estos fondos son tratados mediante ajustes a la distribuci\'on de \(m_{ee}\) de datos, utilizando señales simuladas y formas funcionales que describen el restos de los fondos, obtenidas en regions de control (regiones en donde las contribuciones de estos fondos son dominantes y separables). Luego, los candidatos a electrones se cuentan a partir de eventos en el rango \(70 < m_{ee} < 110~\gev\), y las eficiencias se miden utilizando el método tag-and-probe descripto en la \Refn{\cite{ATLAS-EGamma-Performance-2015-2017}}. El rango \pt en el que se aplica este método es \(25<\pt<250~\gev\).
+El segundo método para calcular eficiencias consiste en aplicar transformaciones de Smirnov~\cite{SmirnovTransform} para que las distribuciones de las \acp{SS} de los electrones se parezcan a los de los fotones. Las muestras usadas en este m\'etodo son simulaciones de decaimientos \(\Zboson\to ee\), en los que se requiere que los electrones pasen el criterio de aislamiento de fotones loose. Tambi\'en es necesario tener en cuenta la contribuci\'on de una peque\~na fracci\'on de fondo de procesos \Wjets y producción multijet. Estos fondos son tratados mediante ajustes a la distribuci\'on de \(m_{ee}\) de datos, utilizando señales simuladas y formas funcionales que describen el restos de los fondos, obtenidas en regions de control (regiones en donde las contribuciones de estos fondos son dominantes y separables). Luego, los candidatos a electrones se cuentan a partir de eventos en el rango \(70 < m_{ee} < 110~\gev\), y las eficiencias se miden utilizando el método tag-and-probe descripto en la \Refn{\cite{ATLAS-EGamma-Performance-2015-2017}}. El rango \pt en el que se aplica este método es \(25<\pt<250~\gev\).
 
 El último y tercer método utiliza muestras de \ac{SP} con fotones en el rango \(50<\pt<1500~\gev\). En este caso se utiliza el \textit{Matrix Method}~\cite{ATLAS-EGamma-Performance-2015-2016}, que construye cuatro regiones ortogonales que pasan o no el \ac{WP} de identificación tight, y pasan o no el aislamiento de trazas (descripto en la \Sect{\ref{subsec:objects:egamma:iso}}). Para cada región, surgen dos incógnitas: el número de eventos de señal y de fondo.
 Si se conocen las eficiencias de aislamiento de trazas para los componentes de señal y de fondo, entonces es posible estimar la eficiencia de los fotones loose que pasan los criterios de identificación tight. Las eficiencias de aislamiento para los fotones de señal se estiman utilizando muestras de \ac{MC}, y las de fondo se obtienen en una región de control enriquecida con jets construida a partir de la inversi\'on de los criterios de identificación.
@@ -330,7 +332,7 @@ donde \(N^T\) representa la totalidad de fotones en la muestra inclusiva que con
 \end{figure}
 
 
-En la \Fig{\ref{fig:pid_ss:pid:efficiencies:efficiencies_old:rz}} se muestra un ejemplo de las eficiencias de identificación en función del \pt del fotón utilizando el método \ac{RZ}. Las eficiencias de los datos están representadas por los puntos negros, mientras que el \ac{MC} nominal se muestra con cuadrados azules vacíos. Los cocientes de datos con el \ac{MC} nominal (también denominados \acf{SF}) mostrados en el panel inferior difieren hasta en un 20\% de 1, lo que demuestra que las eficiencias calculadas con \ac{MC} difiere de las calculadas con los datos. Sin embargo, tabi\'en se muestra otro conjunto de eficiencias, pertenecientes a simulaciones de \ac{MC} corregidas, mejorando drásticamente el acuerdo entre los datos y la simulación, como se ve de los \acp{SF}. La razón por la que se necesitan estas correcciones y cómo se implementaron en \ac{ATLAS} se explica en la siguiente sección (\Sect{\ref{sec:pid_ss:ss_differences}}), y cómo se corrigen en el \Ch{\ref{ch:ss_corrections}}. La \Fig{\ref{fig:pid_ss:pid:efficiencies:efficiencies_old:ee_sp}} muestra las medidas de eficiencia usando los dos métodos restantes (extrapolación de electrones y Matrix Method), donde se obtienen las mismas mejoras en los \acp{SF} cuando se usa la simulación corregida.
+En la \Fig{\ref{fig:pid_ss:pid:efficiencies:efficiencies_old:rz}} se muestra un ejemplo de las eficiencias de identificación en función del \pt del fotón utilizando el método \ac{RZ}. Las eficiencias de los datos están representadas por los puntos negros, mientras que el \ac{MC} nominal se muestra con cuadrados azules vacíos. Los cocientes de datos con el \ac{MC} nominal (también denominados \acf{SF}) mostrados en el panel inferior difieren hasta en un 20\% de 1, evidenciando que las eficiencias calculadas con \ac{MC} difiere de las calculadas con los datos. Sin embargo, tabi\'en se muestra otro conjunto de eficiencias, pertenecientes a simulaciones de \ac{MC} corregidas, mejorando notablemente el acuerdo entre los datos y la simulación, como se ve de los \acp{SF}. La razón por la que se necesitan estas correcciones y cómo se implementaron en \ac{ATLAS} se explica en la siguiente sección (\Sect{\ref{sec:pid_ss:ss_differences}}), y cómo se corrigen en el \Ch{\ref{ch:ss_corrections}}. La \Fig{\ref{fig:pid_ss:pid:efficiencies:efficiencies_old:ee_sp}} muestra las medidas de eficiencia usando los dos métodos restantes (extrapolación de electrones y Matrix Method), donde se obtienen las mismas mejoras en los \acp{SF} cuando se usa la simulación corregida.
 
 Como ya se ha mencionado, estos cocientes entre datos y eficiencias \ac{MC} se denominan \acp{SF} y encapsulan las diferencias entre datos y simulación. Se calculan por separado para cada uno de los tres métodos y después se combinan utilizando una media ponderada~\cite{BLUEMethod} en cada \textit{bin} y asumiendo que las incertezas estadísticas y sistemáticas no están correlacionadas entre los métodos. Los resultados actuales de estos \acp{SF}, calculados utilizando el conjunto completo de datos de Run-2, se muestran en la \Fig{\ref{fig:pid_ss:pid:efficiencies:sfs}}. La obtenci\'on de los \acp{SF} es de vital importancia, ya que luego son factores que se aplican a los eventos de \ac{MC} para ser corregidos, y as\'i lograr una comparaci\'on justa con los datos recolectados.
 
@@ -352,11 +354,11 @@ Como ya se ha mencionado, estos cocientes entre datos y eficiencias \ac{MC} se d
 \end{figure}
 
 
-\section{Las diferencias de las Shower Shapes entre datos y \ac{MC}}
+\section{Las diferencias de las Shower Shapes entre datos y MC}
 \label{sec:pid_ss:ss_differences}
 
 
-Como se ha mostrado anteriormente, la simulación \ac{MC} no describe perfectamente los datos, lo cual puede verse de los valores de los \acp{SF} los cuales difieren de 1. En particular, al comparar las distribuciones de las \acp{SS}, se observa que las distribuciones \ac{MC} están desplazadas o incluso la forma difiere, como se muestra en la \Fig{\ref{fig:pid_ss:ss_differences:ss}}, al comparar los datos (puntos negros) con el histograma representado por la línea roja, correspondiente al \ac{MC}.
+Como se ha mostrado anteriormente, la simulación \ac{MC} no describe perfectamente los datos, lo cual puede verse de los valores de los \acp{SF}. En particular, al comparar las distribuciones de las \acp{SS}, se observa que las distribuciones \ac{MC} están desplazadas o incluso la forma difiere, como se muestra en la \Fig{\ref{fig:pid_ss:ss_differences:ss}}, al comparar los datos (puntos negros) con el histograma representado por la línea roja correspondiente al \ac{MC}.
 
 \begin{figure}[ht!]
     \centering
@@ -380,11 +382,11 @@ Como se ha mostrado anteriormente, la simulación \ac{MC} no describe perfectame
         \caption{\rhad}
         \label{fig:pid_ss:ss_differences:ss:rhad}
     \end{subfigure}
-    \caption{Comparaciones de las \acp{SS} entre los datos (puntos negros) y la simulación \ac{MC} nominal (línea roja) y corregida (línea azul), utilizando la muestra \ac{RZ}~\cite{ATLAS-EGamma-Calibration-2015-2016}.}
+    \caption{Comparaci\'on de las \acp{SS} entre los datos (puntos negros) y la simulación \ac{MC} nominal (línea roja) y corregida (línea azul), utilizando la muestra \ac{RZ}~\cite{ATLAS-EGamma-Calibration-2015-2016}.}
     \label{fig:pid_ss:ss_differences:ss}
 \end{figure}
 
-Las principales diferencias en las distribuciones surgen para los perfiles de la lluvia en la direcci\'on de \(\eta\), donde se observan distribuciones más amplias en los datos en comparación con \ac{MC}. Parte del efecto se corrigió en 2010 tras pasar a una descripción detallada de la composición del material absorbente del \ac{ECAL} en \textsc{Geant4}. Sin embargo, algunas discrepancias entre los datos y \ac{MC} aún permanecen y son motivos de estudio para la colaboraci\'on. Algunas razones potenciales puede ser:
+Las principales diferencias se observan en los perfiles de la lluvia en la direcci\'on de \(\eta\), donde las distribuciones de datos son m\'as anchas que las de \ac{MC}. Parte del efecto se corrigió en 2010 considerando una descripci\'on detallada de la composición del material absorbente del \ac{ECAL} en \textsc{Geant4}. Sin embargo, algunas discrepancias entre los datos y \ac{MC} aún permanecen y son motivos de estudio para la colaboraci\'on. Algunas razones potenciales puede ser:
 \begin{itemize}
     \item Descripción geom\'etrica del grosor del plomo en el \ac{ECAL} (incluyendo posibles variaciones debidas a la gravedad).
     \item Modelado erróneo del campo eléctrico en los huecos de \ac{LAr}.
@@ -392,6 +394,8 @@ Las principales diferencias en las distribuciones surgen para los perfiles de la
 \end{itemize}
 
 
-Para tener en cuenta estas diferencias en las \acp{SS}, históricamente, se hicieron correcciones en forma de desplazamientos de cada una de las distribuciones de \ac{MC}. Estos desplazamientos comprendían los denominados \acfp{FF}, y se determinaban utilizando una minimización de \chisq en la comparación de las distribuciones de las \acp{SS} entre datos y \ac{MC}~\cite{ATLAS-EGamma-Performance-2015-2016,ATLAS-EGamma-Performance-2015-2017}.
-Aunque las diferencias del valor medio disminuyeron sustancialmente tras estas correcciones, como se observa por ejemplo en el caso de \fside en la \Fig{\ref{fig:pid_ss:ss_differences:ss:fside}}, quedaron diferencias residuales pero a\'un as\'i notables. Se observa en las distribuciones que las principales diferencias que se mantuvieron están relacionadas con la forma de las mismas, por lo que se necesitan correcciones de orden superior. En el siguiente capítulo se presenta una descripción detallada de las correcciones.
-Además, dado que las \acp{SS} se construyen a partir de depósitos de energía en las celdas del \ac{ECAL}, otra forma posible de corregir el desacuerdo actual es corregir directamente las energías de las celdas en las simulaciones \ac{MC}, corrigiendo entonces todas las \acp{SS} en simult\'aneo. Este nuevo enfoque se describe también en el siguiente capítulo.
+Para tener en cuenta estas diferencias en las \acp{SS} de \ac{MC}, históricamente, se realizaban correcciones en forma de desplazamientos de cada una de las distribuciones de \ac{MC}. Estos desplazamientos comprendían los denominados \acfp{FF}, y se determinaban utilizando una minimización de \chisq en la comparación de las distribuciones de las \acp{SS} entre datos y \ac{MC}~\cite{ATLAS-EGamma-Performance-2015-2016,ATLAS-EGamma-Performance-2015-2017}.
+Aunque las diferencias del valor medio disminuyeron sustancialmente tras estas correcciones, como se observa por ejemplo en el caso de \fside en la \Fig{\ref{fig:pid_ss:ss_differences:ss:fside}}, quedaron diferencias residuales pero a\'un as\'i notables.
+Es evidente que estas diferencias se deben principalmente a la forma de las distribuciones, sugiriendo que era necesario realizar una corrección de orden superior.
+En el siguiente capítulo se presenta una descripción detallada de las correcciones.
+Además, dado que las \acp{SS} se construyen a partir de depósitos de energía en las celdas del \ac{ECAL}, otra forma posible de mejorar el acuerdo es corregir directamente las energías de las celdas en las simulaciones \ac{MC}, y de esta forma todas \acp{SS} se modifican simultáneamente. Este nuevo enfoque se describe también en el siguiente capítulo.
