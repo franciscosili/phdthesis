@@ -55,7 +55,7 @@ Finally, the weak interaction is mediated by the massive \Wboson and \Zboson bos
 
 
 
-\subsection{Mathematical formulation of the \ac{SM}}
+\subsection{Brief mathematical description of the Standard Model}
 \label{subsec:theory:sm:mathematical}
 
 The \ac{SM} is a renormalizable field theory based on local symmetries, providing a description of the fundamental particles and their interactions: the strong, the weak and the \ac{EM}. These interactions span by the requirement that the theory is invariant under local gauge transformations of the symmetry group:
@@ -66,10 +66,10 @@ where \(Y\) is the hypercharge, \(L\) the left-handed helicity and \(C\) the col
 
 In principle, the particles included in the \ac{SM} are massless, unlike the particles observed in nature. While the equations for the \ac{EW} interactions correctly describe particles like the photon, \Wboson, and \Zboson bosons, they fail to account for their masses. To address this, the concept of \ac{EWSB} was introduced, known as the Brout-Englert-Higgs mechanism~\cite{Higgs-1964_1,Higgs-1964_2,Higgs-1966,Englert_Brout-1964}. This mechanism explains how the \Wboson and \Zboson bosons acquire mass through the spontaneous breaking of the \ac{EW} symmetry, caused by the Higgs scalar field obtaining a non-zero vacuum expectation value. Furthermore, it predicts the existence of a new scalar particle, leading to a new massive boson with spin 0, called the Higgs bosons. This particle was experimentally confirmed in 2012 by the \ac{ATLAS} and \ac{CMS} collaborations at the \ac{LHC}, with a measured mass of \(125.25~\gev\)~\cite{ATLAS-HiggsObservation,CMS-HiggsObservation}.
 
-The \ac{SM} Lagrangian can be separated into two terms: the first one describing the \ac{EW} interaction (\ac{EW} sector) and the second one representing the strong interactions (the strong sector):
-\begin{equation*}
-    \mathcal{L}_{\text{SM}} = \mathcal{L}_{\text{EW}} + \mathcal{L}_{\text{QCD}}
-\end{equation*}
+% The \ac{SM} Lagrangian can be separated in three terms: the first one describing the \ac{EW} interaction (\ac{EW} sector), the second one representing the strong interactions (the strong sector) and finally the :
+% \begin{equation*}
+%     \mathcal{L}_{\text{SM}} = \mathcal{L}_{\text{EW}} + \mathcal{L}_{\text{QCD}}
+% \end{equation*}
 
 
 
@@ -77,11 +77,111 @@ The \ac{SM} Lagrangian can be separated into two terms: the first one describing
 
 
 
+\subsubsection{The Electroweak interaction}
+\label{subsubsec:theory:sm:mathematical:ew}
 
-\subsubsection{The \acf{EW} interaction}
+
+The \ac{EW} interactions satisfy the \(SU(2)_L \times U(1)_Y\) group gauge symmetry. The \(SU(2)_L\) group, called weak isospin, acts only on the left-handed chiral fermions, and \(U(1)_Y\) is the hypercharge group and acts on both chiralities in a vectorial way.
+
+The \(SU(2)_L \times U(1)_Y\) group has four generators, of which three belong to the weak isospin: \(T_i = \frac{\sigma_i}{2}\), with \(i = 1,\, 2,\, 3\) and \(\sigma_i\) being the Pauli matrices, and one to the hypercharge group: \(\frac{Y}{2}\). Left-handed fermions transform as doublets under \(SU(2)_L\), \(f_L \ra e^{i T_i \theta_i} f_L\) with
+\begin{equation}
+    f_L = \mqty( \nu_L\\ e_L ), \mqty( u_L\\ d_L ), \dots,
+\end{equation}
+meanwhile right-handed fermions transform as singlets \(f_R \ra f_R\) with
+\begin{equation}
+    f_R = e_R, \, u_R,\, d_R, \dots.
+\end{equation}
+This distinction between left- and right-handedness implies that the \(SU(2)_L \times U(1)_Y\) is a chiral theory.
+
+The electric charge is related to the third component of the weak isospin \(T_3\) and the hypercharge \(Y\), according to the Gell-Mann Nishijima formula:
+\begin{equation}
+    Q = T_3 + \frac{Y}{2}
+\end{equation}
+
+The number of associated gauge bosons coincides with the number of generators of the symmetry group. For the weak isospin there are 3 \(SU(2)_L\) bosons:
+\(W_{\mu}^1,\, W_{\mu}^2,\, W_{\mu}^3\), and for \(U(1)\) we have one hypercharge boson: \(B_{\mu}\).
+The global \(SU(2)_L \times U(1)_Y\) symmetry becomes local, replacing in the lagrangian the derivative of the fields by the covariant derivative:
+\begin{equation}
+    \label{eq:theory:sm:mathematical:ew:covariant_derivative}
+    D_{\mu} = \partial_{\mu} - ig \frac{\tau^i}{2} W_{\mu}^i - i g' \frac{Y}{2} B_{\mu},
+\end{equation}
+where \(g\) is the coupling constant of \(SU(2)_L\) and \(g'\) of \(U(1)_Y\).
+
+The \ac{EW} lagrangian density can then be written as the sum of the fermionic lagrangian with the gauge interactions and the kinetic terms for the introduced gauge fields:
+\begin{equation}
+    \mathcal{L}_{\text{EW}} = 
+    - \frac{1}{4} F_{\mu\nu}^i F^{\mu\nu}_i
+    - \frac{1}{4} B_{\mu\nu} B^{\mu\nu}
+    + \sum_{f = \ell, q} \bar{f} i \gamma^{\mu} D_{\mu} f,
+\end{equation}
+where the Yang-Mills field tensors \(F_{\mu\nu}^i\) for \(SU(2)_L\)and \(B_{\mu\nu}^i\) for \(U(1)_Y\) are defined as:
+\begin{gather}
+    F_{\mu\nu}^i = \partial_{\mu} W_{\nu}^i  -  \partial_{\nu} W_{\mu}^i + g \epsilon_{ijk} W_{\mu}^jW_{\nu}^k \\
+    B_{\mu\nu} = \partial_{\mu} W_{\nu}  -  \partial_{\nu} W_{\mu}.
+\end{gather}
+
+% So far, no mass terms for fermions or gauge bosons have been included, since typical Dirac mass terms are symmetry-breaking, for example with a lagrangian of the form:
+% \begin{equation}
+%     \mathcal{L} = -m \bar{\psi} \psi = -m \left(\bar{\psi}_L \psi_R - \bar{\psi}_R \psi_L\right)
+% \end{equation}
+% which is unacceptable with \(\psi_L\) a doublet and \(\psi_R\) a singlet of \(SU(2)_L\).
+
+% Therefore, and because the masses of these particles are known experimentally (and their values are shown in \Fig{\ref{fig:theory:sm:particles_interaction:particles}}), an extra mechanism needs to be introduced to generate them. The proposed solution involves the aforementioned
+% A scalar field is then added, and the symmetry is considered as a latent symmetry, present in the Lagrangian but not respected by the \ac{VEV} of the field. The degenerate vacuum states respect the \(SU(2)_L \times U(1)_Y\) symmetry, and it is the particular choice of one of them that generates the \(SU(2)_L \times U(1)_Y \ra U(1)_{\text{EM}}\) breaking.
+% This mechanism (somewhat unfairly referred to in the literature as the Higgs mechanism) in which spontaneous symmetry breaking occurs is briefly described below and is due to the work of Anderson [21], Nambu [22], Higgs [23], Englert, Brout [24], Guralnik, Hagen and Kibble [25, 26].
+
+
 
 
 \subsubsection{The Higgs mechanism}
+
+The photon and the gluons have zero masses as a consequence of the exact conservation of the corresponding symmetry generators: the electric charge and the eight colour charges, respectively. On the other hand, the weak bosons have large masses signalling that the corresponding symmetries are largely broken. The \ac{SM} predicts in principle massless fermions and gauge bosons, in contradiction with the observations.
+To fix this problem, a mechanism is introduced in order these masses are generated. A scalar field is then added, and the symmetry is considered as a latent symmetry, present in the Lagrangian but not respected by the \ac{VEV} of the field. The degenerate vacuum states respect the \(SU(2)_L \times U(1)_Y\) symmetry, and it is the particular choice of a \ac{VEV} that generates the \(SU(2)_L \times U(1)_Y \ra U(1)_{\text{EM}}\) breaking. This, is what is known as the Higgs mechanism, and it was theorised by Brout, Englert, Higgs, Guralnik, Hagen and Kibble in 1964.
+
+
+
+
+To break the \ac{EW} symmetry, a complex scalar field is added, called the Higgs field, that adds another boson to the theory which is an isospin doublet that couples to the \(W_{\mu\nu}^i\) and \(B_{\mu\nu}\) fields. The Higgs sector of the Lagrangian is given by:
+\begin{equation}
+    \mathcal{L}_{\text{Higgs}} = \left(D^{\mu} \phi\right)^{\dagger} \left(D_{\mu} \phi\right) - V(\phi)
+\end{equation}
+where \(\phi\) is a complex scalar field in the \(SU(2)\) representation:
+\begin{equation}
+    \Phi = \mqty( \phi_{+} \\ \phi_0 ) = \frac{1}{\sqrt{2}} \mqty(\phi_1 + i \phi_2 \\ \phi_3 + i \phi_4),
+\end{equation}
+with hypercharge \(U(1)\) \(Y=+1\), where \(\phi_{+}\) and \(\phi_{0}\) are complex with electric charge \(+1\) and \(0\), respectively, and the covariant derivative is given by \Eqn{\ref{eq:theory:sm:mathematical:ew:covariant_derivative}}. The reason to have the additional \(U(1)_Y\) symmetry is so that the theory produces a massless gauge boson associated to the photon. The Higgs potential \(V(\phi)\) is required to have the form:
+\begin{equation}
+    V(\phi) = -\mu^2 \phi^{\dagger} \phi + \lambda \left(\phi^{\dagger} \phi\right)^2
+\end{equation}
+in order to guarantee the renormalisability of the theory, and the invariance of \(SU(2)\) and \(U(1)\). The parameter \(\lambda\) needs to be postive so that the potential has a minimum, so that the behaviour of the field is then determined by \(\mu\). For \(\mu^2 > 0\), the field generates a non-zero \ac{VEV} (\(v := \phi^{\dagger} \phi\)) that spontaneously breaks the symmetry. The potential \(V(\phi)\) samples the very well-known shape of a Mexican hat, and has infinite numbers of degenerate states with minimum energy satisfying \(v = \sqrt{-\mu^2/\lambda}\). From these infinite states, it is usual to use:
+\begin{equation}
+    \expval{\Phi} = \frac{1}{\sqrt{2}} \mqty(0\\v)
+\end{equation}
+with \(\phi_1 = \phi_2 = \phi_4 = 0\), \(\phi_3 = v\).
+
+To study the particle spectrum, the field around the minimum is studied using an expansion in the radial direction:
+\begin{equation}
+    \phi = \frac{1}{\sqrt{2}} \mqty(0 \\ v + H(x)),
+\end{equation}
+where \(H(x)\) are ground-state excitations around the minimum, but in the radial direction of the potential.
+Due to the gauge invariance of the potential for excitations around the circunference minima, and according to the Goldstone theorem, one should in principle have three non-mass scalar bosons associated to the non-radial degrees of freedom of the field. The gauge arbitrariness allows the Goldstone bosons to be absorbed by the \Wboson and \Zboson bosons (they provide the longitudinal polarisations acquired by the gauge fields). The development in the radial direction gives the mass of the \(H\) excitation, \(\sqrt{2\lambda}\nu\) which is the mass of the Higgs boson, and cubic and quartic couplings of this boson. In this way, the \ac{SM} boson's masses have the form:
+\begin{align}
+    m_{\gamma} &= 0\\
+    m_{\Wboson} & = \frac{g v}{2}\\
+    m_{\Zboson} & = \frac{g}{2} \sqrt{g^2 + g'^2}\\
+    m_{H} & = \sqrt{2\lambda}\nu
+\end{align}
+
+Yukawa-type coupling terms to the Higgs field give masses to the \ac{SM} fermions:
+\begin{equation}
+    \mathcal{L}_{\text{Yuk}} = g_f \left(\bar{\psi}_L \phi \psi_R + \phi^{\dagger} \bar{\psi}_R \psi_L\right),
+\end{equation}
+being this a \(SU(2)\) invariant. The coupling constant \(g_f\) describes the coupling between the Higgs doublet to the fermions. By doing a similar expansion of the field as done previously and substituting into the Yukawa Lagrangian, one obtains terms indicating the fermion masses as
+\begin{equation}
+    m_f = \frac{g_f v}{\sqrt{2}}.
+\end{equation}
+
+
 
 
 \subsubsection{\acf{QCD}}
@@ -154,7 +254,7 @@ On the other hand, for low energies (\(Q^2 \to 0\)), the coupling \(\alpha_s\) i
 Moreover, starting from the infrared cut-off scale \(\Lambda_{\text{QCD}}\), where perturbative approximation at \(\alpha_s\) is no longer valid, the creation of quark-antiquark pairs in the vacuum is more energetically favourable than the separation of a pair of bound quarks. For this reason, as they lose energy, the quarks and gluons produced in a proton collider undergo a repetitive process known as hadronisation, in which collimated cascades of hadrons, called jets, are created, forming a cone from the initial quark or gluon to the calorimeters, where all their energy is deposited.
 
 
-\subsection{Hadron interactions in \pp colliders}
+\subsection{Hadron interactions in proton-proton colliders}
 \label{subsec:theory:sm:hadron_interactions}
 
 As discussed in \Sect{\ref{subsubsec:theory:sm:mathematical:qcd}}, the coupling constant \(\alpha_s\), which governs the strong interactions between quarks, has a strong dependence on the energy scale of each interaction, radically modifying the nature of the processes. The modelling of a proton-proton collision in an experiment like \ac{ATLAS}, where it is necessary to know its evolution from the interaction between the protons at \(\sqs \sim \tev\), to the interaction of the particles in the final state with the active and passive materials of the detector at a few GeV, represents a huge challenge, as it covers very different behaving \ac{QCD} regimes. Given that the \ac{LHC} is a proton collider, it is mandatory to have a very precise description of the proton structure, as a \pp collision at very high energies is basically to collide the constituents of them.
@@ -378,9 +478,10 @@ which increases with the \ac{EQ} mass \mq if one considers \(\Lambda = \mq\).
 \end{figure}
 
 
-In the \ac{SM} there is not a resonance production process decaying into a photon+jet pair in \pp collisions, and direct photon+jet production at tree level occurs via Compton scattering or \qqbar annihilation, as described in \Sect{\ref{subsec:theory:sm:prompt_photon}}. As a result, the \gammajet invariant mass (\myj) distribution is rapidly falling; thus, the \gammajet production mediated by a heavy \ac{EQ} may be discovered if it exists. Hereinafter, in the context of this thesis, \ac{EQ} models are only studied with \gammajet decays. In \fixme{GIVE REFENRECE TO CHAPTER WITH SIGNALS}, information regarding cross sections and the signals signatures in the \ac{ATLAS} detector is given.
+In the \ac{SM} there is not a resonance production process decaying into a photon+jet pair in \pp collisions, and direct photon+jet production at tree level occurs via Compton scattering or \qqbar annihilation, as described in \Sect{\ref{subsec:theory:sm:prompt_photon}}. As a result, the \gammajet invariant mass (\myj) distribution is rapidly falling; thus, the \gammajet production mediated by a heavy \ac{EQ} may be discovered if it exists. Hereinafter, in the context of this thesis, \ac{EQ} models are only studied with \gammajet decays. In \Ch{\ref{ch:samples}}, information regarding the signals cross sections is given.
 
 \subsection{Higher dimensional theories}
+\label{subsec:theory:bsm:qbh}
 
 There are at least two seemingly fundamental energy scales in nature, the electroweak scale \(m_{W}~\sim 10^3~\gev\) and the Planck scale \(m_P = G^{-1/2} \sim 10^{18}~\gev\), where \(G\) is the Gravitational constant. Explaining the enormity of the ratio \(m_P / m_W\) has been the prime motivation for constructing extensions of the \ac{SM} such as models with technicolor or low-energy supersymmetry. It is remarkable that these rich theoretical structures have been built on the assumption of the existence of two very disparate fundamental energy scales. However, there is an important difference between these scales. While electroweak interactions have been probed at distances approaching \(\sim m_W^{-1}\), gravitational forces have not remotely been probed at distances \(\sim m_P^{-1}\).
 
@@ -432,7 +533,7 @@ Based on current experimental and phenomenological limits on the Planck scale, i
     d + g       & \to QBH^{-1/3}    && \to d + \gamma\\
     \bar{u} + g & \to QBH^{-2/3}    && \to \bar{u} + \gamma,
 \end{alignat*}
-where \(u\) represents all up-type quarks, \(d\) all down-type quarks and \(q\) all quark flavours. Similarly as the \ac{EQ} model, a more detailed phenomenological description of the models is given in \fixme{GIVE REFENRECE TO CHAPTER WITH SIGNALS}.
+where \(u\) represents all up-type quarks, \(d\) all down-type quarks and \(q\) all quark flavours. Similarly as the \ac{EQ} model, a more details on the samples is given in \Ch{\ref{ch:samples}}.
 
 
 
