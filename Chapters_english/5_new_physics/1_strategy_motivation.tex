@@ -1,5 +1,250 @@
-\chapter{Analysis motivation and strategy}
-\label{ch:motivation_strategy}
+\chapter{Analysis strategy and Statistical Treatment}
+\label{ch:strategy}
 \epigraph{\emph{“Champions keep playing until they get it right.”}}{Billie Jean King}
 
-yet another template (yat)
+
+
+
+
+
+
+The main work of this thesis is the search for exotic particles that decay in photon+jet final state. In this chapter, an introduction to the general strategy of the analysis is given, enumerating the backgrounds and what signals are used. Additionally, the statistical model used in this work is built, starting from a simple likelihood function. In the next chapters, more in-detail aspects of the analysis will be described.
+
+
+
+
+
+
+\section{Strategy, signals and SM's backgrounds}
+\label{sec:strategy:strategy}
+
+The analysis done for this thesis consists on exotic searches with an isolated, highly energetic photon, in association with jets. The strategy is based on finding bumps on the final state invariant mass over the \ac{SM} predictions.
+Prompt photons in association with jets are copiously produced at the \ac{LHC}. The production modes were described in detail in \Sect{\ref{subsec:theory:sm:prompt_photon}} with the main one being quark-gluon Compton scattering \(qg \to q \gamma\). By looking at the invariant mass \myj of the \gammajet system, one finds that it follows a smoothly decaying shape, leading to an ideal scenario for searches of physics \ac{BSM}.
+The exotic particles that are searched for decay resonantly in a photon and a jet, hence leading to a bump on  the \myj distribution over the \ac{SM} prediction.
+
+
+Different benchmark models are considered in this search. The first model is based on generic Gaussian-shaped mass distributions, with different values of its mean and standard deviation. This model provides a generic interpretation for the presence of a signal with different Gaussian widths, ranging from resonances with a width similar to the reconstructed \myj resolution of \(\sim 2\%\) to wide resonances with a width up to \(15\%\).
+Secondly, the \acfp{EQ} and \acfp{QBH} theoretical models introduced in \Sect{\ref{sec:theory:bsm}} are studied. These models  depend on one or more parameters, like for example, the \ac{EQ} particle mass and its coupling to the \ac{SM}. That being the case, a multidimensional grid of parameters is built, where each point on the grid represents a set of unique parameter values that define the signal model. In the case no significant excess is found over the smooth \ac{SM} background, exclusion limits to the values on the grid are set, excluding a subset of the possible parameters of the theory.
+
+
+The major challenge in any search for new physics is the excellent understanding of the \ac{SM} background. For this search, the dominant background is prompt photon production. This process, as discussed in \Sect{\ref{subsec:theory:sm:prompt_photon}}, can be understood as two separate processes, direct and fragmentation, in which the latter can be highly reduced. The second largest background arises from \ac{QCD} multijet events, where one of the jets is rich in \ac{EM} energy and is mis-identified as a photon. This background also includes events in which a jet fragments into an energetic \pizero or \(\eta\) meson, decaying into two overlapping photons that are reconstructed as a single photon in the detector. Finally, the third background, although not considered as its contribution is almost negligible, arise from \ac{EW} processes via the production of \WZjet, with the heavy boson decaying leptonically and an electron mimics a photon because missing hits in the \ac{ID}.
+
+
+In resonance searches it is common to model the background using a functional form. This function usually is a particular case of a family of functions, and the selection of it is based on several statistical tests, being this one of the most crucial steps of the analysis. Although the background is estimated directly from data, \ac{MC} simulations of the background are necessary in order to perform optimisations of the event selection and to carry out the different tests to select the function.
+
+
+\section{Statistical Treatment}
+\label{sec:strategy:stat_treatment}
+
+
+
+
+
+
+\subsection{Statistical Model}
+\label{subsec:strategy:stat_treatment:stat_model}
+
+Fits to of the \myj spectra are performed separately for each analysis signal region using a log-likelihood minimization method. The definition of the likelihood function is given in the following step-by-step. The foundation is a counting experiment in each bin using a set of Poissonian probability terms:
+\begin{equation}
+    \mathcal{L} = 
+    \prod_{i=1}^{N_{\text{bins}}} \text{Pois}\left(N_i | \mu s_i + b_i\right) = 
+    \prod_{i=1}^{N_{\text{bins}}} \frac{\left( \mu s_i + b_i \right)^{N_i}}{N_i !} e^{-\left( \mu s_i + b_i \right)}
+\end{equation}
+where \(N_i\) is the number of measured data events in bin \(i\) and \(s_i\) and \(b_i\) are expected signal and background counts, estimated from \ac{MC} simulation and the functional fit, respectively. The parameter \(\mu\) is referred as the signal strength, and is a common scale factor to the signal yield in all bins. One of the goals of the fit is the determination of this parameter, also known as the \ac{POI}.
+
+In the case of a parametrized background, \(b_i\) could be re-written as \(b_i = N_b f_b\left(x, \vec{\theta}\right)\), where \(x\) represents the observable (\myj in the case of this analysis), \(f_b\) is the background parametrization function, which depends on nuisance parameters \(\vec{\theta}\) that describe the shape of the function (known as nuisance parameters), and \(N_b\) is the total background normalization, another nuisance parameter. The likelihood function then reads
+\begin{equation}
+    \label{eq:strategy:stat_treatment:stat_model:likelihood}
+    \mathcal{L} = 
+    \prod_{i=1}^{N_{\text{bins}}} \frac{\left( \mu s_i + N_b f_b \left(x, \vec{\theta}\right) \right)^{N_i}}{N_i !} e^{-\left( \mu s_i + N_b f_b \left(x, \vec{\theta}\right) \right)}.
+\end{equation}
+
+The number of signal events at bin \(i\) is given by the product of the signal \ac{PDF2} \(f_s^i(x)\), the cross-section times branching ratio \(\sigma_s \times \text{Br}\), the total integrated luminosity \(L\), and the signal acceptance times efficiency \(A \times \varepsilon\). Then, the signal term can be re-written as
+\begin{equation}
+    \label{eq:strategy:stat_treatment:stat_model:mu_si}
+    \mu s_i = \left(\sigma_S \times \text{Br} \right) \times L \times \left(A \times \varepsilon\right) \times f_s^i(x).
+\end{equation}
+The special case when \(\mu = 0\) corresponds to a background-only hypothesis.
+
+
+
+\subsection{Systematic uncertainties}
+\label{subsec:strategy:stat_treatment:systs}
+
+Systematic uncertainties are parameterized as a set of \ac{NP} \(\vec{\theta}\) that modify the expected signal and background yields, i.e. \(\{s_i, b_i\} \to \{s_i(\vec{\theta}), b_i(\vec{\theta})\}\). They are implemented in the likelihood by multiplying it by
+\begin{equation}
+    \prod_{k} G_k(0 | \theta_k, 1)
+\end{equation}
+where \(G_k\) are the \acp{NP} contraint \acp{PDF2}, and \(k\) ranges over all the systematic variations. Moreover, the relevant parameter is multiplied by a factor of
+\begin{equation}
+    1 + \theta_k \delta_k
+\end{equation}
+for the case of Gaussian response functions, and
+\begin{equation}
+    \exp\left( \theta_k \ln\left(1 + \delta_k\right) \right) = \left(1 + \delta_k\right)^{\theta_k}
+\end{equation}
+for log-normal response functions.
+
+Given that the background function is selected in an arbritrary way, but by undergoing different statistical tests, a special systematic uncertainty is added to take this into account, called \acf{SSig}. The \ac{SSig} is computed by means of the \ac{SSig} test discussed in \Sect{\ref{subsubsec:bkg:modeling:sigbkg:sstest}}, and is implemented into the statistical model by adding anoter term to the total number of events:
+\begin{equation}
+    \mu s_i + N_b f_b \to \mu s_i + \sigma_{\text{spur}, i} \theta_{\text{spur}} + N_b f_b.
+\end{equation}
+\(\sigma_{\text{spur}}\) represents the number of spurious events in bin \(i\) of the distribution following the same \ac{PDF2} as the signal, and \(\theta_{\text{spur}}\) is the \ac{NP} associated to this other source of signal.
+
+\subsection{Simultaneous fits}
+\label{subsec:strategy:stat_treatment:simult_fits}
+
+It is useful to discuss as well the procedure for doing simultaneous fits in different \myj shapes simultaneously. These simultaneous fits test the same signal model with same signal strenght \(\mu\) in different regions. The total likelihood is simply the product of the individual likelihoods given by \Eqn{\ref{eq:strategy:stat_treatment:stat_model:likelihood}}, and it reads:
+\begin{align}
+    \mathcal{L}_{\text{total}} =& \prod_{c\in \text{categories}} \mathcal{L}_c\\
+    =& \prod_{c\in \text{categories}} \left[
+        \prod_{i=1}^{N^c_{\text{bins}}} \frac{\left( n_{\text{sig}} + b_{i, c} \right)^{N_{i, c}}}{N_{i, c} !} e^{-\left( n_{\text{sig}} + b_{i, c} \right)}
+    \right]
+\end{align}
+    
+The implementation of the systematic uncertainties follows the same recipe as explained above. The experimental systematics affecting only the signal are 100\% correlated amongst the signal regions. On the other hand, each signal region has its own spurious signal uncertainty, as it is associated to a different background function and fit-range\footnote{As it will be discussed in \Ch{\ref{ch:bkg}}, there are different signal regions in the analysis and for each one a different functional form is selected.}.
+
+
+
+
+
+
+
+
+\subsection{Hypothesis test}
+\label{subsec:strategy:stat_treatment:hypo_test}
+
+The objective of a search such as the one presented in this thesis is to be able to specify how good the agreement is between the observed data and a given hypothesis, which typically is the \enquote{null}, \ac{BO}, or \enquote{0-signal} hypothesis (\(H_0\)). One could test the consistency of the data with any hypothesis, but \(H_0\) is usually chosen because typically a discovery can be claimed by establishing that the data is inconsistent with the \enquote{standard} theory, without having to show that it is consistent with some alternative theory. Once inconsistency with \(H_0\) is established, several alternative signal hypotheses can be tested to characterize the discovery, denoted \(H_1\). To distinguish between these theories the parameter \(\mu\) is used, which is 0 for the \(H_0\) and 1 for the nominal signal.
+
+When comparing the data against the hypotheses, their differences are quantified by a single number, called a \enquote{test statistic}, and are functions that depend on the data. Therefore, for each test statistic there is a \ac{PDF2} associated to it.
+
+To test a hypothesized value of \(\mu\), consider the \textit{profile likelihood}
+\begin{equation}
+    \label{eq:strategy:stat_treatment:hypo_test:lambdamu}
+    \lambda(\mu) = \frac{
+        \mathcal{L} \left(\mu, \hat{\hat{\bm{\theta}}}\right)
+    }{
+        \mathcal{L} \left(\hat{\mu}, \hat{\bm{\theta}}\right)
+    }.
+\end{equation}
+The numerator of this ratio is the \textit{profile likelihood function}. The quantity \(\hat{\hat{\bm{\theta}}}\) denotes the value of \(\bm{\theta}\) that maximises \(\mathcal{L}\) for the specified \(\mu\). The denominator is the maximised likelihood function, that is, \(\hat{\mu}\) and \(\hat{\bm{\theta}}\) are their maximum-likelihood estimators. 
+From \Eqn{\ref{eq:strategy:stat_treatment:hypo_test:lambdamu}}, it is possible to see that \(0 \leq \lambda \leq 1\), with \(\lambda\) near 1 implying good agreement between the data and the hypothesized value of \(\mu\).
+It is convenient to define the test statistic \qmu as
+\begin{equation}
+    \label{eq:strategy:stat_treatment:hypo_test:qmu}
+    \qmu  = - 2 \ln \lambda(\mu),
+\end{equation}
+such that good agreement is seen as \(\qmu \ra 0\), while high \(\qmu\) values indicate disagreement between data and the hypothesized value of \(\mu\).
+
+
+To measure the discrepancy between data and the hypothesis \(H\), that is, the probability that a given test statistic is as big as its observed value assuming \(H\) is correct, is defined by the \pval \(p_{\mu}\):
+\begin{equation}
+    p_{\mu} = P \left( \qmu > q_{\mu, \text{obs}} \right) = \int_{q_{\mu, \text{obs}}}^{\infty} f \left(\qmu | H\right) \dd{\qmu},
+\end{equation}
+where \(q_{\mu, \text{obs}}\) is the value of the test statistic observed from data, and \(f\left(\qmu | H\right)\) is the \qmu \ac{PDF2} under the hypothesis \(H\). A small \pval means that the hypothesis is not in agreement with the data, and therefore \(H\) is excluded when the \pval is lower than a defined value \(\alpha\). It is common to convert the \pval to a significance \(Z\), defined such that a Gaussian distributed variable from \(Z\) standard deviations above its mean has an upper-tail probability equal to \(p_{\mu}\):
+\begin{equation}
+    Z = \Phi^{-1} \left(1 - p_{\mu}\right).
+\end{equation}
+
+In the context of search for new physics, the data is tested against the \(H_0\) hypothesis, since a rejection of \(H_0\) may mean the discovery of a new signal. For this, the test statistic takes the form:
+\begin{equation}
+    q_0 = 
+    \begin{cases}
+        0 &\qif \hat{\mu} < 0,\\
+        -2 \ln \lambda(0) &\qif \hat{\mu} \geq 0.
+    \end{cases}
+\end{equation}
+If the observed data turn out to be smaller than the background predictions, one has \(\hat{\mu} < 0\). This could be evidence against the \ac{BO} hypothesis, but it does not actually show that the data are composed of signal events. With this definition then, the possibility of ruling out the \ac{BO} hypothesis occurs only when \(\hat{\mu} \geq 0\), and otherwise \(q_0 = 0\). The \pval for this test statistic is then:
+\begin{equation}
+    \pzero = P \left( q_0 > q_{0, \text{obs}} \right) = \int_{q_{0, \text{obs}}}^{\infty} f \left(q_0 | 0 \right) \dd{q_0}.
+\end{equation}
+The particle physics community defines a rejection of the \ac{BO} hypothesis with a significance greater than \(5\sigma\) (\(\pzero = 2.86 \times 10^{-7}\)) as the appropriate level to constitute a discovery. It should be emphasized that in an actual scientific context, rejecting the \ac{BO} hypothesis in a statistical sense is only part of discovering a new phenomenon. One's degree of belief that a new process is present will depend in general on other factors as well, such as the plausibility of the new signal hypothesis and the degree to which it can describe the data.
+
+
+
+When the \pval obtained is greater than the limit defined for a discovery, it is not possible to reject the \ac{BO} hypothesis, and in that case it is desired to establish limits on the tested model. To do so, one seeks instead to reject the \ac{SB} hypothesis, and to find the upper value of \(\mu\) for which such rejection is not possible (upper limit). A new test statistic is then defined, where the roles of the \ac{BO} and \ac{SB} hypotheses are swapped:
+\begin{equation}
+    \tilde{\qmu} =
+    \begin{cases}
+        -2 \ln \tilde{\lambda}(\mu) & \qif \hat{\mu} \leq \mu\\
+        0                           & \qif \hat{\mu} > \mu
+    \end{cases}
+    =
+    \begin{cases}
+        \displaystyle -2 \ln \left(\frac{
+            \mathcal{L} \left(\mu, \hat{\hat{\bm{\theta}}} \left(\mu\right)\right)
+        }{
+            \mathcal{L} \left(0, \hat{\hat{\bm{\theta}}} \left(0\right)\right)
+        }\right) & \qif \hat{\mu} \leq 0\\
+        \displaystyle -2 \ln \left(\frac{
+            \mathcal{L} \left(\mu, \hat{\hat{\bm{\theta}}} \left(\mu\right)\right)
+        }{
+            \mathcal{L} \left(\hat{\mu}, \hat{\bm{\theta}}\right)
+        }\right) & \qif 0 \leq \hat{\mu} \leq \mu\\
+        0 & \qif \hat{\mu} \geq \mu\\
+    \end{cases}
+\end{equation}
+he reason for setting \(\qmu = 0\) for \(\hat{\mu} > \mu\) is that when setting an upper limit, one would not regard data with \(\hat{\mu} > \mu\) as representing less compatibility with \(\mu\) than the data obtained, and therefore this is not taken as part of the rejection region of the test. That is, the upper limit is obtained by testing \(\mu\) against the alternative hypothesis consisting of lower values of \(\mu\). From the definition of the test statistic one sees that higher values of \qmu represent greater incompatibility between the data and the hypothesized value of \(\mu\). One should note that \(q_0\) is not simply a special case of \qmu with \(\mu = 0\), but rather has a different definition. That is, \(q_0\) is zero if the data fluctuate downward (\(\hat{\mu} < 0\)), but \qmu is zero if the data fluctuate upward (\(\hat{\mu} > \mu\)).
+
+\fixme{revise and discuss with Tere.}
+With this test statistic it is aimed to find the highest \(\mu\) at which the \ac{SB} hypothesis is not compatible with data anymore. To accomplish this, the following \ac{CL} is defined:
+\begin{equation}
+    \text{CL}_s = \frac{p_\mu}{1 - p_b} \equiv \frac{\text{CL}_{s+b}}{\text{CL}_b},
+\end{equation}
+where
+\begin{align}
+    p_{\mu} &= \int_{q_{\mu, \text{obs}}}^{\infty} f \left(\qmu | \mu\right) \dd{\qmu} \equiv \text{CL}_{s+b}\\
+    1 - p_{b} &= \int_{q_{\mu, \text{obs}}}^{\infty} f \left(\qmu | 0\right) \dd{\qmu} \equiv \text{CL}_{b}
+\end{align}
+being \(f \left(\qmu | \mu\right)\) the \ac{PDF2} of the test statistic \qmu and \(f \left(\qmu | 0\right)\) the \ac{PDF2} uner the \ac{BO} hypothesis. For smaller values of \(\text{CL}_s\), there is lower compatibility between the data and the \ac{SB} hypothesis. The upper limit on \(\mu\), \(\mu_{\text{up}}\), is defined as the \(\mu\) when \(\text{CL}_s = 0.05\), and the models with \(\mu < \mu_{\text{up}}\) are rejected at \(95\%\) \ac{CL}.
+
+
+
+
+\subsection{The \bh algorithm}
+\label{subsec:strategy:stat_treatment:bh}
+
+
+The \bh algorithm~\cite{BumpHunter,pyBumpHunter} constitutes a hypertest that combines the result of many individual hypothesis tests into a single test statistic. It iterates over all possible windows of adjacent bins in the spectrum, starting with windows one bin wide and increasing in width up to a configurable upper threshold for the window size (typically half of the fit range). In each of these windows, the observed number of events \(N_d\) and the estimated background events \(N_b\) are summed as if the window were a single bin:
+\begin{align}
+    N_d &= \sum_{ \substack{ \text{bins \(i\)} \\ \text{in window} } } N_d^i\\
+    N_b &= \sum_{ \substack{ \text{bins \(i\)} \\ \text{in window} } } N_b^i
+\end{align}
+Each of these windows is assigned a local \pval based on the Poissonian probability to observe at least as many events as seen in data:
+\begin{equation}
+    p_{\text{local}} \left(N_d, N_b\right) = 
+    \begin{cases}
+        \Gamma \left(N_d, N_b\right)    &\qif   N_d > N_b,\\
+        1                               &\qif   N_d \leq N_b,
+    \end{cases}
+\end{equation}
+where:
+\begin{equation}
+    \Gamma \left(N_d, N_b\right) = \sum_{k=N}^{\infty} \frac{N_b^k}{N_d!} e^{-N_b}
+\end{equation}
+is the lower incomplete gamma function.
+
+Since many statistically independent windows are tested for excesses, the look-elsewhere effect~\cite{LookElsewhereEffect} must be accounted for. It describes that if e.g. 100 independent tests are performed, on average one of them will find a \pval below 0.01 due to statistical fluctuations alone. The local \pval for an excess in a specific window must hence be translated into a global \pval to find an excess in any of the windows. For that purpose, the \bh algorithm defines the test statistic:
+\begin{equation}
+    \label{eq:strategy:stat_treatment:bh:bh_statistic}
+    t = \min_{\text{windows}} \left( - \log p_{\text{local}} \right)
+\end{equation}
+which identifies the most significant excess of all considered windows. The expected distribution of \(t\) is determined numerically to high accuracy by drawing 2000 Poissonian fluctuated toy distributions from the background expectation and computing \(t\) for each of these toys. The global \bh \pval is then given by the probability for a toy distribution to exhibit a more significant excess than the data. This corresponds to the fraction of toys for which \(t\) exceeds the observed value \(t_{\text{obs}}\):
+\begin{equation}
+    \label{eq:strategy:stat_treatment:bh:bh_pval}
+    p(\text{BH}) = \frac{\text{\# toys with } t > t_{\text{obs}}}{\text{\# toys}}.
+\end{equation}
+One should note that, with this definition, the global \pval can be higher than 0.5, producing a negative global significance. In this case, this negative value should not be interpreted as a deficit in the data, but as a deviation which is less significant than the median deviation observed in the \ac{BO} pseudo-data distributions.
+
+This way, \(p(\text{BH})\) by definition follows a uniform distribution between 0 and 1 if excesses over the background estimate are due to statistical fluctuations alone. Observing, for example, \(p(\text{BH}) < 0.05\) then means that less than 5\% of background-like toys exhibit a larger excess than the most significant one in data. Such an observation can be interpreted as evidence for a resonance causing a deviation of the data from the background expectation.
+
+
+\section{Fits and results}
+\label{sec:strategy:stat_treatment:fits_results}
+
+Starting from \Eqn{\ref{eq:strategy:stat_treatment:stat_model:likelihood}}, different kind of fits can be performed to the background distribution, depending on the used regions and if signal samples are included or not.
+
+In order to select the background function, both \ac{BO} and \ac{SB} fits are performed. \ac{BO} fits are characterised by not having any signal included, therefore the signal strength parameter \(\mu\) is kept at zero, and the background-shape \acp{NP} are computed. In \ac{SB} fits, \(\mu\) is allowed to float and the final signal yield is used for the studies. In \Sect{\ref{sec:bkg:modeling}}, these two kind of fits are used thoroughly using \ac{MC} simulation in order to determine the different fitting strategies to be used with the actual data.
+
+
+To perform the actual search, as a first step a \ac{BO} fit is carried out and different metrics are evaluated to assess if a significant excess over the \ac{SM} is observed. In case there is none, \ac{SB} fits are done for each signal model, in order to set exclusion limits on the signal grid.
