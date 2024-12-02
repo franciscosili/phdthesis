@@ -66,7 +66,9 @@
 
 
 
-\input{Chapters_spanish/ToDoAndNotes}
+% \input{Chapters_spanish/ToDoAndNotes}
+
+% \linenumbers
 
 \acresetall
 \input{Chapters_spanish/1_introduction}
@@ -74,23 +76,26 @@
 
 
 \part{Motivaci\'on Te\'orica}
+\label{part:theory}
 \input{Chapters_spanish/2_theory/1_theory.tex}
 
 
 \FloatBarrier
 \part{Setup experimental}
+\label{part:exp_setup}
 \input{Chapters_spanish/3_experiment/1_atlas_experiment.tex}
 \input{Chapters_spanish/3_experiment/2_objects.tex}
 
 
 \FloatBarrier
 \part{Correcciones de las Shower shapes de fotones}
+\label{part:pid}
 \input{Chapters_spanish/4_showershapes/1_introduction.tex}
 \input{Chapters_spanish/4_showershapes/2_ss_corrections.tex}
 
 
 \FloatBarrier
-\part{B\'usqueda de Nueva F\'isica}
+\label{part:search}
 \input{Chapters_spanish/5_new_physics/1_strategy_motivation.tex}
 \input{Chapters_spanish/5_new_physics/2_samples.tex}
 \input{Chapters_spanish/5_new_physics/3_event_selection.tex}
@@ -124,6 +129,9 @@
 % APPENDICES
 %---------------------------------------------------
 \appendix
+\part*{Apéndices}
+\addcontentsline{toc}{part}{Apéndices}
+\markboth{}{Apéndices}
 \input{Chapters_spanish/appendixes/photonid_ellipse_formulae.tex}
 \backmatter
 \input{FrontBackMatter_spanish/Acronyms.tex}
@@ -144,8 +152,11 @@
 % BIBLIOGRAPHY
 %---------------------------------------------------
 \clearpage
-\phantomsection
+% \phantomsection
 % \nocite{*}
+
+\addcontentsline{toc}{part}{Bibliografía}
+\markboth{}{Bibliografía}
 \bibliography{BibliographyLink/bibliography,BibliographyLink/ATLAS_CP,BibliographyLink/ATLAS_DAQ,BibliographyLink/ATLAS_detectors,BibliographyLink/ATLAS_NOTES,BibliographyLink/CERN_experiments,BibliographyLink/thesis,BibliographyLink/ATLAS_publications}
 % \bibliography{Chapters_spanish/bibliography}
 %using an on-the-go bibliography

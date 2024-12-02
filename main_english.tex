@@ -66,7 +66,8 @@
 
 
 
-\input{Chapters_english/ToDoAndNotes}
+% \input{Chapters_english/ToDoAndNotes}
+
 
 \acresetall
 \input{Chapters_english/1_introduction}
@@ -74,24 +75,26 @@
 
 
 \part{Theory Motivation}
+\label{part:theory}
 \input{Chapters_english/2_theory/1_theory.tex}
 
 
 \FloatBarrier
 \part{Experimental setup}
+\label{part:exp_setup}
 \input{Chapters_english/3_experiment/1_atlas_experiment.tex}
 \input{Chapters_english/3_experiment/2_objects.tex}
-% \input{Chapters_english/3_experiment/3_data_mc.tex}
 
 
 \FloatBarrier
 \part{Photon shower shape corrections}
+\label{part:pid}
 \input{Chapters_english/4_showershapes/1_introduction.tex}
 \input{Chapters_english/4_showershapes/2_ss_corrections.tex}
 
 
 \FloatBarrier
-\part{New Physics}
+\label{part:search}
 \input{Chapters_english/5_new_physics/1_strategy_motivation.tex}
 \input{Chapters_english/5_new_physics/2_samples.tex}
 \input{Chapters_english/5_new_physics/3_event_selection.tex}
@@ -125,6 +128,9 @@
 % APPENDICES
 %---------------------------------------------------
 \appendix
+\part*{Appendix}
+\addcontentsline{toc}{part}{Appendix}
+\markboth{}{Appendix}
 \input{Chapters_english/appendixes/photonid_ellipse_formulae.tex}
 
 % \input{Chapters_english/appA.tex}
@@ -148,8 +154,11 @@
 % BIBLIOGRAPHY
 %---------------------------------------------------
 \clearpage
-\phantomsection
+% \phantomsection
 % \nocite{*}
+
+\addcontentsline{toc}{part}{Bibliografía}
+\markboth{}{Bibliografía}
 \bibliography{BibliographyLink/bibliography,BibliographyLink/ATLAS_CP,BibliographyLink/ATLAS_DAQ,BibliographyLink/ATLAS_detectors,BibliographyLink/ATLAS_NOTES,BibliographyLink/CERN_experiments,BibliographyLink/thesis,BibliographyLink/ATLAS_publications}
 % \bibliography{Chapters_english/bibliography}
 %using an on-the-go bibliography
