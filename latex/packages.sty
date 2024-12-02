@@ -162,19 +162,36 @@
 \makeoddhead{chapter}{}{\thepage}{}
 \makeoddfoot{chapter}{}{}{}
 
+
+
 % \flushbottom
 %%%%%%%%% remove indent before paragraph
 \setlength{\parindent}{0in}
 
+
+% Customize TableOfContents and ListOfFigures/Tables margins
+% \cftsetindents{chapter}{2.5em}{0em}
+% \cftsetindents{section}{2.5em}{1em}
+% \cftsetindents{subsection}{2.5em}{2em}
+\setlength{\cftchapternumwidth}{1.7em}         % Align section entries with chapter title
+\setlength{\cftsectionindent}  {1.7em}         % Align section entries with chapter title
+\setlength{\cftsectionnumwidth}{2.8em}     % Set width for section numbers
+\setlength{\cftsubsectionindent}{4.5em}    % Indent subsection entries to align with section title
+\setlength{\cftsubsectionnumwidth}{3.5em}
+
+\setlength{\cftfigurenumwidth}{36pt}
+\setlength{\cfttablenumwidth}{36pt}
 
 
 
 % --------------------------------------------------
 % Remove some warnings
 % --------------------------------------------------
-\setlength{\headheight}{14pt} % to avoid multiple "\headheight is too small" warnings
+\setlength{\headheight}{15pt} % to avoid multiple "\headheight is too small" warnings
 \setlength{\parskip}{5pt} % to have some space between paragraphs
 \pdfminorversion=6  % to avoid warnings like "PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed"
+
+
 
 
 
@@ -215,5 +232,5 @@
 
 
 
-\newcommand{\fixme}[1]{\textcolor{red}{#1}}
+\newcommand{\fixme}[1]{\textcolor{red}{*** #1}}
 \newcommand{\fixmenc}[1]{*** #1}
