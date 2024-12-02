@@ -1,6 +1,6 @@
 \chapter{Shower shapes y la Identificaci\'on de fotones}
 \label{ch:pid_ss}
-\epigraph{\emph{“Champions keep playing until they get it right.”}}{Billie Jean King}
+% \epigraph{\emph{“Champions keep playing until they get it right.”}}{Billie Jean King}
 
 
 
@@ -152,7 +152,7 @@ Las siguientes variables utilizan la información de la primera capa del \ac{ECA
 \label{sec:pid_ss:pid}
 
 La identificación de fotones prompt frente a fotones falsos en colisiones hadrónicas es un gran desaf\'io. Los fotones falsos están ampliamente dominados por candidatos a fotones que surgen del decaimiento de hadrones en jets, mientras que una fracción más pequeña de candidatos falsos está asociada con hadrones que depositan una energía significativa en el \ac{ECAL}, imitando la de los fotones reales.
-Los procesos con fotones prompt en el estado final, que ocurren en colisiones \pp en el \ac{LHC}, desempeñan un papel central en el programa de física de \ac{ATLAS}. Tanto para las búsquedas como para las medidas de precisión es importante contar con algoritmos y técnicas para identificar los fotones reales frente a los falsos. Estas b\'usquedas o medidas de precisi\'on se llevan a cabo en un rango muy amplio de energ\'ia del fotón, empezando, por ejemplo, por resonancias de baja masa del Higgs a un par de partículas tipo axión que decaen en 4 fotones (\(\PH\to aa \to 4\gamma\))~\cite{ATLAS-HiggsTo4Gamma}, donde el momento transverso del fotón es de \(\sim 25~\gev\), hasta fotones de muy alto \pt en búsquedas de resonancias \gammajet como los que se realizaron para esta tesis, donde los fotones tienen un momento transverso mayor a \(1~\tev\) \fixme{add reference once the chapter numbers are in place}.
+Los procesos con fotones prompt en el estado final, que ocurren en colisiones \pp en el \ac{LHC}, desempeñan un papel central en el programa de física de \ac{ATLAS}. Tanto para las búsquedas como para las medidas de precisión es importante contar con algoritmos y técnicas para identificar los fotones reales frente a los falsos. Estas b\'usquedas o medidas de precisi\'on se llevan a cabo en un rango muy amplio de energ\'ia del fotón, empezando, por ejemplo, por resonancias de baja masa del Higgs a un par de partículas tipo axión que decaen en 4 fotones (\(\PH\to aa \to 4\gamma\))~\cite{ATLAS-HiggsTo4Gamma}, donde el momento transverso del fotón es de \(\sim 25~\gev\), hasta fotones de muy alto \pt en búsquedas de resonancias \gammajet como los que se realizaron para esta tesis, donde los fotones tienen un momento transverso mayor a \(1~\tev\) (\Part{\ref{part:search}}).
 
 La identificaci\'on de fotones en \ac{ATLAS} se basa en cortes en las \acp{SS} y se definen diferentes \acfp{WP} con diferentes caracter\'isticas: ya sea lograr un gran rechazo de fondo, o alta eficiencia de se\~nal, o simplemente bajos tiempos de c\'omputo para la identificaci\'on \textit{online}. En esta sección se describe el procedimiento utilizado para la optimizaci\'on de estos \acp{WP} y luego se describen los m\'etodos para medir las eficiencias correspondientes.
 
@@ -340,16 +340,16 @@ Como ya se ha mencionado, estos cocientes entre datos y eficiencias \ac{MC} se d
     \centering
     \begin{subfigure}[h]{0.49\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{example-image}
-        \caption{Converted photons.}
+        \includegraphics[width=\linewidth]{4_photonid/introduction/efficiencies/sf_pid_c}
+        \caption{Fotones convertidos.}
     \end{subfigure}
     \hfill
     \begin{subfigure}[h]{0.49\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{example-image}
-        \caption{Unconverted photons.}
+        \includegraphics[width=\linewidth]{4_photonid/introduction/efficiencies/sf_pid_unc}
+        \caption{Fotones no convertidos.}
     \end{subfigure}
-    \caption{\acp{SF} resultantes de la identificaci\'on de fotones en los diferentes bines de \pt y \abseta para fotones convertidos (izquierda) and no convertidos (derecha). \fixme{Ask fran for the plots in his presentation!}}
+    \caption{\acp{SF} resultantes de la identificaci\'on de fotones en los diferentes bines de \pt y \abseta para fotones convertidos (izquierda) and no convertidos (derecha).}
     \label{fig:pid_ss:pid:efficiencies:sfs}
 \end{figure}
 

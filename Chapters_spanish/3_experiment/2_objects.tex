@@ -1,6 +1,6 @@
 \chapter{Reconstrucci\'on e identificaci\'on de objetos f\'isicos}
 \label{ch:objects}
-\epigraph{\emph{“Champions keep playing until they get it right.”}}{Billie Jean King}
+% \epigraph{\emph{“Champions keep playing until they get it right.”}}{Billie Jean King}
 
 
 Las partículas producidas en cada colisión y los productos de sus decaimientos, interactúan con el detector de una manera particular según su naturaleza. La información recogida por todos los subdetectores de \ac{ATLAS} permite reconstruir e identificar los objetos físicos presentes en cada evento aceptado por el sistema de trigger (selecci\'on \textit{online}). En este cap\'itulo se describen los algoritmos de reconstrucción e identificación \textit{offline}, que se lleva a cabo una vez que los eventos han sido aceptados por el trigger y almacenados.. La reconstrucción se realiza evento por evento, utilizando los mismos algoritmos para los eventos recolectados por el detector \ac{ATLAS} y para los eventos simulados con \acf{MC}. A continuación, se da un breve resumen de la reconstrucción offline y la identificación de los objetos utilizados en esta tesis.
@@ -146,6 +146,7 @@ En general, para los fotones y electrones, no hay otra energía depositada en el
 
 A partir del aislamiento calorimétrico y de trazas se pueden definir diferentes \acp{WP} por separado tanto para electrones como para fotones. En el caso de los electrones, se definen dos estrategias: o bien conseguir una eficiencia fija, o aplicar cortes fijos en las variables de aislamiento. En el caso de los fotones, hay \acp{WP} que no utilizan ambas variables de aislamiento, como es el caso del \ac{WP} que sólo utiliza el aislamiento calorimétrico. Las definiciones de los diferentes \acp{WP} utilizados a lo largo de esta tesis se muestran en la \Tab{\ref{fig:objects:egamma:iso:iso_table}}. Además, es común definir las siguientes variables para \ac{WP} \texttt{FixedCutTight} del fotón:
 \begin{align}
+    \label{eq:objects:egamma:iso:definitions}
     \etiso &= \etconefo - 0.022 \times \et - 2.45~\gev\\
     \ptiso &= \ptconetw / \et
 \end{align}
@@ -194,6 +195,7 @@ Las variables con buen poder discriminatorio utilizadas se describen en \Refn{\c
 
 
 \section{Jets}
+\label{sec:objects:jets}
 
 Los quarks y gluones no pueden detectarse de manera aislada, sino que por un proceso denominado hadronizaci\'on, una vez producidos dan lugar a un chorro colimado de part\'iculas que se denomina \textit{jet}. Estos penetran a través del \ac{ECAL} y son totalmente absorbidos por el material del calorímetro hadrónico. A continuación, se describem los m\'etodos de reconstrucci\'on de jets utilizados en \ac{ATLAS}
 
@@ -270,6 +272,7 @@ Para reducir el número de jets con una fracción considerable de energía proce
 
 
 \section{Jets proveninentes de quarks pesados (Jets \textit{heavy flavor})}
+\label{sec:objects:ftag}
 
 Los decaimientos de hadrones pesados (de ahora en m\'as heavy-flavor) se rigen principalmente por el hadrón más pesado en la cascada de decaimiento. Un hadrón \(b\) generalmente decae en cascada a un hadrón \(c\), que a su vez decae a un hadrón \(s\), etc., lo que conduce a la existencia de múltiples vértices.
 
@@ -333,7 +336,7 @@ donde ahora los valores \(f_{b(\tau)}\) son los parámetros libres que controlan
 Gracias a la gran eficiencia de \btagging conseguida por GN2, es posible diseñar un \ac{WP} de \ctagging tras aplicar un veto de \btagging, separando aún más los \cjets de los \ljets. Construyendo este \ac{WP} de tagging simultáneo y suponiendo que la fracción de \tjets es despreciable, se pueden separar los jets \(b\), \(c\) y livianos en tres regiones ortogonales. Partiendo de exigir que un jet \textit{no} pase el \ac{WP} de \btagging de \(77\%\) de eficiencia (veto \btag), se definen tres \acp{WP} diferentes de \ctagging definidos para eficiencias de \(10, \, 30\) y \(50\%\), fijando el valor de \gntc. Las medidas de eficiencia y rechazo de las dos muestras descriptas anteriormente, tras aplicar el \ac{WP} de \ctag de \(50\%\) de eficiencia se muestran en el \Tab{\ref{tab:objects:ftag:ctag_efficiency_original}}.
 
 \begin{table}[ht!]
-    \caption{Medidas de eficiencia de \ctagging para \cjets, y valores de rechazos de \bjets, \ljets y \tjets en los regímenes de bajo y alto \pt. Los valores corresponden a aquellos luego de aplicar el veto del \ac{WP} de \btagging de \(77\%\) y de \(50\%\)  de \ctagging. \fixme{rejection values not correct!}}
+    \caption{Medidas de eficiencia de \ctagging para \cjets, y valores de rechazos de \bjets, \ljets y \tjets en los regímenes de bajo y alto \pt. Los valores corresponden a aquellos luego de aplicar el veto del \ac{WP} de \btagging de \(77\%\) y de \(50\%\)  de \ctagging.}% \fixme{rejection values not correct!}}
     \label{tab:objects:ftag:ctag_efficiency_original}
     \resizebox{\linewidth}{!}{
         \begin{tabular}{llcccc}

@@ -85,7 +85,7 @@ Since one object may be reconstructed as both an electron and a photon, an ambig
 
 In order to distinguish real photons (those coming from the collision) from background photons which have much larger production cross sections (coming from hadrons decays, also called fake photons), it is necessary to rely on a algorithm of identification with high signal efficiency and background rejection, for photon candidates with \(\pt \sim 10~\gev\) up to the \tev scale. 
 Currently, photon identification in ATLAS is based on a set of rectangular cuts on \acp{SSV} computed from the energy deposited in the cells of the cluster in the first and second layer of the \ac{ECAL}, and from the leakage to the \ac{HCAL}. These variables describe the passage of the photons through the calorimeters, characterizing the lateral and longitudinal electromagnetic showers.
-The full photon identification process is presented in \Ch{\ref{ch:pid_ss}}, where the \acp{SSV} are explained one by one. Also, \Chs{\ref{ch:ffs}}{\ref{ch:cellrw}} present two approaches to correct the differences seen in these \acp{SSV} between data and \ac{MC}.
+The full photon identification process is presented in \Ch{\ref{ch:pid_ss}}, where the \acp{SSV} are explained one by one. Also, \Ch{\ref{ch:ss_corrections}} present two approaches to correct the differences seen in these \acp{SSV} between data and \ac{MC}.
 
 
 
@@ -140,6 +140,7 @@ In general, for photons and electrons, there is no other energy deposited in the
 
 From the calorimetric and track isolation different \acp{WP} can be defined separately for both electrons and photons. For electrons, two strategies are defined: either to achieve a fixed effiicency, or to apply fixed cuts on the isolation variables. In the case of photons, there are \acp{WP} which do not use both the isolation variable, as is the case of the \texttt{FixedCutTightCaloOnly} \ac{WP}, which only uses calorimetric isolation. The definitions of the different \acp{WP} used throughout this thesis is shown in \Tab{\ref{fig:objects:egamma:iso:iso_table}}. Also, it is common to define the following variables for the photon \texttt{FixedCutTight} \ac{WP}:
 \begin{align}
+    \label{eq:objects:egamma:iso:definitions}
     \etiso &= \etconefo - 0.022 \times \et - 2.45~\gev\\
     \ptiso &= \ptconetw / \et
 \end{align}
@@ -189,12 +190,12 @@ The variables with good discriminating power used are described in \Refn{\cite{A
 
 
 \section{Jets}
-
+\label{sec:objects:jets}
 
 Due to color confinement in \ac{QCD}, a quark or gluon cannot exist on its own and goes through hadronization to form a collimated color-neutral stream of particles, \textit{jets}. Generally, jets penetrate through the \ac{ECAL} and get fully absorbed by the material in the hadronic calorimeter. In the following, a brief description of the typical clustering method adopted by \ac{ATLAS} is given. Also, the two existing types jet reconstruction are described.
 
 
-\subsection{\Antikt jet clustering algorithm}
+\subsection{\texorpdfstring{\Antikt}{Anti-kT} jet clustering algorithm}
 
 Given that jets are constituted by a high number of particles that leave energy depositiions in the \ac{ECAL} and \ac{HCAL} and tracks in the \ac{ID}, a clustering algorithm groups together constituents in the event to define the jets. Said algorithm is called the \antikt algorithm~\cite{AntiKtAlgorithm}. In the same way as for electrons and photons, \ac{ATLAS} jet reconstruction relies on the formation of \topos: grouped energy depositions in the calorimeters cells using a sequential combination algorithm. Then, the \antikt algorithm combines the \topos with the following steps:
 \begin{itemize}
@@ -274,6 +275,7 @@ To reduce the number of jets with a considerable fraction of energy coming from 
 
 
 \section{Jet flavor tagging}
+\label{sec:objects:ftag}
 
 Heavy hadrons decays are governed mainly by the heaviest hadron in the decay cascade. A \(b\)-hadron generally decays through a cascade to a \(c\)-hadron, which in turn decays to an \(s\)-hadron, etc, which leads to the existence of multiple vertices.
 
