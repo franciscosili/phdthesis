@@ -1,4 +1,4 @@
-\chapter{Estrategia del an\'alisis y tratamiento estad\'istico}
+\chapter{Estrategia general y tratamiento estadístico}
 \label{ch:strategy}
 % \epigraph{\emph{“Champions keep playing until they get it right.”}}{Billie Jean King}
 
@@ -6,58 +6,50 @@
 
 
 
+El análisis realizado para esta tesis consiste en búsquedas de nuevas partículas predichas por modelos \ac{BSM} con un fotón aislado y altamente energético en asociación con jets. La estrategia consiste en la búsqueda de excesos locales de eventos producidos por nuevas resonancias predichas por modelos exóticos \ac{BSM} (de ahora en más llamados bumps) en la masa invariante del estado final de un par de fotón+jet. Este exceso sobre las predicciones de este fondo del \ac{SM} presenta una forma de decaimiento suave, conduciendo a un escenario ideal para la aplicación de la estrategia mencionada.
+
+La investigación presentada en esta tesis está motivada, por un lado, por diferentes modelos teóricos de \acf{EQ} y de \acf{QBH} introducidos en la \Sect{\ref{sec:theory:bsm}}, y por otro, por una búsqueda genérica de resonancias de tipo gaussianas con diferentes valores de su media y desviación estándar. Este modelo proporciona una interpretación genérica para la presencia de una señal con diferentes anchos, que van desde resonancias con un ancho similar a la resolución de reconstrucción de \myj de \(\sim 2\%\) hasta resonancias amplias con un ancho de hasta el \(15\%\).
+Los modelos teóricos estudiados dependen de uno o más parámetros, como por ejemplo, la masa del \ac{EQ} y su acoplamiento a los campos del \ac{SM}. De esta forma, se construye una grilla multidimensional de parámetros, donde cada punto de la grilla representa un conjunto de valores de parámetros únicos que definen el modelo de señal. En el caso de que no se encuentre un exceso significativo sobre el fondo del \ac{SM}, se establecen límites de exclusión a los valores de la grilla, excluyendo un subconjunto de posibles parámetros de la teoría.
 
 
-El trabajo principal de esta tesis es la búsqueda de partículas exóticas que decaen en un par fotón+jet en el estado final. En este capítulo se hace una introducción a la estrategia general del análisis, enumerando los fondos, qué señales se utilizan y qu\'e tipos de ajustes se realizan. Se construye el modelo estadístico utilizado en este trabajo partiendo de una simple función de likelihood. En los próximos capítulos se ir\'an describiendo en m\'as detalle todos los aspectos del an\'alisis.
+El mayor reto en cualquier búsqueda de nueva física es la determinación precisa del fondo del \ac{SM}. Para esta búsqueda, el fondo dominante es la producción de fotones prompt. Este proceso, como se discutió en la \Sect{\ref{subsec:theory:sm:prompt_photon}}, tiene contribuciones de dos procesos, fotones directos y de fragmentación, en el que este último puede ser altamente reducido. El segundo mayor fondo surge de eventos \ac{QCD} multijet en los que uno de los jets es rico en energía \ac{EM} y se identifica erróneamente como un fotón, que incluye fundamentalmente eventos en los que un jet se fragmenta en un mesón energético \pizero, decayendo en dos fotones superpuestos que se reconstruyen como un único fotón en el detector. Finalmente, el tercer fondo, cuya contribución es despreciable, surge de procesos \ac{EW} vía la producción de \WZjet, con el bosón pesado decayendo leptónicamente y un electrón imitando a un fotón.
+
+
+La estrategia más utilizada en las búsquedas de resonancias es el modelado del fondo a partir de una función analítica. Esta función suele ser un caso particular de una familia de funciones y su selección se basa en estadísticos de prueba, siendo éste uno de los pasos más relevantes del análisis.
+Aunque el fondo se estima directamente a partir de los datos, se necesita simulaciones \ac{MC} del fondo para realizar optimizaciones en la selección de eventos y llevar a cabo los diferentes tests para seleccionar la función que mejor lo describe.
+
+Para seleccionar la función de fondo, se realizan dos tipos de ajustes: ajustes de \acf{BO} y ajustes de \acf{SB}. Los ajustes \ac{BO} se caracterizan por no incluir ninguna señal y tienen como objetivo determinar la función del fondo.
+Por otro lado, en los ajustes \ac{SB} se deja variar a la intensidad de señal (término introducido a continuación) y el número total de eventos de señal se utiliza para realizar los tests estadísticos a fin de determinar la óptima función que describa al fondo, disminuyendo el sesgo sobre la señal. En la \Sect{\ref{sec:bkg:modeling}}, se utilizan estos dos tipos de ajustes utilizando la simulación \ac{MC} para determinar las diferentes estrategias de ajuste que se utilizarán con los datos reales.
+
+Para realizar la búsqueda propiamente dicha, como primer paso se lleva a cabo un ajuste \ac{BO} y se evalúan diferentes métricas para determinar si se observa un exceso significativo sobre el \ac{SM}. En caso de que no lo haya, se realizan ajustes \ac{SB} para cada modelo de señal, con el fin de establecer límites de exclusión en los parámetros de las señales. Esto se muestra en el \Ch{\ref{ch:results}}.
 
 
 
 
 
 
-\section{Estrategia, se\~nales y fondos del \acs{SM}}
-\label{sec:strategy:strategy}
-
-El análisis realizado para esta tesis consiste en búsquedas de nuevas part\'iculas predichas por modelos \ac{BSM} con un fotón aislado, altamente energético en asociación con jets. La estrategia consiste en la b\'usqueda de excesos locales (de ahora en m\'as llamados bumps) en la masa invariante del estado final de un par de fot\'on+jet sobre las predicciones del \ac{SM}.
-Los fotones prompt en asociación con jets se producen copiosamente en el \ac{LHC}, donde el principal modo de producci\'on corresponde a la dispersión Compton quark-gluón \(qg \to q \gamma\). Al observar la masa invariante \myj del sistema \gammajet se encuentra que sigue una forma de decaimiento suave, lo que conduce a un escenario ideal para la aplicaci\'on de la estrategia mencionada.
-Las partículas exóticas que se buscan corresponden a resonancias que decaen en un fotón y un jet, lo que lleva a un bump en la distribución \myj sobre la predicción del \ac{SM}.
-
-En esta búsqueda se consideran distintos modelos de te\'oricos. El primer modelo se basa en distribuciones de masa genéricas de forma gaussiana, con diferentes valores de su media y desviación estándar. Este modelo proporciona una interpretación genérica para la presencia de una señal con diferentes anchos, que van desde resonancias con un ancho similar a la resolución de reconstrucci\'on de \myj de \(\sim 2\%\) hasta resonancias amplias con un ancho de hasta el \(15\%\).
-En segundo lugar, se estudian los modelos teóricos de \acf{EQ} y \acf{QBH} introducidos en la \Sect{\ref{sec:theory:bsm}}. Los modelos te\'oricos considerados dependen de uno o más parámetros, como por ejemplo, la masa del \ac{EQ} y su acoplamiento a los campos del \ac{SM}. De esta forma, se construye una grilla multidimensional de parámetros, donde cada punto de la grilla representa un conjunto de valores de parámetros únicos que definen el modelo de señal. En el caso de que no se encuentre un exceso significativo sobre el fondo suave del \ac{SM}, se establecen límites de exclusión a los valores de la grilla, excluyendo un subconjunto de posibles parámetros de la teoría.
-
-
-El mayor reto en cualquier búsqueda de nueva física es la excelente comprensión del fondo del \ac{SM}. Para esta búsqueda, el fondo dominante es la producción de fotones prompt. Este proceso, como se discute en la \Sect{\ref{subsec:theory:sm:prompt_photon}}, tiene contribuciones de dos procesos separados, fotones directos y de fragmentación, en el que este último puede ser altamente reducido. El segundo mayor fondo surge de eventos \ac{QCD} multijet, en los que uno de los jets es rico en energía \ac{EM} y se identifica erróneamente como un fotón. Este fondo también incluye eventos en los que un jet se fragmenta en un mesón energético \pizero o \(\eta\), decayendo en dos fotones superpuestos que se reconstruyen como un único fotón en el detector. Finalmente, el tercer fondo, aunque no se considera ya que su contribución es casi despreciable, surge de procesos \ac{EW} vía la producción de \WZjet, con el bosón pesado decayendo leptónicamente y un electrón imitando a un fotón.
-
-
-En las búsquedas de resonancia el fondo es modelado a partir de una funci\'on anal\'itica.. Esta función suele ser un caso particular de una familia de funciones, y su selección se basa en varios tests estadísticos, siendo éste uno de los pasos más cruciales del análisis.
-% En las búsquedas de resonancia es habitual modelar el fondo utilizando una forma funcional. Esta función suele ser un caso particular de una familia de funciones, y su selección se basa en varios tests estadísticos, siendo éste uno de los pasos más cruciales del análisis.
-Aunque el fondo se estima directamente a partir de los datos, simulaciones \ac{MC} del fondo son necesarias para realizar optimizaciones en la selección de eventos y llevar a cabo los diferentes tests para seleccionar la función que mejor lo describe, y as\'i evitar un sesgo introducido por los datos introducido por los datos.
-
-
-\section{Tratamiento estad\'istico}
+\section{Tratamiento estadístico}
 \label{sec:strategy:stat_treatment}
 
 
 
 
-
-
-\subsection{Modelo estad\'istico}
+\subsection{Modelo estadístico}
 \label{subsec:strategy:stat_treatment:stat_model}
 
-Los ajustes de los espectros de \myj se realizan por separado para cada región de señal del análisis (las cuales se discutir\'an m\'as adelante), utilizando un método de maximum likelihood. La definición de la función de likelihood se da paso a paso a continuación. La base es un experimento de conteo en cada bin utilizando probabilidades poissonianas:
+Los ajustes de los espectros de \myj se realizan por separado para cada región de señal del análisis (las cuales se discutirán más adelante), utilizando un método de maximum likelihood a partir de considerar un experimento de conteo en cada bin utilizando probabilidades poissonianas. El likelihood queda expresado como:
 \begin{equation}
     \mathcal{L} = 
     \prod_{i=1}^{N_{\text{bins}}} \text{Pois}\left(N_i | \mu s_i + b_i\right) = 
     \prod_{i=1}^{N_{\text{bins}}} \frac{\left( \mu s_i + b_i \right)^{N_i}}{N_i !} e^{-\left( \mu s_i + b_i \right)},
 \end{equation}
-donde \(N_i\) es el número de eventos de datos medidos en el bin \(i\), y \(s_i\) y \(b_i\) son los n\'umeros de eventos esperados de señal y fondo, estimados a partir de la simulación \ac{MC} y el ajuste funcional, respectivamente. El parámetro \(\mu\) se denomina intensidad de la señal y es un factor de escala común en todos los bines. Uno de los objetivos del ajuste es la determinación de este parámetro, que en el caso de este an\'alisis es el \ac{POI}.
+donde \(N_i\) es el número de eventos de datos medidos en el bin \(i\), y \(s_i\) y \(b_i\) son los números de eventos esperados de señal y fondo, estimados a partir de la simulación \ac{MC} y el ajuste funcional, respectivamente. El parámetro \(\mu\) se denomina intensidad de la señal y es un factor de escala común en todos los bines. Uno de los objetivos del ajuste es la determinación de este parámetro, que en el caso de este análisis es el \ac{POI}.
 
-En el caso de un fondo parametrizado, \(b_i\) podría reescribirse como \(b_i = N_b f_b\left(x, \mathbf{\theta}\right)\), donde \(x\) representa el observable (\myj en el caso de este análisis), \(f_b\) es la función de parametrización del fondo, que depende de los parámetros \(\mathbf{\theta}\) que describen la forma de la función (que comprenden los par\'ametros nuisance, \acs{NP}\acused{NP}), y \(N_b\) es la normalización total del fondo, otro \ac{NP}. La función de likelihood queda entonces
+En el caso de un fondo parametrizado, \(b_i\) podría reescribirse como \(b_i = f_b\left(x, \mathbf{\theta}\right)\), donde \(x\) representa el observable (\myj en el caso de este análisis), \(f_b\) es la función de parametrización del fondo, que depende de los parámetros \(\mathbf{\theta}\) que describen la forma de la función. La función de likelihood queda entonces
 \begin{equation}
     \label{eq:strategy:stat_treatment:stat_model:likelihood}
     \mathcal{L} = 
-    \prod_{i=1}^{N_{\text{bins}}} \frac{\left( \mu s_i + N_b f_b \left(x, \mathbf{\theta}\right) \right)^{N_i}}{N_i !} e^{-\left( \mu s_i + N_b f_b \left(x, \vec{\theta}\right) \right)}.
+    \prod_{i=1}^{N_{\text{bins}}} \frac{\left( \mu s_i + f_b \left(x, \mathbf{\theta}\right) \right)^{N_i}}{N_i !} e^{-\left( \mu s_i + f_b \left(x, \vec{\theta}\right) \right)}.
 \end{equation}
 
 El número de eventos de señal en el bin \(i\) viene dado por el producto de la \ac{PDF2} de señal \(f_s^i(x)\), la sección eficaz por \textit{branching ratio} \(\sigma_s \times \text{Br}\), la luminosidad total integrada \(L\) y la aceptancia de la señal por la eficiencia \(A \times \varepsilon\). Entonces, el término de señal puede reescribirse como
@@ -69,14 +61,14 @@ El caso especial cuando \(\mu = 0\) corresponde a una hipótesis de sólo fondo.
 
 
 
-\subsection{Integraci\'on de incertezas sistem\'aticas}
+\subsection{Integración de incertezas sistemáticas}
 \label{subsec:strategy:stat_treatment:systs}
 
-Las incertezas sistemáticas se parametrizan como un conjunto de \acp{NP} \(\mathbf{\theta}\) que modifican el n\'umero total de eventos esperados de señal y fondo, es decir, \(\{s_i, b_i\} \to \{s_i(\mathbf{\theta}), b_i(\mathbf{\theta})\}\). Se implementan en el likelihood agregando un t\'ermino al likelihood de
+Las incertezas sistemáticas se parametrizan como un conjunto de parámetros nuisance (\acused{NP}\acp{NP}) \(\mathbf{\theta}\) que modifican el número total de eventos esperados de señal y fondo, es decir, \(\{s_i, b_i\} \to \{s_i(\mathbf{\theta}), b_i(\mathbf{\theta})\}\). Se implementan agregando un término al likelihood:
 \begin{equation}
     \prod_{k} G_k(0 | \theta_k, 1),
 \end{equation}
-donde \(G_k\) son las \acp{PDF2} de los \acp{NP}, y \(k\) abarca todas las variaciones sistemáticas. Además, el parámetro correspondiente se multiplica por un factor de
+donde \(G_k\) son las \acp{PDF2} de los \acp{NP}, y \(k\) abarca todas las variaciones sistemáticas. Además, el parámetro correspondiente se multiplica por un factor
 \begin{equation}
     1 + \theta_k \delta_k
 \end{equation}
@@ -86,16 +78,16 @@ para el caso de funciones de respuesta gaussianas, y
 \end{equation}
 para las funciones de respuesta log-normal.
 
-Dado que la función de fondo se selecciona de forma arbritraria, pero sometiéndola a diferentes pruebas estadísticas, se añade una incerteza sistemática especial para tener esto en cuenta, denominada \acf{SSig}. La \ac{SSig} se calcula en la \Sect{\ref{subsubsec:bkg:modeling:sigbkg:sstest}}, y se implementa en el modelo estadístico añadiendo un término más al número total de eventos:
+Dado que la función de fondo se selecciona de forma arbritraria, pero sometiéndola a diferentes pruebas estadísticas, se añade una incerteza sistemática adicional para tener esto en cuenta, denominada \acf{SSig}. La \ac{SSig} se calcula en la \Sect{\ref{subsubsec:bkg:modeling:sigbkg:sstest}}, y se implementa en el modelo estadístico añadiendo un término más al número total de eventos:
 \begin{equation}
-    \mu s_i + N_b f_b \to \mu s_i + \sigma_{\text{spur}, i} \theta_{\text{spur}} + N_b f_b.
+    \mu s_i + f_b \to \mu s_i + \sigma_{\text{spur}, i} \theta_{\text{spur}} + f_b.
 \end{equation}
 \(\sigma_{\text{spur}}\) representa el número de eventos espurios en el bin \(i\) de la distribución que sigue la misma \ac{PDF2} que la señal, y \(\theta_{\text{spur}}\) es el \ac{NP} asociado a esta otra fuente de señal.
 
-\subsection{Ajustes simult\'aneos}
+\subsection{Ajustes simultáneos}
 \label{subsec:strategy:stat_treatment:simult_fits}
 
-Es útil discutir también el procedimiento para hacer ajustes simultáneos en diferentes distribuciones de \myj. Estos ajustes simultáneos prueban el mismo modelo de señal con la misma intensidad de señal \(\mu\) en diferentes regiones. El likelihood total es simplemente el producto de los likelihoodes individuales dados por la \Eqn{\ref{eq:strategy:stat_treatment:stat_model:likelihood}}, y se escribe como:
+Es útil discutir en este punto el procedimiento para hacer ajustes simultáneos en diferentes distribuciones de \myj. Estos ajustes simultáneos prueban el mismo modelo de señal con la misma intensidad de señal \(\mu\) en diferentes regiones. El likelihood total es entonces el producto de los likelihood individuales dados por la \Eqn{\ref{eq:strategy:stat_treatment:stat_model:likelihood}}, y se escribe como:
 \begin{align}
     \mathcal{L}_{\text{total}} =& \prod_{c\in \text{categories}} \mathcal{L}_c\\
     =& \prod_{c\in \text{categories}} \left[
@@ -103,7 +95,7 @@ Es útil discutir también el procedimiento para hacer ajustes simultáneos en d
     \right]
 \end{align}
 
-La implementación de las incertezas sistemáticas sigue la misma metodolog\'ia que la explicada anteriormente. Adem\'as, los sistemáticos experimentales que sólo afectan a la señal están correlacionadas al 100\% entre las regiones de señal. Por otro lado, cada región de señal tiene su propia incerteza de \ac{SS}, ya que está asociada a una función de fondo y un rango de ajuste diferentes\footnote{Como se discutir\'a en el \Ch{\ref{ch:bkg}}, hay diferentes regiones de señal en el análisis y para cada una se selecciona una forma funcional diferente.}.
+La implementación de las incertezas sistemáticas sigue la misma metodología que la explicada anteriormente. Además, los sistemáticos experimentales que sólo afectan a la señal están correlacionadas al 100\% entre las regiones de señal. Por otro lado, cada región de señal tiene su propia incerteza de \ac{SS}, ya que está asociada a una función de fondo y un rango de ajuste diferentes\footnote{Como se discutirá en el \Ch{\ref{ch:bkg}}, hay diferentes regiones de señal en el análisis y para cada una se selecciona una forma funcional diferente.}.
 
 
 
@@ -112,12 +104,12 @@ La implementación de las incertezas sistemáticas sigue la misma metodolog\'ia 
 
 
 
-\subsection{Tests de hip\'otesis}
+\subsection{Tests de hipótesis}
 \label{subsec:strategy:stat_treatment:hypo_test}
 
-El objetivo de una búsqueda como la presentada en esta tesis es poder especificar cu\'an buena es la concordancia entre los datos observados y una hipótesis dada, que típicamente es la hipótesis \enquote{nula}, \ac{BO}, o \enquote{0-se\~nal} (\(H_0\)). Se podría probar la consistencia de los datos con cualquier hipótesis, pero se suele elegir \(H_0\) porque normalmente se puede afirmar un descubrimiento estableciendo que los datos son inconsistentes con la teoría \enquote{est\'andar}, sin tener que demostrar que son consistentes con alguna teoría alternativa. Una vez establecida la inconsistencia con \(H_0\), se pueden probar varias hipótesis alternativas de señal para caracterizar el descubrimiento, denotadas \(H_1\). Para distinguir entre estas teorías se utiliza el parámetro \(\mu\), que es 0 para \(H_0\) y 1 para el caso de la señal nominal, indicando la hip\'otesis \(H_1\).
+El objetivo de una búsqueda como la presentada en esta tesis es poder especificar cuán buena es la concordancia entre los datos observados y una hipótesis dada, que típicamente es la hipótesis \enquote{nula}, \ac{BO}, o \enquote{0-señal} (\(H_0\)). Se podría probar la consistencia de los datos con cualquier hipótesis, pero se suele elegir \(H_0\) porque normalmente se puede afirmar un descubrimiento estableciendo que los datos son inconsistentes con la teoría \enquote{estándar}. Una vez establecida la inconsistencia con \(H_0\), se pueden probar varias hipótesis alternativas de señal para caracterizar el descubrimiento, denotadas \(H_1\). Para distinguir entre estas teorías se utiliza el parámetro \(\mu\), que es 0 para \(H_0\) y 1 para el caso de la señal nominal, indicando la hipótesis \(H_1\).
 
-Al comparar los datos con las hipótesis, sus diferencias se cuantifican mediante un único número, denominado \enquote{estad\'istico de prueba}, y son funciones que dependen de los datos. Por lo tanto, para cada estadístico de prueba hay una \ac{PDF2} asociada.
+Al comparar los datos con las hipótesis, sus diferencias se pueden cuantificar mediante un \enquote{estadístico de prueba} que son funciones que dependen de los datos. Por lo tanto, para cada estadístico de prueba hay una \ac{PDF2} asociada.
 
 Para probar un valor hipotético de \(\mu\), se considera el siguiente cociente:
 \begin{equation}
@@ -128,7 +120,7 @@ Para probar un valor hipotético de \(\mu\), se considera el siguiente cociente:
         \mathcal{L} \left(\hat{\mu}, \hat{\bm{\theta}}\right)
     }.
 \end{equation}
-El numerador de esta relación se denomina como la funci\'on \textit{profile likelihood}. La cantidad \(\hat{\hat{\bm{\theta}}}\) denota el valor de \(\bm{\theta}\) que maximiza \(\mathcal{L}\) para el \(\mu\) especificado. El denominador es la función de máximo likelihood, es decir, \(\hat{\mu}\) y \(\hat{\bm{\theta}}\) son sus estimadores de likelihood máximo.
+El numerador de esta relación se denomina como la función \textit{profile likelihood}. La cantidad \(\hat{\hat{\bm{\theta}}}\) denota el valor de \(\bm{\theta}\) que maximiza \(\mathcal{L}\) para el \(\mu\) especificado. El denominador es la función de máximo likelihood, es decir, \(\hat{\mu}\) y \(\hat{\bm{\theta}}\) son sus estimadores de likelihood máximo.
 De la \Eqn{\ref{eq:strategy:stat_treatment:hypo_test:lambdamu}}, es posible ver que \(0 \leq \lambda \leq 1\), y cuando \(\lambda \ra 1\), esto implica un buen acuerdo entre los datos y el valor hipotético de \(\mu\).
 Es conveniente definir el estadístico de prueba \qmu como
 \begin{equation}
@@ -138,12 +130,12 @@ Es conveniente definir el estadístico de prueba \qmu como
 de forma que un buen acuerdo se ve cuando \(\qmu \ra 0\), mientras que valores altos de \(\qmu\) indican desacuerdo entre los datos y el valor hipotético de \(\mu\).
 
 
-Para medir la discrepancia entre los datos y la hipótesis \(H\), es decir, la probabilidad bajo la suposici\'on de que \(H\) es cierta, de observar datos de igual o menor compatibilidad con la predicci\'on de \(H\) respecto a los datos observados, se define mediante el \pval \(p_{\mu}\):
+Para medir la discrepancia entre los datos y la hipótesis \(H\), es decir, la probabilidad bajo la suposición de que \(H\) es cierta, de observar datos de igual o menor compatibilidad con la predicción de \(H\) respecto a los datos observados, se define mediante el \pval \(p_{\mu}\):
 \begin{equation}
     p_{\mu} = P \left( \qmu > q_{\mu, \text{obs}} \right) = \int_{q_{\mu, \text{obs}}}^{\infty} f \left(\qmu | H\right) \dd{\qmu},
 \end{equation}
 donde \(q_{\mu, \text{obs}}\) es el valor del estadístico de prueba observado a partir de los datos, y \(f\left(\qmu | H\right)\) es la \ac{PDF2} de \qmu bajo la hipótesis \(H\). Un \pval pequeño significa que la hipótesis no concuerda con los datos y, por tanto, se excluye \(H\) cuando el \pval es inferior a un valor definido \(\alpha\).
-Es habitual convertir el \pval en una significancia \(Z\), definida de tal forma que una variable con distribución normal tenga una probabilidad igual a ese \pval de ser encontrada a m\'as de \(Z\) desviaciones est\'andar por encima de su media:
+Es habitual convertir el \pval en una significancia \(Z\), definida de tal forma que una variable con distribución normal tenga una probabilidad igual a ese \pval de ser encontrada a más de \(Z\) desviaciones estándar por encima de su media:
 \begin{equation}
     Z = \Phi^{-1} \left(1 - p_{\mu}\right).
 \end{equation}
@@ -186,7 +178,7 @@ Cuando el \pval obtenido es superior al límite definido para un descubrimiento,
         0 & \qif \hat{\mu} \geq \mu\\
     \end{cases}.
 \end{equation}
-La razón de poner \(\qmu = 0\) en lugar de \(\hat{\mu} > \mu\) es que, al establecer un límite superior, no se considera que los datos con \(\hat{\mu} > \mu\) representen una menor compatibilidad con \(\mu\) que los datos obtenidos, y por lo tanto no se toman como parte de la región de rechazo de la prueba. Es decir, el límite superior se obtiene contrastando \(\mu\) con la hipótesis alternativa consistente con valores inferiores de \(\mu\). De la definición del estadístico de prueba se desprende que los valores más altos de \qmu representan una mayor incompatibilidad entre los datos y el valor hipotético de \(\mu\). Debe tenerse en cuenta que \(q_0\) no es simplemente un caso especial de \qmu con \(\mu = 0\), sino que tiene una definición diferente. Esto es, \(q_0\) es cero si los datos fluctúan para abajo (\(\hat{\mu} < 0\)), pero \qmu es cero si los datos fluctúan hacia arriba (\(\hat{\mu} > \mu\)).
+La razón de poner \(\qmu = 0\) cuando \(\hat{\mu} > \mu\) es que, al establecer un límite superior, no se considera que los datos con \(\hat{\mu} > \mu\) representen una menor compatibilidad con \(\mu\) que los datos obtenidos, y por lo tanto no se toman como parte de la región de rechazo de la prueba. Es decir, el límite superior se obtiene contrastando \(\mu\) con la hipótesis alternativa consistente con valores inferiores de \(\mu\). De la definición del estadístico de prueba se desprende que los valores más altos de \qmu representan una mayor incompatibilidad entre los datos y el valor hipotético de \(\mu\). Debe tenerse en cuenta que \(q_0\) no es simplemente un caso especial de \qmu con \(\mu = 0\), sino que tiene una definición diferente. Esto es, \(q_0\) es cero si los datos fluctúan para abajo (\(\hat{\mu} < 0\)), pero \qmu es cero si los datos fluctúan hacia arriba (\(\hat{\mu} > \mu\)).
 
 Con este estadístico de prueba se pretende encontrar el \(\mu\) más alto en el que la hipótesis \ac{SB} ya no es compatible con los datos. Para ello, se define el siguiente \ac{CL}:
 \begin{equation}
@@ -206,7 +198,7 @@ siendo \(f \left(\qmu | \mu\right)\) la \ac{PDF2} del estadístico de prueba \qm
 \label{subsec:strategy:stat_treatment:bh}
 
 
-El algoritmo de \bh~\cite{BumpHunter,pyBumpHunter} constituye un hipertest que combina el resultado de muchas pruebas de hipótesis individuales en un único estadístico de prueba. Recorre todas las ventanas posibles de bines adyacentes en el espectro donde se busca el bump, empezando con ventanas de un bin y aumentando su ancho hasta un umbral superior configurable (normalmente la mitad del rango total del ajuste). En cada una de estas ventanas, el número de eventos observados \(N_d\) y el n\'umero de eventos de fondo estimados \(N_b\) se suman como si la ventana fuera un único bin:
+El algoritmo de \bh~\cite{BumpHunter,pyBumpHunter} constituye un hipertest que combina el resultado de muchas pruebas de hipótesis individuales en un único estadístico de prueba. Recorre todas las ventanas posibles de bines adyacentes en el espectro donde se busca el bump, empezando con ventanas de un bin y aumentando su ancho hasta un umbral superior configurable (normalmente la mitad del rango total del ajuste). En cada una de estas ventanas, el número de eventos observados \(N_d\) y el número de eventos de fondo estimados \(N_b\) se suman como si la ventana fuera un único bin:
 \begin{align}
     N_d &= \sum_{ \substack{ \text{bins \(i\)} \\ \text{in window} } } N_d^i\\
     N_b &= \sum_{ \substack{ \text{bins \(i\)} \\ \text{in window} } } N_b^i
@@ -238,14 +230,3 @@ que identifica el exceso más significativo de todas las ventanas consideradas. 
 Debe tenerse en cuenta que, con esta definición, el \pval global puede ser superior a 0.5, produciendo una significancia global negativa. En este caso, este valor negativo no debe interpretarse como un déficit en los datos, sino como una desviación menos significativa que la desviación media observada en las distribuciones de los toys de \ac{BO}.
 
 De este modo, \(p(\text{BH})\) sigue por definición una distribución uniforme entre 0 y 1 si los excesos sobre la estimación de fondo se deben únicamente a fluctuaciones estadísticas. Notar, por ejemplo, que \(p(\text{BH}) < 0.05\) significa entonces que menos del 5\% de los toys similares al fondo presentan un exceso mayor que el más significativo en los datos. Esta observación puede interpretarse como una prueba de la existencia de una resonancia que provoca una desviación de los datos respecto a lo esperado por el fondo.
-
-
-\section{Ajustes y resultados}
-\label{sec:strategy:stat_treatment:fits_results}
-
-A partir de la \Eqn{\ref{eq:strategy:stat_treatment:stat_model:likelihood}}, se pueden realizar diferentes tipos de ajustes a la distribución de fondo, dependiendo de las regiones utilizadas y de si se incluyen o no muestras de señal.
-
-Para seleccionar la función de fondo, se realizan los ajustes \ac{BO} y \ac{SB}. Los ajustes \ac{BO} se caracterizan por no incluir ninguna señal, por lo que el parámetro de intensidad de señal \(\mu\) se fija en cero, y se obtiene la función de fondo. En los ajustes \ac{SB}, se deja variar a \(\mu\) y el n\'umero total de eventos de señal se utilizan para realizar los tests estad\'isticos. En la \Sect{\ref{sec:bkg:modeling}}, se utilizan estos dos tipos de ajustes utilizando la simulación \ac{MC} para determinar las diferentes estrategias de ajuste que se utilizarán con los datos reales.
-
-
-Para realizar la búsqueda propiamente dicha, como primer paso se lleva a cabo un ajuste \ac{BO} y se evalúan diferentes métricas para determinar si se observa un exceso significativo sobre el \ac{SM}. En caso de que no lo haya, se realizan ajustes \ac{SB} para cada modelo de señal, con el fin de establecer límites de exclusión en los par\'ametros de las señales. Esto se muestra en el \Ch{\ref{ch:results}}.
