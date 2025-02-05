@@ -1,6 +1,6 @@
 \chapter{Correcciones de las Shower Shapes}
 \label{ch:ss_corrections}
-% \epigraph{\emph{“Champions keep playing until they get it right.”}}{Billie Jean King}
+\epigraph{\emph{``Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less.”}}{Marie Curie}
 
 
 En el capítulo anterior se vio que los \acp{SF} (cociente entre las eficiencias de los datos y las obtenidas a partir de la simulación \ac{MC}) se desvían de la unidad, lo que se origina en las diferencias de las \acfp{SS}. Desde el Run-1, estas se han corregido con los \acfp{FF}, que se calculaban como simples desplazamientos a las distribuciones \ac{MC} proporcionando muy buenas mejoras de los \acp{SF}. Sin embargo, siguen habiendo discrepancias entre las distribuciones.
@@ -103,7 +103,7 @@ donde \(x_{\text{old}}\) y \(x\) representan el valor original y el valor post-c
 \subsubsection{Correcciones \textit{shift+stretch}}
 
 Se observó que incluso después de aplicar correcciones de shift a las \acp{SS} de \ac{MC}, continuaban existiendo diferencias en las formas de las mismas y, en algunos casos, éstas pueden ser bastante sustanciales. 
-En el contexto de esta tesis se propuso continuar mejorando las distribuciones introduciendo una corrección de orden superior a las simulaciones \ac{MC}, denominada \textit{stretching}. Las dos correcciones, actuando en conjunto, son denominadas como correcciones shift+stretch (o desplazamiento+estiramiento), que pretenden corregir simultáneamente el valor medio y los anchos de las distribuciones de \ac{MC}.
+En el contexto de esta tesis se propuso continuar mejorando las distribuciones introduciendo una corrección de orden superior a las simulaciones \ac{MC}, denominada \textit{stretching}. Las dos correcciones, actuando en conjunto, son denominadas como correcciones shift+stretch (o desplazamiento+estiramiento), que pretenden corregir simultáneamente el valor medio y los anchos de las distribuciones de \ac{MC}, presentadas en la \Refn{\cite{ATLAS-QT-Sili}}.
 
 El método de corrección shift+stretch empieza por encontrar el máximo de la \ac{PDF2} de \ac{MC}. Posteriormente, la \ac{PDF2} se estira alrededor del máximo calculando la nueva posición de cada bin por el producto \(\text{stretch}\times (x - \text{stretch point})\), donde \(x\) es el centro del bin en cuestión. De este modo, el centro de cada bin conserva la distancia inicial al centro de la distribución, multiplicada por el factor de stretch. En el escenario en el que el stretch es \(>1\), puede haber casos en los que sea lo suficientemente grande como para dar lugar a bines vacíos. El contenido de estos bines vacíos se interpola linealmente a partir de los bines vecinos distintos de cero.
 Una vez \textit{estirada} la \ac{PDF2}, se desplaza a izquierda y derecha siguiendo el mismo procedimiento que para el caso de shift-only, calculando los valores \chisq para cada \(\text{shift}_i\) después de aplicar el \(\text{stretch}_j\). Como resultado de este procedimiento, ahora se obtiene una grilla bidimensional de valores de \chisq en el plano de shift-stretch. El par shift-stretch se obtiene del centro del bin mínimo y comprende ahora los \acp{FF}. Las correcciones pueden ser aplicadas a cada \ac{SS} \(x\), evento a evento, como:
@@ -359,7 +359,7 @@ Aunque el método de \ac{FF} descripto anteriormente condujo a una excelente mej
 El enfoque de corregir las energías de las celdas del \ac{ECAL} se ha desarrollado y probado inicialmente para electrones~\cite{thesis_khandoga} y posteriormente para fotones~\cite{thesis_belfkir}. Para el caso de los electrones, los resultados han sido muy prometedores ya que se corrigieron sustancialmente las \acp{SS} de la segunda capa del calorímetro. Sin embargo, para fotones, el mismo método que se utilizó para los electrones no funcionó de la forma que se esperaba ya que sólo permitió corregir las energías en promedio.
 % Otro enfoque para corregir la simulación se basó en hacer coincidir eventos de datos y eventos simulados, estudio que sólo fue probado pseudodatos y resulta técnicamente complicado, pero que condujo a mejores resultados~\cite{thesis_belfkir}.
 
-En la presente sección se estudia una nueva forma de corregir las energías de las celdas en \ac{MC}. Por simplicidad, en una primera etapa, se estudió solo la segunda capa del \ac{ECAL}. El método tiene similitudes con el método \ac{FF} lo que además facilita su comprensión.
+En la presente sección se estudia una nueva forma de corregir las energías de las celdas en \ac{MC}~\cite{ATLAS-QT-Sili}. Por simplicidad, en una primera etapa, se estudió solo la segunda capa del \ac{ECAL}. El método tiene similitudes con el método \ac{FF} lo que además facilita su comprensión.
 % En primer lugar, se presenta la selección de eventos especiales utilizada para este estudio. Se discute brevemente el método de corrección de energías utilizado por los primeros estudios basados en electrones y fotones, y luego se presenta en detalle cómo se mejora este método.
 
 
