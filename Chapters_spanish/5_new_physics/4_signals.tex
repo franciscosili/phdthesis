@@ -23,7 +23,7 @@ También se estudian las incertezas sistemáticas teóricas y experimentales, ya
 \label{sec:signals:modeling}
 
 Las señales son simuladas a partir de \ac{MC} para obtener tanto la forma de la masa invariante como sus eficiencias y aceptancias. Sin embargo, estas señales se generan en un conjunto limitado de masas (y acoplamientos en el caso de señales \acp{EQ}) pero, idealmente, se desea evaluar las predicciones de señal para todos los valores posibles de los parámetros.
-Para lograr esta interpolación se sigue un procedimiento de dos pasos. En primer lugar, se transforman los histogramas en \acp{PDF2} utiizando el algoritmo \ac{KDE}. Este proceso de transformar un histograma en una \ac{PDF2} se empleó en el cálculo de los \acp{FF}, en la \Sect{\ref{subsec:ss_corrections:ffs:calculation}}, pero con el propósito de suavizar los histogramas.
+Para lograr esta interpolación se sigue un procedimiento de dos pasos. En primer lugar, se transforman los histogramas en \acp{PDF2} utilizando el algoritmo \ac{KDE}. Este proceso de transformar un histograma en una \ac{PDF2} se empleó en el cálculo de los \acp{FF}, en la \Sect{\ref{subsec:ss_corrections:ffs:calculation}}, pero con el propósito de suavizar los histogramas.
 % En este caso, el algoritmo \ac{KDE} se utiliza para recuperar una \ac{PDF2} a partir del histograma de la señal.
 
 
@@ -41,7 +41,7 @@ Para lograr esta interpolación se sigue un procedimiento de dos pasos. En prime
         \caption{\cstar con \(\mc = 1000~\gev,\, f=1.0\)}
         \label{fig:signals:modeling:fine_factor_optimization_cstar}
     \end{subfigure}
-    \caption{Optimización de los fine-factors para señales de \acp{EQ} \qstar y \cstar. Los puntos representan la distribución original y las líneas de colores las distintas \acp{PDF2} estimadas con el m\'etodo \ac{KDE}.}
+    \caption{Optimización de los fine-factors para señales de \acp{EQ} \qstar y \cstar. Los puntos representan la distribución original y las líneas de colores las distintas \acp{PDF2} estimadas con el método \ac{KDE}.}
     \label{fig:signals:modeling:fine_factor_optimization}
 \end{figure}
 
@@ -54,7 +54,7 @@ En la \Fig{\ref{fig:signals:modeling:final_interpolation}} se muestran las seña
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.6\linewidth]{5_resonances/signal/can__qstar__q_1p00__coupling_interpolation}
-    \caption{Ilustración del m\'etodo de interpolación de momentos para la interpolación de las distribuciones de \myj de señale. Las \acp{PDF2} originales se muestran con las líneas de sólidas de distintos colores, mientras que todas las \acp{PDF2} interpoladas están representadas por las líneas discontinuas rojas.}
+    \caption{Ilustración del método de interpolación de momentos para la interpolación de las distribuciones de \myj de señale. Las \acp{PDF2} originales se muestran con las líneas de sólidas de distintos colores, mientras que todas las \acp{PDF2} interpoladas están representadas por las líneas discontinuas rojas.}
     \label{fig:signals:modeling:final_interpolation}
 \end{figure}
 
@@ -86,7 +86,7 @@ La selección de eventos descripta en el capítulo anterior tiene por objetivo r
 
 \begin{table}[ht!]
     \centering
-    \caption{Significancias de señales de \acp{EQ} sobre el fondo total en las regiones de señal SR, SRB, SRC y SRL. Las señales consideradas para cada sabor tienen un valor de la constante de acomplamiento de \(f=1.0\).}
+    \caption{Significancias de señales de \acp{EQ} sobre el fondo total en las regiones de señal SR, SRB, SRC y SRL. Las señales consideradas para cada sabor tienen un valor de la constante de acoplamiento de \(f=1.0\).}
     \begin{subtable}[t]{\linewidth}
         \centering
         \caption{\(m = 2000~\gev\) en una ventana de \(1000<\myj<3000~\gev\)}
@@ -132,7 +132,7 @@ La selección de eventos descripta en el capítulo anterior tiene por objetivo r
 \end{table}
 
 
-En la \Tab{\ref{tab:signals:acc_eff:qstar_signficances}}, se muestran el número de eventos para cada fondo considerado\footnote{El fondo de jets falseando fotones se estudia en el \Ch{\ref{ch:bkg}}.} y el número de eventos de señal en cada una de las SR, para dos señales de referencia. Las regiones de señal en las tablas, sin embargo, tienen un corte adicional en \myj de forma que sólo se cubre una ventana de \(2000~\gev\) alrededor de la señal hipotética. Por ejemplo, para señales con una masa hipotética de \(2000~\gev\), se seleccionan eventos con \(1000 \leq \myj \leq 3000~\gev\). Las señales mostradas corresponden a los tres tres sabores considerados. Para cada señal, como se puede apreciar, se muestra tambien la significancia de la misma según
+En la \Tab{\ref{tab:signals:acc_eff:qstar_signficances}}, se muestran el número de eventos para cada fondo considerado\footnote{El fondo de jets falseando fotones se estudia en el \Ch{\ref{ch:bkg}}.} y el número de eventos de señal en cada una de las SR, para dos señales de referencia. Las regiones de señal en las tablas, sin embargo, tienen un corte adicional en \myj de forma que sólo se cubre una ventana de \(2000~\gev\) alrededor de la señal hipotética. Por ejemplo, para señales con una masa hipotética de \(2000~\gev\), se seleccionan eventos con \(1000 \leq \myj \leq 3000~\gev\). Las señales mostradas corresponden a los tres tres sabores considerados. Para cada señal, como se puede apreciar, se muestra también la significancia de la misma según
 \begin{equation}
     Z =
     \sqrt{
@@ -169,7 +169,7 @@ y \(N^{\text{reco/ID}}_{\text{pass}}\) es el número de eventos que superan todo
 
 \begin{table}[ht!]
     \centering
-    \caption{Medidas de aceptancias para las dos señales de referencia de \qstar con \(f = 1.0\). En la tabla, \(\varepsilon_{\text{abs}}\) hace referencia a la eficiencia absoluta de cada corte por separado, mmientras que \(\varepsilon_{\text{rel}}\) denota la eficiencia relativa de cada corte, es decir, la fracción de eventos que pasa un corte con respecto al n\'umero de eventos que pasó el corte anterior.}
+    \caption{Medidas de aceptancias para las dos señales de referencia de \qstar con \(f = 1.0\). En la tabla, \(\varepsilon_{\text{abs}}\) hace referencia a la eficiencia absoluta de cada corte por separado, mientras que \(\varepsilon_{\text{rel}}\) denota la eficiencia relativa de cada corte, es decir, la fracción de eventos que pasa un corte con respecto al n\'umero de eventos que pasó el corte anterior.}
     \resizebox{\columnwidth}{!}{
         \begin{tabular}{lrrrrrr}
             \toprule
@@ -225,14 +225,14 @@ y \(N^{\text{reco/ID}}_{\text{pass}}\) es el número de eventos que superan todo
 La \Tab{\ref{tab:signals:acc_eff:acceptances}} muestra la aceptancia medida para dos señales de \ac{EQ} de referencia con masa diferente, y se muestran todos los valores de aceptancia en la \Fig{\ref{fig:signals:acc_eff:acceptances:qstar}}, para cada sabor y con acoplamiento \(f=1\). Los mismos resultados para las señales de \ac{QBH} se presentan en la \Fig{\ref{fig:signals:acc_eff:acceptances:qbh}}.
 Para las señales de \cstar y \bstar, puede observarse que se obtienen aceptancias más bajas en comparación con las señales de \qstar. La razón de este comportamiento se debe al veto leptónico que se realiza. Es probable que los quarks más pesados decaigan en quarks más livianos acompañados por un bosón \Wboson que decae en un par de leptones \(\ell \bar{\nu}\), o en un par de quarks que hadronizan, entonces lo más probable es que un leptón esté presente en el evento en este caso. En el caso de \qstar, sólo \(\sim 10\%\) de los eventos contienen un leptón, mientras que este número aumenta hasta casi \(\sim 30\%\) para la señal de \bstar, como se observa en la \Tab{\ref{tab:signals:acc_eff:acceptances}}.
 
-Del mismo modo, en la \Fig{\ref{fig:signals:acc_eff:efficiencies}} y en la \Tab{\ref{tab:signals:acc_eff:efficiencies}}, se muestran las eficiencias de reconstrucción e identificación para los tres tipos de señales de \ac{EQ}. Como era de esperar, el mejor rendimiento se obtiene para las señales de \qstar cuando no se aplica ningun \ac{WP} de \ac{FTAG} (\(b\) o \ctagging). Además, se evidencia de las figuras una disminución significativa de la eficiencia en el rendimiento del tagger GN2 a altas masas y esto se refleja en las eficiencias medidas en las \Figs{\ref{fig:signals:acc_eff:efficiencies:cstar}}{\ref{fig:signals:acc_eff:efficiencies:bstar}}, donde para masas grandes la eficiencia del tagger disminuye hasta casi la mitad de su valor inicial.
+Del mismo modo, en la \Fig{\ref{fig:signals:acc_eff:efficiencies}} y en la \Tab{\ref{tab:signals:acc_eff:efficiencies}}, se muestran las eficiencias de reconstrucción e identificación para los tres tipos de señales de \ac{EQ}. Como era de esperar, el mejor rendimiento se obtiene para las señales de \qstar cuando no se aplica ningún \ac{WP} de \ac{FTAG} (\(b\) o \ctagging). Además, se evidencia de las figuras una disminución significativa de la eficiencia en el rendimiento del tagger GN2 a altas masas y esto se refleja en las eficiencias medidas en las \Figs{\ref{fig:signals:acc_eff:efficiencies:cstar}}{\ref{fig:signals:acc_eff:efficiencies:bstar}}, donde para masas grandes la eficiencia del tagger disminuye hasta casi la mitad de su valor inicial.
 
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
         \includegraphics[width=\linewidth]{5_resonances/signal/efficiencies/NS/sig/full_efficiencies/NOM/Nom/qstar/can__qStar__Nom__NS__efficiency}
-        \caption{Señales de \qstar en la regón sin tagging..}
+        \caption{Señales de \qstar en la región sin tagging..}
         \label{fig:signals:acc_eff:efficiencies:qstar}
     \end{subfigure}
     \hfill

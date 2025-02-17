@@ -23,7 +23,7 @@ Dado que el \ac{ID} es el detector más cercano al haz y está compuesto por mat
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.6\linewidth]{3_experiment/object_reconstruction/tracking_coordinates.png}
-    \caption{Esquema de los parámetros usados para la reconstruccón de trazas~\cite{ATLAS-Tracking-2007}.}
+    \caption{Esquema de los parámetros usados para la reconstrucción de trazas~\cite{ATLAS-Tracking-2007}.}
     \label{fig:objects:track_vtx:track_parameters}
 \end{figure}
 
@@ -89,9 +89,9 @@ Dado que un objeto puede reconstruirse como electrón y como fotón, se resuelve
 
 Con el objetivo de poder discriminar los objetos \textit{prompt}\footnote{El término \textit{prompt} hace referencia a aquellos objetos producidos rápidamente luego de la colisión, generalmente provenientes del vértice primario, para distinguirlos de aquellos producidos por el decaimiento tardío de otra partícula, como puede ser un hadrón.} de aquellos que no lo son, existen diferentes criterios de identificación.
 En \ac{ATLAS}, la identificación de fotones y electrones se logra mediante una serie de variables denominadas \acfp{SS} (descriptas en detalle en \Ch{\ref{ch:pid_ss}}). Estas son variables que describen el paso de los fotones y electrones a través del \ac{ECAL} y \ac{HCAL}, caracterizando las lluvias electromagnéticas en su desarrollo lateral y longitudinal y son calculadas a partir de la energía depositada en las celdas de estos calorímetros. Mediante ciertos algoritmos que hacen uso de las \acp{SS}, se logra incrementar la pureza de los objetos deseados al costo de tener una menor eficiencia de selección.
-Finalmente, se definen diferentes \acp{WP} que son derivados de forma central y luego distribuídos a toda la colaboración.
+Finalmente, se definen diferentes \acp{WP} que son derivados de forma central y luego distribuidos a toda la colaboración.
 
-El objetivo principal de la identificación de electrones es separar los electrones prompt de los electrones producto del proceso de creación de pares a partir de los fotones, de los jets que depositan energía en el \ac{ECAL} y de los electrones proveninentes del decaimiento de hadrones originados por quarks de sabores pesados (\textit{heavy-flavor}). La identificación se basa en un método likelihood que utiliza algunas de las \acp{SS}, utilizando electrones provenientes de decaimientos de \jpsi y \Zboson para bajo y alto \et, respectivamente~\cite{ATLAS-EGamma-Performance-2024}. Se definen entonces \acp{WP}, denominados \texttt{Loose}, \texttt{Medium} y \texttt{Tight}, cuyas eficiencias de identificación de un electrón con \(\et=40~\gev\) son de \(93\%, \, 88\%\) y \(80\%\), respectivamente~\cite{ATLAS-EGamma-Calibration-2015-2016}.
+El objetivo principal de la identificación de electrones es separar los electrones prompt de los electrones producto del proceso de creación de pares a partir de los fotones, de los jets que depositan energía en el \ac{ECAL} y de los electrones provenientes del decaimiento de hadrones originados por quarks de sabores pesados (\textit{heavy-flavor}). La identificación se basa en un método likelihood que utiliza algunas de las \acp{SS}, utilizando electrones provenientes de decaimientos de \jpsi y \Zboson para bajo y alto \et, respectivamente~\cite{ATLAS-EGamma-Performance-2024}. Se definen entonces \acp{WP}, denominados \texttt{Loose}, \texttt{Medium} y \texttt{Tight}, cuyas eficiencias de identificación de un electrón con \(\et=40~\gev\) son de \(93\%, \, 88\%\) y \(80\%\), respectivamente~\cite{ATLAS-EGamma-Calibration-2015-2016}.
 
 
 Para distinguir los fotones prompt/reales (los procedentes de la colisión) de los fotones de fondo (procedentes del decaimiento de hadrones, también llamados fotones falsos), es necesario basarse en un algoritmo de identificación con alta eficiencia de señal y rechazo de fondo para fotones candidatos con \(\pt \sim 10~\gev\) hasta la escala \tev.
@@ -124,7 +124,7 @@ También se realizan correcciones para tener en cuenta las fugas de energía fue
 La variable de aislamiento de trazas, \ptconetw se obtiene sumando los \pt de las trazas de buena calidad en un cono de radio \(\DeltaR<0.2\) alrededor del candidato a electrón o en la dirección del cluster de fotones convertidos.
 Se excluyen de este cómputo las trazas asociadas a la traza o al fotón convertido así como aquellas trazas que no pasan el requisito de trazas de buena calidad. Una traza de buena calidad se define como aquella en la que el \(\pt>1~\gev\) y tiene una distancia mínima al vértice primario a lo largo del eje \(z\) de \(|z_0 \sin \theta| < 3\) mm.
 
-En general, para los fotones y electrones no hay otra energía depositada en el cono alrededor del candidato, aparte de los objetos de baja energía originados por los restos de la colisión, las interacciones múltiples y el pileup. En cambio, para los falsos candidatos a fotones y los fotones no directos se observa energía adicional dentro del cono proveninente de los objetos que los acompañan en el jet.
+En general, para los fotones y electrones no hay otra energía depositada en el cono alrededor del candidato, aparte de los objetos de baja energía originados por los restos de la colisión, las interacciones múltiples y el pileup. En cambio, para los falsos candidatos a fotones y los fotones no directos se observa energía adicional dentro del cono proveniente de los objetos que los acompañan en el jet.
 
 \begin{table}[ht!]
     \caption{Resumen de los \ac{WP} de aislamiento para electrones y fotones usados a lo largo de esta tesis.}
@@ -176,7 +176,7 @@ lo que resulta para el \ac{WP} \texttt{FixedCutTight} en:
 La tasa de radiación bremsstrahlung es inversamente proporcional al cuadrado de la masa de una partícula. Dado que los muones son unas 200 veces más pesados que los electrones, interactúan principalmente con el material del detector a través de ionización. Por lo tanto, los muones son partículas mínimamente ionizantes que no crean lluvia electromagnética en los calorímetros y atraviesan todas las capas del detector \ac{ATLAS}. Es por esta razón que la detección de muones depende de las mediciones de las trazas dejadas por ellos en el \ac{ID} y el \ac{MS}. La combinación de los dos subdetectores define cuatro tipos de muones, dependiendo de la información utilizada para la reconstrucción:
 \begin{itemize}
     \item \ac{CB}: muón reconstruido a partir de un reajuste global de las trazas del \ac{ID} y del \ac{MS},
-    \item \ac{ST}: muón reconstruido a partir de una traza ajustada del \ac{ID} que al extrpolarla al \ac{MS} tienen un segmento en el \ac{MDT} o el \ac{CSC},
+    \item \ac{ST}: muón reconstruido a partir de una traza ajustada del \ac{ID} que al extrapolarla al \ac{MS} tienen un segmento en el \ac{MDT} o el \ac{CSC},
     \item \ac{CT}: muón reconstruidos a partir de la traza del \ac{ID} ajustada a los depósitos de mínima energía ionizante en los calorímetros,
     \item \ac{ME}: muón reconstruido únicamente a partir de las trazas \ac{MS}.
 \end{itemize}
@@ -196,7 +196,7 @@ Las variables con buen poder discriminatorio utilizadas se describen en \Refn{\c
 \section{Jets}
 \label{sec:objects:jets}
 
-Los quarks y gluones no pueden detectarse de manera aislada, sino que por un proceso denominado hadronización dan lugar a un chorro colimado de partículas que se denomina \textit{jet}. Estos penetran a través del \ac{ECAL} y son totalmente absorbidos por el material del calorímetro hadrónico. A continuación, se describem los métodos de reconstrucción de jets utilizados en \ac{ATLAS}
+Los quarks y gluones no pueden detectarse de manera aislada, sino que por un proceso denominado hadronización dan lugar a un chorro colimado de partículas que se denomina \textit{jet}. Estos penetran a través del \ac{ECAL} y son totalmente absorbidos por el material del calorímetro hadrónico. A continuación, se describen los métodos de reconstrucción de jets utilizados en \ac{ATLAS}
 
 \subsection{Algoritmo de clusterización de jets \texorpdfstring{\antikt}{Anti-kT}}
 

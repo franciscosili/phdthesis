@@ -338,7 +338,7 @@ El cálculo se realiza para cada una de las masas de señal para cada modelo en 
         \includegraphics[width=\textwidth]{5_resonances/bkg/modeling/ss/asimov/fits/can__sigbkg_fit__asimov__photonjet_Pythia__SR__dof2__range_800-10000__qstar__qStar_f1p00_M6000}
         \caption{\(\mq = 6000~\gev\)}
     \end{subfigure}
-    \caption{Ajuste \ac{SB} al fondo representado por una muestra Asimov para el cáclulo de la \ac{SSig}. El modelo de señal se muestra con las líneas naranjas, la función que describe al fondo en este caso es la función \textit{dof2}, representada por la las líneas azules. Finalmente, la suma de las dos componentes se muestra con las líneas verdes. El panel inferior en ambas figuras muestras los residuos del ajuste, normalizados por la incerteza del histograma del fondo. También se muestran las normalizaciones resultantes del fondo y la señal, junto con el valor de la \ac{SSig}.}
+    \caption{Ajuste \ac{SB} al fondo representado por una muestra Asimov para el cálculo de la \ac{SSig}. El modelo de señal se muestra con las líneas naranjas, la función que describe al fondo en este caso es la función \textit{dof2}, representada por la las líneas azules. Finalmente, la suma de las dos componentes se muestra con las líneas verdes. El panel inferior en ambas figuras muestras los residuos del ajuste, normalizados por la incerteza del histograma del fondo. También se muestran las normalizaciones resultantes del fondo y la señal, junto con el valor de la \ac{SSig}.}
     \label{fig:bkg:modeling:sigbkg:sstest:sstest_asimov_examples}
 \end{figure}
 
@@ -353,7 +353,7 @@ El cálculo se realiza para cada una de las masas de señal para cada modelo en 
         \centering
         \includegraphics[width=\textwidth, page=423]{5_resonances/bkg/modeling/ss/toys/fits/can__sigbkg_fit__toys__photonjet_Pythia__SR__dof2__range_800-10000__qstar__qStar_f1p00_M2000}
     \end{subfigure}
-    \caption{ídem a la \Fig{\ref{fig:bkg:modeling:sigbkg:sstest:sstest_asimov_examples}} pero usando distribuciones de toys como muestra del fondo.}
+    \caption{Ídem a la \Fig{\ref{fig:bkg:modeling:sigbkg:sstest:sstest_asimov_examples}} pero usando distribuciones de toys como muestra del fondo.}
     \label{fig:bkg:modeling:sigbkg:sstest:sstest_toys_examples}
 \end{figure}
 
@@ -432,7 +432,7 @@ De la comparación de la \Fig{\ref{fig:bkg_modeling:sstest_results_asimov_SR}} (
         \includegraphics[width=\textwidth]{5_resonances/bkg/modeling/ss/toys/results/SR/QBH/n1/plots/can__SS__photonjet_Pythia__QBH__SR__n1__range_1000_8000}
         \caption{\ac{QBH} con \(n=1\).}
     \end{subfigure}\\
-    \caption{ídem a la \Fig{\ref{fig:bkg_modeling:sstest_results_asimov_SR}} pero los resultados provienen de utilizar toys como el fondo.}
+    \caption{Ídem a la \Fig{\ref{fig:bkg_modeling:sstest_results_asimov_SR}} pero los resultados provienen de utilizar toys como el fondo.}
     \label{fig:bkg_modeling:sstest_results_toys_SR}
 \end{figure}
 
@@ -666,7 +666,7 @@ Los ajustes se realizan con toys extraídos del ajuste \textit{dof7} de la distr
         \includegraphics[width=0.8\textwidth]{5_resonances/bkg/modeling/ftest/SRB/can__photonjet_Pythia_jfakeisosmooth__SRB__fvalue_pvalue__range_1100_6000__toys}
         \caption{SRB}
     \end{subfigure}
-    \caption{Distribución de los valores \(p\) del estadítico \(F\), comparando el rendimiento de cada par de funciones. Los valores medios y anchos mostrados corresponden a los de la distribución del estadístico \(F\), mientras que el valor \(p\) promedio se señala en cada caso.}
+    \caption{Distribución de los valores \(p\) del estadístico \(F\), comparando el rendimiento de cada par de funciones. Los valores medios y anchos mostrados corresponden a los de la distribución del estadístico \(F\), mientras que el valor \(p\) promedio se señala en cada caso.}
     \label{fig:bkg:modeling:preparation:ftest:ftest_pvalue}
 \end{figure}
 
@@ -713,7 +713,7 @@ La \Fig{\ref{fig:bkg:modeling:preparation:ftest:chi2ndof}} muestra las distribuc
 
 A lo largo de esta sección se han realizado diferentes tests estadísticos para determinar la combinación óptima de rango y función de ajuste para modelar la distribución de fondo en los datos. Estos tests se han realizado para cada una de las regiones de señal consideradas en el análisis y también para cada modelo de señal.
 
-En el primer paso se realizaron tests de \ac{SSig} para decidir cuáles de estas combinaciones de rangos y funciones minimizan la aparición de cualquier señal al realizar los ajustes de \ac{BO}. Además, la incerteza de modelado de fondo resulta de esta prueba, lo que significa que el uso de la combinación que conduzca a la menor \ac{SSig} también influirá en las incertezas finales al realizar la búsqueda en los datos. Para cada rango de ajuste se clasifican los modelos funcionales y se pasan todos por los tests de \ac{SI} y tests \(F\). La primera comprueba si la función es capaz de capturar toda la señal inyectada al fondo y la segunda comprueba si añadiendo otro \ac{dof} a la función se observa una mejora significativa en los ajustes.
+En el primer paso se realizaron tests de \ac{SSig} para decidir cuáles de estas combinaciones de rangos y funciones minimizan la aparición de cualquier señal al realizar los ajustes de \ac{BO}. Además, la incerteza de modelado de fondo resulta de esta prueba, lo que significa que el uso de la combinación que conduzca a la menor \ac{SSig} también influirá en las incertezas finales al realizar la búsqueda en los datos. Para cada rango de ajuste se clasifican los modelos funcionales y se pasan todos por los tests de \ac{SI} y tests \(F\). El primer test comprueba si el modelo funcional es capaz de capturar toda la señal inyectada al fondo y el segunda comprueba si añadiendo otro \ac{dof} a la función se observa una mejora significativa en los ajustes.
 
 En los ajustes de \ac{BO} sólo se tiene en cuenta la forma funcional del fondo y la intensidad de la señal en la \Eqn{\ref{eq:strategy:stat_treatment:stat_model:likelihood}} se fija en 0. Estos ajustes se realizan en las regiones SR, SRB y SRC, utilizando las funciones y rangos indicados en la \Tab{\ref{tab:bkg:modeling:strategy_modeling:summary}}.
 Por otro lado, para la interpretación de \ac{SB} se deja variar la intensidad de la señal \(\mu\) y se cuantifica la señal resultante del ajuste. Los ajustes a los datos se realizan entonces con un modelo \ac{SB} en el que el componente de señal es una \ac{PDF2} y la función de fondo difiere para cada modelo y región de señal.
@@ -731,7 +731,7 @@ Para realizar interpretaciones sobre el modelo de \qstar se considera la región
             \toprule
                                 & SR                      & SRL                               & SRC                               & SRB                               & \begin{tabular}{@{}c@{}} Ajuste simultáneo \\SRC+SRB+SRL? \end{tabular}\\
             \midrule
-            \ac{BO}             & \textit{dof2}, \([1000,8000]\)    & \textit{dof2}, \([1200,8000]\)    & \textit{dof4}, \([1100,7000]\)    & \textit{dof2}, \([1100,6000]\)    & No                      \\
+            \Ac{BO}             & \textit{dof2}, \([1000,8000]\)    & \textit{dof2}, \([1200,8000]\)    & \textit{dof4}, \([1100,7000]\)    & \textit{dof2}, \([1100,6000]\)    & No                      \\
             \midrule
             Gaussianas          & \textit{dof3}, \([1200,8000]\)    & \textit{dof3}, \([1500,8000]\)    & \textit{dof4}, \([1000,7000]\)    & \textit{dof5}, \([900,7000]\)     & No                      \\
             \ac{QBH}            & \textit{dof5}, \([1000,8000]\)    & -                                 & -                                 & -                                 & -                       \\
