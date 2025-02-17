@@ -79,12 +79,19 @@ ALGORITHMS AND SOFTWARE
     year       = {2017}
 }
 
-@book{SmirnovTransform,
+@@incollection{SmirnovTransform,
+    title     = {Chapter 4 Nonuniform Random Variate Generation},
+    editor    = {Shane G. Henderson and Barry L. Nelson},
+    series    = {Handbooks in Operations Research and Management Science},
+    publisher = {Elsevier},
+    volume    = {13},
+    pages     = {83-121},
+    year      = {2006},
+    booktitle = {Simulation},
+    issn      = {0927-0507},
+    doi       = {https://doi.org/10.1016/S0927-0507(06)13004-2},
+    url       = {https://www.sciencedirect.com/science/article/pii/S0927050706130042},
     author    = {Luc Devroye},
-    editor    = {},
-    publisher = {Springer New York, NY},
-    title     = {Non-Uniform Random Variate Generation},
-    year      = {1986}
 }
 
 @booklet{TMVA,
@@ -359,13 +366,14 @@ SIMULATION
 }
 
 @misc{Pythia8.3,
-    archiveprefix = {arXiv},
-    author        = {Christian Bierlich and Smita Chakraborty and Nishita Desai and Leif Gellersen and Ilkka Helenius and Philip Ilten and Leif Lönnblad and Stephen Mrenna and Stefan Prestel and Christian T. Preuss and Torbjörn Sjöstrand and Peter Skands and Marius Utheim and Rob Verheyen},
-    eprint        = {2203.11601},
-    primaryclass  = {hep-ph},
-    title         = {A comprehensive guide to the physics and usage of PYTHIA 8.3},
-    url           = {https://arxiv.org/abs/2203.11601},
-    year          = {2022}
+    title     = {{A comprehensive guide to the physics and usage of PYTHIA 8.3}},
+	author    = {Christian Bierlich and Smita Chakraborty and Nishita Desai and Leif Gellersen and Ilkka Helenius and Philip Ilten and Leif Lönnblad and Stephen Mrenna and Stefan Prestel and Christian T. Preuss and Torbjörn Sjöstrand and Peter Skands and Marius Utheim and Rob Verheyen},
+	journal   = {SciPost Phys. Codebases},
+	pages     = {8},
+	year      = {2022},
+	publisher = {SciPost},
+	doi       = {10.21468/SciPostPhysCodeb.8},
+	url       = {https://scipost.org/10.21468/SciPostPhysCodeb.8},
 }
 
 @article{Pythia8.2,
@@ -623,7 +631,6 @@ PHYSICS THEORY
     abstract = {{The Review summarizes much of particle physics and cosmology. Using data from previous editions, plus 3,324 new measurements from 878 papers, we list, evaluate, and average measured properties of gauge bosons and the recently discovered Higgs boson, leptons, quarks, mesons, and baryons. We summarize searches for hypothetical particles such as supersymmetric particles, heavy bosons, axions, dark photons, etc. Particle properties and search limits are listed in Summary Tables. We give numerous tables, figures, formulae, and reviews of topics such as Higgs Boson Physics, Supersymmetry, Grand Unified Theories, Neutrino Mixing, Dark Energy, Dark Matter, Cosmology, Particle Detectors, Colliders, Probability and Statistics. Among the 120 reviews are many that are new or heavily revised, including a new review on High Energy Soft QCD and Diffraction and one on the Determination of CKM Angles from B Hadrons.The Review is divided into two volumes. Volume 1 includes the Summary Tables and 98 review articles. Volume 2 consists of the Particle Listings and contains also 22 reviews that address specific aspects of the data presented in the Listings.The complete Review (both volumes) is published online on the website of the Particle Data Group (pdg.lbl.gov) and in a journal. Volume 1 is available in print as the PDG Book. A Particle Physics Booklet with the Summary Tables and essential tables, figures, and equations from selected review articles is available in print and as a web version optimized for use on phones as well as an Android app.}},
     author   = {Particle Data Group },
     doi      = {10.1093/ptep/ptaa104},
-    eprint   = {https://academic.oup.com/ptep/article-pdf/2020/8/083C01/34673722/ptaa104.pdf},
     issn     = {2050-3911},
     journal  = {Progress of Theoretical and Experimental Physics},
     month    = {08},
@@ -674,6 +681,7 @@ PHYSICS THEORY
     journal = {Sov. Phys. JETP},
     pages   = {641--653},
     title   = {{Calculation of the Structure Functions for Deep Inelastic Scattering and e+ e- Annihilation by Perturbation Theory in Quantum Chromodynamics.}},
+    eprint  = {http://www.jetp.ras.ru/cgi-bin/dn/e_046_04_0641.pdf},
     volume  = {46},
     year    = {1977}
 }
@@ -975,16 +983,23 @@ PHYSICS THEORY
 @proceedings{Pfeil-1981,
     author = {Pfeil, Walter},
     title  = {Proceedings of the 1981 international symposium on lepton and photon interactions at high energies},
-    year   = {1981}
+    year   = {1981},
+    place  = {Germany},
+    month  = {Jan}
 }
 
 @incollection{Hooft-1980,
-    author    = {Hooft, G't},
-    booktitle = {Recent developments in gauge theories},
+    author    = {Hooft, G.'t},
+    editor    = {Hooft, G.'t and Itzykson, C. and Jaffe, A. and Lehmann, H. and Mitter, P. K. and Singer, I. M. and Stora, R.},
+    title     = {Naturalness, Chiral Symmetry, and Spontaneous Chiral Symmetry Breaking},
+    bookTitle = {Recent Developments in Gauge Theories},
+    year      = {1980},
+    publisher = {Springer US},
+    address   = {Boston, MA},
     pages     = {135--157},
-    publisher = {Springer},
-    title     = {Naturalness, chiral symmetry, and spontaneous chiral symmetry breaking},
-    year      = {1980}
+    isbn      = {978-1-4684-7571-5},
+    doi       = {10.1007/978-1-4684-7571-5_9},
+    url       = {https://doi.org/10.1007/978-1-4684-7571-5_9}
 }
 
 @article{Baur_Spira_Zerwas-1990,
@@ -1115,9 +1130,12 @@ PHYSICS THEORY
 }
 
 @incollection{GellMann_Ramond_Slansky-2010,
-    author    = {Gell-Mann, Murray and Ramond, Pierre and Slansky, Richard},
-    booktitle = {Murray Gell-Mann: Selected Papers},
-    pages     = {266--272},
+    author    = {Murray Gell-Mann and Pierre Ramond and Richard Slansky},
+    booktitle = {Murray Gell-Mann},
+    chapter   = {},
+    pages     = {266-272},
+    doi       = {10.1142/9789812836854_0018},
+    URL       = {https://www.worldscientific.com/doi/abs/10.1142/9789812836854_0018},
     publisher = {World Scientific},
     title     = {Complex spinors and unified theories},
     year      = {2010}
@@ -1127,9 +1145,18 @@ PHYSICS THEORY
     author    = {Glashow, Sheldon L},
     booktitle = {Quarks and Leptons: Cargese 1979},
     pages     = {687--713},
-    publisher = {Springer},
     title     = {The future of elementary particle physics},
-    year      = {1980}
+    year      = {1980},
+    editor    = {"L{\'e}vy, Maurice and Basdevant, Jean-Louis and Speiser, David and Weyers, Jacques and Gastmans, Raymond and Jacob, Maurice"},
+    publisher = "Springer US",
+    address   = "Boston, MA",
+    isbn      = "978-1-4684-7197-7",
+    doi       = {10.1007/978-1-4684-7197-7_15},
+    url       = {https://doi.org/10.1007/978-1-4684-7197-7_15}
+}
+
+@InProceedings{10.1007/978-1-4684-7197-7_15,
+author="Glashow, S. L.",
 }
 
 @incollection{Ramond-2005,
@@ -1138,7 +1165,9 @@ PHYSICS THEORY
     pages     = {265--280},
     publisher = {World Scientific},
     title     = {The family group in grand unified theories},
-    year      = {2005}
+    year      = {2005},
+    doi       = {10.1142/9789812702210_0020},
+    URL       = {https://www.worldscientific.com/doi/abs/10.1142/9789812702210_0020},
 }
 
 
@@ -1146,47 +1175,60 @@ PHYSICS THEORY
 % Quantum black holes
 
 @article{ADD-1998,
-    author    = {Arkani--Hamed, Nima and Dimopoulos, Savas and Dvali, Gia},
-    journal   = {Physics Letters B},
-    number    = {3-4},
-    pages     = {263--272},
-    publisher = {Elsevier},
-    title     = {The hierarchy problem and new dimensions at a millimeter},
-    volume    = {429},
-    year      = {1998}
+    title   = {The hierarchy problem and new dimensions at a millimeter},
+    journal = {Physics Letters B},
+    volume  = {429},
+    number  = {3},
+    pages   = {263-272},
+    year    = {1998},
+    issn    = {0370-2693},
+    doi     = {https://doi.org/10.1016/S0370-2693(98)00466-3},
+    url     = {https://www.sciencedirect.com/science/article/pii/S0370269398004663},
+    author  = {Nima Arkani-Hamed and Savas Dimopoulos and Gia Dvali},
 }
 
 @article{Antoniadis_Arkani_Dimopoulos_Dvali-1998,
-    author    = {Antoniadis, Ignatios and Arkani-Hamed, Nima and Dimopoulos, Savas and Dvali, Gia},
-    journal   = {Physics Letters B},
-    number    = {3-4},
-    pages     = {257--263},
-    publisher = {Elsevier},
-    title     = {New dimensions at a millimeter to a Fermi and superstrings at a TeV},
-    volume    = {436},
-    year      = {1998}
+    title   = {New dimensions at a millimeter to a fermi and superstrings at a TeV},
+    journal = {Physics Letters B},
+    volume  = {436},
+    number  = {3},
+    pages   = {257-263},
+    year    = {1998},
+    issn    = {0370-2693},
+    doi     = {https://doi.org/10.1016/S0370-2693(98)00860-0},
+    url     = {https://www.sciencedirect.com/science/article/pii/S0370269398008600},
+    author  = {Ignatios Antoniadis and Nima Arkani-Hamed and Savas Dimopoulos and Gia Dvali},
 }
 
 @article{RS1-1999_1,
+    title     = {An Alternative to Compactification},
     author    = {Randall, Lisa and Sundrum, Raman},
-    journal   = {Physical Review Letters},
-    number    = {23},
-    pages     = {4690},
-    publisher = {APS},
-    title     = {An alternative to compactification},
+    journal   = {Phys. Rev. Lett.},
     volume    = {83},
-    year      = {1999}
+    issue     = {23},
+    pages     = {4690--4693},
+    numpages  = {0},
+    year      = {1999},
+    month     = {Dec},
+    publisher = {American Physical Society},
+    doi       = {10.1103/PhysRevLett.83.4690},
+    url       = {https://link.aps.org/doi/10.1103/PhysRevLett.83.4690}
 }
 
+
 @article{RS1-1999_2,
+    title     = {Large Mass Hierarchy from a Small Extra Dimension},
     author    = {Randall, Lisa and Sundrum, Raman},
-    journal   = {Physical review letters},
-    number    = {17},
-    pages     = {3370},
-    publisher = {APS},
-    title     = {Large mass hierarchy from a small extra dimension},
+    journal   = {Phys. Rev. Lett.},
     volume    = {83},
-    year      = {1999}
+    issue     = {17},
+    pages     = {3370--3373},
+    numpages  = {0},
+    year      = {1999},
+    month     = {Oct},
+    publisher = {American Physical Society},
+    doi       = {10.1103/PhysRevLett.83.3370},
+    url       = {https://link.aps.org/doi/10.1103/PhysRevLett.83.3370}
 }
 
 @article{Dvali-2010,
@@ -1205,25 +1247,31 @@ PHYSICS THEORY
 }
 
 @article{Dvali-2008,
-    author    = {Dvali, Gia and Redi, Michele},
-    journal   = {Physical Review D—Particles, Fields, Gravitation, and Cosmology},
-    number    = {4},
-    pages     = {045027},
-    publisher = {APS},
     title     = {Black hole bound on the number of species and quantum gravity at CERN LHC},
+    author    = {Dvali, Gia and Redi, Michele},
+    journal   = {Phys. Rev. D},
     volume    = {77},
-    year      = {2008}
+    issue     = {4},
+    pages     = {045027},
+    numpages  = {8},
+    year      = {2008},
+    month     = {Feb},
+    publisher = {American Physical Society},
+    doi       = {10.1103/PhysRevD.77.045027},
+    url       = {https://link.aps.org/doi/10.1103/PhysRevD.77.045027}
 }
 
 @article{Argyres-1998,
-    author    = {Argyres, Philip C and Dimopoulos, Savas and March-Russell, John},
-    journal   = {Physics Letters B},
-    number    = {1-4},
-    pages     = {96--104},
-    publisher = {Elsevier},
-    title     = {Black holes and sub-millimeter dimensions},
-    volume    = {441},
-    year      = {1998}
+    title   = {Black holes and sub-millimeter dimensions},
+    journal = {Physics Letters B},
+    volume  = {441},
+    number  = {1},
+    pages   = {96-104},
+    year    = {1998},
+    issn    = {0370-2693},
+    doi     = {https://doi.org/10.1016/S0370-2693(98)01184-8},
+    url     = {https://www.sciencedirect.com/science/article/pii/S0370269398011848},
+    author  = {Philip C. Argyres and Savas Dimopoulos and John March-Russell},
 }
 
 @misc{Banks-1999,
@@ -1237,26 +1285,33 @@ PHYSICS THEORY
 }
 
 @article{Giddings-2002,
-    author    = {Giddings, Steven B and Thomas, Scott},
-    journal   = {Physical Review D},
-    number    = {5},
-    pages     = {056010},
-    publisher = {APS},
     title     = {High energy colliders as black hole factories: The end of short distance physics},
+    author    = {Giddings, Steven B. and Thomas, Scott},
+    journal   = {Phys. Rev. D},
     volume    = {65},
-    year      = {2002}
+    issue     = {5},
+    pages     = {056010},
+    numpages  = {12},
+    year      = {2002},
+    month     = {Feb},
+    publisher = {American Physical Society},
+    doi       = {10.1103/PhysRevD.65.056010},
+    url       = {https://link.aps.org/doi/10.1103/PhysRevD.65.056010}
 }
 
 
 @article{Meade-2008,
-    author    = {Meade, Patrick and Randall, Lisa},
-    journal   = {Journal of High Energy Physics},
+    doi       = {10.1088/1126-6708/2008/05/003},
+    url       = {https://dx.doi.org/10.1088/1126-6708/2008/05/003},
+    year      = {2008},
+    month     = {may},
+    publisher = {},
+    volume    = {2008},
     number    = {05},
     pages     = {003},
-    publisher = {IOP Publishing},
+    author    = {Patrick Meade and Lisa Randall},
     title     = {Black holes and quantum gravity at the LHC},
-    volume    = {2008},
-    year      = {2008}
+    journal   = {Journal of High Energy Physics},
 }
 
 @misc{Alberghi-2006,
@@ -1270,25 +1325,31 @@ PHYSICS THEORY
 }
 
 @article{Alberghi-2007,
-    author    = {Alberghi, Gian Luigi and Casadio, Roberto and Tronconi, Alessandro},
-    journal   = {Journal Of Physics G: Nuclear and Particle Physics},
+    doi       = {10.1088/0954-3899/34/4/012},
+    url       = {https://dx.doi.org/10.1088/0954-3899/34/4/012},
+    year      = {2007},
+    month     = {mar},
+    publisher = {},
+    volume    = {34},
     number    = {4},
     pages     = {767},
-    publisher = {IOP Publishing},
+    author    = {Alberghi, G L and Casadio, R and Tronconi, A},
     title     = {Quantum gravity effects in black holes at the LHC},
-    volume    = {34},
-    year      = {2007}
+    journal   = {Journal of Physics G: Nuclear and Particle Physics},
 }
 
 @article{Gingrich-2010,
-    author    = {Gingrich, Douglas M},
-    journal   = {Journal of Physics G: Nuclear and Particle Physics},
+    doi       = {10.1088/0954-3899/37/10/105008},
+    url       = {https://dx.doi.org/10.1088/0954-3899/37/10/105008},
+    year      = {2010},
+    month     = {aug},
+    publisher = {},
+    volume    = {37},
     number    = {10},
     pages     = {105008},
-    publisher = {IOP Publishing},
+    author    = {Gingrich, Douglas M},
     title     = {Quantum black holes with charge, color and spin at the LHC},
-    volume    = {37},
-    year      = {2010}
+    journal   = {Journal of Physics G: Nuclear and Particle Physics},
 }
 
 @article{Gingrich_Undseth-2020,
@@ -1307,14 +1368,17 @@ PHYSICS THEORY
 }
 
 @article{Bailin_Love-1987,
-    author    = {Bailin, David and Love, Alex},
-    journal   = {Reports on Progress in Physics},
+    doi       = {10.1088/0034-4885/50/9/001},
+    url       = {https://dx.doi.org/10.1088/0034-4885/50/9/001},
+    year      = {1987},
+    month     = {sep},
+    publisher = {},
+    volume    = {50},
     number    = {9},
     pages     = {1087},
-    publisher = {IOP Publishing},
-    title     = {Kaluza-klein theories},
-    volume    = {50},
-    year      = {1987}
+    author    = {D Bailin and A Love},
+    title     = {Kaluza-Klein theories},
+    journal   = {Reports on Progress in Physics},
 }
 
 
@@ -1374,45 +1438,32 @@ PHYSICS EXPERIMENTS
 }
 
 @article{Zwicky-1937,
-    abstract  = {Abstract image available at: http://adsabs.harvard.edu/abs/1937ApJ....86..217Z},
-    author    = {Zwicky, F.},
-    doi       = {10.1086/143864},
-    file      = {:Users/dk352/Documents/Mendeley Desktop/Zwicky, Zwicky, F. - 1937 - On the Masses of Nebulae and of Clusters of Nebulae.pdf:pdf},
-    issn      = {0004-637X},
-    journal   = {ApJ},
-    month     = {oct},
-    pages     = {217},
-    publisher = {American Astronomical Society},
-    title     = {{On the Masses of Nebulae and of Clusters of Nebulae}},
-    url       = {https://ui.adsabs.harvard.edu/abs/1937ApJ....86..217Z/abstract},
-    volume    = {86},
-    year      = {1937}
+    title       = {On the Masses of Nebulae and of Clusters of Nebulae},
+    author      = {Zwicky, Fritz},
+    booktitle   = {A Source Book in Astronomy and Astrophysics, 1900--1975},
+    pages       = {729--737},
+    year        = {1979},
+    publisher   = {Harvard University Press},
+    url         = {https://adsabs.harvard.edu/full/1937ApJ....86..217Z/0000218.000.html}
 }
 
 @article{Rubin_Kent-1970,
-    abstract  = {Spectia of sixty-seven H Ir regions from 3 to 24 kpc from the nucleus of M31 have been obtained with the DTM image-tube spectrograph at a dispersion of 135 A mm '. Radial velocities, principally from Ha, have been determined with an accuracy of 10 km sec ' for most regions. Rotational velocities have been calculated under the assumption of circular motions only. For the region interior to 3 kpc where no emission regions have been identified, a narrow [N 13] x6583 emission line is observed. Velocities from this line indicate a rapid rotation in the nucleus, rising to a maximum circular velocity of V = 225 km at R = 400 pc, and falling to a deep minimum near R = 2 kpc. From the rotation curve for R < 24 kpc, the following disk model of M31 results. There is a dense, rapidly rotating nucleus of mass Al = (6 i 1) x 10' Alo. Near R = 2 kpc, the density is very low and the rotational motions are very small. In the region from 500 to 1.4 kpc (most notably on the southeast minor axis), gas is observed leaving the nucleus. Beyond R = 4 kpc the total mass of the galaxy increases approximately linearly to R = 14 kpc, and more slowly thereafter. The total mass to R = 24 kpc is = (1 85 t 0.1) x 10" Alo; one-half of it is located in the disk interior to R = 9 kpc In many respects this model resembles the model of the disk of our Galaxy Outside the nuclear region, there is no evidence for noncircular motions. The optical velocities, R > 3 kpc, agree with the 21-cm observations, although the maximum rotational velocity, V = 270 t 10 km sec ', is slightly higher than that obtained from 21-cm observations.},
-    author    = {Rubin, Vera C. and {Ford, W. Kent}, Jr.},
-    doi       = {10.1086/150317},
-    file      = {:Users/dk352/Documents/Mendeley Desktop/Rubin et al. - 1970 - Rotation of the Andromeda Nebula from a Spectroscopic Survey of Emission Regions.pdf:pdf},
-    issn      = {0004-637X},
-    journal   = {ApJ},
-    month     = {feb},
-    pages     = {379},
-    publisher = {American Astronomical Society},
-    title     = {{Rotation of the Andromeda Nebula from a Spectroscopic Survey of Emission Regions}},
-    url       = {https://ui.adsabs.harvard.edu/abs/1970ApJ...159..379R/abstract},
-    volume    = {159},
-    year      = {1970}
+    title  = {Rotation of the Andromeda nebula from a spectroscopic survey of emission regions},
+    author = {Rubin, Vera C and Ford Jr, W Kent},
+    journal= {Astrophysical Journal, vol. 159, p. 379},
+    volume = {159},
+    pages  = {379},
+    year   = {1970},
+    url    = {https://adsabs.harvard.edu/full/1970ApJ...159..379R/0000383.000.html}
 }
 
 @article{Planck-2014,
     abstract      = {This paper presents the first cosmological results based on Planck measurements of the cosmic microwave background (CMB) temperature and lensing-potential power spectra. We find that the Planck spectra at high multipoles (40) are extremely well described by the standard spatially-flat six-parameter $\lambda$CDM cosmology with a power-law spectrum of adiabatic scalar perturbations. Within the context of this cosmology, the Planck data determine the cosmological parameters to high precision: the angular size of the sound horizon at recombination, the physical densities of baryons and cold dark matter, and the scalar spectral index are estimated to be $\theta$- = (1.04147 ± 0.00062) × 10-2, $\Omega$bh2 = 0.02205 ± 0.00028, $\Omega$ch2 = 0.1199 ± 0.0027, and ns = 0.9603 ± 0.0073, respectively(note that in this abstract we quote 68% errors on measured parameters and 95% upper limits on other parameters). For this cosmology, we find a low value of the Hubble constant, H0 = (67.3 ± 1.2) km s-1 Mpc-1, and a high value of the matter density parameter, $\Omega$m = 0.315 ± 0.017. These values are in tension with recent direct measurements of H0 and the magnitude-redshift relation for Type Ia supernovae, but are in excellent agreement with geometrical constraints from baryon acoustic oscillation (BAO) surveys. Including curvature, we find that the Universe is consistent with spatial flatness to percent level precision using Planck CMB data alone. We use high-resolution CMB data together with Planck to provide greater control on extragalactic foreground components in an investigation of extensions to the six-parameter $\lambda$CDM model. We present selected results from a large grid of cosmological models, using a range of additional astrophysical data sets in addition to Planck and high-resolution CMB data. None of these models are favoured over the standard six-parameter $\lambda$CDM cosmology. The deviation of the scalar spectral index from unity isinsensitive to the addition of tensor modes and to changes in the matter content of the Universe. We find an upper limit of r0.002 < 0.11 on the tensor-to-scalar ratio. There is no evidence for additional neutrino-like relativistic particles beyond the three families of neutrinos in the standard model. Using BAO and CMB data, we find Neff = 3.30 ± 0.27 for the effective number of relativistic degrees of freedom, and an upper limit of 0.23 eV for the sum of neutrino masses. Our results are in excellent agreement with big bang nucleosynthesis and the standard value of Neff = 3.046. We find no evidence for dynamical dark energy; using BAO and CMB data, the dark energy equation of state parameter is constrained to be w =-1.13-0.10+0.13. We also use the Planck data to set limits on a possible variation of the fine-structure constant, dark matter annihilation and primordial magnetic fields. Despite the success of the six-parameter $\lambda$CDM model in describing the Planck data at high multipoles, we note that this cosmology does not provide a good fit to the temperature power spectrum at low multipoles. The unusual shape of the spectrum in the multipole range 20 40 was seen previously in the WMAP data and is a real feature of the primordial CMB anisotropies. The poor fit to the spectrum at low multipoles is not of decisive significance, but is an "anomaly" in an otherwise self-consistent analysis of the Planck temperature data.},
     archiveprefix = {arXiv},
-    arxivid       = {1303.5076},
+    arxivid       = {1303.5076v3},
     author        = {{Planck Collaboration}},
     doi           = {10.1051/0004-6361/201321591},
-    eprint        = {1303.5076},
-    file          = {:Users/dk352/Documents/Mendeley Desktop/Ade et al. - 2013 - Planck 2013 results. XVI. Cosmological parameters.pdf:pdf},
+    eprint        = {1303.5076v3},
     issn          = {14320746},
     journal       = {Astronomy and Astrophysics},
     keywords      = {Cosmic background radiation,Cosmological parameters,Early Universe,Inflation,Primordial nucleosynthesis},
@@ -1425,25 +1476,18 @@ PHYSICS EXPERIMENTS
 }
 
 @article{Clowe-2006,
-    abstract      = {We present new weak lensing observations of 1E0657-558 (z=0.296), a unique cluster merger, that enable a direct detection of dark matter, independent of assumptions regarding the nature of the gravitational force law. Due to the collision of two clusters, the dissipationless stellar component and the fluid-like X-ray emitting plasma are spatially segregated. By using both wide-field ground based images and HST/ACS images of the cluster cores, we create gravitational lensing maps which show that the gravitational potential does not trace the plasma distribution, the dominant baryonic mass component, but rather approximately traces the distribution of galaxies. An 8-sigma significance spatial offset of the center of the total mass from the center of the baryonic mass peaks cannot be explained with an alteration of the gravitational force law, and thus proves that the majority of the matter in the system is unseen.},
-    archiveprefix = {arXiv},
-    arxivid       = {astro-ph/0608407},
-    author        = {Clowe, Douglas and Brada{\v{c}}, Maru{\v{s}}a and Gonzalez, Anthony H. and Markevitch, Maxim and Randall, Scott W. and others},
-    doi           = {10.1086/508162/FULLTEXT/},
-    eprint        = {0608407},
-    file          = {:Users/dk352/Documents/Mendeley Desktop/Clowe et al. - 2006 - A Direct Empirical Proof of the Existence of Dark Matter(2).pdf:pdf},
-    issn          = {0004-637X},
-    journal       = {The Astrophysical Journal},
-    keywords      = {Subject headings,clusters,dark matter-galaxies,individual (1E 0657558)-gravitational lensing},
-    month         = {sep},
-    number        = {2},
-    pages         = {L109--L113},
-    primaryclass  = {astro-ph},
-    publisher     = {American Astronomical Society},
-    title         = {{A Direct Empirical Proof of the Existence of Dark Matter}},
-    url           = {https://iopscience.iop.org/article/10.1086/508162},
-    volume        = {648},
-    year          = {2006}
+    doi       = {10.1086/508162},
+    url       = {https://dx.doi.org/10.1086/508162},
+    year      = {2006},
+    month     = {aug},
+    publisher = {},
+    volume    = {648},
+    number    = {2},
+    pages     = {L109},
+    author    = {Clowe, Douglas and Bradač, Maruša and Gonzalez, Anthony H. and Markevitch, Maxim and Randall, Scott W. and Jones, Christine and Zaritsky, Dennis},
+    title     = {A Direct Empirical Proof of the Existence of Dark Matter*},
+    journal   = {The Astrophysical Journal},
+    abstract  = {We present new weak-lensing observations of 1E 0657-558 (z = 0.296), a unique cluster merger, that enable a direct detection of dark matter, independent of assumptions regarding the nature of the gravitational force law. Due to the collision of two clusters, the dissipationless stellar component and the fluid-like X-ray-emitting plasma are spatially segregated. By using both wide-field ground-based images and HST/ACS images of the cluster cores, we create gravitational lensing maps showing that the gravitational potential does not trace the plasma distribution, the dominant baryonic mass component, but rather approximately traces the distribution of galaxies. An 8 σ significance spatial offset of the center of the total mass from the center of the baryonic mass peaks cannot be explained with an alteration of the gravitational force law and thus proves that the majority of the matter in the system is unseen.}
 }
 
 @article{Brada-2008,
@@ -1453,7 +1497,6 @@ PHYSICS EXPERIMENTS
     author        = {Brada{\v{c}}, Maru{\v{s}}a and Allen, Steven W. and Treu, Tommaso and Ebeling, Harald and Massey, Richard and Morris, R. Glenn and von der Linden, Anja and Applegate, Douglas and ;},
     doi           = {10.1086/591246},
     eprint        = {0806.2320v2},
-    file          = {:Users/dk352/Documents/Mendeley Desktop/Brada{\v{c}} et al. - 2008 - Revealing the properties of dark matter in the merging cluster MACSJ0025.4-1222.pdf:pdf},
     journal       = {The Astrophysical Journal},
     keywords      = {MACS J00254−1222,Subject headings,clusters,cosmology,dark matter-gravitational lensing-galax-ies,individual},
     month         = {jun},
@@ -1481,7 +1524,6 @@ PHYSICS EXPERIMENTS
     author        = {Jarosik, N. and Bennett, C. L. and Dunkley, J. and Gold, B. and Greason, M. R. and others},
     doi           = {10.1088/0067-0049/192/2/14},
     eprint        = {1001.4744},
-    file          = {:Users/dk352/Documents/Mendeley Desktop/Jarosik et al. - 2011 - SEVEN-YEAR WILKINSON MICROWAVE ANISOTROPY PROBE (WMAP) OBSERVATIONS SKY MAPS, SYSTEMATIC ERRORS, AND BASIC RESUL.pdf:pdf},
     issn          = {0067-0049},
     journal       = {ApJS},
     keywords      = {Cosmic background radiation,Space vehicles: instruments},
