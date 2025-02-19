@@ -5,7 +5,7 @@
 
 Esta búsqueda se centra en tres tipos diferentes de señales de resonancia \gammajet: \acp{EQ}, \acp{QBH} y resonancias genéricas de forma gaussiana. Para realizar los distintos tests de hipótesis así como los ajustes para la determinación de la forma funcional del fondo, deben conocerse sus espectros \myj esperados.
 En este capítulo, estas formas de señal previstas se modelan mediante una \ac{PDF2} continua que posteriormente se incluye en los ajustes \ac{SB}.
-También se estudian las incertezas sistemáticas teóricas y experimentales, ya que estas entran en los ajustes realizados de las funciones a los datos \'unicamente en las señales del análisis.
+También se estudian las incertezas sistemáticas teóricas y experimentales, ya que estas entran en los ajustes realizados de las funciones a los datos únicamente en las señales del análisis.
 
 
 
@@ -169,7 +169,7 @@ y \(N^{\text{reco/ID}}_{\text{pass}}\) es el número de eventos que superan todo
 
 \begin{table}[ht!]
     \centering
-    \caption{Medidas de aceptancias para las dos señales de referencia de \qstar con \(f = 1.0\). En la tabla, \(\varepsilon_{\text{abs}}\) hace referencia a la eficiencia absoluta de cada corte por separado, mientras que \(\varepsilon_{\text{rel}}\) denota la eficiencia relativa de cada corte, es decir, la fracción de eventos que pasa un corte con respecto al n\'umero de eventos que pasó el corte anterior.}
+    \caption{Medidas de aceptancias para las dos señales de referencia de \qstar con \(f = 1.0\). En la tabla, \(\varepsilon_{\text{abs}}\) hace referencia a la eficiencia absoluta de cada corte por separado, mientras que \(\varepsilon_{\text{rel}}\) denota la eficiencia relativa de cada corte, es decir, la fracción de eventos que pasa un corte con respecto al número de eventos que pasó el corte anterior.}
     \resizebox{\columnwidth}{!}{
         \begin{tabular}{lrrrrrr}
             \toprule
@@ -302,7 +302,29 @@ Del mismo modo, en la \Fig{\ref{fig:signals:acc_eff:efficiencies}} y en la \Tab{
 
 Las incertezas sistemáticas constituyen uno de los aspectos más importantes en una búsqueda de nueva física, dado que afectan los valores esperados de la señal en las distintas regiones de señal del análisis. Estas incertezas se incluyen en el modelo estadístico como \acp{NP}, explicados en la \Sect{\ref{subsec:strategy:stat_treatment:systs}}.
 Como en este análisis el fondo se obtiene directamente de los datos, las incertezas sistemáticas sólo entran en el modelo estadístico a través de las señales. Sin embargo, las incertezas relacionadas con el modelado del fondo se siguen teniendo en cuenta, como se discute en el \Ch{\ref{ch:bkg}}.
-Hay dos tipos de incertezas sistemáticas que afectan a las señales: experimentales y teóricas que ambas se describen a continuación.
+Hay dos tipos de incertezas sistemáticas que afectan a las señales: experimentales y teóricas, que ambas se describen a continuación y las principales se muestran en la \Tab{\ref{tab:signals:systs:main_systs}}.
+
+\begin{table}
+    \caption{Principales incertezas sistemáticas consideradas para las muestras de \ac{EQ} y \ac{QBH}.}
+    
+    \centering
+    \begin{tabular}{lccccc}
+        \toprule
+        Incerteza                       & \(q^*\)    & \(c^*\)    & \(b^*\)    & QBH \(n=1\) & QBH \(n=6\) \\
+        \midrule
+        PDFs                            & \(0.3\%\)  & \(0.6\%\)  & \(0.6\%\)  & -           & -           \\
+        Pile-up                         & \(1.5\%\)  & \(1.4\%\)  & \(1.4\%\)  & \(1.4\%\)   & \(1.4\%\)  \\
+        Identificación de fotones       & \(0.5\%\)  & \(0.5\%\)  & \(0.5\%\)  & \(0.5\%\)   & \(0.5\%\)  \\ 
+        Aislamiento de fotones          & \(1.3\%\)  & \(1.3\%\)  & \(1.3\%\)  & \(1.3\%\)   & \(1.3\%\)  \\
+        Escala de energía de fotones    & \(0.16\%\) & \(0.13\%\) & \(0.12\%\) & \(0.04\%\)  & \(0.02\%\)  \\
+        Resolución de energía de jets   & \(0.2\%\)  & \(0.1\%\)  & \(0.2\%\)  & \(0.08\%\)  & \(0.04\%\)  \\
+        \(b\)-tagging, SRB              & -          & \(3\%\)    & \(3\%\)    & -           & -           \\
+        \(c\)-tagging, SRC              & -          & \(30\%\)   & -          & -           & -           \\
+        \(c\)-tagging veto, SRL         & -          & \(30\%\)   & -          & -           & -          \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:signals:systs:main_systs}
+\end{table}
 
 
 
@@ -317,12 +339,12 @@ Para cada una de las fuentes de incerteza consideradas, a excepción de las de l
 
 \subsubsection{Incertezas en la luminosidad y el reescaleo del pileup}
 La incerteza en la luminosidad integrada combinada del Run-2 se obtiene utilizando el detector LUCID-2~\cite{ATLAS-LUCID2} para las medidas de luminosidad primaria complementado con medidas utilizando el \ac{ID} y los calorímetros. La incerteza obtenida es de \(0.83\%\)~\cite{ATLAS-Lumi-Run2}.
-Además, es necesario tener en cuenta las incertezas relacionadas con el reescaleo de los eventos \ac{MC} para que sus distribuciones de pileup coincidan con la de los datos, para lo cual se añade al ajuste un \ac{NP} que permite variaciones en el reescaleo de los eventos de pileup~\cite{ATLAS-PileupRW}.
+Además, es necesario tener en cuenta las incertezas relacionadas con el reescaleo de los eventos \ac{MC} para que sus distribuciones de pileup coincidan con la de los datos, para lo cual se añade al ajuste un \ac{NP} que permite variaciones en el reescaleo de los eventos de pileup~\cite{ATLAS-PileupRW}. El efecto de esta incerteza sobre la diferencia relativa en la eficiencia de selección es menor al \(1.5\%\).
 
 
 \subsubsection{Incertezas relacionadas a los fotones}
-La incerteza en la identificación de fotones se evalúa aplicando las incertezas de los \acp{FF} calculados en \Ch{\ref{ch:ss_corrections}}.
-En cuanto a las incertezas en el aislamiento de fotones, se calculan aplicando desplazamientos basados en datos a las formas simuladas de la variable \etiso. El efecto de estas incertezas en la eficiencia de la selección es, en todos los casos, \(<0.2\%\).
+La incerteza en la identificación de fotones se evalúa aplicando las incertezas de los \acp{FF} calculados en \Ch{\ref{ch:ss_corrections}} y se encuentra que son menores al \(0.5\%\).
+En cuanto a las incertezas en el aislamiento de fotones, se calculan aplicando desplazamientos basados en datos a las formas simuladas de la variable \etiso. El efecto de estas incertezas en la eficiencia de la selección es, en todos los casos, \(<1.3\%\).
 La estimación de la incerteza en la escala y resolución de energía de los fotones también es considerada y son \(<0.5\%\).
 
 
@@ -332,7 +354,7 @@ Las incertezas asociadas a los jets se estiman siguiendo la metodología descrip
 Entre ellas están la incerteza asociadas a la resolución de energía, que se obtiene a partir de la variación del \textit{smearing} de jets de \ac{MC} a datos para la corrección de la resolución, usando eventos con dos jets y datos sin sesgo de trigger mediante conos aleatorios.
 Las incertezas relacionadas con la escala de energía (JES) surgen de la intercalibración en \(\eta\) en eventos dijet, balance de \(\Zboson\left(\ra ee, \mu\mu\right)\)+jets, balance \gammajet y balance multijet y la propagación de partículas individuales en regímenes de alto \pt.
 También se tienen en cuenta las incertezas debidas al tagging erróneo dado por el algoritmo de supresión de pileup y el impacto del generador de \ac{MC}.
-Se ha comprobado que las incertezas de los jets no son superiores al \(0.1\%\).
+Se ha comprobado que las incertezas de los jets no son superiores al \(0.3\%\).
 
 
 
@@ -344,7 +366,7 @@ Se ha comprobado que las incertezas de los jets no son superiores al \(0.1\%\).
 
 \subsubsection{Incertezas en flavor-tagging}
 
-Este análisis depende en gran medida de la identificación de \bjets y \cjets. Todos los algoritmos de tagging de sabores pesado empleados conllevan incertezas sistemáticas que deben tenerse en cuenta. Las incertezas de \btagging se dan como un conjunto reducido de \ac{NP} que consisten en incertezas en los \acp{SF} de las eficiencias de \btagging, mal rechazo de \cjet y mal rechazo de \ljet. Se encuentra que las incertezas de \btagging en la eficiencia de selección son como máximo del \(2\%\). Dado que los cálculos finales aún no están listos para las incertezas de \ctagging, se considera una incerteza fija y muy conservadora del \(30\%\) para las regiones de señal del análisis que las involucren (SRC y SRL).
+Este análisis depende en gran medida de la identificación de \bjets y \cjets. Todos los algoritmos de tagging de sabores pesado empleados conllevan incertezas sistemáticas que deben tenerse en cuenta. Las incertezas de \btagging se dan como un conjunto reducido de \ac{NP} que consisten en incertezas en los \acp{SF} de las eficiencias de \btagging, mal rechazo de \cjet y mal rechazo de \ljet. Se encuentra que las incertezas de \btagging en la eficiencia de selección son como máximo del \(3\%\). Dado que los cálculos finales aún no están listos para las incertezas de \ctagging, se considera una incerteza fija y muy conservadora del \(30\%\) para las regiones de señal del análisis que las involucren (SRC y SRL).
 
 
 
@@ -358,6 +380,6 @@ Este análisis depende en gran medida de la identificación de \bjets y \cjets. 
 
 Los modelos de \acp{EQ} determinados a partir de simulaciones \ac{MC} están sujetos a incertezas teóricas. 
 Dado que los eventos de \acp{EQ} fueron generados y simulados con \Pythia, sólo incertezas en la selección de las \acp{PDF1} son consideradas.
-La incerteza en la \ac{PDF1} se estima utilizando 100 réplicas alternativas de la \ac{PDF1}. Estas las proporciona el grupo NNPDF~\cite{NNPDF2} y codifican las incertezas que entran en el ajuste de la \ac{PDF1} y en el método de ajuste en sí. La incerteza de la \ac{PDF1} viene dada por la desviación estándar sobre toda la muestra de réplicas de \acp{PDF1}. En este análisis, tiene un valor máximo del \(1\%\).
+La incerteza en la \ac{PDF1} se estima utilizando 100 réplicas alternativas de la \ac{PDF1}. Estas las proporciona el grupo NNPDF~\cite{NNPDF2} y codifican las incertezas que entran en el ajuste de la \ac{PDF1} y en el método de ajuste en sí. La incerteza de la \ac{PDF1} viene dada por la desviación estándar sobre toda la muestra de réplicas de \acp{PDF1}. En este análisis, tiene un valor máximo del \(0.6\%\).
 
 En cuanto a las incertezas teóricas para las muestras de \acp{QBH}, estas están menos motivada que las de \acp{EQ}, dado que ninguna de las \acp{PDF1} incluye los efectos de gravedad y se desconoce la escala \ac{QCD} para la gravedad.
