@@ -20,6 +20,7 @@
 \usepackage[printonlyused, withpage]{acronym}
 \usepackage{placeins}
 \usepackage[hang]{footmisc}
+\usepackage{datetime} % for custom date in titlepage
 \usepackage{multicol} % multicolumn text
 \usepackage{booktabs} % lines for tables
 \usepackage{lineno} % Line Numbers
@@ -60,6 +61,56 @@
 \renewcommand{\baselinestretch}{\linespacing}
 \setlength{\footnotemargin}{3mm}
 
+
+%---------------------------------------------------
+% TITLE PAGE DATE WITH ONLY MONTH AND YEAR
+%---------------------------------------------------
+\newdateformat{monthyeardate}{%
+    \monthname[\THEMONTH] \THEYEAR%
+}
+
+\renewcommand*{\monthnamespanish}[1][\month]{%
+    \@orgargctr=#1\relax
+    \ifcase\@orgargctr
+        \PackageError{datetime}{Invalid Month number \the\@orgargctr}{Month
+        numbers should go from 1 (january) to 12 (december)}%
+        \or Enero%
+        \or Febrero%
+        \or Marzo%
+        \or Abril%
+        \or Mayo%
+        \or Junio%
+        \or Julio%
+        \or Agosto%
+        \or Septiembre%
+        \or Octubre%
+        \or Noviembre%
+        \or Diciembre%
+    \else \PackageError{datetime}{Invalid Month number \the\@orgargctr}{%
+        Month numbers should go from 1 (january) to 12 (december)}%
+    \fi
+}
+% \renewcommand*{\monthnamesenglish}[1][\month]{%
+%     \@orgargctr=#1\relax
+%     \ifcase\@orgargctr
+%         \PackageError{datetime}{Invalid Month number \the\@orgargctr}{Month
+%         numbers should go from 1 (january) to 12 (december)}%
+%         \or January%
+%         \or February%
+%         \or March%
+%         \or April%
+%         \or May%
+%         \or June%
+%         \or July%
+%         \or August%
+%         \or September%
+%         \or October%
+%         \or November%
+%         \or December%
+%     \else \PackageError{datetime}{Invalid Month number \the\@orgargctr}{%
+%         Month numbers should go from 1 (january) to 12 (december)}%
+%     \fi
+% }
 
 
 %---------------------------------------------------
@@ -155,6 +206,14 @@
 {\rightmark}% Right odd header
 {\leftmark}% Left odd header
 {\thepage}% Center odd header
+
+\ifthenelse{\boolean{@twoside}}{%
+    \makeevenhead{custom}% Adjust odd header for custom page style
+    {\thepage}% Center odd header
+    {\leftmark}% Left odd header
+    {\rightmark}% Right odd header
+}{}
+
 
 \makeheadrule{custom}{\textwidth}{.5pt}% Header rule width/thickness for custom page style
 \aliaspagestyle{chapter}{custom} % just to save some space
