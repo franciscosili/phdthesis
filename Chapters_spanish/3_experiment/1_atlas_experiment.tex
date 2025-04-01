@@ -14,7 +14,7 @@ En el presente capítulo, se ofrece una introducción al \ac{LHC} en la \Sect{\r
 \label{sec:atlas:LHC}
 
 El \ac{LHC} \cite{LHC-TDR,LHC-Machine} es el mayor acelerador de hadrones del mundo, situado en el \ac{CERN}, en la frontera franco-suiza. Tiene una longitud de 27 km y está situado entre 50 y 174 metros bajo tierra.
-El \ac{LHC} está diseñado para hacer colisionar protones a una energía de centro de masa de \(14~\tev\). Para mantener los protones y los iones pesados en el anillo del acelerador, se utilizan un total de 9593 imanes. Este sistema incluye imanes superconductores dipolares y cuadrupolares, enfriados a 1.9 K (-271 $^{\circ} C$), de los cuales los imanes dipolares generan un campo magnético de 8.3 T.
+El \ac{LHC} está diseñado para hacer colisionar protones a una energía de centro de masa de \(14~\tev\)\footnote{Aunque aún no se han tomado datos con esta energía}. Para mantener los protones y los iones pesados en el anillo del acelerador, se utilizan un total de 9593 imanes. Este sistema incluye imanes superconductores dipolares y cuadrupolares, enfriados a 1.9 K (-271 $^{\circ} C$), de los cuales los imanes dipolares generan un campo magnético de 8.3 T.
 
 \begin{figure}[ht!]
     \centering
@@ -36,7 +36,7 @@ Uno de los parámetros más importantes para caracterizar el funcionamiento del 
     \mathcal{L} = \frac{N_b^ 2n_b f_{rev}\gamma_r}{4\pi\epsilon_n\beta^*}F
     \label{eq:atlas:LHC:instantaneous_lumi}
 \end{equation}
-donde $N_b$ es el número de partículas por bunch, $n_b$ el número de bunches por haz, $\gamma_r$ es el factor gamma relativista, $\epsilon_n$ es la emitancia transversal normalizada del haz y $\beta^*$ es la función beta en el punto de colisión que determina la dispersión transversal del haz de partículas. El término de corrección F tiene en cuenta el ángulo de cruce del haz. La frecuencia de revolución está representada por $f_{rev}$ que es de \(\sim 11~\)kHz, y con el espaciado del haz de \(25~ns\), permite el cruce del haz en los cuatro puntos de interacción con una frecuencia de \(\sim 40~\)MHz.
+donde $N_b$ es el número de partículas por bunch, $n_b$ el número de bunches por haz, $\gamma_r$ es el factor gamma relativista, $\epsilon_n$ es la emitancia transversal normalizada del haz y $\beta^*$ es la función beta en el punto de colisión que determina la dispersión transversal del haz de partículas. El término de corrección $F$ tiene en cuenta el ángulo de cruce del haz. La frecuencia de revolución está representada por $f_{rev}$ que es de \(\sim 11~\)kHz, y con el espaciado del haz de \(25~ns\), permite el cruce del haz en los cuatro puntos de interacción con una frecuencia de \(\sim 40~\)MHz.
 
 La medida para el total de datos registrados se obtiene a partir de la luminosidad integrada a lo largo del tiempo y viene dada por
 \begin{equation}
@@ -56,9 +56,9 @@ Esta variable relaciona la luminosidad con el número de eventos. Más detalles 
 \section{ATLAS}
 \label{sec:atlas:atlas}
 
-\ac{ATLAS} es uno de los detectores multipropósito del \ac{LHC}. Fue diseñado y construido para estudiar las colisiones \pp (y de iones pesados) y un gran espectro de procesos físicos en la escalade energía del \tev.
+\ac{ATLAS} es uno de los detectores multipropósito del \ac{LHC}. Fue diseñado y construido para estudiar las colisiones \pp (y de iones pesados) y un gran espectro de procesos físicos en la escala de energía del \tev.
 
-La forma general del detector es la de un cilindro, como se muestra en la \Fig{\ref{fig:atlas:atlas:atlas}}. Tiene una longitud de 44 m y 25 m de diámetro, siendo el mayor detector de partículas construido hasta la fecha. El detector \ac{ATLAS} está dividido geométricamente en dos partes: la parte central (\textit{barrel}), y las tapas exteriores (\textit{end-caps}).
+La forma general del detector es la de un cilindro, como se muestra en la \Fig{\ref{fig:atlas:atlas:atlas}}. Tiene una longitud de 44 m y 25 m de diámetro, siendo el detector de partículas más grande construido hasta la fecha. El detector \ac{ATLAS} está dividido geométricamente en dos partes: la parte central (\textit{barrel}), y las tapas exteriores (\textit{end-caps}).
 
 \begin{figure}[ht!]
     \centering
@@ -67,11 +67,11 @@ La forma general del detector es la de un cilindro, como se muestra en la \Fig{\
     \label{fig:atlas:atlas:atlas}
 \end{figure}
 
-\ac{ATLAS} está construido en capas de subdetectores, cada uno de los cuales está diseñado para tener un papel diferente en la identificación y reconstrucción de las partículas producidas en las colisiones. \ac{ATLAS} proporciona una cobertura hermética alrededor del eje del haz, permitiendo la detección de todas las partículas cargadas generadas en las colisiones en el plano ortogonal al eje del haz. Esto es particularmente importante en las búsquedas de nueva física, que se basan en análisis de balances de momento en el plano ortogonal.
+\ac{ATLAS} está construido en capas de subdetectores, cada uno de los cuales está diseñado para tener un papel diferente en la identificación y reconstrucción de las partículas producidas en las colisiones. \ac{ATLAS} proporciona una cobertura casi hermética alrededor del eje del haz, permitiendo la detección de todas las partículas cargadas generadas en las colisiones en el plano ortogonal al eje del haz. Esto es particularmente importante en las búsquedas de nueva física, que se basan en análisis de balances de momento en el plano ortogonal.
 
-Está formado por múltiples capas, empezando por el componente más interno, el \acf{ID}, que permite reconstruir trazas cerca del tubo del haz. Alrededor del \ac{ID}, hay un solenoide superconductor que crea un campo magnético axial de \(\sim 2\) T para curvar las trazas de las partículas cargadas.
-Tras este imán, hay un sistema de dos calorímetros: el \acf{ECAL} y el \acf{HCAL}. El primero se encarga de medir la energía cinética de fotones y electrones, y el segundo mide la energía de los jets.
-Las partes más externas del \ac{ATLAS} están constituidas por el \acf{MS}, que proporciona la reconstrucción del momento de los muones que atraviesan las capas internas del detector. Entrelazadas con el \ac{MS}, hay un total de 8 bobinas toroidales que proporcionan un campo magnético total de 4 T para medir el momento de los muones. El campo magnético de los toroides se completa con los toroides en las regiones del end-cap, que también generan un campo magnético de hasta 4 T para los muones que salen en la dirección más próxima al haz.
+Está formado por múltiples capas, empezando por el componente más interno, el \acf{ID} (\Sect{\ref{subsec:atlas:atlas:id}}), que permite reconstruir trazas cerca del tubo del haz. Alrededor del \ac{ID}, hay un solenoide superconductor que crea un campo magnético axial de \(\sim 2\) T para curvar las trazas de las partículas cargadas.
+Tras este imán, hay un sistema de dos calorímetros: el \acf{ECAL} y el \acf{HCAL}, descriptos en la \Sect{\ref{subsec:atlas:atlas:cals}}. El primero se encarga de medir la energía cinética de fotones y electrones, y el segundo mide la energía de los jets.
+Las partes más externas del \ac{ATLAS} están constituidas por el \acf{MS} (\Sect{\ref{subsec:atlas:atlas:ms}}), que proporciona la reconstrucción del momento de los muones que atraviesan las capas internas del detector. Entrelazadas con el \ac{MS}, hay un total de 8 bobinas toroidales que proporcionan un campo magnético total de 4 T para medir el momento de los muones. El campo magnético de los toroides se completa con los toroides en las regiones del end-cap, que también generan un campo magnético de hasta 4 T para los muones que salen en la dirección más próxima al haz.
 
 % El trabajo conjunto de todos los componentes de \ac{ATLAS} permite reconstruir e identificar una gran variedad de partículas con gran precisión. En la \Tab{\ref{tab:atlas:atlas:expected_performance}}, adaptado de \Refn{\cite{ATLAS}}, se da una visión general de las capacidades de diseño de \ac{ATLAS} en términos de resolución de momento y energía.
 % Aquí, la resolución está dada primero por un término estocástico, que mide la incertidumbre basada en la interacción de una partícula con el material, seguido de un término de ruido, que da cuenta de las incertidumbres debidas al ruido electrónico en el proceso de lectura.
@@ -156,7 +156,7 @@ El momento transverso y la energía se definen en el plano x-y, con el momento t
 El esquema de un corte transversal del \acf{ID} \cite{ATLAS-ID-TDR} se muestra en la \Fig{\ref{fig:atlas:atlas:atlas_inner_detector}}, resaltando la distancia de cada subsistema respecto al tubo del haz. La parte más interna del \ac{ID} se denomina \ac{IBL}, seguido de tres capas de detectores de píxeles. A 299 mm de distancia radial del tubo del haz, cuatro capas de módulos del \ac{SCT} se sitúan antes del \ac{TRT}, que amplía el tamaño total del \ac{ID} a un radio de 1082 mm. El \ac{ID} permite la reconstrucción de las trazas de partículas en un rango de $\abseta < 2.5$.
 
 
-La función del \ac{ID} es la reconstrucción de las trazas de las partículas cargadas para determinar su carga y momento. Está inmerso en un campo magnético de 2 T generado por el sistema magnético del solenoide de \ac{ATLAS}, que curva las trayectorias de las partículas cargadas. El radio de curvatura es proporcional al momento de la partícula y su dirección distingue las cargas positivas de las negativas. Las trazas de las partículas detectadas permiten reconstruir los vértices de colisiones primarios, lo cual es importante para distinguir las colisiones de \textit{pile-up} (término que será descrito más adelante) de las colisiones de interés, y los vértices secundarios de decaimiento producidos por partículas de vida media larga, lo que es crucial para la identificación de, por ejemplo, mesones \(B\) o leptones \(\tau\). A continuación, se brinda una breve descripción de cada parte del \ac{ID}.
+La función del \ac{ID} es la reconstrucción de las trazas de las partículas cargadas para determinar su carga y momento. Está inmerso en un campo magnético de 2 T generado por el sistema magnético del solenoide de \ac{ATLAS}, que curva las trayectorias de las partículas cargadas. El radio de curvatura es proporcional al momento de la partícula y su dirección distingue las cargas positivas de las negativas. Las trazas de las partículas detectadas permiten reconstruir los vértices de colisiones primarios, lo cual es importante para distinguir las colisiones de \textit{pile-up} (término que será descrito en la \Sect{\ref{sec:atlas:runs}}) de las colisiones de interés, y los vértices secundarios de decaimiento producidos por partículas de vida media larga, lo que es crucial para la identificación de, por ejemplo, mesones \(B\) o leptones \(\tau\). A continuación, se brinda una breve descripción de cada parte del \ac{ID}.
 
 
 \paragraph{\acf{IBL}}
@@ -182,6 +182,7 @@ La última parte del \ac{ID} es el \ac{TRT}~\cite{ATLAS-TRT-DesignPerformance}, 
 
 
 \subsection{Calorímetros}
+\label{subsec:atlas:atlas:cals}
 
 \begin{figure}[ht!]
     \centering
@@ -259,6 +260,7 @@ El \ac{HCAL} tiene un espesor superior a \(7.7~\lambda\) en la región del barre
 
 
 \subsection{\acf{MS}}
+\label{subsubsec:atlas:atlas:ms}
 
 \begin{figure}[ht!]
     \centering
@@ -333,7 +335,7 @@ Desde su puesta en marcha, se pueden distinguir los siguientes runs: Run-1 (2010
 
 Para garantizar la alta calidad de los datos, libres de defectos significativos, los \ac{LB} y los rangos dentro de ellos que superan todos los criterios de calidad se compilan en \ac{GRL}. Las listas se elaboran y distribuyen de forma centralizada, con el fin de proporcionar a cualquier grupo de \ac{ATLAS} la misma colección de \acp{LB}. Dado que durante los períodos de tomas de datos están disponibles diferentes partes del detector (en un run óptimo, todos los subdetectores están disponibles), hay múltiples \acp{GRL} disponibles para utilizar. Cada análisis, entonces, selecciona qué \ac{GRL} utilizar dependiendo de su tolerancia a las fallas de los subdetectores.
 
-La presente tesis utiliza datos recolectados por \ac{ATLAS} de colisiones \pp del \ac{LHC} durante el Run-2 (2015-2018), a una energía del centro de masa de \(\sqrt{s} = 13~\tev\). Durante este run, el \ac{LHC} entregó un total de \(156~\ifb\), de los cuales \ac{ATLAS} recolectó \(147~\ifb\). La luminosidad integrada total disponible para análisis de física es de \(140.07~\ifb\)\footnote{Las primeras medidas y \ac{GRL} iniciales sólo brindaban un total de \(139~\ifb\) disponibles para análisis}, como se ve en la \Fig{\ref{fig:atlas:runs:lumi_run2}}. La incertidumbre en la luminosidad integrada combinada para el Run-2 es de \(0.83\%\)~\cite{ATLAS-Lumi-Run2}, obtenida usando el detector LUCID-2~\cite{ATLAS-LUCID2}.
+La presente tesis utiliza datos recolectados por \ac{ATLAS} de colisiones \pp del \ac{LHC} durante el Run-2 (2015-2018), a una energía del centro de masa de \(\sqrt{s} = 13~\tev\). Durante este run, el \ac{LHC} entregó un total de \(156~\ifb\), de los cuales \ac{ATLAS} recolectó \(147~\ifb\). La luminosidad integrada total disponible para análisis de física es de \(140~\ifb\)\footnote{Las primeras medidas y \ac{GRL} iniciales sólo brindaban un total de \(139~\ifb\) disponibles para análisis}, como se ve en la \Fig{\ref{fig:atlas:runs:lumi_run2}}. La incertidumbre en la luminosidad integrada combinada para el Run-2 es de \(0.83\%\)~\cite{ATLAS-Lumi-Run2}, obtenida usando el detector LUCID-2~\cite{ATLAS-LUCID2}.
 Hasta el momento, combinando los años 2022, 2023 y 2024 de toma de datos del Run-3, se recogieron 159 \ifb de datos, mostrados en la \Fig{\ref{fig:atlas:runs:lumi_run3}}~\cite{ATLAS-Lumi-Run3-2022,ATLAS-Lumi-Run3-2023}.
 
 \begin{figure}[ht!]

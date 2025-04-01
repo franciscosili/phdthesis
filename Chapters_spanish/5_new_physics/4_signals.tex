@@ -310,17 +310,23 @@ Hay dos tipos de incertezas sistemáticas que afectan a las señales: experiment
     \centering
     \begin{tabular}{lccccc}
         \toprule
-        Incerteza                       & \(q^*\)    & \(c^*\)    & \(b^*\)    & QBH \(n=1\) & QBH \(n=6\) \\
+        Incerteza                       & \(q^*\)       & \(c^*\)   & \(b^*\)       & QBH \(n=1\)   & QBH \(n=6\) \\
         \midrule
-        PDFs                            & \(0.3\%\)  & \(0.6\%\)  & \(0.6\%\)  & -           & -           \\
-        Pile-up                         & \(1.5\%\)  & \(1.4\%\)  & \(1.4\%\)  & \(1.4\%\)   & \(1.4\%\)  \\
-        Identificación de fotones       & \(0.5\%\)  & \(0.5\%\)  & \(0.5\%\)  & \(0.5\%\)   & \(0.5\%\)  \\ 
-        Aislamiento de fotones          & \(1.3\%\)  & \(1.3\%\)  & \(1.3\%\)  & \(1.3\%\)   & \(1.3\%\)  \\
-        Escala de energía de fotones    & \(0.16\%\) & \(0.13\%\) & \(0.12\%\) & \(0.04\%\)  & \(0.02\%\)  \\
-        Resolución de energía de jets   & \(0.2\%\)  & \(0.1\%\)  & \(0.2\%\)  & \(0.08\%\)  & \(0.04\%\)  \\
-        \(b\)-tagging, SRB              & -          & \(3\%\)    & \(3\%\)    & -           & -           \\
-        \(c\)-tagging, SRC              & -          & \(30\%\)   & -          & -           & -           \\
-        \(c\)-tagging veto, SRL         & -          & \(30\%\)   & -          & -           & -          \\
+        PDFs                            & \(0.3\%\)     & \(0.5\%\) & \(0.6\%\)     & -             & -           \\
+        \midrule
+        Pile-up                         & \(1.5\%\)     & \(1.4\%\) & \(1.4\%\)     & \(1.4\%\)     & \(1.4\%\)  \\
+        \midrule
+        Identificación de fotones       & \(0.5\%\)     & \(0.5\%\) & \(0.5\%\)     & \(0.5\%\)     & \(0.6\%\)  \\
+        Aislamiento de fotones          & \(1.3\%\)     & \(1.3\%\) & \(1.3\%\)     & \(1.3\%\)     & \(1.3\%\)  \\
+        Resolución de energía de fotones& \(<0.1\%\)    & \(0.1\%\) & \(<0.1\%\)    & \(<0.1\%\)    & \(<0.1\%\)  \\
+        Escala de energía de fotones    & \(0.2\%\)     & \(0.1\%\) & \(0.1\%\)     & \(<0.1\%\)    & \(<0.1\%\)  \\
+        \midrule
+        Resolución de energía de jets   & \(1.2\%\)     & \(1.1\%\) & \(1.0\%\)     & \(0.9\%\)     & \(0.9\%\)  \\
+        Escala de energía de jets       & \(0.6\%\)     & \(0.5\%\) & \(0.5\%\)     & \(0.5\%\)     & \(0.4\%\)  \\
+        \midrule
+        \(b\)-tagging (SRB)             & -             & \(3\%\)   & \(3\%\)       & -             & -           \\
+        \(c\)-tagging (SRC)             & -             & \(*30\%\) & -             & -             & -           \\
+        \(c\)-tagging (SRL)             & -             & \(*30\%\) & -             & -             & -          \\
         \bottomrule
     \end{tabular}
     \label{tab:signals:systs:main_systs}
@@ -350,7 +356,7 @@ La estimación de la incerteza en la escala y resolución de energía de los fot
 
 \subsubsection{Escala y resolución de energía de los jets}
 
-Las incertezas asociadas a los jets se estiman siguiendo la metodología descripta en las \Refns{\cite{ATLAS-JetEnergy-2011}}{\cite{ATLAS-JESJERMC-2015}}.%, que proceden de múltiples fuentes y proporcionan un gran número de \acp{NP}.
+Las incertezas asociadas a los jets se estiman siguiendo la metodología descripta en las \Refns{\cite{ATLAS-JetEnergy-2011}}{\cite{ATLAS-JESJERMC-2015}}.
 Entre ellas están la incerteza asociadas a la resolución de energía, que se obtiene a partir de la variación del \textit{smearing} de jets de \ac{MC} a datos para la corrección de la resolución, usando eventos con dos jets y datos sin sesgo de trigger mediante conos aleatorios.
 Las incertezas relacionadas con la escala de energía (JES) surgen de la intercalibración en \(\eta\) en eventos dijet, balance de \(\Zboson\left(\ra ee, \mu\mu\right)\)+jets, balance \gammajet y balance multijet y la propagación de partículas individuales en regímenes de alto \pt.
 También se tienen en cuenta las incertezas debidas al tagging erróneo dado por el algoritmo de supresión de pileup y el impacto del generador de \ac{MC}.
